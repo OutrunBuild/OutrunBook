@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node (gitbook builds)
+node_modules/
+
+# Build output
+_book/
+dist/
