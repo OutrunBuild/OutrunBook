@@ -12,9 +12,9 @@ Memecoin 是这个时代最强的共识凝聚机制 —— 它不靠白皮书、
 
 ## 三套引擎
 
-1。 **四池流动性 + 动态费率** —— 启动即建立深度、抗抢跑抗夹的流动性。详见 [四池流动性](four-pools.md)、[动态费率 Hook](hook.md)。
-2。 **杠杆创世(POLend)** —— 用 uAsset 或创世积分付利息，放大创世参与，到期统一结算。详见 [杠杆创世](polend.md)。
-3。 **Memecoin Staking + DAO 治理** —— 交易手续费分配给质押者与 DAO 国库；Memecoin 同时成为治理代币，社区按周期获得激励，国库由社区共治。详见 [Memecoin Staking](memecoin-staking.md)、[DAO 治理](dao-governance.md)。
+1. **四池流动性 + 动态费率** —— 启动即建立深度、抗抢跑抗夹的流动性。详见 [四池流动性](four-pools.md)、[动态费率 Hook](hook.md)。
+2. **杠杆创世(POLend)** —— 用 uAsset 或创世积分付利息，放大创世参与，到期统一结算。详见 [杠杆创世](polend.md)。
+3. **Memecoin Staking + DAO 治理** —— 交易手续费分配给质押者与 DAO 国库；Memecoin 同时成为治理代币，社区按周期获得激励，国库由社区共治。详见 [Memecoin Staking](memecoin-staking.md)、[DAO 治理](dao-governance.md)。
 
 第三套引擎是 Memeverse 的灵魂 —— 它把投机能量转化为建设能量，让 Memecoin 真正"长出"持续价值。详见 [DAO 治理](dao-governance.md)。
 

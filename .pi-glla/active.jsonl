@@ -1,0 +1,3 @@
+{"type":"session_rebound","value":{"reason":"startup"},"at":"2026-08-08T18:32:46.901Z"}
+{"type":"session_waiting_for_load","value":{"reason":"startup"},"at":"2026-08-08T18:32:46.909Z"}
+{"type":"session_shutdown","value":{"reason":"quit"},"at":"2026-08-08T18:33:01.375Z"}

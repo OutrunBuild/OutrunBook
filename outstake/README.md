@@ -6,9 +6,9 @@ OutStake 是 Outrun 的收益基础设施。它解决一个老问题：**Aave、
 
 ## 三步看懂 OutStake
 
-1。 **收资产** —— [SY 标准化收益层](sy-adapters.md)把不同协议的生息代币，用统一接口包装起来。
-2。 **铸稳定币** —— 质押生息资产，按其当前价值铸出 [uAsset](uasset.md)(UETH / UUSD / UBNB)，每枚锚定 1 单位底层资产。
-3。 **质押管理** —— [双质押模式](staking-modes.md)（锁仓 / 包装）、[提取增值](draw-uasset.md)、[keeper 代偿](keeper.md)。
+1. **收资产** —— [SY 标准化收益层](sy-adapters.md)把不同协议的生息代币，用统一接口包装起来。
+2. **铸稳定币** —— 质押生息资产，按其当前价值铸出 [uAsset](uasset.md)(UETH / UUSD / UBNB)，每枚锚定 1 单位底层资产。
+3. **质押管理** —— [双质押模式](staking-modes.md)（锁仓 / 包装）、[提取增值](draw-uasset.md)、[keeper 代偿](keeper.md)。
 
 ## 核心概念
 

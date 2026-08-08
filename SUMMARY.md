@@ -45,7 +45,7 @@
 * [杠杆创世 POLend](memeverse/polend.md)
   —— 付利息放大创世份额，无清算风险
 * [POL 拆分：PT 与 YT](memeverse/pol-splitter.md)
-  —— 把 POL 拆成本金(PT)与收益(YT)两种凭证
+  —— 把 POL 拆成本金（PT）与收益（YT）两种凭证
 * [创世积分 GenesisCredit](memeverse/genesis-credit.md)
   —— 可跨链的参与凭证，用于抵扣杠杆利息
 * [Memecoin Staking](memeverse/memecoin-staking.md)
