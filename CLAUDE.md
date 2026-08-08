@@ -8,7 +8,7 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 
 | 仓库 | 路径 | 角色 | 文档对齐 commit |
 |---|---|---|---|
-| **MemeverseV2** | `/home/azkrale/Web3Project/MemeverseV2` | 全链社区共识启动器（四池/Hook/POLend/POLSplitter/YieldVault/DAO/跨链） | `06278c235719e9f6b7d2428d90145715b649af16`(`06278c2`，Merge feat/hook-diamond-refactor) |
+| **MemeverseV2** | `/home/azkrale/Web3Project/MemeverseV2` | 全链社区共识启动器（四池/Hook/POLend/POLSplitter/YieldVault/DAO/跨链） | `50b9d6066af8a226b30a68e9bcbd6cd1560fdbaa`(`50b9d60`，docs(spec): rename local launcher yield dispatch to distributeSameChain) |
 | **OutStakeV2** | `/home/azkrale/Web3Project/OutStakeV2` | 收益基础设施（SY 适配器/uAsset/双质押/drawUAsset/keeper/跨链） | `0e55609b23dc5a533ad99a79d0af9837d501cf5f`(`0e55609`) |
 
 > 当代码仓库更新后，需在此更新 commit hash 并同步核对文档是否仍对齐。
@@ -36,15 +36,9 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 - **三金库**：Memecoin Staking 收益库（质押者）/ DAO 国库（uAsset 费，社区治）/ 协议自留国库（杠杆利息，协议方）。
 - **四池比例**：主池 Memecoin/uAsset 占创世资金 70%；POL 2:3:2；拆出 PT 1:2。
 - **split/merge 仅 Locked 阶段**（Unlocked/settled 后 revert）。
+- **YT Flash Swap**：锁定期 YT 二级市场通道。独立 Router 复用 PT/POL 池（不建第二个 AMM、不设独立 YT 池），单笔 unlock 内完成换腿 + split/merge；两入口：POL→精确 YT（实际成本 = y−R 结算，不预扣预算）、精确 YT→POL（minPOLOut 保护）；费用/referral 与普通 PT/POL swap 完全一致（不二次收费），但费用按完整 PT 腿规模计、杠杆下相对实际支付本金占比放大；须有活动 account session（智能账户原子包裹，principal = msg.sender）；仅 Locked 阶段可用；YT 有效价格 = 1 POL − PT 市价。**YT = 杠杆资产**：花价差一小部分买到完整份额的结算残值暴露，残值小变动→YT 回报大变动（对应 Pendle 官方文档 "leveraged exposure to yield"，买 YT = 做多结算残值，双向放大）。
 - **参与三档**：稳健（无风险）/ 平衡（杠杆，仅利息成本）/ 共建（买币质押治理）。曾用"激进"，用户嫌难听改"共建"。
 - **DAO**：标准 token 投票（质押 Memecoin 份额），非旧"sMemecoin+POL 双轨 TVP 公式"（代码已无）。
-
-## ⏸️ 待重写：YT Flash Swap（功能正在重新设计，文档暂缓）
-
-MemeverseV2 曾有 `src/swap/YTFlashSwapRouter.sol`（commit `cbde6de`），实现 Locked 期的 YT 二级市场（复用 PT/POL 池 + split/merge，YT 价 = 1 POL − PT 价，闪电贷借还）。**该功能的代码与 spec 存在问题，正在重新设计**，相关文档已全部撤销，等新功能定型后再写。
-
-- 已撤销：`pol-splitter.md` 的 flash swap 节（改留「待重写」占位）、`four-pools.md`、`glossary.md` 的 Flash Swap 条目、`SUMMARY.md`。
-- 撤销后文档暂述：YT 在结算后按份额赎回残值（不设独立交易池）。
 
 ## 文档结构
 

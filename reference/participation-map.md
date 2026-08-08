@@ -33,7 +33,7 @@ Memeverse 里有三种凭证，各自什么时候能兑现、兑现成什么，�
 |---|---|---|---|---|
 | **POL** | 创世锁定时（主池 LP，代表锁定流动性份额） | 解锁后 | 烧 POL 赎回主池流动性(Memecoin + uAsset)，或交易 | 跟随 Memecoin 价格 |
 | **PT**（本金代币） | POL 拆分得到，部署时进辅助池作 LP | 解锁结算后 | 按锚定比率赎回 uAsset | 锚定 uAsset，但 PT 主要在辅助池里，非直接发给普通创世者 |
-| **YT**（收益代币） | POL 拆分得到，按资金占比分配给普通/杠杆创世者 | 解锁结算后 | 按份额分得结算后的剩余资产(uAsset + Memecoin) | 博 Memecoin 上涨，归零则无收益 |
+| **YT**（收益代币） | POL 拆分得到，按资金占比分配给普通/杠杆创世者 | 锁定期可交易（Flash Swap）；解锁结算后按份额兑付 | 按份额分得结算后的剩余资产(uAsset + Memecoin) | 博 Memecoin 上涨，归零则无收益 |
 
 要点：
 - POL 可在锁定期间拆成 PT + YT，也可合并回 POL。
@@ -41,5 +41,6 @@ Memeverse 里有三种凭证，各自什么时候能兑现、兑现成什么，�
 - 普通创世者的本金 uAsset 在四池里守恒 —— Memecoin 是全新铸造的，归零只损失"Memecoin 那部分预期收益"，投入的 uAsset 按份额原数拿回。创世失败则全额退款。这是普通创世「无风险」的本质。
 - YT 赌的是 Memecoin 上涨带来的结算结余；涨越多分越多，不涨则可能归零。
 - 杠杆创世者拿的主要是 YT（博上涨）。
+- 锁定期内 YT 可用 POL 通过 Flash Swap 买卖（见 [YT 闪电兑换](../memeverse/yt-flash-swap.md)），不必等到结算；结算后的赎回规则不变。
 
 详见 [POL 拆分](../memeverse/pol-splitter.md)、[启动生命周期](../memeverse/lifecycle.md)。
