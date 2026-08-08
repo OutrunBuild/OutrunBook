@@ -14,3 +14,5 @@ node_modules/
 # Build output
 _book/
 dist/
+
+.pi-glla/
