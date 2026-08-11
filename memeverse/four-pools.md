@@ -17,12 +17,40 @@
 
 ## 资金怎么分
 
-创世筹集到的 uAsset，按固定比例分配到四池：
+创世筹集到的 uAsset 分两路：一部分直接进池，另一部分由主池再产出 POL 与 PT。
 
-- **主池拿大头**：约占创世资金的 70%，确保主交易市场有足够深度。
-- **剩余 30% 走辅助池路径**：POL 按约 2:3:2 分（进 POL/uAsset 池、拆成 PT+YT、进 PT/POL 池）；拆出的 PT 再按 1:2 分（进 PT/uAsset 池、进 PT/POL 池）。
+- **uAsset 流**：约 70% 的 uAsset 进主池（Memecoin/uAsset），确保主交易市场有足够深度；其余约 30% 作为辅助池的 uAsset 资金，进入 POL/uAsset 与 PT/uAsset 池。
+- **POL 流**：主池据此铸出 POL（流动性凭证），POL 按约 2:3:2 分——2 份进 POL/uAsset 池、3 份拆成 PT+YT（YT 分给创世者）、2 份进 PT/POL 池；拆出的 PT 再按约 1:2 分——1 份进 PT/uAsset 池、2 份进 PT/POL 池。
+
+以上比例为创世达成时的目标配置，实际进入各池的数量以部署时的市场价为准，可能略有出入；未进入池子的少量剩余 POL/PT 在解锁后按份额领取。
+
+```mermaid
+flowchart TD
+    C["创世筹集资金<br/>100% uAsset"]:::root
+    C -->|"约 70%"| M["主池 Memecoin / uAsset<br/>主交易市场 · 主要交易深度"]:::main
+    C -->|"约 30%"| AU["辅助池的 uAsset 资金"]:::aux
+    AU -->|"uAsset"| U1["POL/uAsset 池<br/>POL 可直接交易 · 杠杆结算出口"]:::pool
+    AU -->|"uAsset"| T1["PT/uAsset 池<br/>本金可单独交易"]:::pool
+
+    M -->|"产出 POL"| P["POL 按约 2:3:2 分配"]:::pol
+    P -->|"2 份"| U1
+    P -->|"3 份"| P2["拆分 PT + YT<br/>YT 分给创世者 · PT 继续分流"]:::pol
+    P -->|"2 份"| P3["PT/POL 池<br/>本金与凭证间价格发现"]:::pool
+    P2 -->|"拆出的 PT 按约 1:2 分"| T["PT 分配"]:::pt
+    T -->|"1 份"| T1
+    T -->|"2 份"| P3
+
+    classDef root fill:#e3f2fd,stroke:#1565c0
+    classDef main fill:#e8f5e9,stroke:#2e7d32
+    classDef aux fill:#fff3e0,stroke:#ef6c00
+    classDef pol fill:#f3e5f5,stroke:#7b1fa2
+    classDef pt fill:#fce4ec,stroke:#c2185b
+    classDef pool fill:#e1f5fe,stroke:#0288d1
+```
 
 这种结构让主池保持深度，同时为 POL、PT 各自建立可交易的二级市场；YT 在锁定期内可通过 **YT Flash Swap** 用 POL 买卖（复用 PT/POL 池，不设独立交易池，详见 [YT 闪电兑换](yt-flash-swap.md)），解锁结算后按份额赎回结算残值。
+
+对普通创世者而言，辅助池中的 uAsset、PT 对应的主池 uAsset、POL 对应的主池 uAsset 共同覆盖其投入本金。完整的守恒关系与解锁退出步骤见 [普通创世 Genesis](genesis.md)。
 
 ## 辅助池手续费的归属
 
@@ -43,6 +71,6 @@
 
 ## 举例
 
-> 某 Memecoin 创世筹集到 100 万 UUSD。其中 70 万进主池(Memecoin/uAsset)，建立主交易深度；30 万走辅助池。辅助池里的 POL 按约 2:3:2 分：一部分进 POL/uAsset 池，一部分拆成 PT+YT，一部分进 PT/POL 池；拆出的 PT 再按 1:2 分，分别进 PT/uAsset 池和 PT/POL 池。这样主池有深度，POL、PT 各有可交易的市场，YT 在锁定期可经 Flash Swap 交易、结算后按份额兑付；普通创世者还能持续领取辅助池产生的手续费分成。
+> 某 Memecoin 创世筹集到 100 万 UUSD。其中约 70 万 uAsset 进主池（Memecoin/uAsset），建立主交易深度；其余约 30 万 uAsset 作为辅助池资金，进入 POL/uAsset 与 PT/uAsset 池。主池据此铸出 POL，POL 按约 2:3:2 分：2 份进 POL/uAsset 池，3 份拆成 PT+YT，2 份进 PT/POL 池；拆出的 PT 再按约 1:2 分，分别进 PT/uAsset 池和 PT/POL 池。这样主池有深度，POL、PT 各有可交易的市场，YT 在锁定期可经 Flash Swap 交易、结算后按份额兑付；普通创世者还能持续领取辅助池产生的手续费分成。
 
 四池是 Memeverse 区别于单一池子启动平台的核心设计，也是后续动态费率、杠杆结算、PT/YT 交易能够运转的基础。
