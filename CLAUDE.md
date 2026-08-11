@@ -8,10 +8,10 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 
 | 仓库 | 路径 | 角色 | 文档对齐 commit |
 |---|---|---|---|
-| **MemeverseV2** | `/home/azkrale/Web3Project/MemeverseV2` | 全链社区共识启动器（四池/Hook/POLend/POLSplitter/YieldVault/DAO/跨链） | `50b9d6066af8a226b30a68e9bcbd6cd1560fdbaa`(`50b9d60`，docs(spec): rename local launcher yield dispatch to distributeSameChain) |
-| **OutStakeV2** | `/home/azkrale/Web3Project/OutStakeV2` | 收益基础设施（SY 适配器/uAsset/双质押/drawUAsset/keeper/跨链） | `0e55609b23dc5a533ad99a79d0af9837d501cf5f`(`0e55609`) |
+| **MemeverseV2** | `/home/azkrale/Web3Project/MemeverseV2` | 全链社区共识启动器（四池/Hook/POLend/POLSplitter/YieldVault/DAO/跨链） | `22332ef8632d2bc2d32e2a1c1bfa69fdbb417a20`(`22332ef`，feat(harness): serialize forge builds via flock wrapper, route gate.sh through it) |
+| **OutStakeV2** | `/home/azkrale/Web3Project/OutStakeV2` | 收益基础设施（SY 适配器/uAsset/双质押/drawUAsset/keeper/跨链） | `daf4aaa3f0a2e7480b94d7a33dd06b68bd722c8d`(`daf4aaa`，Add new agents for process implementation, refinement review, security review, Solidity implementation, and spec review) |
 
-> 当代码仓库更新后，需在此更新 commit hash 并同步核对文档是否仍对齐。
+> 当代码仓库更新后，需在此更新 commit hash 并同步核对文档是否仍对齐。发布前运行 `bash scripts/check-baseline.sh` 检测漂移。
 
 ### MemeverseV2 的真相源文档（优先读，比代码更接近设计意图）
 - `docs/spec/protocol.md`、`docs/spec/verse/accounting.md`、`docs/spec/verse/config-matrix.md`
@@ -22,7 +22,7 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 
 ## 写作规范（用户明确要求，务必遵守）
 
-1. **面向用户产品语言**：禁出现函数名(`stake()`)、变量名(`amountInSY`)、行号、代码公式、"代码参考"小节。
+1. **面向用户产品语言**：禁出现函数名(`stake()`)、变量名(`amountInSY`)、行号、代码公式、"代码参考"小节。不要引入太过复杂的技术性措辞，文档可读性优先。
 2. **中文标点**：中文语境用全角标点(，。：；！？（）)，除非特殊情况（代码、URL、数字间比例 `2:3:2`、英文术语内部）。`Memeverse`/`YT`/`DAO` 等英文术语后的标点也是中文标点。
 3. **术语保留英文**：uAsset / SY / PT / YT / POL / Hook / POLend / Preorder / GenesisCredit / YieldVault 等不翻译。
 4. **举例**：用「用户」/角色名，**不要用虚构人名**（老王/小李）；Memecoin 示例用泛指「Memecoin」，**不要具体代号**(FROGGY)。
@@ -31,7 +31,7 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 
 - **uAsset = 锚定型稳定币**（UETH/UUSD/UBNB 锚 ETH/USD/BNB）。UETH/UBNB 锚波动资产，非法币稳定币。代码层是 debt-tracked receipt，产品层用稳定币叙事；不叫"债务凭证"。
 - **飞轮 = uAsset 供需双向咬合**（OutStake 供给 ↔ Memeverse 创造用途），**非收益回流**。两个模块收益各自独立，不互相回流。
-- **普通创世 = 无风险**：投入的 uAsset 100% 进四池守恒，Memecoin 是全新铸造的；归零只损失"Memecoin 预期收益"，本金按份额原数拿回。机制依据是**资金守恒**（不是 PT 锚定 —— 普通创世者领 YT+辅助池 LP，不持 PT）。杠杆创世才承担风险，且**仅利息成本**（无本金、无清算）。
+- **普通创世 = 产品模型内无风险**：投入的 uAsset 100% 进入四池组合，Memecoin 是本金之外新铸造的上行权益。Verse 成功解锁后四池暂停公开交易 24 小时；普通创世者须在该窗口内领取并完整拆解 YT、辅助池 LP、POL/PT residual 和费用权益，按份额恢复 uAsset 本金。保护期结束后风险自负。机制依据是**资金守恒 + 解锁保护**，不是用户直接持有 PT 本金凭证。权威说明页为 `memeverse/genesis.md`。
 - **收益流向**：交易费 LP 65% / 协议 35%；协议费 uAsset 计价→DAO 国库、Memecoin 计价→Staking 收益库、POL 计价→销毁、有推荐人则总费 10%→返佣；执行者奖励 = 主池 uAsset 费 0.25%；杠杆利息→协议自留国库（非 DAO 国库）。
 - **三金库**：Memecoin Staking 收益库（质押者）/ DAO 国库（uAsset 费，社区治）/ 协议自留国库（杠杆利息，协议方）。
 - **四池比例**：主池 Memecoin/uAsset 占创世资金 70%；POL 2:3:2；拆出 PT 1:2。
