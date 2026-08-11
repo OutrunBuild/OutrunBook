@@ -11,7 +11,7 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 | **MemeverseV2** | `/home/azkrale/Web3Project/MemeverseV2` | 全链社区共识启动器（四池/Hook/POLend/POLSplitter/YieldVault/DAO/跨链） | `22332ef8632d2bc2d32e2a1c1bfa69fdbb417a20`(`22332ef`，feat(harness): serialize forge builds via flock wrapper, route gate.sh through it) |
 | **OutStakeV2** | `/home/azkrale/Web3Project/OutStakeV2` | 收益基础设施（SY 适配器/uAsset/双质押/drawUAsset/keeper/跨链） | `daf4aaa3f0a2e7480b94d7a33dd06b68bd722c8d`(`daf4aaa`，Add new agents for process implementation, refinement review, security review, Solidity implementation, and spec review) |
 
-> 当代码仓库更新后，需在此更新 commit hash 并同步核对文档是否仍对齐。发布前运行 `bash scripts/check-baseline.sh` 检测漂移。
+> 当代码仓库更新后，需在此更新 commit hash 并同步核对文档是否仍对齐。发布前运行 `bash scripts/check-baseline.sh` 检测漂移、`bash scripts/check-absolute-words.sh` 核对绝对性营销词（每一处须附链上约束或限定条件；新命中先核对，再决定改文档或入白名单）。
 
 ### MemeverseV2 的真相源文档（优先读，比代码更接近设计意图）
 - `docs/spec/protocol.md`、`docs/spec/verse/accounting.md`、`docs/spec/verse/config-matrix.md`
@@ -26,6 +26,12 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 2. **中文标点**：中文语境用全角标点(，。：；！？（）)，除非特殊情况（代码、URL、数字间比例 `2:3:2`、英文术语内部）。`Memeverse`/`YT`/`DAO` 等英文术语后的标点也是中文标点。
 3. **术语保留英文**：uAsset / SY / PT / YT / POL / Hook / POLend / Preorder / GenesisCredit / YieldVault 等不翻译。
 4. **举例**：用「用户」/角色名，**不要用虚构人名**（老王/小李）；Memecoin 示例用泛指「Memecoin」，**不要具体代号**(FROGGY)。
+5. **用户操作页统一模板**：凡教用户执行操作的页面（创世、预购、质押、赎回、跨链、治理等），按以下顺序覆盖字段，字段对该操作不适用时**显式标注「不适用」而非缺省**：
+   - 何时可用（哪个阶段/条件下能操作）
+   - 输入与输出（投什么、拿回什么）
+   - 前置余额与授权（动手前钱包要有什么、需不需要授权）
+   - 费用与失败结果（要付什么费用/手续费、失败或未达标时资金如何处置；暂停影响统一走 FAQ 交叉引用，不逐页重复）
+   - 具体步骤（含需用户主动领取/执行的步骤，不能只写自动到账）
 
 ## 关键机制决策（均经代码核实或用户确认，改文档时勿推翻）
 

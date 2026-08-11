@@ -18,7 +18,7 @@ OutStake 是 Outrun 的收益基础设施。它解决一个老问题：**Aave、
 | **uAsset** | 锚定型稳定币(UETH / UUSD / UBNB) | [uAsset](uasset.md) |
 | **锁仓 / 包装** | 两种质押路径：锁仓吃增值 vs 共享池求流动 | [双质押模式](staking-modes.md) |
 | **提取增值** | 锁仓期内把生息增值提前变成 uAsset | [提取增值](draw-uasset.md) |
-| **keeper** | 第三方代到期仓位赎回，保本取增值 | [Keeper 代偿](keeper.md) |
+| **keeper** | 锁定超时达到一定时间后协议代为赎回，增值归仓位主人 | [Keeper 代偿](keeper.md) |
 | **跨链** | uAsset 基于 LayerZero，全链流通 | [跨链与速率限制](omnichain.md) |
 
 ## uAsset 去了哪里

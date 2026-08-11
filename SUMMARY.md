@@ -24,7 +24,7 @@
 * [提取增值](outstake/draw-uasset.md)
   —— 锁仓期内把生息增值提前变成 uAsset
 * [Keeper 代偿](outstake/keeper.md)
-  —— 第三方代到期仓位赎回，保本取增值
+  —— 锁定超时达到一定时间后协议代为赎回，增值归仓位主人
 * [一站式操作入口](outstake/router.md)
   —— 从任意代币到质押/赎回的全链路聚合
 * [跨链与速率限制](outstake/omnichain.md)
