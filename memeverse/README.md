@@ -14,15 +14,15 @@ Memecoin 是这个时代最强的共识凝聚机制 —— 它不靠白皮书、
 
 1. **四池流动性 + 动态费率** —— 启动即建立深度、抗抢跑抗夹的流动性。详见 [四池流动性](four-pools.md)、[动态费率 Hook](hook.md)。
 2. **杠杆创世(POLend)** —— 用 uAsset 或创世积分付利息，放大创世参与，到期统一结算。详见 [杠杆创世](polend.md)。
-3. **Memecoin Staking + DAO 治理** —— 交易手续费分配给质押者与 DAO 国库；Memecoin 同时成为治理代币，社区按周期获得激励，国库由社区共治。详见 [Memecoin Staking](memecoin-staking.md)、[DAO 治理](dao-governance.md)。
+3. **Memecoin Staking + DAO 治理** —— 交易手续费分配给质押者与 DAO 国库；质押并委托后获得治理权，社区按周期领取激励，国库由社区共治。详见 [Memecoin Staking](memecoin-staking.md)、[DAO 治理](dao-governance.md)。
 
 第三套引擎是 Memeverse 的灵魂 —— 它把投机能量转化为建设能量，让 Memecoin 真正"长出"持续价值。详见 [DAO 治理](dao-governance.md)。
 
 ## 谁参与，怎么参与
 
-- **发起人**：在多条链上同时启动一个 Memecoin，无门槛、无 Creator 特权。
-- **创世参与者**：用 uAsset 稳定币参与创世（普通创世无风险博收益：本金 uAsset 守恒，与 Memecoin 涨跌无关），或加杠杆放大份额，或预购提前锁定。
-- **质押者 / 治理者**：上线后把 Memecoin 质押进收益库，赚手续费收益，并获得 DAO 投票权，参与社区共建。
+- **发起人**：可在多条链上同时启动一个 Memecoin，各链独立募资、独立建池，无门槛、无 Creator 特权。
+- **创世参与者**：用 uAsset 参与[普通创世](genesis.md)，在本金守恒模型下博取额外收益；也可加杠杆放大份额，或通过预购提前锁定 Memecoin。
+- **质押者 / 治理者**：上线后把 Memecoin 质押进收益库，赚手续费收益；完成委托后获得 DAO 投票权，参与社区共建。
 
 不同风险偏好的人有不同参与路径，详见 [参与方式与风险偏好](../ecosystem/playbooks.md)。
 
@@ -42,6 +42,7 @@ OutStake 铸造 uAsset，Memeverse 消耗 uAsset，共识由此流动。
 | 概念 | 一句话 | 详解 |
 |---|---|---|
 | **生命周期** | 从创世到解锁的完整流程 | [启动生命周期](lifecycle.md) |
+| **普通创世** | uAsset 本金守恒 + 额外上行权益 | [普通创世 Genesis](genesis.md) |
 | **四池** | 主池 + 三个辅助池的流动性结构 | [四池流动性](four-pools.md) |
 | **动态费率 Hook** | 基于 Uniswap V4 的抗操纵交易层 | [动态费率 Hook](hook.md) |
 | **预购 Preorder** | 创世前提前锁定 Memecoin | [预购](preorder.md) |

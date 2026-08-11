@@ -23,7 +23,7 @@ OutStake(供给)                              Memeverse(用途)
 
 **供给驱动用途**：OutStake 供给越足，uAsset 流动性越深 → Memeverse 启动 Memecoin 越顺（创世资金充足、跨链畅通）→ 产生更多 uAsset 用途。
 
-**用途驱动供给**：Memeverse 让 uAsset 变得有用 —— 尤其是**普通创世**，让 uAsset 用户无风险博取 Memecoin 生态收益（YT + 辅助池手续费；本金 uAsset 守恒，与 Memecoin 涨跌无关）。这是 uAsset 相对普通稳定币的核心吸引力。持有 uAsset 有额外价值 → 越多人愿意在 OutStake 铸造和质押 → 供给更足。
+**用途驱动供给**：Memeverse 让 uAsset 变得有用 —— 尤其是[普通创世](../memeverse/genesis.md)，让用户在本金守恒模型下博取 Memecoin 生态收益（YT + 辅助池手续费；成功解锁后在 24 小时保护期内完整退出）。这是 uAsset 相对普通稳定币的核心吸引力。持有 uAsset 有额外价值 → 越多人愿意在 OutStake 铸造和质押 → 供给更足。
 
 两端互相喂养：Memeverse 的繁荣让 uAsset 有用，uAsset 有用又驱动更多人去 OutStake 铸造，铸出来的 uAsset 又让 Memeverse 启动更顺。飞轮由此自我强化。
 
@@ -32,7 +32,7 @@ OutStake(供给)                              Memeverse(用途)
 值得单独点明：**OutStake 不是孤立的 LST 包装器，它的增长动力恰恰来自 Memeverse 创造的用途。**
 
 - 若没有 Memeverse，OutStake 只是把各类生息资产统一成 uAsset —— 有用，但缺少独到的增长引擎。
-- 正是 Memeverse 给 uAsset 安排了真实用途（创世、杠杆、结算、国库），让"持有 uAsset"比"持有普通稳定币"多出一层无风险博取 Memecoin 收益的可能（普通创世本金守恒），OutStake 才有了持续吸引供给的理由。
+- 正是 Memeverse 给 uAsset 安排了真实用途（创世、杠杆、结算、国库），让“持有 uAsset”比“持有普通稳定币”多出一层无风险博取 Memecoin 收益的可能（普通创世在保护期内完成退出，本金守恒），OutStake 才有了持续吸引供给的理由。
 
 反过来也一样：**Memeverse 没有 OutStake，就没有稳定币燃料** —— 创世无资金、杠杆无利息、结算无计价。两个模块各自都不完整，合在一起才成闭环。
 
@@ -72,8 +72,24 @@ Memeverse 自身也有正向循环：
 
 - **动态费率 + 开池高费率**：防抢跑、防夹，保护交易市场健康。
 - **流动性锁定 + 创世退款**：防 rug，保护参与者信任。
-- **结算储备金**：覆盖杠杆结算赤字，保证债务总能清偿。
+- **结算储备金**：仅在当前余额与配置上限内补足杠杆结算的有界整数舍入缺口；余额不足时解锁结算回退，补充储备后重试。
 - **uAsset 铸币上限 + 跨链速率限制**：防超发、防异常流出，保护稳定币信用。
+
+```mermaid
+flowchart TD
+    A[回收 uAsset] --> B{回收额 >= 债务?}
+    B -->|是| C[偿还债务]
+    C --> D[Settled: 记录 residual]
+    B -->|否| E[deficit = 债务 - 回收额]
+    E --> F{deficit <= 当前 reserve?}
+    F -->|是| G[消耗 reserve 并偿还债务]
+    G --> H[Settled: residualUAsset = 0]
+    F -->|否| I[SettlementDustInsufficient]
+    I --> J[revert: 保持 Locked]
+    J --> K[补充 reserve，必要时提高 maxReserve]
+    K --> L[重试 changeStage]
+    L --> A
+```
 
 ## 小结
 

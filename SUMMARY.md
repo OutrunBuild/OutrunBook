@@ -36,6 +36,8 @@
   —— 启动的不是代币，而是拥有流动性、收益与治理的链上社区
 * [启动生命周期](memeverse/lifecycle.md)
   —— 创世 → 锁定/退款 → 解锁的完整流程
+* [普通创世 Genesis](memeverse/genesis.md)
+  —— uAsset 本金守恒、24 小时流动性保护与完整退出步骤
 * [四池流动性模型](memeverse/four-pools.md)
   —— 主池 + 三个辅助池的资金结构与手续费归属
 * [动态费率 Hook](memeverse/hook.md)

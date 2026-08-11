@@ -30,7 +30,7 @@ Memeverse 不是发币工具，而是**全链社区共识启动器**：它启动
 
 - **四池流动性 + 动态费率**：启动即建立深度、抗抢跑抗夹的流动性，而不是单一稀薄池子。
 - **杠杆创世(POLend)**：用 uAsset 或创世积分支付利息，放大创世参与，到期统一结算。
-- **Memecoin Staking + DAO 治理**：交易手续费流入收益库给质押者发收益；Memecoin 同时成为 DAO 治理代币，社区按周期获得激励。
+- **Memecoin Staking + DAO 治理**：交易手续费流入收益库给质押者发收益；Memecoin 同时成为 DAO 治理代币，社区按周期领取激励。
 
 详见 [Memeverse 概览](memeverse/README.md)。
 
@@ -40,12 +40,16 @@ Memeverse 不是发币工具，而是**全链社区共识启动器**：它启动
 
 uAsset(UETH / UUSD / UBNB)是 Outrun 的锚定型稳定币体系，分别锚定 ETH / USD / BNB，基于 LayerZero OFT 可跨链流转：
 
-```
-        供给 uAsset                          消耗 uAsset
-OutStake ────────────►  uAsset (UETH/UUSD/UBNB)  ────────────► Memeverse
-   ▲                                                                    │
-   │            uAsset 供需双向咬合(非收益回流)                         │
-   └────────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart LR
+    Y["OutStake 供给端<br/>多协议生息资产<br/>wstETH · weETH · sUSDS · aUSDC…"]:::asset
+    Y -->|"质押（锁仓 / 包装）铸出"| U["uAsset<br/>UETH / UUSD / UBNB<br/>连接两个模块的血线"]:::uasset
+    U -->|"创世资金 · 杠杆利息<br/>预购 · 结算计价"| M["Memeverse 用途端<br/>四池 · 杠杆创世 · Staking · DAO"]:::mv
+    M -.->|"供需双向咬合<br/>（非收益回流）"| U
+
+    classDef asset fill:#e8f5e9,stroke:#2e7d32
+    classDef uasset fill:#e3f2fd,stroke:#1565c0
+    classDef mv fill:#fff3e0,stroke:#ef6c00
 ```
 
 - OutStake 端：质押生息资产，铸出 uAsset。

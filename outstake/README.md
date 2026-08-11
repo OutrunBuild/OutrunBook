@@ -31,6 +31,6 @@ DeFi 用户的第一反应往往是："我直接持有 wstETH 也能拿 Lido 的
 
 - **统一与跨链**：wstETH 只在以太坊原生；过 OutStake 后变成 UETH，基于 LayerZero 全链流通，可在任意支持的链上使用，不必各自攒流动性。
 - **收益即时变现**：直接持 wstETH，增值锁在底层资产里；锁仓质押后可随时把增值**提取成 UETH 稳定币**，无需解除质押、无需卖出底层。
-- **接入 Memeverse 的门票**：UETH / UUSD / UBNB 是 Memeverse 创世、杠杆、结算的计价币。持 uAsset 才能无风险参与普通创世、博取 Memecoin 生态收益（本金守恒）—— 这是直接持 wstETH 拿不到的。
+- **接入 Memeverse 的门票**：UETH / UUSD / UBNB 是 Memeverse 创世、杠杆、结算的计价币。持 uAsset 可以参与[普通创世](../memeverse/genesis.md)，在成功解锁后的 24 小时保护期内完成退出，以本金守恒方式博取 Memecoin 生态收益 —— 这是直接持 wstETH 拿不到的。
 
 换言之，OutStake 不只是"换个壳持 LST"，而是把生息资产**升级成全链可用、可即时变现、可接入社区启动的统一媒介**。

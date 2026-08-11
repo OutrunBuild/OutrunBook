@@ -6,20 +6,20 @@
 
 | 档位 | OutStake 质押模式 | Memeverse 创世模式 | 预购 | DAO 治理 | 本金风险 |
 |---|---|---|---|---|---|
-| **稳健型** | 锁仓或包装质押铸 uAsset | 普通创世 | 可选 | 不直接参与 | **无**（uAsset 本金守恒，与 Memecoin 涨跌无关） |
+| **稳健型** | 锁仓或包装质押铸 uAsset | 普通创世 | 可选 | 不直接参与 | **产品模型内无风险**（保护期内完整退出） |
 | **平衡型** | 铸 uAsset 付息 | 杠杆创世 | 是 | 不直接参与 | 利息成本、Memecoin 大跌 |
 | **共建型** | 不一定经 OutStake | （上线后买入） | 不一定 | 买入并质押 Memecoin，参与提案投票 | 直接持 Memecoin，价格波动 |
 
-> 「不直接参与 DAO」指：稳健/平衡型拿到的是 YT、辅助池费、结算残值等收益凭证，不持有带投票权的 Memecoin 份额；共建型才通过质押 Memecoin 获得投票权进 DAO。
+> 「不直接参与 DAO」指：稳健/平衡型拿到的是 YT、辅助池费、结算残值等收益凭证，不持有带投票权的 Memecoin 份额；共建型才通过质押 Memecoin 并委托投票权进 DAO。
 >
-> 关于本金：OutStake 质押端本金锚定底层资产；普通创世端投入的 uAsset 在四池守恒，Memecoin 归零也按份额原数拿回，与 Memecoin 涨跌无关。详见 [参与方式与风险偏好](../ecosystem/playbooks.md)。
+> 关于本金：OutStake 质押端本金锚定底层资产；普通创世端投入的 uAsset 在四池组合中守恒。Verse 成功解锁后，用户需在 24 小时流动性保护期内完成组合权益退出，才能按份额恢复本金。详见 [普通创世 Genesis](../memeverse/genesis.md)。
 
 ## 一个用户的完整路径（示例）
 
 以一位从保守走向深度参与的 DeFi 用户为例，串起所有动作：
 
 1. 在 OutStake **锁仓质押** wstETH → 铸 UETH（**稳健**，本金锚定）
-2. 把部分 UETH 跨链、或换 UUSD，参与某 Memecoin **普通创世** → 无风险博收益（**稳健**，本金守恒）
+2. 把部分 UETH 跨链、或换 UUSD，参与某 Memecoin **普通创世** → 无风险博收益（**稳健**，保护期内完整退出）
 3. 对特别看好的，用 UUSD **杠杆创世 + 预购** 放大早期份额（**平衡**）
 4. Memecoin 上线后，买入并**质押进收益库** → 赚手续费、获投票权、参与 DAO（**共建**）
 
@@ -38,9 +38,9 @@ Memeverse 里有三种凭证，各自什么时候能兑现、兑现成什么，�
 要点：
 - POL 可在锁定期间拆成 PT + YT，也可合并回 POL。
 - **PT 在四池部署时主要进入辅助池作 LP 资产**，并非直接发给普通创世者作保本凭证。普通创世者领的是 **YT + 辅助池手续费分成 + 解锁后的辅助池流动性份额**。
-- 普通创世者的本金 uAsset 在四池里守恒 —— Memecoin 是全新铸造的，归零只损失"Memecoin 那部分预期收益"，投入的 uAsset 按份额原数拿回。创世失败则全额退款。这是普通创世「无风险」的本质。
+- 普通创世者的本金 uAsset 在四池组合中守恒。成功解锁后，四池暂停公开交易 24 小时；用户在该窗口内拆解 LP、PT、POL、YT，即可按份额恢复本金。创世失败则全额退款。详见 [普通创世 Genesis](../memeverse/genesis.md)。
 - YT 赌的是 Memecoin 上涨带来的结算结余；涨越多分越多，不涨则可能归零。
 - 杠杆创世者拿的主要是 YT（博上涨）。
 - 锁定期内 YT 可用 POL 通过 Flash Swap 买卖（见 [YT 闪电兑换](../memeverse/yt-flash-swap.md)），不必等到结算；结算后的赎回规则不变。
 
-详见 [POL 拆分](../memeverse/pol-splitter.md)、[启动生命周期](../memeverse/lifecycle.md)。
+详见 [普通创世 Genesis](../memeverse/genesis.md)、[POL 拆分](../memeverse/pol-splitter.md)、[启动生命周期](../memeverse/lifecycle.md)。
