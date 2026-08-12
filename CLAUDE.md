@@ -52,7 +52,7 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 README.md / vision.md / SUMMARY.md（目录）
 outstake/    OutStake 各机制章
 memeverse/   Memeverse 各机制章
-ecosystem/   飞轮 / 商业模式 / 受众 / 参与方式(playbooks)
+ecosystem/   飞轮 / 商业模式 / 受众 / 参与方式（playbooks）
 reference/   术语表 / 参与方式总览 / FAQ
 .claude/internal/gap-analysis.md   内部工作稿（不在公开书）
 ```

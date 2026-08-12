@@ -2,7 +2,7 @@
 
 > 把多协议生息资产，统一铸成锚定型稳定币 uAsset。
 
-OutStake 是 Outrun 的收益基础设施。它解决一个老问题：**Aave、Lido、EtherFi、Sky、Ethena、Lista、Aster** 各协议的生息代币(aToken、wstETH、weETH、sUSDS、sUSDe……)各自为政，收益和流动性都被切碎。OutStake 用一层标准化接口把它们统一，再铸成可在全链流通的 uAsset 稳定币。
+OutStake 是 Outrun 的收益基础设施。它解决一个老问题：**Aave、Lido、EtherFi、Sky、Ethena、Lista、Aster** 各协议的生息代币（aToken、wstETH、weETH、sUSDS、sUSDe……）各自为政，收益和流动性都被切碎。OutStake 用一层标准化接口把它们统一，再铸成可在全链流通的 uAsset 稳定币。
 
 ## 三步看懂 OutStake
 
@@ -15,7 +15,7 @@ OutStake 是 Outrun 的收益基础设施。它解决一个老问题：**Aave、
 | 概念 | 一句话 | 详解 |
 |---|---|---|
 | **SY** | 把各类生息代币统一包装的标准层 | [SY 适配器矩阵](sy-adapters.md) |
-| **uAsset** | 锚定型稳定币(UETH / UUSD / UBNB) | [uAsset](uasset.md) |
+| **uAsset** | 锚定型稳定币（UETH / UUSD / UBNB） | [uAsset](uasset.md) |
 | **锁仓 / 包装** | 两种质押路径：锁仓吃增值 vs 共享池求流动 | [双质押模式](staking-modes.md) |
 | **提取增值** | 锁仓期内把生息增值提前变成 uAsset | [提取增值](draw-uasset.md) |
 | **keeper** | 锁定超时达到一定时间后协议代为赎回，增值归仓位主人 | [Keeper 代偿](keeper.md) |

@@ -4,7 +4,7 @@
 
 Outrun 为两类需求提供一个闭环：
 
-- **生息资产持有者**：想要统一、可流通、跨链的稳定币(uAsset)，并希望资产持续增值。
+- **生息资产持有者**：想要统一、可流通、跨链的稳定币（uAsset），并希望资产持续增值。
 - **Memecoin 社区**：想要一个公平、抗 rug、有持续价值的启动平台，而非纯 PVP 的赌场。
 
 两个需求在 Outrun 里通过 uAsset 对接。OutStake 供给 uAsset，Memeverse 创造 uAsset 的用途与活力。
@@ -70,7 +70,7 @@ flowchart TD
 ```
 
 补充：
-- 辅助池(POL/uAsset、PT/uAsset、PT/POL)的协议费，在锁定阶段还会分一部分给**普通创世参与者**（按份额），其余进 DAO 国库。
+- 辅助池（POL/uAsset、PT/uAsset、PT/POL）的协议费，在锁定阶段还会分一部分给**普通创世参与者**（按份额），其余进 DAO 国库。
 
 ## 收入去哪
 

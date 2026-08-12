@@ -13,12 +13,12 @@ Outrun 是一个全链 DeFi 生态，由两个互为驱动的模块组成：
 
 ## OutStake — 把生息资产统一成稳定币
 
-不同协议的生息代币(aToken、wstETH、weETH、sUSDS、sUSDe……)各自为政，收益和流动性都被切碎。OutStake 用一层标准化接口把它们统一，铸成可在全链流通的 uAsset 稳定币。
+不同协议的生息代币（aToken、wstETH、weETH、sUSDS、sUSDe……）各自为政，收益和流动性都被切碎。OutStake 用一层标准化接口把它们统一，铸成可在全链流通的 uAsset 稳定币。
 
 两种参与方式：
 
-- **锁仓质押(Lock)**：存入生息资产即按当前价值铸出 uAsset 稳定币（本金等值）供你使用，本金继续生息；你可在锁仓期内随时把新增值再提取成 uAsset，到期后赎回本金。
-- **包装质押(Wrap)**：进入共享池，无锁定期，即时进出，适合把 uAsset 当稳定币流通使用。
+- **锁仓质押（Lock）**：存入生息资产即按当前价值铸出 uAsset 稳定币（本金等值）供你使用，本金继续生息；你可在锁仓期内随时把新增值再提取成 uAsset，到期后赎回本金。
+- **包装质押（Wrap）**：进入共享池，无锁定期，即时进出，适合把 uAsset 当稳定币流通使用。
 
 锁仓到期忘了赎也没关系 —— 锁定超时达到一定时间后，协议会代为赎回仓位（keeper 机制），本金等值部分由协议回收，增值收益归你。
 
@@ -29,7 +29,7 @@ Outrun 是一个全链 DeFi 生态，由两个互为驱动的模块组成：
 Memeverse 不是发币工具，而是**全链社区共识启动器**：它启动的不是一个 Memecoin，而是一个拥有流动性、收益与治理的链上社区。任何人都能在多条链上同时启动一个 Memecoin，但它上线即同时拥有三套引擎 —— 从投机符号，变成一个能自我维持的社区国度：
 
 - **四池流动性 + 动态费率**：启动即建立深度、抗抢跑抗夹的流动性，而不是单一稀薄池子。
-- **杠杆创世(POLend)**：用 uAsset 或创世积分支付利息，放大创世参与，到期统一结算。
+- **杠杆创世（POLend）**：用 uAsset 或创世积分支付利息，放大创世参与，到期统一结算。
 - **Memecoin Staking + DAO 治理**：交易手续费流入收益库给质押者发收益；Memecoin 同时成为 DAO 治理代币，社区按周期领取激励。
 
 详见 [Memeverse 概览](memeverse/README.md)。
@@ -38,7 +38,7 @@ Memeverse 不是发币工具，而是**全链社区共识启动器**：它启动
 
 ## uAsset：连接两个模块的血线
 
-uAsset(UETH / UUSD / UBNB)是 Outrun 的锚定型稳定币体系，分别锚定 ETH / USD / BNB，基于 LayerZero OFT 可跨链流转：
+uAsset（UETH / UUSD / UBNB）是 Outrun 的锚定型稳定币体系，分别锚定 ETH / USD / BNB，基于 LayerZero OFT 可跨链流转：
 
 ```mermaid
 flowchart LR

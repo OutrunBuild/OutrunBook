@@ -1,4 +1,4 @@
-# 预购(Preorder)
+# 预购（Preorder）
 
 ## 什么是预购
 

@@ -1,4 +1,4 @@
-# 创世积分(GenesisCredit)
+# 创世积分（GenesisCredit）
 
 ## 什么是创世积分
 

@@ -45,7 +45,7 @@ OutStake(供给)                              Memeverse(用途)
 - 包装质押：增值归协议，换取 uAsset 的即时流动性。
 
 **Memeverse 参与者** —— 赚 Memecoin 生态的交易与杠杆活动。一笔交易费按固定比例分给：
-- 流动性提供者(LP)
+- 流动性提供者（LP）
 - 普通创世参与者（辅助池手续费分成）
 - Memecoin 质押者（Memecoin 计价手续费）
 - DAO 国库（uAsset 计价手续费）
