@@ -40,7 +40,7 @@ Outrun 文档中常见术语的速查。专有词保留英文，解释用中文�
 | **动态费率 Hook** | 基于 Uniswap V4 的交易层，费率随波动与冲击动态调整。 |
 | **GenesisCredit（创世积分）** | 可跨链的参与凭证，用于抵扣杠杆创世利息。 |
 | **Memecoin Staking** | 把 Memecoin 质押进收益库，赚交易手续费收益。 |
-| **YieldVault（收益库）** | Memecoin Staking 的 ERC-4626 收益库。 |
+| **YieldVault（收益库）** | Memecoin Staking 的异步赎回收益库（存入即时、赎回申请后约 1 天到账）。 |
 | **DAO Governor** | 每个 Memecoin 社区的链上治理合约，管理提案、投票、国库。 |
 | **结算** | 锁定期满后，协议统一回收资金、偿还债务、分配剩余的过程。 |
 | **创世退款** | 创世未达标时，参与者资金退还给参与记录的受益人。 |
