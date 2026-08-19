@@ -8,8 +8,8 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 
 | 仓库 | 路径 | 角色 | 文档对齐 commit |
 |---|---|---|---|
-| **MemeverseV2** | `/home/azkrale/Web3Project/MemeverseV2` | 全链社区共识启动器（四池/Hook/POLend/POLSplitter/YieldVault/DAO/跨链） | `22332ef8632d2bc2d32e2a1c1bfa69fdbb417a20`(`22332ef`，feat(harness): serialize forge builds via flock wrapper, route gate.sh through it) |
-| **OutStakeV2** | `/home/azkrale/Web3Project/OutStakeV2` | 收益基础设施（SY 适配器/uAsset/双质押/drawUAsset/keeper/跨链） | `daf4aaa3f0a2e7480b94d7a33dd06b68bd722c8d`(`daf4aaa`，Add new agents for process implementation, refinement review, security review, Solidity implementation, and spec review) |
+| **MemeverseV2** | `/home/azkrale/Web3Project/MemeverseV2` | 全链社区共识启动器（四池/Hook/POLend/POLSplitter/YieldVault/DAO/跨链） | `6994d7bab186b456db119348d9c262feaec196fb`(`6994d7b`，chore(lint): ignore test paths in forge lint to silence erc20-unchecked-transfer noise) |
+| **OutStakeV2** | `/home/azkrale/Web3Project/OutStakeV2` | 收益基础设施（SY 适配器/uAsset/双质押/drawUAsset/keeper/跨链） | `61f11bc682c7ccb30995b9c0981c9d9eccae8d9f`(`61f11bc`，test(deploy): skip router-default test when OUTRUN_ROUTER is preset) |
 
 > 当代码仓库更新后，需在此更新 commit hash 并同步核对文档是否仍对齐。发布前运行 `bash scripts/check-baseline.sh` 检测漂移、`bash scripts/check-absolute-words.sh` 核对绝对性营销词（每一处须附链上约束或限定条件；新命中先核对，再决定改文档或入白名单）。
 
