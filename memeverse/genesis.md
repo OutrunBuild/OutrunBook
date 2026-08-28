@@ -58,7 +58,7 @@
 1. **领取权益**：领取 YT、三个辅助池 LP、剩余 POL/PT 和尚未领取的普通侧手续费。
 2. **移除辅助池流动性**：将 POL/uAsset、PT/uAsset、PT/POL LP 拆成底层 uAsset、POL 和 PT。
 3. **赎回 PT**：按结算锚定比率换回 uAsset。
-4. **赎回 POL**：烧毁 POL，取回对应的主池 uAsset 和 Memecoin。
+4. **赎回 POL**：烧毁 POL，取回对应的主池 uAsset 和 Memecoin。当场拆解时需设定最低到账数量与截止时间作为滑点保护，未设定操作会被拒绝。
 5. **赎回 YT**：领取结算后的剩余 uAsset 和 Memecoin。
 6. **确认完成**：在 24 小时保护期结束前完成上述本金权益的领取与拆解。
 

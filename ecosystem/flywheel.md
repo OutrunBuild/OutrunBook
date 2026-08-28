@@ -75,22 +75,6 @@ Memeverse 自身也有正向循环：
 - **结算储备金**：仅在当前余额与配置上限内补足杠杆结算的有界整数舍入缺口；余额不足时解锁结算回退，补充储备后重试。
 - **uAsset 铸币上限 + 跨链速率限制**：防超发、防异常流出，保护稳定币信用。
 
-```mermaid
-flowchart TD
-    A[回收 uAsset] --> B{回收额 >= 债务?}
-    B -->|是| C[偿还债务]
-    C --> D[Settled: 记录 residual]
-    B -->|否| E[deficit = 债务 - 回收额]
-    E --> F{deficit <= 当前 reserve?}
-    F -->|是| G[消耗 reserve 并偿还债务]
-    G --> H[Settled: residualUAsset = 0]
-    F -->|否| I[SettlementDustInsufficient]
-    I --> J[revert: 保持 Locked]
-    J --> K[补充 reserve，必要时提高 maxReserve]
-    K --> L[重试 changeStage]
-    L --> A
-```
-
 ## 小结
 
 Outrun 的飞轮是 **uAsset 供需双向咬合 + 各模块独立收益闭环** 的组合，而非「收益回流」的闭环：OutStake 供给全链稳定币，Memeverse 创造用途与活力，两者通过 uAsset 的流动性互相喂养、强绑定，各自的经济激励自洽。飞轮转得越久，uAsset 流动性越深、Memeverse 生态越繁荣，壁垒越高。

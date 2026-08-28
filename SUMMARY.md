@@ -53,7 +53,7 @@
 * [创世积分 GenesisCredit](memeverse/genesis-credit.md)
   —— 可跨链的参与凭证，用于抵扣杠杆利息
 * [Memecoin Staking](memeverse/memecoin-staking.md)
-  —— 质押赚交易手续费，并获得治理权
+  —— 质押赚交易手续费，委托后获得治理权
 * [Memecoin DAO 治理](memeverse/dao-governance.md)
   —— 社区共治国库与方向，周期激励，投机转化为建设
 * [跨链互操作](memeverse/omnichain.md)

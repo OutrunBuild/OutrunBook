@@ -8,8 +8,8 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 
 | 仓库 | 路径 | 角色 | 文档对齐 commit |
 |---|---|---|---|
-| **MemeverseV2** | `/home/azkrale/Web3Project/MemeverseV2` | 全链社区共识启动器（四池/Hook/POLend/POLSplitter/YieldVault/DAO/跨链） | `6994d7bab186b456db119348d9c262feaec196fb`(`6994d7b`，chore(lint): ignore test paths in forge lint to silence erc20-unchecked-transfer noise) |
-| **OutStakeV2** | `/home/azkrale/Web3Project/OutStakeV2` | 收益基础设施（SY 适配器/uAsset/双质押/drawUAsset/keeper/跨链） | `61f11bc682c7ccb30995b9c0981c9d9eccae8d9f`(`61f11bc`，test(deploy): skip router-default test when OUTRUN_ROUTER is preset) |
+| **MemeverseV2** | `/home/azkrale/Web3Project/Memeverse` | 全链社区共识启动器（四池/Hook/POLend/POLSplitter/YieldVault/DAO/跨链）；磁盘目录原名为 MemeverseV2，已重命名 | `9532d2e6678de8048719ddd1845569d800215ba0`(`9532d2e`，fix: update RUN_RECORD_PATH in test orchestration script) |
+| **OutStakeV2** | `/home/azkrale/Web3Project/OutStake` | 收益基础设施（SY 适配器/uAsset/双质押/drawUAsset/keeper/跨链）；磁盘目录原名为 OutStakeV2，已重命名 | `22b678566f3f210ea5ffcf6360cdab2089332704`(`22b6785`，chore: rename references from OutStakeV2 to OutStake) |
 
 > 当代码仓库更新后，需在此更新 commit hash 并同步核对文档是否仍对齐。发布前运行 `bash scripts/check-baseline.sh` 检测漂移、`bash scripts/check-absolute-words.sh` 核对绝对性营销词（每一处须附链上约束或限定条件；新命中先核对，再决定改文档或入白名单）。
 
@@ -18,7 +18,7 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 - `docs/spec/polend/core.md`、`genesis.md`、`settlement-and-fees.md`、`pt-yt-splitter.md`
 - `docs/spec/governance/governance-yield-details.md`、`docs/spec/swap/swap-flow.md`、`yt-flash-swap.md`
 - `docs/ARCHITECTURE.md`、`docs/GLOSSARY.md`
-- OutStakeV2 无 spec，看 `src/` 合约 NatSpec。
+- OutStakeV2（磁盘目录名 `OutStake`）有 spec：`docs/spec/protocol.md`、`common-foundations.md`、`access-control.md`、`position/state-machines.md`、`position/accounting.md`、`router/router-and-user-flows.md`、`yield/yield-adapters.md`、`yield/oracles-and-integrations.md`；代码 NatSpec 为辅。
 
 ## 写作规范（用户明确要求，务必遵守）
 

@@ -49,5 +49,5 @@ OutStake 铸造 uAsset，Memeverse 消耗 uAsset，共识由此流动。
 | **杠杆创世 POLend** | 付利息放大创世份额 | [杠杆创世](polend.md) |
 | **POL 拆分** | 把 POL 拆成本金（PT）和收益（YT） | [POL 拆分](pol-splitter.md) |
 | **创世积分** | 可跨链的创世参与凭证 | [创世积分](genesis-credit.md) |
-| **Memecoin Staking** | 质押赚手续费 + 获得治理权 | [Memecoin Staking](memecoin-staking.md) |
+| **Memecoin Staking** | 质押赚手续费，委托后获治理权 | [Memecoin Staking](memecoin-staking.md) |
 | **DAO 治理** | 社区共治国库与方向 | [DAO 治理](dao-governance.md) |

@@ -75,7 +75,7 @@ Outrun 不是只有一个入口、一种玩法。不同风险偏好的人，在�
 **怎么参与**：
 1. Memecoin 上线后，在公开市场**买入 Memecoin**。
 2. 把 Memecoin **质押进收益库**，赚交易手续费收益。
-3. 质押份额自带**投票权**，参与 DAO 提案、投票，共同决定国库与社区方向。
+3. 把投票权**委托**给自己的份额，参与 DAO 提案、投票，共同决定国库与社区方向（详见 [Memecoin Staking](../memeverse/memecoin-staking.md)）。
 
 **收益**：
 - **Staking 收益**：该 Memecoin 交易手续费（Memecoin 计价部分）持续流入收益库，份额升值。

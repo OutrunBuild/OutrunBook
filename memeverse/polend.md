@@ -31,22 +31,22 @@
 
 1. 协议从辅助流动性池（POL、PT 池）回收 uAsset，用于偿还杠杆债务。
 2. **若有结余**（回收的多于债务）：结余按每个人付的利息比例，分给杠杆参与者 —— 这是加杠杆的收益来源。
-3. **若有缺口**（回收不足以偿债）：结算储备金只在该 uAsset 的当前余额内补足有上限的整数舍入缺口。若缺口超过储备余额，`SettlementDustInsufficient` 会使本次结算回退；补充储备（必要时提高储备上限）后重试解锁结算。
+3. **若有缺口**（回收不足以偿债）：结算储备金只在该 uAsset 的当前余额内补足有上限的整数舍入缺口。若缺口超过储备余额，本次结算会回退、Verse 仍停留在锁定阶段；补充储备（必要时提高储备上限）后重试解锁结算。
 4. 同时，杠杆参与者还会按比例分得 **YT**（收益代币，见 [POL 拆分](pol-splitter.md)）。
 
 ```mermaid
 flowchart TD
     A[回收 uAsset] --> B{回收额 >= 债务?}
     B -->|是| C[偿还债务]
-    C --> D[Settled: 记录 residual]
-    B -->|否| E[deficit = 债务 - 回收额]
-    E --> F{deficit <= 当前 reserve?}
-    F -->|是| G[消耗 reserve 并偿还债务]
-    G --> H[Settled: residualUAsset = 0]
-    F -->|否| I[SettlementDustInsufficient]
-    I --> J[revert: 保持 Locked]
-    J --> K[补充 reserve，必要时提高 maxReserve]
-    K --> L[重试 changeStage]
+    C --> D[完成结算: 记录残值]
+    B -->|否| E[缺口 = 债务 - 回收额]
+    E --> F{缺口 <= 当前储备余额?}
+    F -->|是| G[消耗储备并偿还债务]
+    G --> H[完成结算: 无残值]
+    F -->|否| I[储备不足]
+    I --> J[回退: 保持 Locked]
+    J --> K[补充储备，必要时提高储备上限]
+    K --> L[重试解锁结算]
     L --> A
 ```
 
