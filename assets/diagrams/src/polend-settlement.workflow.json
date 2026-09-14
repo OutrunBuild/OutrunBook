@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "到期结算：解锁交易与全局结算瀑布",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": "assets/diagrams/polend-settlement.html",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "backend": {
+          "label": "协议动作",
+          "visible": true
+        },
+        "external": {
+          "label": "任何人可执行",
+          "visible": true
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "unlock",
+      "label": "解锁交易（原子：任一步失败整笔回滚，保持锁定期）"
+    },
+    {
+      "id": "waterfall",
+      "label": "全局结算"
+    },
+    {
+      "id": "deficit",
+      "label": "缺口与重试",
+      "variant": "exception"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "capture",
+      "lane": "unlock",
+      "col": 0,
+      "type": "backend",
+      "width": 96,
+      "label": "捕获手续费",
+      "sublabel": "解锁前最后一笔"
+    },
+    {
+      "id": "unlock",
+      "lane": "unlock",
+      "col": 1,
+      "type": "backend",
+      "width": 110,
+      "label": "进入解锁",
+      "sublabel": "POL 统一结算"
+    },
+    {
+      "id": "gsettle",
+      "lane": "unlock",
+      "col": 3,
+      "type": "backend",
+      "width": 120,
+      "label": "全局结算",
+      "sublabel": "有杠杆债务则执行"
+    },
+    {
+      "id": "protect",
+      "lane": "unlock",
+      "col": 5,
+      "type": "backend",
+      "width": 110,
+      "label": "开启保护窗",
+      "sublabel": "24 小时 · 固定"
+    },
+    {
+      "id": "cut",
+      "lane": "waterfall",
+      "col": 0,
+      "type": "backend",
+      "width": 96,
+      "label": "切出杠杆份额",
+      "sublabel": "按杠杆债务占比"
+    },
+    {
+      "id": "liquidate",
+      "lane": "waterfall",
+      "col": 1,
+      "type": "backend",
+      "width": 110,
+      "label": "平仓回收",
+      "sublabel": "POL 烧毁赎回；PT 兑 uAsset"
+    },
+    {
+      "id": "repay",
+      "lane": "waterfall",
+      "col": 3,
+      "type": "backend",
+      "width": 120,
+      "label": "偿还杠杆债务",
+      "sublabel": "回收 uAsset 优先偿还并销毁"
+    },
+    {
+      "id": "residual",
+      "lane": "waterfall",
+      "col": 5,
+      "type": "backend",
+      "width": 110,
+      "label": "残值一次性分配",
+      "sublabel": "按付息比例，永久可领"
+    },
+    {
+      "id": "reserve",
+      "lane": "deficit",
+      "col": 1,
+      "type": "backend",
+      "width": 114,
+      "label": "动用结算储备金",
+      "sublabel": "只补有上限的舍入级缺口"
+    },
+    {
+      "id": "rollback",
+      "lane": "deficit",
+      "col": 3,
+      "type": "backend",
+      "width": 110,
+      "label": "整笔回滚",
+      "sublabel": "保持锁定期"
+    },
+    {
+      "id": "fund",
+      "lane": "deficit",
+      "col": 5,
+      "type": "external",
+      "width": 110,
+      "label": "任何人补充储备",
+      "sublabel": "不受协议暂停限制"
+    }
+  ],
+  "edges": [
+    {
+      "from": "capture",
+      "to": "unlock"
+    },
+    {
+      "from": "unlock",
+      "to": "gsettle"
+    },
+    {
+      "from": "gsettle",
+      "to": "protect"
+    },
+    {
+      "from": "gsettle",
+      "to": "cut",
+      "label": "仅有杠杆债务时执行",
+      "fromSide": "bottom",
+      "toSide": "left",
+      "via": [
+        [
+          430,
+          170
+        ],
+        [
+          20,
+          170
+        ],
+        [
+          20,
+          243
+        ]
+      ]
+    },
+    {
+      "from": "cut",
+      "to": "liquidate"
+    },
+    {
+      "from": "liquidate",
+      "to": "repay"
+    },
+    {
+      "from": "repay",
+      "to": "residual",
+      "label": "有结余"
+    },
+    {
+      "from": "repay",
+      "to": "reserve",
+      "label": "有缺口",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "via": [
+        [
+          430,
+          290
+        ],
+        [
+          220,
+          290
+        ]
+      ]
+    },
+    {
+      "from": "reserve",
+      "to": "rollback",
+      "label": "缺口超过储备",
+      "variant": "dashed"
+    },
+    {
+      "from": "rollback",
+      "to": "fund",
+      "label": "回滚后"
+    },
+    {
+      "from": "fund",
+      "to": "cut",
+      "label": "补足储备后重试",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "via": [
+        [
+          625,
+          420
+        ],
+        [
+          150,
+          420
+        ],
+        [
+          150,
+          163
+        ],
+        [
+          88,
+          163
+        ]
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "一笔原子交易",
+      "items": [
+        "最后捕获辅助池手续费、进入解锁、全局结算、开启保护窗在同一笔交易内完成",
+        "任一步失败整笔回滚，保持锁定期，可重新发起",
+        "保护窗 24 小时 · 固定"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "回收与偿还",
+      "items": [
+        "按杠杆债务占比切出辅助池份额，取整差额归普通侧",
+        "POL 烧毁赎回、PT 按锚定比率兑 uAsset",
+        "回收的 uAsset 先偿还全部杠杆债务，偿还即销毁"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "结余与缺口",
+      "items": [
+        "有结余：残值＝剩余 uAsset＋全部回收的 Memecoin，按付息比例一次性分配、永久可领",
+        "有缺口：结算储备金只补有上限的舍入级缺口，不覆盖资不抵债",
+        "缺口超过储备即整笔回滚；任何人补充储备后可重试，不受协议暂停限制"
+      ]
+    }
+  ]
+}

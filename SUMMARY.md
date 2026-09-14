@@ -16,17 +16,17 @@
 * [OutStake 概览](outstake/README.md)
   —— 把多协议生息资产统一铸成锚定型稳定币 uAsset；含「为什么不直接持 wstETH」
 * [SY 标准化收益与适配器矩阵](outstake/sy-adapters.md)
-  —— 统一接口包装 Aave/Lido/EtherFi/Sky/Ethena/Lista/Aster 的生息代币
+  —— 统一接口包装 Aave/Lido/Sky/Ethena/Lista/Aster 的生息代币
 * [uAsset 锚定型稳定币](outstake/uasset.md)
   —— UETH/UUSD/UBNB 的锚定机制、铸币上限、跨链流通
-* [双质押模式：锁仓与包装](outstake/staking-modes.md)
-  —— 锁仓吃增值 vs 包装求流动；含共享池偿付模型
-* [提取增值](outstake/draw-uasset.md)
-  —— 锁仓期内把生息增值提前变成 uAsset
-* [Keeper 代偿](outstake/keeper.md)
-  —— 锁定超时达到一定时间后协议代为赎回，增值归仓位主人
+* [创世质押：为 Memeverse 而铸](outstake/staking-modes.md)
+  —— 面值铸造、无利息无清算无锁定期，抵押生息敞口自留
+* [PSM 锚定兑换](outstake/psm.md)
+  —— 储备资产与 uAsset 按 1:1 面值双向兑换
+* [USR 储蓄](outstake/usr.md)
+  —— 存 uAsset 吃利息，随存随取
 * [一站式操作入口](outstake/router.md)
-  —— 从任意代币到质押/赎回的全链路聚合
+  —— 从任意代币到创世的三条通道聚合
 * [跨链与速率限制](outstake/omnichain.md)
   —— uAsset 全链流通与安全约束
 

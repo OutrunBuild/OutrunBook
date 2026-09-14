@@ -15,4 +15,7 @@ node_modules/
 _book/
 dist/
 
+# Archify delivery byproducts (regenerable via visual-check)
+*.visual-check.*
+
 .pi-glla/

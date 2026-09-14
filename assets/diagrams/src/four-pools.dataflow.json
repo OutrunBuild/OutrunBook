@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "建池资金流：一笔资金如何分成四个池",
+    "locale": "zh-CN",
+    "quality_profile": "standard",
+    "output": "assets/diagrams/four-pools.html",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "default": {
+          "label": "资金与拆分环节",
+          "visible": true
+        },
+        "database": {
+          "label": "流动性池",
+          "visible": true
+        }
+      }
+    },
+    "viewBox": [
+      1240,
+      640
+    ]
+  },
+  "stages": [
+    {
+      "label": "建池资金"
+    },
+    {
+      "label": "首层拆分"
+    },
+    {
+      "label": "铸出 POL 与辅助注资"
+    },
+    {
+      "label": "PT／YT 拆分"
+    },
+    {
+      "label": "四池与初始 YT"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "funds",
+      "type": "external",
+      "label": "建池资金",
+      "sublabel": "普通创世资金＋杠杆债务本金",
+      "tag": "预购、杠杆利息不计入",
+      "stage": 0,
+      "row": 2
+    },
+    {
+      "id": "mainpool",
+      "type": "database",
+      "label": "主池 Memecoin/uAsset",
+      "sublabel": "约 70% · 主交易市场",
+      "stage": 1,
+      "row": 1,
+      "width": 140
+    },
+    {
+      "id": "aux",
+      "type": "backend",
+      "label": "辅助池 uAsset 资金",
+      "sublabel": "约 30%",
+      "stage": 1,
+      "row": 0
+    },
+    {
+      "id": "polmint",
+      "type": "backend",
+      "label": "主池铸出 POL",
+      "sublabel": "主池 LP 即 POL",
+      "stage": 2,
+      "row": 1
+    },
+    {
+      "id": "ptysplit",
+      "type": "backend",
+      "label": "拆分 PT＋YT",
+      "sublabel": "YT 按资金占比，余数归杠杆侧",
+      "stage": 3,
+      "row": 2,
+      "width": 150
+    },
+    {
+      "id": "pool-pol-uasset",
+      "type": "database",
+      "label": "POL／uAsset 池",
+      "sublabel": "POL 可交易 · 杠杆结算出口",
+      "stage": 4,
+      "row": 0
+    },
+    {
+      "id": "pool-pt-uasset",
+      "type": "database",
+      "label": "PT／uAsset 池",
+      "sublabel": "本金可单独交易",
+      "stage": 4,
+      "row": 1
+    },
+    {
+      "id": "ytdist",
+      "type": "external",
+      "label": "初始 YT 归创世者",
+      "sublabel": "锁定期内可领，永久可领",
+      "stage": 4,
+      "row": 2
+    },
+    {
+      "id": "pool-pt-pol",
+      "type": "database",
+      "label": "PT／POL 池",
+      "sublabel": "本金与凭证价格发现",
+      "stage": 4,
+      "row": 3
+    }
+  ],
+  "flows": [
+    {
+      "id": "to-main",
+      "from": "funds",
+      "to": "mainpool",
+      "label": "约 70%",
+      "variant": "emphasis"
+    },
+    {
+      "id": "to-aux",
+      "from": "funds",
+      "to": "aux",
+      "label": "约 30%",
+      "variant": "emphasis",
+      "fromSide": "top",
+      "toSide": "left",
+      "via": [
+        [
+          100,
+          157
+        ]
+      ],
+      "labelAt": [
+        230,
+        148
+      ]
+    },
+    {
+      "id": "mint-pol",
+      "from": "mainpool",
+      "to": "polmint",
+      "label": "铸出 POL"
+    },
+    {
+      "id": "pol-to-polpool",
+      "from": "polmint",
+      "to": "pool-pol-uasset",
+      "label": "约 2/7",
+      "fromSide": "top",
+      "toSide": "top",
+      "via": [
+        [
+          530,
+          110
+        ],
+        [
+          960,
+          110
+        ]
+      ],
+      "labelAt": [
+        700,
+        102
+      ]
+    },
+    {
+      "id": "pol-to-split",
+      "from": "polmint",
+      "to": "ptysplit",
+      "label": "约 3/7",
+      "labelAt": [
+        628,
+        328
+      ]
+    },
+    {
+      "id": "pol-to-ptpol",
+      "from": "polmint",
+      "to": "pool-pt-pol",
+      "label": "约 2/7",
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "via": [
+        [
+          530,
+          560
+        ],
+        [
+          960,
+          560
+        ]
+      ],
+      "labelAt": [
+        700,
+        576
+      ]
+    },
+    {
+      "id": "aux-to-polpool",
+      "from": "aux",
+      "to": "pool-pol-uasset",
+      "label": "uAsset 约 2/3"
+    },
+    {
+      "id": "aux-to-ptpool",
+      "from": "aux",
+      "to": "pool-pt-uasset",
+      "label": "uAsset 约 1/3",
+      "labelAt": [
+        800,
+        148
+      ]
+    },
+    {
+      "id": "split-to-ptuasset",
+      "from": "ptysplit",
+      "to": "pool-pt-uasset",
+      "label": "PT 约 1/3"
+    },
+    {
+      "id": "split-to-ptpol",
+      "from": "ptysplit",
+      "to": "pool-pt-pol",
+      "label": "PT 约 2/3"
+    },
+    {
+      "id": "split-to-yt",
+      "from": "ptysplit",
+      "to": "ytdist",
+      "label": "YT"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "三笔资金各走各路",
+      "items": [
+        "建池资金＝普通创世资金＋杠杆债务本金",
+        "预购资金单独记账，用于主池建立后的第一笔聚合买入",
+        "成功判定只看普通创世资金或杠杆利息是否单独达标"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "比例怎么读",
+      "items": [
+        "约 70% 进主池，约 30% 作辅助池 uAsset（约 2/3 进 POL/uAsset、约 1/3 进 PT/uAsset）",
+        "主池铸出的 POL 按约 2:3:2 分流，PT 拆分取整差额归 PT/POL 侧",
+        "比例以实际建池成交为准"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "剩余资产去向",
+      "items": [
+        "未用完的 uAsset 注入结算储备金，超过上限部分进国库",
+        "未用完的 Memecoin 销毁",
+        "未用完的 POL／PT 属建池剩余，解锁后按份额领取"
+      ]
+    }
+  ]
+}

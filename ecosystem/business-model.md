@@ -32,7 +32,7 @@ Outrun 里有三个不同的资金池，受益人各异，别混为一谈：
 | **DAO 国库** | uAsset 计价的交易手续费 | 社区（提案投票决定怎么花） |
 | **协议自留国库** | 杠杆创世的 uAsset 利息 | 协议方自留（非社区共治） |
 
-**注意**：杠杆创世的利息进的是**协议自留国库**，不进 Memeverse 社区的 DAO 国库 —— 两者是不同的池、不同的控制人。这些收益都在 Memeverse 内部分配，**不会回流给 OutStake 的质押者**（OutStake 参与者赚的是底层生息资产增值，详见[增长飞轮](flywheel.md)）。
+**注意**：杠杆创世的利息进的是**协议自留国库**，不进 Memeverse 社区的 DAO 国库 —— 两者是不同的池、不同的控制人。这些收益都在 Memeverse 内部分配，**不会回流给 OutStake 的参与者**（OutStake 参与者赚的是抵押生息敞口与 USR 储蓄利息，详见[增长飞轮](flywheel.md)）。
 
 ## 一笔钱流向谁（核心）
 
@@ -43,31 +43,13 @@ Outrun 里有三个不同的资金池，受益人各异，别混为一谈：
 - 若有推荐人，从协议那 35% 里切出返佣给推荐人（默认相当于总费的 10%），协议国库实留约 25%。
 
 **维度二：按计价币分流**（协议那份的去向，取决于这笔费是以哪种币计价的）
-- **uAsset 计价** → DAO 国库（其中主池 uAsset 费扣 0.25% 给触发分发的执行者，作为 keeper 式激励）
+- **uAsset 计价** → DAO 国库（其中主池 uAsset 费扣 0.25%［当前默认］给触发分发的执行者，作为执行奖励）
 - **Memecoin 计价** → Memecoin Staking 收益库（给质押者）
 - **POL 计价** → 直接销毁（通缩）
 
 两个维度叠加，就是一笔费的完整去向：
 
-```mermaid
-flowchart TD
-    Fee["一笔交易费"]
-    Fee --> LP["LP 持有者(按份额)<br/>占 65%"]:::lp
-    Fee --> Proto["协议份额 35%"]:::proto
-
-    Proto --> Rebate{"有推荐人?"}
-    Rebate -- 是 --> Referrer["推荐人返佣<br/>(默认总费的 10%)"]:::out
-    Rebate --> ByToken["按计价币分流"]:::proto
-
-    ByToken -->|"uAsset 计价"| DAO["DAO 国库<br/>(主池 uAsset 费扣 0.25% 给执行者)"]:::out
-    ByToken -->|"Memecoin 计价"| Vault["Memecoin Staking 收益库<br/>(给质押者)"]:::out
-    ByToken -->|"POL 计价"| Burn["销毁(通缩)"]:::burn
-
-    classDef lp fill:#e8f5e9,stroke:#2e7d32
-    classDef proto fill:#e3f2fd,stroke:#1565c0
-    classDef out fill:#fff3e0,stroke:#ef6c00
-    classDef burn fill:#ffebee,stroke:#c62828
-```
+<iframe src="../assets/diagrams/fee-split.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="一笔交易费流向谁"></iframe>
 
 补充：
 - 辅助池（POL/uAsset、PT/uAsset、PT/POL）的协议费，在锁定阶段还会分一部分给**普通创世参与者**（按份额），其余进 DAO 国库。

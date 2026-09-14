@@ -4,21 +4,18 @@
 
 ## 阶段一览
 
-```mermaid
-flowchart TD
-    G["创世期<br/>普通创世 / 杠杆创世 / 预购<br/>三类资金分别记账"]:::gen
-    G -->|"快速创世开启且任一成功门槛达标：可提前触发"| L["锁定期（约 365 天）<br/>四池建立 · Memecoin 上线交易<br/>领 YT / 辅助池费分成 · LP 加池 · 质押赚收益"]:::lock
-    G -->|"截止后触发：任一成功门槛达标"| L
-    G -->|"截止后触发：两个成功门槛均未达标"| R["退款<br/>普通创世资金、杠杆利息、预购资金<br/>全额退还给参与记录的受益人"]:::refund
-    L -->|"锁定期满"| U["解锁期<br/>POL 赎回主池流动性 · PT 赎 uAsset<br/>YT 分结算残值 · 保护窗口 24 小时"]:::unlock
-    U -->|"进入常态运行"| N["常态运行<br/>交易产生手续费 · 质押持续赚收益<br/>DAO 治理持续运转"]:::norm
+<iframe src="../assets/diagrams/verse-lifecycle.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="Memecoin 生命周期：从创世到常态运行"></iframe>
 
-    classDef gen fill:#e3f2fd,stroke:#1565c0
-    classDef lock fill:#fff3e0,stroke:#ef6c00
-    classDef refund fill:#ffebee,stroke:#c62828
-    classDef unlock fill:#e8f5e9,stroke:#2e7d32
-    classDef norm fill:#f3e5f5,stroke:#7b1fa2
-```
+### 阶段 × 开放操作
+
+| 操作 | 开放阶段 |
+|---|---|
+| 参与创世（普通／杠杆）、预购 | 仅创世期 |
+| 退款领取（每地址一次） | 仅退款态 |
+| 领 YT（普通／杠杆）、辅助池手续费分成、LP 领取已累积手续费、加池铸 POL、预购领取（线性）、触发费分发、质押 Memecoin | 锁定期起 |
+| YT 拆分／合并 | 仅锁定期 |
+| 公开交易 | 锁定期起（解锁时的 24 小时保护窗内暂停） |
+| 烧 POL 赎回、一次性领辅助池 LP＋剩余、PT 赎 uAsset、YT 领残值 | 解锁期起 |
 
 ## 1. 创世（Genesis）
 
@@ -62,7 +59,7 @@ flowchart TD
 普通创世资金或杠杆利息任一独立达到最低成功额度，并完成阶段推进后，创世成功进入锁定阶段：
 
 - 协议部署**四池流动性**，Memecoin 与 uAsset 配对，正式建交易市场。
-- 流动性被锁定约 **365 天**（合约硬约束），锁定期内任何一方都无法抽走资金，经典的「抽走流动性」rug 路径被阻断。
+- 流动性被锁定 **365 天**（合约硬约束），锁定期内任何一方都无法抽走资金，经典的「抽走流动性」rug 路径被阻断。
 - Memecoin 可在受保护的市场交易（详见[动态费率 Hook](hook.md)）。
 
 **锁定后，各类参与者可以领取和操作：**
@@ -75,7 +72,7 @@ flowchart TD
 | Memecoin 持有者 | 把 Memecoin 质押进收益库，赚手续费收益 |
 | LP | 领取已累积的 LP 手续费 |
 | 预购者 | 按线性解锁，逐步领取 Memecoin |
-| 执行者 | 触发手续费分发，获得主池 uAsset 费 0.25% 的执行奖励 |
+| 执行者 | 触发手续费分发，获得主池 uAsset 费 0.25%（当前默认）的执行奖励 |
 
 **信任面说明**：上述保证覆盖「锁定期内的流动性」——它阻断的是抽走流动性的 rug 路径。协议方仍保留管理权限：创世参数（最低成功额度、初始定价等）可在创世判定前调整，费率默认值可由协议方配置，协议本身也保留升级能力。这些权限不改变资金被锁定的约束，但属于协议方的管理范围。
 

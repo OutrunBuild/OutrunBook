@@ -8,8 +8,8 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 
 | 仓库 | 路径 | 角色 | 文档对齐 commit |
 |---|---|---|---|
-| **MemeverseV2** | `/home/azkrale/Web3Project/Memeverse` | 全链社区共识启动器（四池/Hook/POLend/POLSplitter/YieldVault/DAO/跨链）；磁盘目录原名为 MemeverseV2，已重命名 | `9532d2e6678de8048719ddd1845569d800215ba0`(`9532d2e`，fix: update RUN_RECORD_PATH in test orchestration script) |
-| **OutStakeV2** | `/home/azkrale/Web3Project/OutStake` | 收益基础设施（SY 适配器/uAsset/双质押/drawUAsset/keeper/跨链）；磁盘目录原名为 OutStakeV2，已重命名 | `22b678566f3f210ea5ffcf6360cdab2089332704`(`22b6785`，chore: rename references from OutStakeV2 to OutStake) |
+| **MemeverseV2** | `/home/azkrale/Web3Project/Memeverse` | 全链社区共识启动器（四池/Hook/POLend/POLSplitter/YieldVault/DAO/跨链）；磁盘目录原名为 MemeverseV2，已重命名 | `3cdb8046380bf1af8ae57a04be5e92c086834567`(`3cdb804`，feat(polend): expose marketUAsset getter and cover payer/user separation) |
+| **OutStakeV2** | `/home/azkrale/Web3Project/OutStake` | 收益基础设施（SY 适配器/uAsset/CDP 仓位/PSM/USR/跨链）；磁盘目录原名为 OutStakeV2，已重命名 | `73c9b1637c4953dad99fb702cf0c4fbda3150997`(`73c9b16`，chore(harness): refresh policy surfaces and lint/slither baselines) |
 
 > 当代码仓库更新后，需在此更新 commit hash 并同步核对文档是否仍对齐。发布前运行 `bash scripts/check-baseline.sh` 检测漂移、`bash scripts/check-absolute-words.sh` 核对绝对性营销词（每一处须附链上约束或限定条件；新命中先核对，再决定改文档或入白名单）。
 
@@ -44,6 +44,9 @@ OutrunBook 是 Outrun 生态**面向用户的中文产品文档**（GitBook 结�
 - **split/merge 仅 Locked 阶段**（Unlocked/settled 后 revert）。
 - **YT Flash Swap**：锁定期 YT 二级市场通道。独立 Router 复用 PT/POL 池（不建第二个 AMM、不设独立 YT 池），单笔 unlock 内完成换腿 + split/merge；两入口：POL→精确 YT（实际成本 = y−R 结算，不预扣预算）、精确 YT→POL（minPOLOut 保护）；费用/referral 与普通 PT/POL swap 完全一致（不二次收费），但费用按完整 PT 腿规模计、杠杆下相对实际支付本金占比放大；须有活动 account session（智能账户原子包裹，principal = msg.sender）；仅 Locked 阶段可用；YT 有效价格 = 1 POL − PT 市价。**YT = 杠杆资产**：花价差一小部分买到完整份额的结算残值暴露，残值小变动→YT 回报大变动（对应 Pendle 官方文档 "leveraged exposure to yield"，买 YT = 做多结算残值，双向放大）。
 - **参与三档**：稳健（无风险）/ 平衡（杠杆，仅利息成本）/ 共建（买币质押治理）。曾用"激进"，用户嫌难听改"共建"。
+- **OutStake 仓位 = Memeverse 专用的面值铸造层**：唯一铸造入口只为创世服务，面值铸出，无利息、无清算、无锁定期，随时赎回；旧双质押（锁仓/包装）、增值提取、keeper 代偿已删除，不要写回去。
+- **PSM = 协议储备背书的面值兑换池**：USDC/USDT 换 UUSD、ETH 换 UETH、BNB 换 UBNB，双向 1:1 面值，无仓位无债务；双向费率默认各约 0.1%（可调上限 1%）；每个池有净铸出额度上限。
+- **USR = uAsset 储蓄层**：suETH/suUSD/suBNB 份额，随存随取，份额价格按族利率增长；利率上限 10%、上线默认 0（未激活）；利息靠协议注资预算支付，预算不足自动暂停增长；协议方无提取口，只能注资。
 - **DAO**：标准 token 投票（质押 Memecoin 份额），非旧"sMemecoin+POL 双轨 TVP 公式"（代码已无）。
 
 ## 文档结构

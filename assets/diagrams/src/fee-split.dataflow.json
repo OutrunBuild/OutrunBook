@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "一笔交易费流向谁",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": "assets/diagrams/fee-split.html",
+    "viewBox": [
+      1080,
+      640
+    ],
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "default": {
+          "label": "资金与流程",
+          "visible": true
+        },
+        "database": {
+          "label": "金库／收益库",
+          "visible": true
+        }
+      }
+    }
+  },
+  "stages": [
+    {
+      "label": "一笔交易费"
+    },
+    {
+      "label": "维度一：分账"
+    },
+    {
+      "label": "维度二：按计价币"
+    },
+    {
+      "label": "去向"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "fee",
+      "type": "external",
+      "label": "一笔交易费",
+      "sublabel": "Memecoin 交易的手续费",
+      "stage": 0,
+      "row": 1
+    },
+    {
+      "id": "lp",
+      "type": "external",
+      "label": "LP 持有者",
+      "sublabel": "按份额 · 65% · 固定",
+      "stage": 1,
+      "row": 0
+    },
+    {
+      "id": "proto",
+      "type": "backend",
+      "label": "协议份额",
+      "sublabel": "35% · 固定",
+      "stage": 1,
+      "row": 2
+    },
+    {
+      "id": "referrer",
+      "type": "external",
+      "label": "推荐人返佣",
+      "sublabel": "默认总费 10%（可调）",
+      "stage": 2,
+      "row": 0
+    },
+    {
+      "id": "bytoken",
+      "type": "backend",
+      "label": "按计价币分流",
+      "sublabel": "uAsset／Memecoin／POL",
+      "stage": 2,
+      "row": 1
+    },
+    {
+      "id": "auxsplit",
+      "type": "backend",
+      "label": "辅助池费切分",
+      "sublabel": "普通侧分成，杠杆侧归 DAO",
+      "tag": "锁定期",
+      "stage": 2,
+      "row": 2
+    },
+    {
+      "id": "dao",
+      "type": "database",
+      "label": "DAO 国库",
+      "sublabel": "uAsset 费扣 0.25% · 当前默认",
+      "stage": 3,
+      "row": 0,
+      "width": 144
+    },
+    {
+      "id": "staking",
+      "type": "database",
+      "label": "Staking 收益库",
+      "sublabel": "给 Memecoin 质押者",
+      "stage": 3,
+      "row": 1
+    },
+    {
+      "id": "burn",
+      "type": "backend",
+      "label": "直接销毁",
+      "sublabel": "通缩",
+      "stage": 3,
+      "row": 2
+    },
+    {
+      "id": "genesis",
+      "type": "external",
+      "label": "普通创世参与者",
+      "sublabel": "按创世份额分成",
+      "stage": 3,
+      "row": 3
+    }
+  ],
+  "flows": [
+    {
+      "id": "fee-lp",
+      "from": "fee",
+      "to": "lp",
+      "label": "65% · 固定",
+      "variant": "emphasis",
+      "fromSide": "top",
+      "toSide": "left",
+      "via": [
+        [
+          100,
+          157
+        ]
+      ],
+      "labelAt": [
+        100,
+        200
+      ]
+    },
+    {
+      "id": "fee-proto",
+      "from": "fee",
+      "to": "proto",
+      "label": "35% · 固定",
+      "variant": "emphasis",
+      "labelAt": [
+        207,
+        263
+      ]
+    },
+    {
+      "id": "proto-referrer",
+      "from": "proto",
+      "to": "referrer",
+      "label": "有推荐人：默认总费 10%",
+      "fromSide": "top",
+      "toSide": "left",
+      "via": [
+        [
+          315,
+          215
+        ],
+        [
+          400,
+          215
+        ],
+        [
+          440,
+          215
+        ],
+        [
+          440,
+          157
+        ],
+        [
+          474,
+          157
+        ]
+      ],
+      "labelAt": [
+        377,
+        207
+      ]
+    },
+    {
+      "id": "proto-bytoken",
+      "from": "proto",
+      "to": "bytoken",
+      "label": "按计价币分流"
+    },
+    {
+      "id": "proto-auxsplit",
+      "from": "proto",
+      "to": "auxsplit",
+      "label": "辅助池 uAsset／PT 费（锁定期）",
+      "fromSide": "bottom",
+      "toSide": "left",
+      "via": [
+        [
+          315,
+          440
+        ],
+        [
+          440,
+          440
+        ],
+        [
+          440,
+          385
+        ],
+        [
+          474,
+          385
+        ]
+      ],
+      "labelAt": [
+        385,
+        432
+      ]
+    },
+    {
+      "id": "bytoken-dao",
+      "from": "bytoken",
+      "to": "dao",
+      "label": "uAsset 计价",
+      "fromSide": "right",
+      "toSide": "left",
+      "via": [
+        [
+          640,
+          271
+        ],
+        [
+          640,
+          157
+        ],
+        [
+          660,
+          157
+        ]
+      ],
+      "labelDy": 51
+    },
+    {
+      "id": "bytoken-staking",
+      "from": "bytoken",
+      "to": "staking",
+      "label": "Memecoin 计价",
+      "labelAt": [
+        750,
+        225
+      ]
+    },
+    {
+      "id": "bytoken-burn",
+      "from": "bytoken",
+      "to": "burn",
+      "label": "POL 计价",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "via": [
+        [
+          530,
+          340
+        ],
+        [
+          745,
+          340
+        ]
+      ],
+      "labelAt": [
+        740,
+        432
+      ]
+    },
+    {
+      "id": "aux-genesis",
+      "from": "auxsplit",
+      "to": "genesis",
+      "label": "普通侧按创世份额分成"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "两个维度正交",
+      "items": [
+        "维度一按费率比例：LP 65%／协议 35%（固定）",
+        "维度二按计价币决定协议份额的去向",
+        "两个维度叠加，就是一笔费的完整去向"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "推荐与执行者",
+      "items": [
+        "有推荐人时从协议份额切返佣（默认总费 10%，可调），协议国库实留约 25%",
+        "主池 uAsset 费扣 0.25%（当前默认）给触发分发的执行者",
+        "辅助池 uAsset／PT 费在锁定期按杠杆债务占比切分"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "别混淆三金库",
+      "items": [
+        "Memecoin 计价费进 Staking 收益库（质押者）",
+        "uAsset 计价费进 DAO 国库（社区）",
+        "杠杆利息归协议自留国库，不属于交易费"
+      ]
+    }
+  ]
+}

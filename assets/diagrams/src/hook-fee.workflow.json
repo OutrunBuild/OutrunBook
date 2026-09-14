@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "实际费率怎么构成",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": "assets/diagrams/hook-fee.html",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "backend": {
+          "label": "费率分量与合成",
+          "visible": true
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "components",
+      "label": "动态费＝基础费率＋三项动态分量"
+    },
+    {
+      "id": "actual",
+      "label": "实际费率＝max（动态费，开池衰减费）"
+    },
+    {
+      "id": "exempt",
+      "label": "EWVWAP 豁免（首笔不豁免）"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "base",
+      "lane": "components",
+      "col": 0,
+      "type": "backend",
+      "width": 96,
+      "label": "基础费率 1%",
+      "tag": "合约固定"
+    },
+    {
+      "id": "adverse",
+      "lane": "components",
+      "col": 1,
+      "type": "backend",
+      "width": 110,
+      "label": "＋逆向冲击费",
+      "sublabel": "3 秒累积合并，拆单无效"
+    },
+    {
+      "id": "vol",
+      "lane": "components",
+      "col": 3,
+      "type": "backend",
+      "width": 110,
+      "label": "＋波动费",
+      "sublabel": "按池，随波动上升"
+    },
+    {
+      "id": "short",
+      "lane": "components",
+      "col": 5,
+      "type": "backend",
+      "width": 110,
+      "label": "＋短期冲击费",
+      "sublabel": "超 2% 部分计费，15 秒衰减"
+    },
+    {
+      "id": "dyn",
+      "lane": "actual",
+      "col": 5,
+      "type": "backend",
+      "width": 110,
+      "label": "＝动态费",
+      "sublabel": "四项相加"
+    },
+    {
+      "id": "actual",
+      "lane": "actual",
+      "col": 3,
+      "type": "backend",
+      "width": 110,
+      "label": "实际费率",
+      "sublabel": "取较高者",
+      "tag": "上限 100% · 固定"
+    },
+    {
+      "id": "decay",
+      "lane": "actual",
+      "col": 1,
+      "type": "backend",
+      "width": 110,
+      "label": "开池衰减费",
+      "sublabel": "50%→1%，当前默认可调"
+    },
+    {
+      "id": "ewvap",
+      "lane": "exempt",
+      "col": 3,
+      "type": "backend",
+      "width": 110,
+      "label": "EWVWAP 豁免",
+      "sublabel": "有历史＋回归均衡 → 只付 1%",
+      "tag": "首笔不豁免"
+    }
+  ],
+  "edges": [
+    {
+      "from": "base",
+      "to": "adverse"
+    },
+    {
+      "from": "adverse",
+      "to": "vol"
+    },
+    {
+      "from": "vol",
+      "to": "short"
+    },
+    {
+      "from": "short",
+      "to": "dyn"
+    },
+    {
+      "from": "dyn",
+      "to": "actual",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "from": "decay",
+      "to": "actual"
+    },
+    {
+      "from": "ewvap",
+      "to": "actual",
+      "label": "豁免：只付基础费率",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "labelAt": [
+        430,
+        330
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "四个分量怎么算",
+      "items": [
+        "逆向冲击费按地址×池，3 秒窗口累积合并，拆单无效",
+        "波动费按池，随波动上升；短期冲击费按池，超过 2% 部分计费",
+        "短期冲击量 15 秒内衰减，快速连续冲击叠加；总上限 100% · 固定"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "豁免与底价",
+      "items": [
+        "EWVWAP：池内有成交历史且交易让价格回归均衡 → 跳过全部动态费只付 1%",
+        "首笔交易（无成交历史）不豁免",
+        "衰减配置低于 1% 时，1% 底价仍生效"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "开池衰减费",
+      "items": [
+        "默认初始 50%、15 分钟衰减至 1%（当前默认，协议方可调）",
+        "衰减窗内 EWVWAP 豁免取基础费率与当前开池费的较高者",
+        "衰减曲线为归一化指数衰减"
+      ]
+    }
+  ]
+}

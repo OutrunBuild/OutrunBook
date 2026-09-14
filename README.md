@@ -4,7 +4,7 @@
 
 Outrun 是一个全链 DeFi 生态，由两个互为驱动的模块组成：
 
-- **OutStake** —— 收益基础设施。把 Aave、Lido、EtherFi、Sky、Ethena、Lista、Aster 等多协议的生息资产统一，铸成锚定型稳定币 **uAsset**(UETH / UUSD / UBNB)。
+- **OutStake** —— 收益基础设施。把 Aave、Lido、Sky、Ethena、Lista、Aster 等多协议的生息资产统一，铸成锚定型稳定币 **uAsset**(UETH / UUSD / UBNB)。
 - **Memeverse** —— 全链社区共识启动器。它启动的不是一枚代币，而是一个拥有流动性、收益与治理的链上社区：四池流动性、动态费率、杠杆创世、Memecoin Staking 与 DAO 治理，让 Memecoin 从投机符号长成一个能自我维持的社区国度。
 
 两个模块并非简单并列 —— **uAsset 是连接它们的血线**：OutStake 铸造 uAsset，Memeverse 在创世与杠杆中消耗 uAsset，两端通过 uAsset 的供需互相咬合。资本在闭环里被反复利用，而不是躺在 isolated 的池子里。
@@ -13,14 +13,13 @@ Outrun 是一个全链 DeFi 生态，由两个互为驱动的模块组成：
 
 ## OutStake — 把生息资产统一成稳定币
 
-不同协议的生息代币（aToken、wstETH、weETH、sUSDS、sUSDe……）各自为政，收益和流动性都被切碎。OutStake 用一层标准化接口把它们统一，铸成可在全链流通的 uAsset 稳定币。
+不同协议的生息代币（aToken、wstETH、sUSDS、sUSDe……）各自为政，收益和流动性都被切碎。OutStake 用一层标准化接口把它们统一，铸成可在全链流通的 uAsset 稳定币。
 
-两种参与方式：
+三种参与方式：
 
-- **锁仓质押（Lock）**：存入生息资产即按当前价值铸出 uAsset 稳定币（本金等值）供你使用，本金继续生息；你可在锁仓期内随时把新增值再提取成 uAsset，到期后赎回本金。
-- **包装质押（Wrap）**：进入共享池，无锁定期，存入即铸出可自由转让的 uAsset，适合当稳定币流通使用。
-
-锁仓到期忘了赎也没关系 —— 锁定超时达到一定时间后，协议会代为赎回仓位（keeper 机制），本金等值部分由协议回收，增值收益归你。
+- **创世质押**：存入生息资产，按当前价值面值铸出 uAsset（本金等值），铸出的 uAsset 直接送进 Memeverse 创世；抵押的资产继续生息，敞口全归你。无利息、无清算、无锁定期，仓位随时可赎回。
+- **PSM 兑换**：用 USDC、USDT、ETH、BNB 等储备资产，按 1:1 面值直接换 uAsset。不建仓位、不产生债务。
+- **USR 储蓄**：闲置的 uAsset 存进储蓄金库吃利息，随存随取。
 
 详见 [OutStake 概览](outstake/README.md)。
 
@@ -40,17 +39,7 @@ Memeverse 不是发币工具，而是**全链社区共识启动器**：它启动
 
 uAsset（UETH / UUSD / UBNB）是 Outrun 的锚定型稳定币体系，分别锚定 ETH / USD / BNB，基于 LayerZero OFT 可跨链流转：
 
-```mermaid
-flowchart LR
-    Y["OutStake 供给端<br/>多协议生息资产<br/>wstETH · weETH · sUSDS · aUSDC…"]:::asset
-    Y -->|"质押（锁仓 / 包装）铸出"| U["uAsset<br/>UETH / UUSD / UBNB<br/>连接两个模块的血线"]:::uasset
-    U -->|"创世资金 · 杠杆利息<br/>预购 · 结算计价"| M["Memeverse 用途端<br/>四池 · 杠杆创世 · Staking · DAO"]:::mv
-    M -.->|"供需双向咬合<br/>（非收益回流）"| U
-
-    classDef asset fill:#e8f5e9,stroke:#2e7d32
-    classDef uasset fill:#e3f2fd,stroke:#1565c0
-    classDef mv fill:#fff3e0,stroke:#ef6c00
-```
+<iframe src="assets/diagrams/ecosystem-bite.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="双模块咬合：uAsset 是血线"></iframe>
 
 - OutStake 端：质押生息资产，铸出 uAsset。
 - Memeverse 端：uAsset 作为创世资金、杠杆利息、创世积分的支付币被消耗。

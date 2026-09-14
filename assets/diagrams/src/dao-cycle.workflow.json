@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "DAO 周期激励：一个周期的闭环",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": "assets/diagrams/dao-cycle.html",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "external": {
+          "label": "用户操作",
+          "visible": true
+        },
+        "backend": {
+          "label": "协议动作",
+          "visible": true
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "vote",
+      "label": "质押与投票（周期 90 天 · 固定）"
+    },
+    {
+      "id": "claim",
+      "label": "结算与领取"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "stake",
+      "lane": "vote",
+      "col": 0,
+      "type": "external",
+      "width": 96,
+      "label": "质押份额",
+      "sublabel": "质押进收益库"
+    },
+    {
+      "id": "delegate",
+      "lane": "vote",
+      "col": 1,
+      "type": "external",
+      "width": 110,
+      "label": "完成委托",
+      "sublabel": "不委托无票权，仍计入基数"
+    },
+    {
+      "id": "vote",
+      "lane": "vote",
+      "col": 3,
+      "type": "external",
+      "width": 120,
+      "label": "期内投票",
+      "sublabel": "票计入当期周期"
+    },
+    {
+      "id": "finalize",
+      "lane": "vote",
+      "col": 5,
+      "type": "external",
+      "width": 110,
+      "label": "触发结算",
+      "sublabel": "任何人可发起，自付 gas"
+    },
+    {
+      "id": "gate",
+      "lane": "claim",
+      "col": 5,
+      "type": "backend",
+      "width": 110,
+      "label": "三条件门",
+      "sublabel": "币种纳入／有入账／有票数"
+    },
+    {
+      "id": "allocate",
+      "lane": "claim",
+      "col": 3,
+      "type": "backend",
+      "width": 120,
+      "label": "划为奖励池",
+      "sublabel": "默认 25%，治理可调"
+    },
+    {
+      "id": "claim",
+      "lane": "claim",
+      "col": 1,
+      "type": "external",
+      "width": 106,
+      "label": "主动领取",
+      "sublabel": "按票数占比，仅限本人"
+    },
+    {
+      "id": "rollover",
+      "lane": "claim",
+      "col": 0,
+      "type": "backend",
+      "width": 96,
+      "label": "并入国库",
+      "sublabel": "下一周期再划拨"
+    }
+  ],
+  "edges": [
+    {
+      "from": "stake",
+      "to": "delegate"
+    },
+    {
+      "from": "delegate",
+      "to": "vote"
+    },
+    {
+      "from": "vote",
+      "to": "finalize",
+      "label": "周期结束",
+      "labelAt": [
+        530,
+        111
+      ]
+    },
+    {
+      "from": "finalize",
+      "to": "gate",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "from": "gate",
+      "to": "allocate",
+      "label": "三条件齐备",
+      "fromSide": "left",
+      "toSide": "right",
+      "labelAt": [
+        530,
+        224
+      ]
+    },
+    {
+      "from": "gate",
+      "to": "rollover",
+      "label": "缺一：全额滚存",
+      "fromSide": "bottom",
+      "toSide": "right",
+      "via": [
+        [
+          625,
+          300
+        ],
+        [
+          155,
+          300
+        ],
+        [
+          155,
+          243
+        ],
+        [
+          136,
+          243
+        ]
+      ],
+      "labelAt": [
+        390,
+        292
+      ]
+    },
+    {
+      "from": "allocate",
+      "to": "claim",
+      "label": "窗口内",
+      "fromSide": "left",
+      "toSide": "right",
+      "labelAt": [
+        327,
+        224
+      ]
+    },
+    {
+      "from": "claim",
+      "to": "rollover",
+      "fromSide": "left",
+      "toSide": "right",
+      "labelAt": [
+        182,
+        224
+      ]
+    },
+    {
+      "from": "rollover",
+      "to": "gate",
+      "label": "下一周期再划拨",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "right",
+      "via": [
+        [
+          88,
+          305
+        ],
+        [
+          700,
+          305
+        ],
+        [
+          700,
+          243
+        ],
+        [
+          680,
+          243
+        ]
+      ],
+      "labelAt": [
+        450,
+        320
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "谁有票权",
+      "items": [
+        "质押进收益库后，委托给自己或代表才产生票权",
+        "未委托无票权，但计入投票基数，抬高法定人数门槛",
+        "投票、触发结算、领取都是链上操作，自付 gas"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "三条件门",
+      "items": [
+        "币种纳入奖励范围、当期国库有入账、当期有票数，缺一不划拨",
+        "缺一时国库全额滚存，下一周期再参与划拨",
+        "划拨比例默认 25%，可由治理调整"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "只认紧邻上一周期",
+      "items": [
+        "结算后在领取窗口内主动领取，仅限本人",
+        "只认紧邻上一周期，错过并入国库，无补领",
+        "窗口由下一次结算关闭，最短一个周期"
+      ]
+    }
+  ]
+}

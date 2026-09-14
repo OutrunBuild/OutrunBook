@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "普通创世：三类权益与 24 小时保护窗",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": "assets/diagrams/genesis-rights.html",
+    "viewBox": [
+      1080,
+      640
+    ],
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "default": {
+          "label": "权益与流程",
+          "visible": true
+        },
+        "database": {
+          "label": "池",
+          "visible": false
+        }
+      }
+    }
+  },
+  "stages": [
+    {
+      "label": "创世期"
+    },
+    {
+      "label": "锁定期（365 天 · 固定）"
+    },
+    {
+      "label": "解锁交易"
+    },
+    {
+      "label": "24 小时保护窗 · 固定"
+    },
+    {
+      "label": "期后"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "genesis-in",
+      "type": "external",
+      "label": "普通创世投入",
+      "sublabel": "uAsset 100% 进入四池",
+      "stage": 0,
+      "row": 2
+    },
+    {
+      "id": "yt",
+      "type": "backend",
+      "label": "初始 YT",
+      "sublabel": "锁定后可领，永久可领",
+      "stage": 1,
+      "row": 0
+    },
+    {
+      "id": "fees",
+      "type": "backend",
+      "label": "辅助池手续费分成",
+      "sublabel": "锁定期起持续累计",
+      "stage": 1,
+      "row": 2
+    },
+    {
+      "id": "unlock-tx",
+      "type": "backend",
+      "label": "实际进入解锁的那笔交易",
+      "sublabel": "窗口起点",
+      "width": 148,
+      "stage": 2,
+      "row": 1
+    },
+    {
+      "id": "lp",
+      "type": "backend",
+      "label": "一次性领取",
+      "sublabel": "辅助池 LP＋剩余 POL/PT",
+      "stage": 3,
+      "row": 0
+    },
+    {
+      "id": "anchor",
+      "type": "backend",
+      "label": "本金守恒锚点",
+      "sublabel": "30%＋30%＋40%＝100%",
+      "stage": 3,
+      "row": 1
+    },
+    {
+      "id": "static",
+      "type": "backend",
+      "label": "按静态储备结算",
+      "sublabel": "四池暂停公开交易",
+      "stage": 3,
+      "row": 2
+    },
+    {
+      "id": "resume",
+      "type": "backend",
+      "label": "恢复公开交易",
+      "sublabel": "期后退出风险自负",
+      "stage": 4,
+      "row": 1
+    }
+  ],
+  "flows": [
+    {
+      "id": "in-yt",
+      "from": "genesis-in",
+      "to": "yt",
+      "label": "创世成功，按份额",
+      "variant": "emphasis",
+      "fromSide": "top",
+      "toSide": "left",
+      "via": [
+        [
+          100,
+          157
+        ]
+      ],
+      "labelAt": [
+        210,
+        148
+      ]
+    },
+    {
+      "id": "in-fees",
+      "from": "genesis-in",
+      "to": "fees",
+      "label": "锁定期起",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "left",
+      "labelAt": [
+        220,
+        378
+      ]
+    },
+    {
+      "id": "in-unlock",
+      "from": "genesis-in",
+      "to": "unlock-tx",
+      "label": "锁定期满（365 天 · 固定）",
+      "fromSide": "bottom",
+      "toSide": "left",
+      "via": [
+        [
+          100,
+          470
+        ],
+        [
+          400,
+          470
+        ],
+        [
+          400,
+          271
+        ]
+      ],
+      "labelAt": [
+        250,
+        462
+      ]
+    },
+    {
+      "id": "unlock-lp",
+      "from": "unlock-tx",
+      "to": "lp",
+      "label": "一次性领取"
+    },
+    {
+      "id": "unlock-static",
+      "from": "unlock-tx",
+      "to": "static",
+      "label": "开启保护窗"
+    },
+    {
+      "id": "lp-anchor",
+      "from": "lp",
+      "to": "anchor",
+      "label": "三部分合计"
+    },
+    {
+      "id": "anchor-static",
+      "from": "anchor",
+      "to": "static",
+      "label": "按静态储备兑付"
+    },
+    {
+      "id": "static-resume",
+      "from": "static",
+      "to": "resume",
+      "label": "到期自动恢复"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "三类权益何时可领",
+      "items": [
+        "初始 YT：锁定后可领，永久可领",
+        "辅助池手续费分成：锁定期起持续累计",
+        "辅助池 LP＋剩余 POL/PT：解锁后一次性领取"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "本金守恒锚点",
+      "items": [
+        "辅助池 uAsset 约 30%",
+        "PT 对应主池 uAsset 约 30%",
+        "POL 对应主池 uAsset 约 40%，合计 100%"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "窗口起算与边界",
+      "items": [
+        "窗口从实际进入解锁的那笔交易起算，24 小时 · 固定",
+        "四池暂停公开交易，领取与赎回按静态储备开放",
+        "期后退出风险自负"
+      ]
+    }
+  ]
+}
