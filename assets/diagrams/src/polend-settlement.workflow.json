@@ -2,19 +2,19 @@
   "schema_version": 1,
   "diagram_type": "workflow",
   "meta": {
-    "title": "到期结算：解锁交易与全局结算瀑布",
-    "locale": "zh-CN",
+    "title": "Settlement at expiry: the unlock transaction and the unified settlement waterfall",
+    "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/polend-settlement.html",
     "legend": {
       "mode": "auto",
       "entries": {
         "backend": {
-          "label": "协议动作",
+          "label": "Protocol actions",
           "visible": true
         },
         "external": {
-          "label": "任何人可执行",
+          "label": "Anyone can execute",
           "visible": true
         }
       }
@@ -23,15 +23,15 @@
   "lanes": [
     {
       "id": "unlock",
-      "label": "解锁交易（原子：任一步失败整笔回滚，保持锁定期）"
+      "label": "Unlock transaction (atomic: any step fails → whole reverts, stays Locked)"
     },
     {
       "id": "waterfall",
-      "label": "全局结算"
+      "label": "Unified settlement"
     },
     {
       "id": "deficit",
-      "label": "缺口与重试",
+      "label": "Shortfall and retry",
       "variant": "exception"
     }
   ],
@@ -42,8 +42,8 @@
       "col": 0,
       "type": "backend",
       "width": 96,
-      "label": "捕获手续费",
-      "sublabel": "解锁前最后一笔"
+      "label": "Capture fees",
+      "sublabel": "Last tx before unlock"
     },
     {
       "id": "unlock",
@@ -51,8 +51,8 @@
       "col": 1,
       "type": "backend",
       "width": 110,
-      "label": "进入解锁",
-      "sublabel": "POL 统一结算"
+      "label": "Enter unlock",
+      "sublabel": "POL unified settlement"
     },
     {
       "id": "gsettle",
@@ -60,8 +60,8 @@
       "col": 3,
       "type": "backend",
       "width": 120,
-      "label": "全局结算",
-      "sublabel": "有杠杆债务则执行"
+      "label": "Unified settlement",
+      "sublabel": "Only if leveraged debt"
     },
     {
       "id": "protect",
@@ -69,8 +69,8 @@
       "col": 5,
       "type": "backend",
       "width": 110,
-      "label": "开启保护窗",
-      "sublabel": "24 小时 · 固定"
+      "label": "Protection window",
+      "sublabel": "24 hours · fixed"
     },
     {
       "id": "cut",
@@ -78,8 +78,8 @@
       "col": 0,
       "type": "backend",
       "width": 96,
-      "label": "切出杠杆份额",
-      "sublabel": "按杠杆债务占比"
+      "label": "Cut leveraged",
+      "sublabel": "Pro rata to debt"
     },
     {
       "id": "liquidate",
@@ -87,17 +87,17 @@
       "col": 1,
       "type": "backend",
       "width": 110,
-      "label": "平仓回收",
-      "sublabel": "POL 烧毁赎回；PT 兑 uAsset"
+      "label": "Unwind, recover",
+      "sublabel": "POL burn-redeem; PT → uAsset"
     },
     {
       "id": "repay",
       "lane": "waterfall",
       "col": 3,
       "type": "backend",
-      "width": 120,
-      "label": "偿还杠杆债务",
-      "sublabel": "回收 uAsset 优先偿还并销毁"
+      "width": 150,
+      "label": "Repay leveraged debt",
+      "sublabel": "Recovered uAsset repays and is burned"
     },
     {
       "id": "residual",
@@ -105,26 +105,26 @@
       "col": 5,
       "type": "backend",
       "width": 110,
-      "label": "残值一次性分配",
-      "sublabel": "按付息比例，永久可领"
+      "label": "One-time residual",
+      "sublabel": "Pro rata to interest—forever"
     },
     {
       "id": "reserve",
       "lane": "deficit",
       "col": 1,
       "type": "backend",
-      "width": 114,
-      "label": "动用结算储备金",
-      "sublabel": "只补有上限的舍入级缺口"
+      "width": 128,
+      "label": "Draw reserve",
+      "sublabel": "Capped rounding-level shortfall"
     },
     {
       "id": "rollback",
       "lane": "deficit",
       "col": 3,
       "type": "backend",
-      "width": 110,
-      "label": "整笔回滚",
-      "sublabel": "保持锁定期"
+      "width": 172,
+      "label": "Revert whole transaction",
+      "sublabel": "Stays Locked"
     },
     {
       "id": "fund",
@@ -132,8 +132,8 @@
       "col": 5,
       "type": "external",
       "width": 110,
-      "label": "任何人补充储备",
-      "sublabel": "不受协议暂停限制"
+      "label": "Replenish reserve",
+      "sublabel": "Unaffected by protocol pause"
     }
   ],
   "edges": [
@@ -152,7 +152,8 @@
     {
       "from": "gsettle",
       "to": "cut",
-      "label": "仅有杠杆债务时执行",
+      "label": "Runs only with leveraged debt",
+      "labelDx": 8,
       "fromSide": "bottom",
       "toSide": "left",
       "via": [
@@ -181,12 +182,13 @@
     {
       "from": "repay",
       "to": "residual",
-      "label": "有结余"
+      "label": "Surplus",
+      "labelDy": 50
     },
     {
       "from": "repay",
       "to": "reserve",
-      "label": "有缺口",
+      "label": "Shortfall",
       "variant": "dashed",
       "fromSide": "bottom",
       "toSide": "top",
@@ -204,18 +206,21 @@
     {
       "from": "reserve",
       "to": "rollback",
-      "label": "缺口超过储备",
+      "label": "Shortfall exceeds reserve",
+      "labelDy": 50,
+      "labelDx": -90,
       "variant": "dashed"
     },
     {
       "from": "rollback",
       "to": "fund",
-      "label": "回滚后"
+      "label": "After revert",
+      "labelDy": 50
     },
     {
       "from": "fund",
       "to": "cut",
-      "label": "补足储备后重试",
+      "label": "Retry once reserve replenished",
       "fromSide": "bottom",
       "toSide": "top",
       "via": [
@@ -241,29 +246,29 @@
   "cards": [
     {
       "dot": "amber",
-      "title": "一笔原子交易",
+      "title": "One atomic transaction",
       "items": [
-        "最后捕获辅助池手续费、进入解锁、全局结算、开启保护窗在同一笔交易内完成",
-        "任一步失败整笔回滚，保持锁定期，可重新发起",
-        "保护窗 24 小时 · 固定"
+        "The final auxiliary-pool fee capture, unlock, unified settlement, and protection-window opening all complete in one transaction",
+        "Any failed step reverts the whole transaction; the Verse stays Locked and the process can be re-initiated",
+        "Protection window: 24 hours · fixed"
       ]
     },
     {
       "dot": "emerald",
-      "title": "回收与偿还",
+      "title": "Recovery and repayment",
       "items": [
-        "按杠杆债务占比切出辅助池份额，取整差额归普通侧",
-        "POL 烧毁赎回、PT 按锚定比率兑 uAsset",
-        "回收的 uAsset 先偿还全部杠杆债务，偿还即销毁"
+        "Auxiliary-pool shares are cut out pro rata to the leveraged debt; rounding remainders go to the standard side",
+        "POL is burned to redeem; PT swaps into uAsset at par",
+        "Recovered uAsset repays the full leveraged debt first; repaid uAsset is burned"
       ]
     },
     {
       "dot": "rose",
-      "title": "结余与缺口",
+      "title": "Surplus and shortfall",
       "items": [
-        "有结余：残值＝剩余 uAsset＋全部回收的 Memecoin，按付息比例一次性分配、永久可领",
-        "有缺口：结算储备金只补有上限的舍入级缺口，不覆盖资不抵债",
-        "缺口超过储备即整笔回滚；任何人补充储备后可重试，不受协议暂停限制"
+        "Surplus: residual value = remaining uAsset + all recovered Memecoin, distributed once pro rata to interest paid, claimable forever",
+        "Shortfall: the settlement reserve covers only a capped rounding-level shortfall, never insolvency",
+        "A shortfall over the reserve reverts the whole transaction; once anyone replenishes the reserve it can be retried, unaffected by the protocol pause"
       ]
     }
   ]

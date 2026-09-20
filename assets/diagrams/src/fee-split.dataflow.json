@@ -2,8 +2,8 @@
   "schema_version": 1,
   "diagram_type": "dataflow",
   "meta": {
-    "title": "一笔交易费流向谁",
-    "locale": "zh-CN",
+    "title": "Where a trading fee goes",
+    "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/fee-split.html",
     "viewBox": [
@@ -14,11 +14,11 @@
       "mode": "auto",
       "entries": {
         "default": {
-          "label": "资金与流程",
+          "label": "Funds and flows",
           "visible": true
         },
         "database": {
-          "label": "金库／收益库",
+          "label": "Treasuries / vaults",
           "visible": true
         }
       }
@@ -26,73 +26,73 @@
   },
   "stages": [
     {
-      "label": "一笔交易费"
+      "label": "One trading fee"
     },
     {
-      "label": "维度一：分账"
+      "label": "Dimension 1: the split"
     },
     {
-      "label": "维度二：按计价币"
+      "label": "Dimension 2: by denomination"
     },
     {
-      "label": "去向"
+      "label": "Where it goes"
     }
   ],
   "nodes": [
     {
       "id": "fee",
       "type": "external",
-      "label": "一笔交易费",
-      "sublabel": "Memecoin 交易的手续费",
+      "label": "One trading fee",
+      "sublabel": "Fee on a Memecoin trade",
       "stage": 0,
       "row": 1
     },
     {
       "id": "lp",
       "type": "external",
-      "label": "LP 持有者",
-      "sublabel": "按份额 · 65% · 固定",
+      "label": "LP holders",
+      "sublabel": "By share · 65% · fixed",
       "stage": 1,
       "row": 0
     },
     {
       "id": "proto",
       "type": "backend",
-      "label": "协议份额",
-      "sublabel": "35% · 固定",
+      "label": "Protocol share",
+      "sublabel": "35% · fixed",
       "stage": 1,
       "row": 2
     },
     {
       "id": "referrer",
       "type": "external",
-      "label": "推荐人返佣",
-      "sublabel": "默认总费 10%（可调）",
+      "label": "Referral rebate",
+      "sublabel": "Default 10% · adjustable",
       "stage": 2,
       "row": 0
     },
     {
       "id": "bytoken",
       "type": "backend",
-      "label": "按计价币分流",
-      "sublabel": "uAsset／Memecoin／POL",
+      "label": "By denomination",
+      "sublabel": "uAsset/Memecoin/POL",
       "stage": 2,
       "row": 1
     },
     {
       "id": "auxsplit",
       "type": "backend",
-      "label": "辅助池费切分",
-      "sublabel": "普通侧分成，杠杆侧归 DAO",
-      "tag": "锁定期",
+      "label": "Aux-pool split",
+      "sublabel": "Leverage side to DAO",
+      "tag": "Locked phase",
       "stage": 2,
       "row": 2
     },
     {
       "id": "dao",
       "type": "database",
-      "label": "DAO 国库",
-      "sublabel": "uAsset 费扣 0.25% · 当前默认",
+      "label": "DAO treasury",
+      "sublabel": "0.25% carved out · default",
       "stage": 3,
       "row": 0,
       "width": 144
@@ -100,26 +100,27 @@
     {
       "id": "staking",
       "type": "database",
-      "label": "Staking 收益库",
-      "sublabel": "给 Memecoin 质押者",
+      "label": "Staking YieldVault",
+      "sublabel": "For Memecoin stakers",
       "stage": 3,
       "row": 1
     },
     {
       "id": "burn",
       "type": "backend",
-      "label": "直接销毁",
-      "sublabel": "通缩",
+      "label": "Burned directly",
+      "sublabel": "Deflationary",
       "stage": 3,
       "row": 2
     },
     {
       "id": "genesis",
       "type": "external",
-      "label": "普通创世参与者",
-      "sublabel": "按创世份额分成",
+      "label": "Genesis participants",
+      "sublabel": "Pro rata by Genesis share",
       "stage": 3,
-      "row": 3
+      "row": 3,
+      "width": 132
     }
   ],
   "flows": [
@@ -127,7 +128,7 @@
       "id": "fee-lp",
       "from": "fee",
       "to": "lp",
-      "label": "65% · 固定",
+      "label": "65% · fixed",
       "variant": "emphasis",
       "fromSide": "top",
       "toSide": "left",
@@ -146,7 +147,7 @@
       "id": "fee-proto",
       "from": "fee",
       "to": "proto",
-      "label": "35% · 固定",
+      "label": "35% · fixed",
       "variant": "emphasis",
       "labelAt": [
         207,
@@ -157,7 +158,7 @@
       "id": "proto-referrer",
       "from": "proto",
       "to": "referrer",
-      "label": "有推荐人：默认总费 10%",
+      "label": "With referrer: default 10% of total",
       "fromSide": "top",
       "toSide": "left",
       "via": [
@@ -191,13 +192,13 @@
       "id": "proto-bytoken",
       "from": "proto",
       "to": "bytoken",
-      "label": "按计价币分流"
+      "label": "Split by denomination"
     },
     {
       "id": "proto-auxsplit",
       "from": "proto",
       "to": "auxsplit",
-      "label": "辅助池 uAsset／PT 费（锁定期）",
+      "label": "Auxiliary-pool uAsset/PT fees (Locked phase)",
       "fromSide": "bottom",
       "toSide": "left",
       "via": [
@@ -227,7 +228,7 @@
       "id": "bytoken-dao",
       "from": "bytoken",
       "to": "dao",
-      "label": "uAsset 计价",
+      "label": "uAsset-denominated",
       "fromSide": "right",
       "toSide": "left",
       "via": [
@@ -250,7 +251,7 @@
       "id": "bytoken-staking",
       "from": "bytoken",
       "to": "staking",
-      "label": "Memecoin 计价",
+      "label": "Memecoin-denominated",
       "labelAt": [
         750,
         225
@@ -260,7 +261,7 @@
       "id": "bytoken-burn",
       "from": "bytoken",
       "to": "burn",
-      "label": "POL 计价",
+      "label": "POL-denominated",
       "fromSide": "bottom",
       "toSide": "top",
       "via": [
@@ -282,35 +283,36 @@
       "id": "aux-genesis",
       "from": "auxsplit",
       "to": "genesis",
-      "label": "普通侧按创世份额分成"
+      "label": "Standard side: pro rata by Genesis share",
+      "labelDy": 24
     }
   ],
   "cards": [
     {
       "dot": "cyan",
-      "title": "两个维度正交",
+      "title": "Two orthogonal dimensions",
       "items": [
-        "维度一按费率比例：LP 65%／协议 35%（固定）",
-        "维度二按计价币决定协议份额的去向",
-        "两个维度叠加，就是一笔费的完整去向"
+        "Dimension 1 is the split: LP 65% / protocol 35% (fixed)",
+        "Dimension 2 routes the protocol share by denomination",
+        "Stacked, the two dimensions give a fee's full destination"
       ]
     },
     {
       "dot": "violet",
-      "title": "推荐与执行者",
+      "title": "Referrals and executors",
       "items": [
-        "有推荐人时从协议份额切返佣（默认总费 10%，可调），协议国库实留约 25%",
-        "主池 uAsset 费扣 0.25%（当前默认）给触发分发的执行者",
-        "辅助池 uAsset／PT 费在锁定期按杠杆债务占比切分"
+        "With a referrer, the rebate is carved from the protocol share (default 10% of the total fee, adjustable), leaving the protocol treasury about 25%",
+        "0.25% of primary-pool uAsset fees (current default) goes to the executor who triggers distribution",
+        "Auxiliary-pool uAsset/PT fees are split by leverage-debt share during the Locked phase"
       ]
     },
     {
       "dot": "rose",
-      "title": "别混淆三金库",
+      "title": "Don't confuse the three treasuries",
       "items": [
-        "Memecoin 计价费进 Staking 收益库（质押者）",
-        "uAsset 计价费进 DAO 国库（社区）",
-        "杠杆利息归协议自留国库，不属于交易费"
+        "Memecoin-denominated fees go to the staking YieldVault (stakers)",
+        "uAsset-denominated fees go to the DAO treasury (community)",
+        "Leverage interest goes to the protocol treasury, not a trading fee"
       ]
     }
   ]

@@ -2,8 +2,8 @@
   "schema_version": 1,
   "diagram_type": "dataflow",
   "meta": {
-    "title": "双模块咬合：uAsset 是血线",
-    "locale": "zh-CN",
+    "title": "Two modules interlocked: uAsset is the lifeline",
+    "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/ecosystem-bite.html",
     "viewBox": [
@@ -14,11 +14,11 @@
       "mode": "auto",
       "entries": {
         "default": {
-          "label": "模块与流程",
+          "label": "Modules and flows",
           "visible": true
         },
         "database": {
-          "label": "uAsset 资产",
+          "label": "uAsset assets",
           "visible": true
         }
       }
@@ -26,24 +26,24 @@
   },
   "stages": [
     {
-      "label": "OutStake 供给端"
+      "label": "OutStake supply side"
     },
     {
-      "label": "铸出 uAsset"
+      "label": "Mint uAsset"
     },
     {
-      "label": "血线"
+      "label": "Lifeline"
     },
     {
-      "label": "Memeverse 用途端"
+      "label": "Memeverse use side"
     }
   ],
   "nodes": [
     {
       "id": "supply",
       "type": "external",
-      "label": "OutStake 供给端",
-      "sublabel": "多协议生息资产",
+      "label": "OutStake supply side",
+      "sublabel": "multi-protocol yield assets",
       "tag": "wstETH · sUSDS · sUSDe…",
       "stage": 0,
       "row": 1,
@@ -52,8 +52,8 @@
     {
       "id": "mint",
       "type": "backend",
-      "label": "铸出 uAsset",
-      "sublabel": "创世质押 · PSM",
+      "label": "Mint uAsset",
+      "sublabel": "Genesis Staking · PSM",
       "stage": 1,
       "row": 1
     },
@@ -61,19 +61,19 @@
       "id": "uasset",
       "type": "database",
       "label": "uAsset",
-      "sublabel": "UETH／UUSD／UBNB",
-      "tag": "连接两个模块的血线",
+      "sublabel": "UETH/UUSD/UBNB",
+      "tag": "lifeline between modules",
       "stage": 2,
       "row": 1
     },
     {
       "id": "memeverse",
       "type": "backend",
-      "label": "Memeverse 用途端",
-      "sublabel": "四池 · 杠杆创世 · Staking · DAO",
+      "label": "Memeverse use side",
+      "sublabel": "4 pools · leverage · Staking · DAO",
       "stage": 3,
       "row": 1,
-      "width": 140
+      "width": 160
     }
   ],
   "flows": [
@@ -81,21 +81,25 @@
       "id": "supply-mint",
       "from": "supply",
       "to": "mint",
-      "label": "创世质押 / PSM",
-      "variant": "emphasis"
+      "label": "Genesis Staking / PSM",
+      "variant": "emphasis",
+      "labelAt": [
+        211,
+        314
+      ]
     },
     {
       "id": "mint-uasset",
       "from": "mint",
       "to": "uasset",
-      "label": "铸出",
+      "label": "mint",
       "variant": "emphasis"
     },
     {
       "id": "uasset-memeverse",
       "from": "uasset",
       "to": "memeverse",
-      "label": "创世资金 · 杠杆利息 · 预购 · 结算计价",
+      "label": "Genesis funding · leverage interest · Preorder · settlement denomination",
       "variant": "emphasis",
       "labelAt": [
         638,
@@ -106,7 +110,7 @@
       "id": "bite-back",
       "from": "memeverse",
       "to": "uasset",
-      "label": "供需双向咬合（非收益回流）",
+      "label": "Two-way supply-demand interlock (yields do not flow back)",
       "variant": "dashed",
       "fromSide": "bottom",
       "toSide": "bottom",
@@ -120,29 +124,29 @@
   "cards": [
     {
       "dot": "emerald",
-      "title": "供需双向咬合",
+      "title": "Two-way supply-demand interlock",
       "items": [
-        "OutStake 铸出 uAsset，Memeverse 消耗 uAsset",
-        "Memeverse 让 uAsset 有用 → 持有它有价值 → 更多人去 OutStake 铸造",
-        "OutStake 供给越足 → Memeverse 启动越顺"
+        "OutStake mints uAsset; Memeverse consumes it",
+        "Memeverse makes uAsset useful → holding it has value → more people mint on OutStake",
+        "The deeper OutStake's supply → the smoother Memeverse launches"
       ]
     },
     {
       "dot": "cyan",
-      "title": "收益不互相回流",
+      "title": "Yields do not flow back and forth",
       "items": [
-        "两个模块收益各自独立闭环",
-        "虚线咬合的是供需，不是收益分配",
-        "OutStake 参与者赚抵押生息敞口与储蓄利息，详见增长飞轮"
+        "Each module's yield loop is independent",
+        "The dashed interlock is supply and demand, not yield distribution",
+        "OutStake participants earn yield exposure on collateral and savings interest; see the growth flywheel"
       ]
     },
     {
       "dot": "violet",
-      "title": "uAsset 三兄弟",
+      "title": "The uAsset trio",
       "items": [
-        "UETH／UUSD／UBNB 分别锚定 ETH／USD／BNB",
-        "锚定型稳定币体系，基于 LayerZero OFT 跨链流转",
-        "是连接两个模块的血线"
+        "UETH/UUSD/UBNB are pegged to ETH/USD/BNB respectively",
+        "A pegged stablecoin system, moving cross-chain via LayerZero OFT",
+        "It is the lifeline connecting the two modules"
       ]
     }
   ]

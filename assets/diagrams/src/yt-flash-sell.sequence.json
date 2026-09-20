@@ -2,10 +2,11 @@
   "schema_version": 1,
   "diagram_type": "sequence",
   "meta": {
-    "title": "卖 YT：买 PT → 合并 → 还 POL（单笔原子交易）",
-    "locale": "zh-CN",
+    "title": "Sell YT: buy PT → merge → repay POL (one atomic transaction)",
+    "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/yt-flash-sell.html",
+    "column_fit": "spread",
     "viewBox": [
       820,
       500
@@ -15,20 +16,20 @@
     {
       "id": "user",
       "type": "external",
-      "label": "用户",
-      "sublabel": "设最低收到下限"
+      "label": "User",
+      "sublabel": "Sets minimum-receive floor"
     },
     {
       "id": "pool",
       "type": "database",
-      "label": "PT/POL 池",
-      "sublabel": "复用流动性"
+      "label": "PT/POL pool",
+      "sublabel": "Reuses liquidity"
     },
     {
       "id": "merge",
       "type": "backend",
-      "label": "合并",
-      "sublabel": "1 PT＋1 YT ＝ 1 POL"
+      "label": "Merge",
+      "sublabel": "1 PT + 1 YT = 1 POL"
     }
   ],
   "messages": [
@@ -37,8 +38,8 @@
       "from": "user",
       "to": "pool",
       "y": 185,
-      "label": "买入 y 个 PT，花 Q 个 POL",
-      "note": "这 Q 个 POL 是「借」的",
+      "label": "Buy y PT for Q POL",
+      "note": "This Q POL is \"borrowed\"",
       "variant": "emphasis"
     },
     {
@@ -46,15 +47,15 @@
       "from": "user",
       "to": "merge",
       "y": 235,
-      "label": "y 个 PT＋你的 y 个 YT 合并",
-      "note": "变回 y 个 POL"
+      "label": "Merge y PT + your y YT",
+      "note": "Back into y POL"
     },
     {
       "id": "repay",
       "from": "user",
       "to": "pool",
       "y": 285,
-      "label": "归还 Q 个 POL",
+      "label": "Repay Q POL",
       "variant": "return"
     },
     {
@@ -62,37 +63,37 @@
       "from": "pool",
       "to": "user",
       "y": 330,
-      "label": "到手 y − Q 个 POL",
-      "note": "显示价仅供参考，实际以成交时状态为准",
+      "label": "Receive y − Q POL",
+      "note": "Displayed price is indicative only; execution follows the pool state at fill time",
       "variant": "return"
     }
   ],
   "cards": [
     {
       "dot": "cyan",
-      "title": "收款与保护",
+      "title": "Receipt and protection",
       "items": [
-        "卖出设最低收到下限，另可设保护线与过期时限，低于即整笔回滚",
-        "报价仅供参考，未超保护线仍按更差成交（MEV／市场变动）",
-        "单笔原子执行：要么全部完成，要么分毫不差回滚"
+        "A sell sets a minimum-receive floor; you can also set a price-protection limit with an expiry, and falling below it rolls back the whole transaction",
+        "Quotes are indicative only; within the protection limit the fill can still be worse (MEV / market moves)",
+        "One atomic execution: either everything completes, or it rolls back unchanged"
       ]
     },
     {
       "dot": "violet",
-      "title": "费用与成交",
+      "title": "Fees and fills",
       "items": [
-        "一次底层交易一次费，按完整 PT 腿规模计（相对本金放大）",
-        "受池深度影响，任意数量不保证成交（诚实失败）",
-        "费率规则与普通 PT/POL 交易完全一致"
+        "One underlying trade, one fee, charged on the full PT-leg size (amplified relative to the principal)",
+        "Fills depend on pool depth; no size is guaranteed to execute (clean failure)",
+        "Fee rules are exactly those of a normal PT/POL trade"
       ]
     },
     {
       "dot": "rose",
-      "title": "前置与范围",
+      "title": "Preconditions and scope",
       "items": [
-        "仅锁定期可用",
-        "智能账户会话前置",
-        "到手 y − Q 个 POL，Q 越大净得越少"
+        "Available only during the Locked phase",
+        "Smart-account session precondition",
+        "Receive y − Q POL; the larger Q, the less you net"
       ]
     }
   ]

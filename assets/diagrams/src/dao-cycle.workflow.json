@@ -2,19 +2,19 @@
   "schema_version": 1,
   "diagram_type": "workflow",
   "meta": {
-    "title": "DAO 周期激励：一个周期的闭环",
-    "locale": "zh-CN",
+    "title": "DAO epoch rewards: one epoch, start to finish",
+    "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/dao-cycle.html",
     "legend": {
       "mode": "auto",
       "entries": {
         "external": {
-          "label": "用户操作",
+          "label": "User actions",
           "visible": true
         },
         "backend": {
-          "label": "协议动作",
+          "label": "Protocol actions",
           "visible": true
         }
       }
@@ -23,11 +23,11 @@
   "lanes": [
     {
       "id": "vote",
-      "label": "质押与投票（周期 90 天 · 固定）"
+      "label": "Staking and voting (epoch 90 days · fixed)"
     },
     {
       "id": "claim",
-      "label": "结算与领取"
+      "label": "Settlement and claiming"
     }
   ],
   "nodes": [
@@ -37,8 +37,8 @@
       "col": 0,
       "type": "external",
       "width": 96,
-      "label": "质押份额",
-      "sublabel": "质押进收益库"
+      "label": "Stake shares",
+      "sublabel": "into the YieldVault"
     },
     {
       "id": "delegate",
@@ -46,8 +46,8 @@
       "col": 1,
       "type": "external",
       "width": 110,
-      "label": "完成委托",
-      "sublabel": "不委托无票权，仍计入基数"
+      "label": "Delegate votes",
+      "sublabel": "no votes; counts in base"
     },
     {
       "id": "vote",
@@ -55,8 +55,8 @@
       "col": 3,
       "type": "external",
       "width": 120,
-      "label": "期内投票",
-      "sublabel": "票计入当期周期"
+      "label": "Vote this epoch",
+      "sublabel": "votes count this epoch"
     },
     {
       "id": "finalize",
@@ -64,8 +64,8 @@
       "col": 5,
       "type": "external",
       "width": 110,
-      "label": "触发结算",
-      "sublabel": "任何人可发起，自付 gas"
+      "label": "Settle the epoch",
+      "sublabel": "anyone; pays own gas"
     },
     {
       "id": "gate",
@@ -73,8 +73,8 @@
       "col": 5,
       "type": "backend",
       "width": 110,
-      "label": "三条件门",
-      "sublabel": "币种纳入／有入账／有票数"
+      "label": "3-condition gate",
+      "sublabel": "enrolled / revenue / votes"
     },
     {
       "id": "allocate",
@@ -82,8 +82,8 @@
       "col": 3,
       "type": "backend",
       "width": 120,
-      "label": "划为奖励池",
-      "sublabel": "默认 25%，治理可调"
+      "label": "Allocate rewards",
+      "sublabel": "25% default; governance-set"
     },
     {
       "id": "claim",
@@ -91,8 +91,8 @@
       "col": 1,
       "type": "external",
       "width": 106,
-      "label": "主动领取",
-      "sublabel": "按票数占比，仅限本人"
+      "label": "Active claim",
+      "sublabel": "by vote share, self-claim"
     },
     {
       "id": "rollover",
@@ -100,8 +100,8 @@
       "col": 0,
       "type": "backend",
       "width": 96,
-      "label": "并入国库",
-      "sublabel": "下一周期再划拨"
+      "label": "Into treasury",
+      "sublabel": "allocated next epoch"
     }
   ],
   "edges": [
@@ -116,7 +116,7 @@
     {
       "from": "vote",
       "to": "finalize",
-      "label": "周期结束",
+      "label": "Epoch ends",
       "labelAt": [
         530,
         111
@@ -131,18 +131,18 @@
     {
       "from": "gate",
       "to": "allocate",
-      "label": "三条件齐备",
+      "label": "All three conditions hold",
       "fromSide": "left",
       "toSide": "right",
       "labelAt": [
         530,
-        224
+        283
       ]
     },
     {
       "from": "gate",
       "to": "rollover",
-      "label": "缺一：全额滚存",
+      "label": "One missing: full rollover",
       "fromSide": "bottom",
       "toSide": "right",
       "via": [
@@ -171,12 +171,12 @@
     {
       "from": "allocate",
       "to": "claim",
-      "label": "窗口内",
+      "label": "Within the window",
       "fromSide": "left",
       "toSide": "right",
       "labelAt": [
         327,
-        224
+        213
       ]
     },
     {
@@ -192,7 +192,7 @@
     {
       "from": "rollover",
       "to": "gate",
-      "label": "下一周期再划拨",
+      "label": "Re-allocated next epoch",
       "variant": "dashed",
       "fromSide": "bottom",
       "toSide": "right",
@@ -223,29 +223,29 @@
   "cards": [
     {
       "dot": "emerald",
-      "title": "谁有票权",
+      "title": "Who has voting power",
       "items": [
-        "质押进收益库后，委托给自己或代表才产生票权",
-        "未委托无票权，但计入投票基数，抬高法定人数门槛",
-        "投票、触发结算、领取都是链上操作，自付 gas"
+        "After staking into the YieldVault, shares carry votes only once delegated to yourself or a representative",
+        "Undelegated shares carry no votes but still count toward the voting base, raising the quorum threshold",
+        "Voting, triggering settlement, and claiming are all on-chain operations; you pay your own gas"
       ]
     },
     {
       "dot": "cyan",
-      "title": "三条件门",
+      "title": "Three-condition gate",
       "items": [
-        "币种纳入奖励范围、当期国库有入账、当期有票数，缺一不划拨",
-        "缺一时国库全额滚存，下一周期再参与划拨",
-        "划拨比例默认 25%，可由治理调整"
+        "The token is enrolled in rewards, the epoch's treasury took in revenue, and votes were cast; miss one and nothing is allocated",
+        "When one is missing, the treasury amount rolls over in full and is allocated again next epoch",
+        "The allocation ratio is 25% by default and can be adjusted by governance"
       ]
     },
     {
       "dot": "rose",
-      "title": "只认紧邻上一周期",
+      "title": "Only the immediately preceding epoch",
       "items": [
-        "结算后在领取窗口内主动领取，仅限本人",
-        "只认紧邻上一周期，错过并入国库，无补领",
-        "窗口由下一次结算关闭，最短一个周期"
+        "After settlement, claim actively within the claim window; only your own share",
+        "Only the immediately preceding epoch counts; miss it and the amount rolls into the treasury, with no reissue",
+        "The window closes at the next settlement and lasts at least one epoch"
       ]
     }
   ]

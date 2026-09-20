@@ -2,15 +2,15 @@
   "schema_version": 1,
   "diagram_type": "workflow",
   "meta": {
-    "title": "实际费率怎么构成",
-    "locale": "zh-CN",
+    "title": "How the actual fee is composed",
+    "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/hook-fee.html",
     "legend": {
       "mode": "auto",
       "entries": {
         "backend": {
-          "label": "费率分量与合成",
+          "label": "Fee components and composition",
           "visible": true
         }
       }
@@ -19,15 +19,15 @@
   "lanes": [
     {
       "id": "components",
-      "label": "动态费＝基础费率＋三项动态分量"
+      "label": "Dynamic fee = base fee + three dynamic components"
     },
     {
       "id": "actual",
-      "label": "实际费率＝max（动态费，开池衰减费）"
+      "label": "Actual fee = max(dynamic fee, pool-opening decay fee)"
     },
     {
       "id": "exempt",
-      "label": "EWVWAP 豁免（首笔不豁免）"
+      "label": "EWVWAP exemption (first trade not exempt)"
     }
   ],
   "nodes": [
@@ -37,8 +37,8 @@
       "col": 0,
       "type": "backend",
       "width": 96,
-      "label": "基础费率 1%",
-      "tag": "合约固定"
+      "label": "Base fee 1%",
+      "tag": "Fixed in contract"
     },
     {
       "id": "adverse",
@@ -46,8 +46,8 @@
       "col": 1,
       "type": "backend",
       "width": 110,
-      "label": "＋逆向冲击费",
-      "sublabel": "3 秒累积合并，拆单无效"
+      "label": "+ adverse fee",
+      "sublabel": "3s window; splitting fails"
     },
     {
       "id": "vol",
@@ -55,8 +55,8 @@
       "col": 3,
       "type": "backend",
       "width": 110,
-      "label": "＋波动费",
-      "sublabel": "按池，随波动上升"
+      "label": "+ volatility fee",
+      "sublabel": "per pool; volatility-linked"
     },
     {
       "id": "short",
@@ -64,8 +64,8 @@
       "col": 5,
       "type": "backend",
       "width": 110,
-      "label": "＋短期冲击费",
-      "sublabel": "超 2% 部分计费，15 秒衰减"
+      "label": "+ short-term fee",
+      "sublabel": "above 2% only; 15s decay"
     },
     {
       "id": "dyn",
@@ -73,8 +73,8 @@
       "col": 5,
       "type": "backend",
       "width": 110,
-      "label": "＝动态费",
-      "sublabel": "四项相加"
+      "label": "= dynamic fee",
+      "sublabel": "sum of the four"
     },
     {
       "id": "actual",
@@ -82,9 +82,9 @@
       "col": 3,
       "type": "backend",
       "width": 110,
-      "label": "实际费率",
-      "sublabel": "取较高者",
-      "tag": "上限 100% · 固定"
+      "label": "Actual fee",
+      "sublabel": "takes the higher one",
+      "tag": "Cap 100% · fixed"
     },
     {
       "id": "decay",
@@ -92,8 +92,8 @@
       "col": 1,
       "type": "backend",
       "width": 110,
-      "label": "开池衰减费",
-      "sublabel": "50%→1%，当前默认可调"
+      "label": "Pool-opening fee",
+      "sublabel": "50%→1%, defaults adjustable"
     },
     {
       "id": "ewvap",
@@ -101,9 +101,9 @@
       "col": 3,
       "type": "backend",
       "width": 110,
-      "label": "EWVWAP 豁免",
-      "sublabel": "有历史＋回归均衡 → 只付 1%",
-      "tag": "首笔不豁免"
+      "label": "EWVWAP exemption",
+      "sublabel": "history + reversal → 1%",
+      "tag": "First trade not exempt"
     }
   ],
   "edges": [
@@ -136,7 +136,7 @@
     {
       "from": "ewvap",
       "to": "actual",
-      "label": "豁免：只付基础费率",
+      "label": "Exempt: base fee only",
       "variant": "dashed",
       "fromSide": "top",
       "toSide": "bottom",
@@ -149,29 +149,29 @@
   "cards": [
     {
       "dot": "cyan",
-      "title": "四个分量怎么算",
+      "title": "How the four components are computed",
       "items": [
-        "逆向冲击费按地址×池，3 秒窗口累积合并，拆单无效",
-        "波动费按池，随波动上升；短期冲击费按池，超过 2% 部分计费",
-        "短期冲击量 15 秒内衰减，快速连续冲击叠加；总上限 100% · 固定"
+        "The adverse impact fee is tracked per address × pool; impacts accumulate within a 3-second window, so order splitting fails",
+        "The volatility fee is per pool and rises with volatility; the short-term impact fee is per pool, charging only the portion above 2%",
+        "Short-term impact decays over 15 seconds and rapid consecutive impacts stack; total cap 100% · fixed"
       ]
     },
     {
       "dot": "violet",
-      "title": "豁免与底价",
+      "title": "Exemption and floor",
       "items": [
-        "EWVWAP：池内有成交历史且交易让价格回归均衡 → 跳过全部动态费只付 1%",
-        "首笔交易（无成交历史）不豁免",
-        "衰减配置低于 1% 时，1% 底价仍生效"
+        "EWVWAP: with trade history and a trade pointing back toward equilibrium, all dynamic fees are skipped and only 1% is paid",
+        "The first trade (no trade history) is not exempt",
+        "If the decay config drops below 1%, the 1% floor still applies"
       ]
     },
     {
       "dot": "amber",
-      "title": "开池衰减费",
+      "title": "Pool-opening decay fee",
       "items": [
-        "默认初始 50%、15 分钟衰减至 1%（当前默认，协议方可调）",
-        "衰减窗内 EWVWAP 豁免取基础费率与当前开池费的较高者",
-        "衰减曲线为归一化指数衰减"
+        "Starts at 50% by default and decays to 1% within 15 minutes (current defaults, adjustable by the protocol)",
+        "Inside the decay window, the EWVWAP exemption takes the higher of the base fee and the current opening fee",
+        "The decay curve is a normalized exponential decay"
       ]
     }
   ]

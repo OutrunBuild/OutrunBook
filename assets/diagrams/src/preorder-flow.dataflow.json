@@ -2,23 +2,23 @@
   "schema_version": 1,
   "diagram_type": "dataflow",
   "meta": {
-    "title": "预购：聚合成交与线性解锁",
-    "locale": "zh-CN",
+    "title": "Preorder: aggregated execution and linear unlock",
+    "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/preorder-flow.html",
     "legend": {
       "mode": "auto",
       "entries": {
         "default": {
-          "label": "资金与流程",
+          "label": "Funds & flow",
           "visible": true
         },
         "database": {
-          "label": "池",
+          "label": "Pools",
           "visible": false
         },
         "security": {
-          "label": "失败分支",
+          "label": "Failure branch",
           "visible": true
         }
       }
@@ -30,85 +30,85 @@
   },
   "stages": [
     {
-      "label": "创世期"
+      "label": "Genesis"
     },
     {
-      "label": "启动交易"
+      "label": "Launch transaction"
     },
     {
-      "label": "聚合结算"
+      "label": "Aggregated settlement"
     },
     {
-      "label": "分配与解锁"
+      "label": "Distribution & unlock"
     },
     {
-      "label": "主动领取"
+      "label": "Active claim"
     }
   ],
   "nodes": [
     {
       "id": "users",
       "type": "external",
-      "label": "多用户预购资金",
-      "sublabel": "创世期存入，独立记账",
-      "tag": "先到先得",
+      "label": "Preorder funds",
+      "sublabel": "Ledgered separately",
+      "tag": "First come, first served",
       "stage": 0,
       "row": 1
     },
     {
       "id": "pool",
       "type": "database",
-      "label": "建立主池",
-      "sublabel": "同一笔启动交易",
+      "label": "Primary pool",
+      "sublabel": "Same launch transaction",
       "stage": 1,
       "row": 0
     },
     {
       "id": "aggregate",
       "type": "backend",
-      "label": "聚合第一笔买入",
-      "sublabel": "固定 1% 结算费 · 固定",
-      "tag": "LP 65%／协议 35%",
+      "label": "Aggregated buy",
+      "sublabel": "Fixed 1% settlement fee",
+      "tag": "LP 65% / protocol 35%",
       "stage": 2,
       "row": 1
     },
     {
       "id": "distribute",
       "type": "backend",
-      "label": "按资金占比分配",
-      "sublabel": "共享平均成交结果",
+      "label": "Pro rata by funds",
+      "sublabel": "Shared average result",
       "stage": 3,
       "row": 0
     },
     {
       "id": "vesting",
       "type": "backend",
-      "label": "托管线性解锁",
-      "sublabel": "时长由协议配置",
+      "label": "Linear unlock",
+      "sublabel": "Protocol-set duration",
       "stage": 3,
       "row": 2
     },
     {
       "id": "claim",
       "type": "external",
-      "label": "主动领取",
-      "sublabel": "未领的一直保留",
+      "label": "Active claim",
+      "sublabel": "Stays claimable",
       "stage": 4,
       "row": 1
     },
     {
       "id": "refund",
       "type": "security",
-      "label": "全额原路退回",
-      "sublabel": "退给参与记录的受益人",
+      "label": "Refunded in full",
+      "sublabel": "Preorder beneficiary",
       "stage": 1,
       "row": 3
     },
     {
       "id": "rollback",
       "type": "security",
-      "label": "整笔启动回滚",
-      "sublabel": "无部分结算",
+      "label": "Launch reverts",
+      "sublabel": "No partial settlement",
       "stage": 2,
       "row": 3
     }
@@ -118,7 +118,7 @@
       "id": "agg-buy",
       "from": "users",
       "to": "aggregate",
-      "label": "全部预购资金聚合",
+      "label": "All preorder funds aggregated",
       "variant": "emphasis",
       "via": [
         [
@@ -135,7 +135,7 @@
       "id": "pool-first",
       "from": "pool",
       "to": "aggregate",
-      "label": "主池建立后",
+      "label": "After primary pool created",
       "labelAt": [
         470,
         200
@@ -145,25 +145,25 @@
       "id": "agg-dist",
       "from": "aggregate",
       "to": "distribute",
-      "label": "所得 Memecoin"
+      "label": "Memecoin bought"
     },
     {
       "id": "dist-vest",
       "from": "distribute",
       "to": "vesting",
-      "label": "托管"
+      "label": "Escrowed"
     },
     {
       "id": "vest-claim",
       "from": "vesting",
       "to": "claim",
-      "label": "逐步可领"
+      "label": "Gradually claimable"
     },
     {
       "id": "users-refund",
       "from": "users",
       "to": "refund",
-      "label": "创世未达标",
+      "label": "Genesis below threshold",
       "variant": "dashed",
       "fromSide": "bottom",
       "toSide": "left",
@@ -182,7 +182,7 @@
       "id": "agg-rollback",
       "from": "aggregate",
       "to": "rollback",
-      "label": "无法完整成交",
+      "label": "Cannot execute in full",
       "variant": "dashed",
       "fromSide": "bottom",
       "toSide": "top"
@@ -191,29 +191,29 @@
   "cards": [
     {
       "dot": "cyan",
-      "title": "容量与口径",
+      "title": "Capacity and basis",
       "items": [
-        "预购总容量＝（普通创世资金＋杠杆债务本金）× 70% × 协议配置比例",
-        "先到先得，预购资金本身不计入容量基数",
-        "独立记账，不参与成功判定"
+        "Total preorder capacity = (standard Genesis capital + leverage debt principal) × 70% × protocol-configured ratio",
+        "First come, first served; preorder funds themselves do not count toward the capacity base",
+        "Ledgered separately; not part of the success check"
       ]
     },
     {
       "dot": "violet",
-      "title": "固定的是费率",
+      "title": "The fee rate is fixed",
       "items": [
-        "固定 1% 结算费 · 固定，跳过动态费率与开池高费率",
-        "仍按 LP 65%／协议 35% 拆分，不参与返佣",
-        "公开交易无法插队，固定的是费率不是价格"
+        "Fixed 1% settlement fee · fixed, bypassing dynamic fees and elevated pool-opening fees",
+        "Still split LP 65% / protocol 35%; not eligible for referral rebate",
+        "Public trading cannot jump the queue; the fee rate is fixed, not the price"
       ]
     },
     {
       "dot": "rose",
-      "title": "失败与保留",
+      "title": "Failure and retention",
       "items": [
-        "创世未达标：原路全额退给参与记录的受益人",
-        "无法完整成交：整笔启动回滚，无部分结算",
-        "线性解锁期内未领取的部分一直保留、可累计"
+        "Genesis below threshold: refunded in full to the preorder record's beneficiary",
+        "Cannot execute in full: the entire launch reverts, no partial settlement",
+        "Unclaimed amounts during the linear unlock stay reserved and keep accumulating"
       ]
     }
   ]

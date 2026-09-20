@@ -2,8 +2,8 @@
   "schema_version": 1,
   "diagram_type": "sequence",
   "meta": {
-    "title": "买 YT：借 PT → 拆分 → 还 PT（单笔原子交易）",
-    "locale": "zh-CN",
+    "title": "Buy YT: borrow PT → split → repay PT (one atomic transaction)",
+    "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/yt-flash-buy.html",
     "viewBox": [
@@ -15,20 +15,20 @@
     {
       "id": "user",
       "type": "external",
-      "label": "用户",
-      "sublabel": "设最高支付上限"
+      "label": "User",
+      "sublabel": "Sets maximum-pay cap"
     },
     {
       "id": "pool",
       "type": "database",
-      "label": "PT/POL 池",
-      "sublabel": "复用流动性"
+      "label": "PT/POL pool",
+      "sublabel": "Reuses liquidity"
     },
     {
       "id": "split",
       "type": "backend",
-      "label": "拆分",
-      "sublabel": "1 POL ＝ 1 PT＋1 YT"
+      "label": "Split",
+      "sublabel": "1 POL = 1 PT + 1 YT"
     }
   ],
   "messages": [
@@ -37,8 +37,8 @@
       "from": "user",
       "to": "pool",
       "y": 185,
-      "label": "卖出 y 个 PT，换 R 个 POL",
-      "note": "这 y 个 PT 是「借」的，尚未持有",
+      "label": "Sell y PT for R POL",
+      "note": "These y PT are \"borrowed\": you hold none yet",
       "variant": "emphasis"
     },
     {
@@ -46,15 +46,15 @@
       "from": "user",
       "to": "split",
       "y": 235,
-      "label": "凑齐 y 个 POL 去拆分",
-      "note": "自己掏的钱＋R → y 个 PT＋y 个 YT"
+      "label": "Put up y POL to split",
+      "note": "Your own funds + R → y PT + y YT"
     },
     {
       "id": "repay",
       "from": "user",
       "to": "pool",
       "y": 285,
-      "label": "用拆出的 y 个 PT 归还借款",
+      "label": "Repay with the y PT from the split",
       "variant": "return"
     },
     {
@@ -62,37 +62,37 @@
       "from": "split",
       "to": "user",
       "y": 330,
-      "label": "到手 y 个 YT",
-      "note": "实际支付 y − R 个 POL",
+      "label": "Receive y YT",
+      "note": "You actually pay y − R POL",
       "variant": "return"
     }
   ],
   "cards": [
     {
       "dot": "cyan",
-      "title": "支付与保护",
+      "title": "Payment and protection",
       "items": [
-        "买入设最高支付上限，另可设保护线与过期时限，超出整笔回滚",
-        "报价仅供参考，未超保护线仍按更差成交（MEV／市场变动）",
-        "不预扣、不退款：上限只是护栏，只拉取实际成本"
+        "A buy sets a maximum-pay cap; you can also set a price-protection limit with an expiry, and breaching it rolls back the whole transaction",
+        "Quotes are indicative only; within the protection limit the fill can still be worse (MEV / market moves)",
+        "No pre-deduction, no refund: the cap is a guardrail; only the actual cost is pulled"
       ]
     },
     {
       "dot": "violet",
-      "title": "费用与成交",
+      "title": "Fees and fills",
       "items": [
-        "一次底层交易一次费，按完整 PT 腿规模计（相对本金放大）",
-        "受池深度影响，任意数量不保证成交（诚实失败）",
-        "费率规则与普通 PT/POL 交易完全一致"
+        "One underlying trade, one fee, charged on the full PT-leg size (amplified relative to the principal)",
+        "Fills depend on pool depth; no size is guaranteed to execute (clean failure)",
+        "Fee rules are exactly those of a normal PT/POL trade"
       ]
     },
     {
       "dot": "rose",
-      "title": "前置与范围",
+      "title": "Preconditions and scope",
       "items": [
-        "仅锁定期可用",
-        "智能账户会话前置",
-        "到手 y 个 YT，实际支付 y − R 个 POL"
+        "Available only during the Locked phase",
+        "Smart-account session precondition",
+        "Receive y YT, actually pay y − R POL"
       ]
     }
   ]

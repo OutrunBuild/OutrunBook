@@ -2,31 +2,31 @@
   "schema_version": 1,
   "diagram_type": "lifecycle",
   "meta": {
-    "title": "Memecoin 生命周期：从创世到常态运行",
-    "locale": "zh-CN",
+    "title": "Memecoin lifecycle: from Genesis to steady state",
+    "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/verse-lifecycle.html"
   },
   "lanes": [
     {
       "id": "main",
-      "label": "阶段主轨"
+      "label": "Main track"
     },
     {
       "id": "branch",
-      "label": "阶段分流"
+      "label": "Branch track"
     },
     {
       "id": "terminal",
-      "label": "未达标出口"
+      "label": "Missed-threshold exit"
     }
   ],
   "states": [
     {
       "id": "genesis",
       "type": "start",
-      "label": "创世期",
-      "sublabel": "普通创世／杠杆创世／预购",
+      "label": "Genesis",
+      "sublabel": "Standard/leveraged/Preorder",
       "lane": "main",
       "col": 0,
       "step": "01"
@@ -34,18 +34,18 @@
     {
       "id": "locked",
       "type": "active",
-      "label": "锁定期",
-      "sublabel": "365 天 · 固定",
+      "label": "Locked",
+      "sublabel": "365 days · fixed",
       "lane": "main",
       "col": 1,
       "step": "02",
-      "tag": "四池建立"
+      "tag": "Four pools deployed"
     },
     {
       "id": "unlocked",
       "type": "active",
-      "label": "解锁期",
-      "sublabel": "统一结算＋24 小时保护窗",
+      "label": "Unlocked",
+      "sublabel": "Unified settlement + 24h",
       "lane": "main",
       "col": 2,
       "step": "03"
@@ -53,8 +53,8 @@
     {
       "id": "normal",
       "type": "success",
-      "label": "常态运行",
-      "sublabel": "终态",
+      "label": "Steady state",
+      "sublabel": "Terminal state",
       "lane": "main",
       "col": 3,
       "step": "04"
@@ -62,8 +62,8 @@
     {
       "id": "refund",
       "type": "failure",
-      "label": "退款",
-      "sublabel": "三类资金全额退还",
+      "label": "Refund",
+      "sublabel": "Three fund classes refunded",
       "lane": "terminal",
       "col": 0
     }
@@ -73,7 +73,7 @@
       "id": "to-locked-flash",
       "from": "genesis",
       "to": "locked",
-      "label": "快速创世：截止前达标可提前触发",
+      "label": "Fast Genesis: met before deadline, triggers early",
       "route": "top-channel",
       "fromSide": "top",
       "toSide": "top",
@@ -86,9 +86,9 @@
       "id": "to-locked-end",
       "from": "genesis",
       "to": "locked",
-      "label": "未开启快速创世：截止后触发",
+      "label": "No Fast Genesis: at deadline",
       "labelAt": [
-        171,
+        178,
         205
       ]
     },
@@ -96,7 +96,7 @@
       "id": "to-refund",
       "from": "genesis",
       "to": "refund",
-      "label": "截止后两门槛均未达标",
+      "label": "After deadline, neither threshold met",
       "fromSide": "bottom",
       "toSide": "top"
     },
@@ -104,44 +104,44 @@
       "id": "to-unlocked",
       "from": "locked",
       "to": "unlocked",
-      "label": "锁定期满，任何人触发统一结算",
-      "labelDy": 55
+      "label": "Lock-up ends; anyone triggers unified settlement",
+      "labelDy": 88
     },
     {
       "id": "to-normal",
       "from": "unlocked",
       "to": "normal",
-      "label": "保护窗到期，自动恢复",
-      "note": "公开交易恢复，无需任何交易",
+      "label": "Protection window ends, auto-resume",
+      "note": "Public trading resumes; no transaction needed",
       "labelDy": 55
     }
   ],
   "cards": [
     {
       "dot": "emerald",
-      "title": "门槛是「或」",
+      "title": "Either threshold suffices",
       "items": [
-        "普通创世资金、杠杆利息各自独立与最低成功额度比较",
-        "两者互不相加，任一达标即创世成功",
-        "预购资金与杠杆债务本金不计入门槛"
+        "Standard Genesis capital and leverage interest are each compared independently against the minimum success threshold",
+        "The two are never added together; either one meeting the threshold makes Genesis succeed",
+        "Preorder funds and leverage debt principal do not count toward the threshold"
       ]
     },
     {
       "dot": "cyan",
-      "title": "阶段推进靠交易触发",
+      "title": "Phase advances are transaction-triggered",
       "items": [
-        "除保护窗到期自动恢复外，每次阶段推进都要一笔公开交易触发",
-        "解锁时刻＝创世截止＋365 天（固定），提前进入锁定不改变",
-        "24 小时保护窗从实际进入解锁的那笔交易起算"
+        "Apart from the protection window's automatic resume, every phase advance takes a public transaction to trigger",
+        "Unlock time = Genesis deadline + 365 days (fixed); entering Locked early does not change it",
+        "The 24-hour protection window counts from the transaction that actually enters Unlocked"
       ]
     },
     {
       "dot": "violet",
-      "title": "两条出口",
+      "title": "Two exits",
       "items": [
-        "任一门槛达标：进入锁定期，四池建立",
-        "两门槛均未达标：进入退款，全额退还，无人损失本金",
-        "常态运行为解锁完成后的终态"
+        "Either threshold met: enters Locked, four pools deployed",
+        "Neither threshold met: enters Refund, everything refunded in full, no one loses principal",
+        "Steady state is the terminal state after unlock completes"
       ]
     }
   ]

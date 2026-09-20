@@ -2,120 +2,126 @@
   "schema_version": 1,
   "diagram_type": "dataflow",
   "meta": {
-    "title": "建池资金流：一笔资金如何分成四个池",
-    "locale": "zh-CN",
+    "title": "Pool funding flow: how one allocation of capital is split across four pools",
+    "locale": "en",
     "quality_profile": "standard",
     "output": "assets/diagrams/four-pools.html",
     "legend": {
       "mode": "auto",
       "entries": {
         "default": {
-          "label": "资金与拆分环节",
+          "label": "Funds & split steps",
           "visible": true
         },
         "database": {
-          "label": "流动性池",
+          "label": "Liquidity pools",
           "visible": true
         }
       }
     },
     "viewBox": [
-      1240,
+      1080,
       640
     ]
   },
   "stages": [
     {
-      "label": "建池资金"
+      "label": "Pool funding"
     },
     {
-      "label": "首层拆分"
+      "label": "First split"
     },
     {
-      "label": "铸出 POL 与辅助注资"
+      "label": "POL mint & auxiliary funding"
     },
     {
-      "label": "PT／YT 拆分"
+      "label": "PT/YT split"
     },
     {
-      "label": "四池与初始 YT"
+      "label": "Four pools & initial YT"
     }
   ],
   "nodes": [
     {
       "id": "funds",
       "type": "external",
-      "label": "建池资金",
-      "sublabel": "普通创世资金＋杠杆债务本金",
-      "tag": "预购、杠杆利息不计入",
+      "label": "Pool funding",
+      "sublabel": "Genesis capital + leverage",
+      "tag": "Preorder & interest excluded",
       "stage": 0,
-      "row": 2
+      "row": 2,
+      "width": 152
     },
     {
       "id": "mainpool",
       "type": "database",
-      "label": "主池 Memecoin/uAsset",
-      "sublabel": "约 70% · 主交易市场",
+      "label": "Primary Memecoin/uAsset",
+      "sublabel": "~70% · main trading market",
       "stage": 1,
       "row": 1,
-      "width": 140
+      "width": 150
     },
     {
       "id": "aux",
       "type": "backend",
-      "label": "辅助池 uAsset 资金",
-      "sublabel": "约 30%",
+      "label": "Auxiliary uAsset",
+      "sublabel": "~30%",
       "stage": 1,
       "row": 0
     },
     {
       "id": "polmint",
       "type": "backend",
-      "label": "主池铸出 POL",
-      "sublabel": "主池 LP 即 POL",
+      "label": "Primary pool mints POL",
+      "sublabel": "Primary-pool LP is POL",
       "stage": 2,
-      "row": 1
+      "row": 1,
+      "width": 132
     },
     {
       "id": "ptysplit",
       "type": "backend",
-      "label": "拆分 PT＋YT",
-      "sublabel": "YT 按资金占比，余数归杠杆侧",
+      "label": "Split PT + YT",
+      "sublabel": "YT pro rata; remainder to leverage",
       "stage": 3,
       "row": 2,
-      "width": 150
+      "width": 158
     },
     {
       "id": "pool-pol-uasset",
       "type": "database",
-      "label": "POL／uAsset 池",
-      "sublabel": "POL 可交易 · 杠杆结算出口",
+      "label": "POL/uAsset pool",
+      "sublabel": "POL tradable · leverage exit",
       "stage": 4,
-      "row": 0
+      "row": 0,
+      "width": 142
     },
     {
       "id": "pool-pt-uasset",
       "type": "database",
-      "label": "PT／uAsset 池",
-      "sublabel": "本金可单独交易",
+      "label": "PT/uAsset pool",
+      "sublabel": "Principal tradable separately",
       "stage": 4,
-      "row": 1
+      "row": 1,
+      "width": 150
     },
     {
       "id": "ytdist",
       "type": "external",
-      "label": "初始 YT 归创世者",
-      "sublabel": "锁定期内可领，永久可领",
+      "label": "Genesis participants' YT",
+      "sublabel": "Claimable from Locked, permanently",
       "stage": 4,
-      "row": 2
+      "row": 2,
+      "width": 176
     },
     {
       "id": "pool-pt-pol",
       "type": "database",
-      "label": "PT／POL 池",
-      "sublabel": "本金与凭证价格发现",
+      "label": "PT/POL pool",
+      "sublabel": "PT/POL price discovery",
       "stage": 4,
-      "row": 3
+      "row": 3,
+      "width": 120
     }
   ],
   "flows": [
@@ -123,14 +129,14 @@
       "id": "to-main",
       "from": "funds",
       "to": "mainpool",
-      "label": "约 70%",
+      "label": "~70%",
       "variant": "emphasis"
     },
     {
       "id": "to-aux",
       "from": "funds",
       "to": "aux",
-      "label": "约 30%",
+      "label": "~30%",
       "variant": "emphasis",
       "fromSide": "top",
       "toSide": "left",
@@ -149,18 +155,26 @@
       "id": "mint-pol",
       "from": "mainpool",
       "to": "polmint",
-      "label": "铸出 POL"
+      "label": "Mints POL"
     },
     {
       "id": "pol-to-polpool",
       "from": "polmint",
       "to": "pool-pol-uasset",
-      "label": "约 2/7",
+      "label": "~2/7",
       "fromSide": "top",
       "toSide": "top",
       "via": [
         [
           530,
+          214
+        ],
+        [
+          1050,
+          214
+        ],
+        [
+          1050,
           110
         ],
         [
@@ -170,14 +184,14 @@
       ],
       "labelAt": [
         700,
-        102
+        228
       ]
     },
     {
       "id": "pol-to-split",
       "from": "polmint",
       "to": "ptysplit",
-      "label": "约 3/7",
+      "label": "~3/7",
       "labelAt": [
         628,
         328
@@ -187,7 +201,7 @@
       "id": "pol-to-ptpol",
       "from": "polmint",
       "to": "pool-pt-pol",
-      "label": "约 2/7",
+      "label": "~2/7",
       "fromSide": "bottom",
       "toSide": "bottom",
       "via": [
@@ -209,63 +223,84 @@
       "id": "aux-to-polpool",
       "from": "aux",
       "to": "pool-pol-uasset",
-      "label": "uAsset 约 2/3"
+      "label": "uAsset ~2/3"
     },
     {
       "id": "aux-to-ptpool",
       "from": "aux",
       "to": "pool-pt-uasset",
-      "label": "uAsset 约 1/3",
+      "label": "uAsset ~1/3",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "via": [
+        [
+          315,
+          94
+        ],
+        [
+          1060,
+          94
+        ],
+        [
+          1060,
+          330
+        ],
+        [
+          960,
+          330
+        ]
+      ],
       "labelAt": [
-        800,
-        148
+        500,
+        87
       ]
     },
     {
       "id": "split-to-ptuasset",
       "from": "ptysplit",
       "to": "pool-pt-uasset",
-      "label": "PT 约 1/3"
+      "label": "PT ~1/3"
     },
     {
       "id": "split-to-ptpol",
       "from": "ptysplit",
       "to": "pool-pt-pol",
-      "label": "PT 约 2/3"
+      "label": "PT ~2/3"
     },
     {
       "id": "split-to-yt",
       "from": "ptysplit",
       "to": "ytdist",
-      "label": "YT"
+      "label": "YT",
+      "labelDy": 13
     }
   ],
   "cards": [
     {
       "dot": "emerald",
-      "title": "三笔资金各走各路",
+      "title": "Three funds, separate paths",
       "items": [
-        "建池资金＝普通创世资金＋杠杆债务本金",
-        "预购资金单独记账，用于主池建立后的第一笔聚合买入",
-        "成功判定只看普通创世资金或杠杆利息是否单独达标"
+        "Pool funding = standard Genesis capital + leverage debt principal",
+        "Preorder funds are ledgered separately, used for the first aggregated buy after the primary pool is created",
+        "Success depends only on standard Genesis capital or leverage interest independently meeting the threshold"
       ]
     },
     {
       "dot": "cyan",
-      "title": "比例怎么读",
+      "title": "How to read the ratios",
       "items": [
-        "约 70% 进主池，约 30% 作辅助池 uAsset（约 2/3 进 POL/uAsset、约 1/3 进 PT/uAsset）",
-        "主池铸出的 POL 按约 2:3:2 分流，PT 拆分取整差额归 PT/POL 侧",
-        "比例以实际建池成交为准"
+        "About 70% enters the primary pool, about 30% becomes auxiliary-pool uAsset (~2/3 into POL/uAsset, ~1/3 into PT/uAsset)",
+        "The POL minted by the primary pool splits roughly 2:3:2; the PT split's rounding difference goes to the PT/POL side",
+        "Ratios follow the actual deployment execution"
       ]
     },
     {
       "dot": "rose",
-      "title": "剩余资产去向",
+      "title": "Leftover assets",
       "items": [
-        "未用完的 uAsset 注入结算储备金，超过上限部分进国库",
-        "未用完的 Memecoin 销毁",
-        "未用完的 POL／PT 属建池剩余，解锁后按份额领取"
+        "Unused uAsset goes into the settlement reserve; the excess above the cap goes to the treasury",
+        "Leftover Memecoin is burned",
+        "Unused POL/PT is deployment remainder, claimed pro rata after unlock"
       ]
     }
   ]
