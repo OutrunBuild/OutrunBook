@@ -13,11 +13,19 @@
           "label": "Funds & flow",
           "visible": true
         },
+        "emphasis": {
+          "label": "Preorder funds flow",
+          "visible": true
+        },
         "database": {
           "label": "Pools",
           "visible": false
         },
         "security": {
+          "label": "Failure branch",
+          "visible": false
+        },
+        "dashed": {
           "label": "Failure branch",
           "visible": true
         }
@@ -36,7 +44,7 @@
       "label": "Launch transaction"
     },
     {
-      "label": "Aggregated settlement"
+      "label": "Same-tx settlement"
     },
     {
       "label": "Distribution & unlock"
@@ -44,8 +52,7 @@
     {
       "label": "Active claim"
     }
-  ],
-  "nodes": [
+  ],  "nodes": [
     {
       "id": "users",
       "type": "external",
@@ -101,7 +108,7 @@
       "type": "security",
       "label": "Refunded in full",
       "sublabel": "Preorder beneficiary",
-      "stage": 1,
+      "stage": 0,
       "row": 3
     },
     {
@@ -136,9 +143,16 @@
       "from": "pool",
       "to": "aggregate",
       "label": "After primary pool created",
+      "toSide": "top",
+      "via": [
+        [
+          530,
+          157
+        ]
+      ],
       "labelAt": [
-        470,
-        200
+        530,
+        189
       ]
     },
     {
@@ -166,17 +180,7 @@
       "label": "Genesis below threshold",
       "variant": "dashed",
       "fromSide": "bottom",
-      "toSide": "left",
-      "via": [
-        [
-          100,
-          499
-        ],
-        [
-          200,
-          499
-        ]
-      ]
+      "toSide": "top"
     },
     {
       "id": "agg-rollback",

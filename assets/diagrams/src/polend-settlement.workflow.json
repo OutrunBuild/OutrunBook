@@ -6,6 +6,7 @@
     "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/polend-settlement.html",
+    "titleInSvg": true,
     "legend": {
       "mode": "auto",
       "entries": {
@@ -14,7 +15,7 @@
           "visible": true
         },
         "external": {
-          "label": "Anyone can execute",
+          "label": "External action",
           "visible": true
         }
       }
@@ -43,7 +44,7 @@
       "type": "backend",
       "width": 96,
       "label": "Capture fees",
-      "sublabel": "Last tx before unlock"
+      "sublabel": "Last pre-unlock tx"
     },
     {
       "id": "unlock",
@@ -52,7 +53,7 @@
       "type": "backend",
       "width": 110,
       "label": "Enter unlock",
-      "sublabel": "POL unified settlement"
+      "sublabel": "Starts settlement"
     },
     {
       "id": "gsettle",
@@ -61,7 +62,7 @@
       "type": "backend",
       "width": 120,
       "label": "Unified settlement",
-      "sublabel": "Only if leveraged debt"
+      "sublabel": "Skipped if no leverage"
     },
     {
       "id": "protect",
@@ -69,7 +70,7 @@
       "col": 5,
       "type": "backend",
       "width": 110,
-      "label": "Protection window",
+      "label": "Protection",
       "sublabel": "24 hours · fixed"
     },
     {
@@ -88,7 +89,7 @@
       "type": "backend",
       "width": 110,
       "label": "Unwind, recover",
-      "sublabel": "POL burn-redeem; PT → uAsset"
+      "sublabel": "Burn POL; PT → uAsset"
     },
     {
       "id": "repay",
@@ -97,7 +98,7 @@
       "type": "backend",
       "width": 150,
       "label": "Repay leveraged debt",
-      "sublabel": "Recovered uAsset repays and is burned"
+      "sublabel": "Recovered uAsset repays"
     },
     {
       "id": "residual",
@@ -105,8 +106,8 @@
       "col": 5,
       "type": "backend",
       "width": 110,
-      "label": "One-time residual",
-      "sublabel": "Pro rata to interest—forever"
+      "label": "Residual payout",
+      "sublabel": "Pro rata to interest"
     },
     {
       "id": "reserve",
@@ -115,7 +116,7 @@
       "type": "backend",
       "width": 128,
       "label": "Draw reserve",
-      "sublabel": "Capped rounding-level shortfall"
+      "sublabel": "Rounding-level only"
     },
     {
       "id": "rollback",
@@ -132,8 +133,8 @@
       "col": 5,
       "type": "external",
       "width": 110,
-      "label": "Replenish reserve",
-      "sublabel": "Unaffected by protocol pause"
+      "label": "Replenish",
+      "sublabel": "Cap may be raised"
     }
   ],
   "edges": [
@@ -153,20 +154,23 @@
       "from": "gsettle",
       "to": "cut",
       "label": "Runs only with leveraged debt",
-      "labelDx": 8,
       "fromSide": "bottom",
       "toSide": "left",
+      "labelAt": [
+        222,
+        166
+      ],
       "via": [
         [
           430,
           170
         ],
         [
-          20,
+          14,
           170
         ],
         [
-          20,
+          14,
           243
         ]
       ]
@@ -182,8 +186,7 @@
     {
       "from": "repay",
       "to": "residual",
-      "label": "Surplus",
-      "labelDy": 50
+      "label": "Surplus"
     },
     {
       "from": "repay",
@@ -205,40 +208,71 @@
     },
     {
       "from": "reserve",
+      "to": "protect",
+      "label": "Reserve covers it",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [
+        460,
+        420
+      ],
+      "via": [
+        [
+          220,
+          414
+        ],
+        [
+          716,
+          414
+        ],
+        [
+          716,
+          44
+        ],
+        [
+          625,
+          44
+        ]
+      ]
+    },
+    {
+      "from": "reserve",
       "to": "rollback",
-      "label": "Shortfall exceeds reserve",
-      "labelDy": 50,
-      "labelDx": -90,
+      "label": "Revert",
       "variant": "dashed"
     },
     {
       "from": "rollback",
       "to": "fund",
-      "label": "After revert",
-      "labelDy": 50
+      "label": "Top up"
     },
     {
       "from": "fund",
       "to": "cut",
       "label": "Retry once reserve replenished",
-      "fromSide": "bottom",
+      "variant": "dashed",
+      "fromSide": "top",
       "toSide": "top",
+      "labelAt": [
+        400,
+        206
+      ],
       "via": [
         [
           625,
-          420
+          332
         ],
         [
-          150,
-          420
+          690,
+          332
         ],
         [
-          150,
-          163
+          690,
+          206
         ],
         [
           88,
-          163
+          206
         ]
       ]
     }
@@ -250,7 +284,7 @@
       "items": [
         "The final auxiliary-pool fee capture, unlock, unified settlement, and protection-window opening all complete in one transaction",
         "Any failed step reverts the whole transaction; the Verse stays Locked and the process can be re-initiated",
-        "Protection window: 24 hours · fixed"
+        "Protection window: 24 hours; the standard side can exit principal while pools are static"
       ]
     },
     {
@@ -259,7 +293,8 @@
       "items": [
         "Auxiliary-pool shares are cut out pro rata to the leveraged debt; rounding remainders go to the standard side",
         "POL is burned to redeem; PT swaps into uAsset at par",
-        "Recovered uAsset repays the full leveraged debt first; repaid uAsset is burned"
+        "Recovered uAsset repays the full leveraged debt first",
+        "Leveraged participants also receive leveraged YT, pro rata to the interest each paid"
       ]
     },
     {
@@ -268,7 +303,8 @@
       "items": [
         "Surplus: residual value = remaining uAsset + all recovered Memecoin, distributed once pro rata to interest paid, claimable forever",
         "Shortfall: the settlement reserve covers only a capped rounding-level shortfall, never insolvency",
-        "A shortfall over the reserve reverts the whole transaction; once anyone replenishes the reserve it can be retried, unaffected by the protocol pause"
+        "A shortfall over the reserve reverts the whole transaction; once the reserve is replenished (cap may be raised) it is retried",
+        "Captured fees: POL-denominated fees are burned; uAsset fees go to the protocol treasury"
       ]
     }
   ]

@@ -10,20 +10,18 @@ rect.c-lane[data-composition-frame-id="lane-0"][data-composition-frame-kind="lan
 text.t-dim { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 10px; font-weight: 600; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 rect.c-lane[data-composition-frame-id="lane-1"][data-composition-frame-kind="lane"][data-graph-role="structural-frame"] { fill: rgba(15, 23, 42, 0.22); stroke: rgb(51, 65, 85); stroke-width: 1px; stroke-dasharray: 6px, 6px; }
 rect.c-lane[data-composition-frame-id="lane-2"][data-composition-frame-kind="lane"][data-graph-role="structural-frame"] { fill: rgba(15, 23, 42, 0.22); stroke: rgb(51, 65, 85); stroke-width: 1px; stroke-dasharray: 6px, 6px; }
-path.a-default[data-composition-points="136,119"][165,119=""][data-edge-from="base"][data-edge-key="0"][data-edge-to="adverse"] { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
-path.a-default[data-composition-points="275,119"][375,119=""][data-edge-from="adverse"][data-edge-key="1"][data-edge-to="vol"] { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
-path.a-default[data-composition-points="485,119"][570,119=""][data-edge-from="vol"][data-edge-key="2"][data-edge-to="short"] { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
-path.a-default[data-composition-points="625,145"][625,166=""][625,166=""][625,217=""][data-edge-from="short"][data-edge-key="3"][data-edge-to="dyn"] { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
-path.a-default[data-composition-points="570,243"][485,243=""][data-edge-from="dyn"][data-edge-key="4"][data-edge-to="actual"] { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
-path.a-default[data-composition-points="275,243"][375,243=""][data-edge-from="decay"][data-edge-key="5"][data-edge-to="actual"] { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
-path.a-dashed[data-composition-points="430,333"][430,290=""][430,290=""][430,277=""][data-edge-from="ewvap"][data-edge-key="6"][data-edge-label="Exempt: base fee only"][data-edge-to="actual"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
+path.a-default[data-composition-points="136,119;165,119"][data-edge-from="base"][data-edge-key="0"][data-edge-to="adverse"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="275,119;375,119"][data-edge-from="adverse"][data-edge-key="1"][data-edge-to="vol"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="485,119;570,119"][data-edge-from="vol"][data-edge-key="2"][data-edge-to="short"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="625,145;625,166;625,166;625,217"][data-edge-from="short"][data-edge-key="3"][data-edge-to="dyn"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="570,243;485,243"][data-edge-from="dyn"][data-edge-key="4"][data-edge-to="actual"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="282,243;375,243"][data-edge-from="decay"][data-edge-key="5"][data-edge-to="actual"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-dashed[data-composition-points="430,341;430,290;430,290;430,269"][data-edge-from="ewvap"][data-edge-key="6"][data-edge-label="Exempt: base fee only"][data-edge-to="actual"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
 rect.c-mask { fill: rgb(15, 23, 42); stroke-width: 1px; }
 rect.c-backend { fill: rgba(6, 78, 59, 0.4); stroke: rgb(52, 211, 153); stroke-width: 1.5px; }
 g.semantic-sigil.s-backend[data-semantic-sigil="backend"] { opacity: 0.76; }
-text.t-primary[data-node-label=""] { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 11px; font-weight: 600; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
-text.t-backend[data-detail="fine"] { fill: rgb(52, 211, 153); stroke-width: 1px; opacity: 0; font-size: 7px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 text.t-primary[data-detail-anchor=""][data-node-label=""] { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 11px; font-weight: 600; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
-text.t-muted[data-detail="context"] { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 6.5px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
+text.t-muted[data-detail="context"] { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 8px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 text.t-database { fill: rgb(167, 139, 250); stroke-width: 1px; font-size: 8px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 text.t-primary { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 12px; font-weight: 650; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 text.t-muted { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 7.5px; font-weight: 500; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
@@ -74,52 +72,52 @@ text.t-muted { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 7.5px; fo
         <path data-edge-from="vol" data-edge-to="short" data-edge-key="2" data-composition-points="485,119;570,119" d="M 485 119 L 570 119" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="short" data-edge-to="dyn" data-edge-key="3" data-composition-points="625,145;625,166;625,166;625,217" d="M 625 145 L 625 166 L 625 166 L 625 217" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="dyn" data-edge-to="actual" data-edge-key="4" data-composition-points="570,243;485,243" d="M 570 243 L 485 243" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="decay" data-edge-to="actual" data-edge-key="5" data-composition-points="275,243;375,243" d="M 275 243 L 375 243" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="ewvap" data-edge-to="actual" data-edge-label="Exempt: base fee only" data-edge-key="6" data-composition-points="430,333;430,290;430,290;430,277" d="M 430 333 L 430 290 L 430 290 L 430 277" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path data-edge-from="decay" data-edge-to="actual" data-edge-key="5" data-composition-points="282,243;375,243" d="M 282 243 L 375 243" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="ewvap" data-edge-to="actual" data-edge-label="Exempt: base fee only" data-edge-key="6" data-composition-points="430,341;430,290;430,290;430,269" d="M 430 341 L 430 290 L 430 290 L 430 269" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
 
         <!-- Nodes -->
-        <g id="node-base" data-node-id="base" data-node-label="Base fee 1%" tabindex="0" role="button" aria-label="Focus Base fee 1%, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-tag="Fixed in contract" data-node-context="Dynamic fee = base fee + three dynamic components">
-          <title>Base fee 1% · Dynamic fee = base fee + three dynamic components · Fixed in contract</title>
-          <rect x="40" y="85" width="96" height="68" rx="6" class="c-mask"/>
-          <rect x="40" y="85" width="96" height="68" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(46 91) scale(0.6875)">
+        <g id="node-base" data-node-id="base" data-node-label="Base fee" tabindex="0" role="button" aria-label="Focus Base fee, 1% floor, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="1% floor" data-node-context="Dynamic fee = base fee + three dynamic components">
+          <title>Base fee · 1% floor · Dynamic fee = base fee + three dynamic components</title>
+          <rect x="40" y="93" width="96" height="52" rx="6" class="c-mask"/>
+          <rect x="40" y="93" width="96" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(46 99) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" x="88" y="106" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Base fee 1%</text>
-        <text data-detail="fine" x="88" y="141" class="t-backend" font-size="7" text-anchor="middle">Fixed in contract</text>
+          <text data-node-label="" data-detail-anchor="" x="88" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Base fee</text>
+          <text data-detail="context" x="88" y="131" class="t-muted" font-size="8" text-anchor="middle">1% floor</text>
         </g>
 
-        <g id="node-adverse" data-node-id="adverse" data-node-label="+ adverse fee" tabindex="0" role="button" aria-label="Focus + adverse fee, 3s window; splitting fails, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="3s window; splitting fails" data-node-context="Dynamic fee = base fee + three dynamic components">
-          <title>+ adverse fee · 3s window; splitting fails · Dynamic fee = base fee + three dynamic components</title>
+        <g id="node-adverse" data-node-id="adverse" data-node-label="+ adverse fee" tabindex="0" role="button" aria-label="Focus + adverse fee, per address; 3s window, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="per address; 3s window" data-node-context="Dynamic fee = base fee + three dynamic components">
+          <title>+ adverse fee · per address; 3s window · Dynamic fee = base fee + three dynamic components</title>
           <rect x="165" y="93" width="110" height="52" rx="6" class="c-mask"/>
           <rect x="165" y="93" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(171 99) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="220" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">+ adverse fee</text>
-          <text data-detail="context" x="220" y="131" class="t-muted" font-size="6.5" text-anchor="middle">3s window; splitting fails</text>
+          <text data-detail="context" x="220" y="131" class="t-muted" font-size="7.7" text-anchor="middle">per address; 3s window</text>
         </g>
 
-        <g id="node-vol" data-node-id="vol" data-node-label="+ volatility fee" tabindex="0" role="button" aria-label="Focus + volatility fee, per pool; volatility-linked, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="per pool; volatility-linked" data-node-context="Dynamic fee = base fee + three dynamic components">
-          <title>+ volatility fee · per pool; volatility-linked · Dynamic fee = base fee + three dynamic components</title>
+        <g id="node-vol" data-node-id="vol" data-node-label="+ volatility fee" tabindex="0" role="button" aria-label="Focus + volatility fee, per pool, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="per pool" data-node-context="Dynamic fee = base fee + three dynamic components">
+          <title>+ volatility fee · per pool · Dynamic fee = base fee + three dynamic components</title>
           <rect x="375" y="93" width="110" height="52" rx="6" class="c-mask"/>
           <rect x="375" y="93" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(381 99) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="430" y="114" class="t-primary" font-size="10.6" font-weight="600" text-anchor="middle">+ volatility fee</text>
-          <text data-detail="context" x="430" y="131" class="t-muted" font-size="6.2" text-anchor="middle">per pool; volatility-linked</text>
+          <text data-detail="context" x="430" y="131" class="t-muted" font-size="8" text-anchor="middle">per pool</text>
         </g>
 
-        <g id="node-short" data-node-id="short" data-node-label="+ short-term fee" tabindex="0" role="button" aria-label="Focus + short-term fee, above 2% only; 15s decay, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="above 2% only; 15s decay" data-node-context="Dynamic fee = base fee + three dynamic components">
-          <title>+ short-term fee · above 2% only; 15s decay · Dynamic fee = base fee + three dynamic components</title>
+        <g id="node-short" data-node-id="short" data-node-label="+ short-term fee" tabindex="0" role="button" aria-label="Focus + short-term fee, above 2%; 15s decay, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="above 2%; 15s decay" data-node-context="Dynamic fee = base fee + three dynamic components">
+          <title>+ short-term fee · above 2%; 15s decay · Dynamic fee = base fee + three dynamic components</title>
           <rect x="570" y="93" width="110" height="52" rx="6" class="c-mask"/>
           <rect x="570" y="93" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(576 99) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="625" y="114" class="t-primary" font-size="10.6" font-weight="600" text-anchor="middle">+ short-term fee</text>
-          <text data-detail="context" x="625" y="131" class="t-muted" font-size="7" text-anchor="middle">above 2% only; 15s decay</text>
+          <text data-detail="context" x="625" y="131" class="t-muted" font-size="8" text-anchor="middle">above 2%; 15s decay</text>
         </g>
 
         <g id="node-dyn" data-node-id="dyn" data-node-label="= dynamic fee" tabindex="0" role="button" aria-label="Focus = dynamic fee, sum of the four, Actual fee = max(dynamic fee, pool-opening decay fee)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="sum of the four" data-node-context="Actual fee = max(dynamic fee, pool-opening decay fee)">
@@ -133,39 +131,37 @@ text.t-muted { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 7.5px; fo
           <text data-detail="context" x="625" y="255" class="t-muted" font-size="8" text-anchor="middle">sum of the four</text>
         </g>
 
-        <g id="node-actual" data-node-id="actual" data-node-label="Actual fee" tabindex="0" role="button" aria-label="Focus Actual fee, takes the higher one, Actual fee = max(dynamic fee, pool-opening decay fee)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="takes the higher one" data-node-tag="Cap 100% · fixed" data-node-context="Actual fee = max(dynamic fee, pool-opening decay fee)">
-          <title>Actual fee · takes the higher one · Actual fee = max(dynamic fee, pool-opening decay fee) · Cap 100% · fixed</title>
-          <rect x="375" y="209" width="110" height="68" rx="6" class="c-mask"/>
-          <rect x="375" y="209" width="110" height="68" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(381 215) scale(0.6875)">
+        <g id="node-actual" data-node-id="actual" data-node-label="Actual fee" tabindex="0" role="button" aria-label="Focus Actual fee, cap 100% · fixed, Actual fee = max(dynamic fee, pool-opening decay fee)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="cap 100% · fixed" data-node-context="Actual fee = max(dynamic fee, pool-opening decay fee)">
+          <title>Actual fee · cap 100% · fixed · Actual fee = max(dynamic fee, pool-opening decay fee)</title>
+          <rect x="375" y="217" width="110" height="52" rx="6" class="c-mask"/>
+          <rect x="375" y="217" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(381 223) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="430" y="230" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Actual fee</text>
-          <text data-detail="context" x="430" y="247" class="t-muted" font-size="8" text-anchor="middle">takes the higher one</text>
-        <text data-detail="fine" x="430" y="265" class="t-backend" font-size="7" text-anchor="middle">Cap 100% · fixed</text>
+          <text data-node-label="" data-detail-anchor="" x="430" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Actual fee</text>
+          <text data-detail="context" x="430" y="255" class="t-muted" font-size="8" text-anchor="middle">cap 100% · fixed</text>
         </g>
 
-        <g id="node-decay" data-node-id="decay" data-node-label="Pool-opening fee" tabindex="0" role="button" aria-label="Focus Pool-opening fee, 50%→1%, defaults adjustable, Actual fee = max(dynamic fee, pool-opening decay fee)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="50%→1%, defaults adjustable" data-node-context="Actual fee = max(dynamic fee, pool-opening decay fee)">
-          <title>Pool-opening fee · 50%→1%, defaults adjustable · Actual fee = max(dynamic fee, pool-opening decay fee)</title>
-          <rect x="165" y="217" width="110" height="52" rx="6" class="c-mask"/>
-          <rect x="165" y="217" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(171 223) scale(0.6875)">
+        <g id="node-decay" data-node-id="decay" data-node-label="Pool-opening fee" tabindex="0" role="button" aria-label="Focus Pool-opening fee, 50%→1% in 15 min, Actual fee = max(dynamic fee, pool-opening decay fee)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="50%→1% in 15 min" data-node-context="Actual fee = max(dynamic fee, pool-opening decay fee)">
+          <title>Pool-opening fee · 50%→1% in 15 min · Actual fee = max(dynamic fee, pool-opening decay fee)</title>
+          <rect x="158" y="217" width="124" height="52" rx="6" class="c-mask"/>
+          <rect x="158" y="217" width="124" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(164 223) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="220" y="238" class="t-primary" font-size="10.6" font-weight="600" text-anchor="middle">Pool-opening fee</text>
-          <text data-detail="context" x="220" y="255" class="t-muted" font-size="6.2" text-anchor="middle">50%→1%, defaults adjustable</text>
+          <text data-node-label="" data-detail-anchor="" x="220" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Pool-opening fee</text>
+          <text data-detail="context" x="220" y="255" class="t-muted" font-size="8" text-anchor="middle">50%→1% in 15 min</text>
         </g>
 
-        <g id="node-ewvap" data-node-id="ewvap" data-node-label="EWVWAP exemption" tabindex="0" role="button" aria-label="Focus EWVWAP exemption, history + reversal → 1%, EWVWAP exemption (first trade not exempt)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="history + reversal → 1%" data-node-tag="First trade not exempt" data-node-context="EWVWAP exemption (first trade not exempt)">
-          <title>EWVWAP exemption · history + reversal → 1% · EWVWAP exemption (first trade not exempt) · First trade not exempt</title>
-          <rect x="375" y="333" width="110" height="68" rx="6" class="c-mask"/>
-          <rect x="375" y="333" width="110" height="68" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(381 339) scale(0.6875)">
+        <g id="node-ewvap" data-node-id="ewvap" data-node-label="EWVWAP exemption" tabindex="0" role="button" aria-label="Focus EWVWAP exemption, history + reversal → 1%, EWVWAP exemption (first trade not exempt)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="history + reversal → 1%" data-node-context="EWVWAP exemption (first trade not exempt)">
+          <title>EWVWAP exemption · history + reversal → 1% · EWVWAP exemption (first trade not exempt)</title>
+          <rect x="368" y="341" width="124" height="52" rx="6" class="c-mask"/>
+          <rect x="368" y="341" width="124" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(374 347) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="430" y="354" class="t-primary" font-size="10.6" font-weight="600" text-anchor="middle">EWVWAP exemption</text>
-          <text data-detail="context" x="430" y="371" class="t-muted" font-size="7.3" text-anchor="middle">history + reversal → 1%</text>
-        <text data-detail="fine" x="430" y="389" class="t-backend" font-size="7" text-anchor="middle">First trade not exempt</text>
+          <text data-node-label="" data-detail-anchor="" x="430" y="362" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">EWVWAP exemption</text>
+          <text data-detail="context" x="430" y="379" class="t-muted" font-size="8" text-anchor="middle">history + reversal → 1%</text>
         </g>
 
         <!-- Edge labels -->
@@ -176,8 +172,8 @@ text.t-muted { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 7.5px; fo
 
 
         <g data-detail="context" data-edge-from="ewvap" data-edge-to="actual" data-edge-label="Exempt: base fee only" data-edge-key="6">
-          <rect x="374.6" y="320" width="110.8" height="14" rx="3" class="c-mask"/>
-          <text x="430" y="330" class="t-database" font-size="8" text-anchor="middle">Exempt: base fee only</text>
+          <rect x="374.6" y="310" width="110.8" height="14" rx="3" class="c-mask"/>
+          <text x="430" y="320" class="t-database" font-size="8" text-anchor="middle">Exempt: base fee only</text>
         </g>
 
         <!-- Legend -->
@@ -188,4 +184,4 @@ text.t-muted { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 7.5px; fo
             <text x="42" y="448" class="t-muted" font-size="7.5" font-weight="500">Fee components and composition</text>
           </g>
         </g>
-      <g id="cards" font-family="JetBrains Mono, monospace"><rect x="0" y="528" width="720" height="190" fill="rgb(2, 6, 23)"/><rect x="24" y="534" width="213.333" height="178" rx="8" fill="rgba(15, 23, 42, 0.55)" stroke="#1e293b" stroke-width="1"/><circle cx="39" cy="546" r="3" fill="#22d3ee"/><text x="48" y="549" fill="#ffffff" font-size="10" font-weight="600">How the four components are computed</text><text x="39" y="566" fill="#ffffff" font-size="8">The adverse impact fee is tracked</text><text x="39" y="577" fill="#ffffff" font-size="8">per address × pool; impacts</text><text x="39" y="588" fill="#ffffff" font-size="8">accumulate within a 3-second window,</text><text x="39" y="599" fill="#ffffff" font-size="8">so order splitting fails</text><text x="39" y="610" fill="#ffffff" font-size="8">The volatility fee is per pool and</text><text x="39" y="621" fill="#ffffff" font-size="8">rises with volatility; the</text><text x="39" y="632" fill="#ffffff" font-size="8">short-term impact fee is per pool,</text><text x="39" y="643" fill="#ffffff" font-size="8">charging only the portion above 2%</text><text x="39" y="654" fill="#ffffff" font-size="8">Short-term impact decays over 15</text><text x="39" y="665" fill="#ffffff" font-size="8">seconds and rapid consecutive</text><text x="39" y="676" fill="#ffffff" font-size="8">impacts stack; total cap 100% ·</text><text x="39" y="687" fill="#ffffff" font-size="8">fixed</text><rect x="253.333" y="534" width="213.333" height="134" rx="8" fill="rgba(15, 23, 42, 0.55)" stroke="#1e293b" stroke-width="1"/><circle cx="268.333" cy="546" r="3" fill="#a78bfa"/><text x="277.333" y="549" fill="#ffffff" font-size="10" font-weight="600">Exemption and floor</text><text x="268.333" y="566" fill="#ffffff" font-size="8">EWVWAP: with trade history and a</text><text x="268.333" y="577" fill="#ffffff" font-size="8">trade pointing back toward</text><text x="268.333" y="588" fill="#ffffff" font-size="8">equilibrium, all dynamic fees are</text><text x="268.333" y="599" fill="#ffffff" font-size="8">skipped and only 1% is paid</text><text x="268.333" y="610" fill="#ffffff" font-size="8">The first trade (no trade history)</text><text x="268.333" y="621" fill="#ffffff" font-size="8">is not exempt</text><text x="268.333" y="632" fill="#ffffff" font-size="8">If the decay config drops below 1%,</text><text x="268.333" y="643" fill="#ffffff" font-size="8">the 1% floor still applies</text><rect x="482.667" y="534" width="213.333" height="145" rx="8" fill="rgba(15, 23, 42, 0.55)" stroke="#1e293b" stroke-width="1"/><circle cx="497.667" cy="546" r="3" fill="#fbbf24"/><text x="506.667" y="549" fill="#ffffff" font-size="10" font-weight="600">Pool-opening decay fee</text><text x="497.667" y="566" fill="#ffffff" font-size="8">Starts at 50% by default and decays</text><text x="497.667" y="577" fill="#ffffff" font-size="8">to 1% within 15 minutes (current</text><text x="497.667" y="588" fill="#ffffff" font-size="8">defaults, adjustable by the</text><text x="497.667" y="599" fill="#ffffff" font-size="8">protocol)</text><text x="497.667" y="610" fill="#ffffff" font-size="8">Inside the decay window, the EWVWAP</text><text x="497.667" y="621" fill="#ffffff" font-size="8">exemption takes the higher of the</text><text x="497.667" y="632" fill="#ffffff" font-size="8">base fee and the current opening fee</text><text x="497.667" y="643" fill="#ffffff" font-size="8">The decay curve is a normalized</text><text x="497.667" y="654" fill="#ffffff" font-size="8">exponential decay</text></g></svg>
+      <g id="cards" font-family="JetBrains Mono, monospace"><rect x="0" y="528" width="720" height="190" fill="rgb(2, 6, 23)"/><rect x="24" y="534" width="213.333" height="178" rx="8" fill="rgba(15, 23, 42, 0.55)" stroke="#1e293b" stroke-width="1"/><circle cx="39" cy="546" r="3" fill="#22d3ee"/><text x="48" y="549" fill="#ffffff" font-size="10" font-weight="600">Computing the four components</text><text x="39" y="566" fill="#ffffff" font-size="8">The adverse impact fee is tracked</text><text x="39" y="577" fill="#ffffff" font-size="8">per address × pool; impacts</text><text x="39" y="588" fill="#ffffff" font-size="8">accumulate within a 3-second window,</text><text x="39" y="599" fill="#ffffff" font-size="8">so order splitting fails</text><text x="39" y="610" fill="#ffffff" font-size="8">The volatility fee is per pool and</text><text x="39" y="621" fill="#ffffff" font-size="8">rises with volatility; the</text><text x="39" y="632" fill="#ffffff" font-size="8">short-term impact fee is per pool,</text><text x="39" y="643" fill="#ffffff" font-size="8">charging only the portion above 2%</text><text x="39" y="654" fill="#ffffff" font-size="8">Short-term impact decays over 15</text><text x="39" y="665" fill="#ffffff" font-size="8">seconds and rapid consecutive</text><text x="39" y="676" fill="#ffffff" font-size="8">impacts stack; total cap 100% ·</text><text x="39" y="687" fill="#ffffff" font-size="8">fixed</text><rect x="253.333" y="534" width="213.333" height="134" rx="8" fill="rgba(15, 23, 42, 0.55)" stroke="#1e293b" stroke-width="1"/><circle cx="268.333" cy="546" r="3" fill="#a78bfa"/><text x="277.333" y="549" fill="#ffffff" font-size="10" font-weight="600">Exemption and floor</text><text x="268.333" y="566" fill="#ffffff" font-size="8">EWVWAP: with trade history and a</text><text x="268.333" y="577" fill="#ffffff" font-size="8">trade pointing back toward</text><text x="268.333" y="588" fill="#ffffff" font-size="8">equilibrium, all dynamic fees are</text><text x="268.333" y="599" fill="#ffffff" font-size="8">skipped and only 1% is paid</text><text x="268.333" y="610" fill="#ffffff" font-size="8">The first trade (no trade history)</text><text x="268.333" y="621" fill="#ffffff" font-size="8">is not exempt</text><text x="268.333" y="632" fill="#ffffff" font-size="8">If the decay config drops below 1%,</text><text x="268.333" y="643" fill="#ffffff" font-size="8">the 1% floor still applies</text><rect x="482.667" y="534" width="213.333" height="145" rx="8" fill="rgba(15, 23, 42, 0.55)" stroke="#1e293b" stroke-width="1"/><circle cx="497.667" cy="546" r="3" fill="#fbbf24"/><text x="506.667" y="549" fill="#ffffff" font-size="10" font-weight="600">Pool-opening decay fee</text><text x="497.667" y="566" fill="#ffffff" font-size="8">Starts at 50% by default and decays</text><text x="497.667" y="577" fill="#ffffff" font-size="8">to 1% within 15 minutes (current</text><text x="497.667" y="588" fill="#ffffff" font-size="8">defaults, adjustable by the</text><text x="497.667" y="599" fill="#ffffff" font-size="8">protocol)</text><text x="497.667" y="610" fill="#ffffff" font-size="8">Inside the decay window, the EWVWAP</text><text x="497.667" y="621" fill="#ffffff" font-size="8">exemption takes the higher of the</text><text x="497.667" y="632" fill="#ffffff" font-size="8">base fee and the current opening fee</text><text x="497.667" y="643" fill="#ffffff" font-size="8">The decay curve is a normalized</text><text x="497.667" y="654" fill="#ffffff" font-size="8">exponential decay</text></g></svg>

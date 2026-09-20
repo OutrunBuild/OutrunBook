@@ -1,1 +1,66 @@
-{"cards": [{"dot": "emerald", "items": ["Three independent paths, each supplying at par", "Genesis Staking opens a position; PSM swaps do not", "Leverage quotas settle through Memeverse's unified settlement"], "title": "At-par supply"}, {"dot": "cyan", "items": ["Position managers and PSM pools each have a mint cap", "A mint that hits the cap reverts entirely", "Redeeming or swapping back burns and releases room"], "title": "Mint-cap brake"}, {"dot": "violet", "items": ["Genesis funding · leverage interest · settlement unit", "Idle uAsset can earn interest in USR savings", "uAsset circulates omnichain over LayerZero"], "title": "Where uAsset goes"}], "diagram_type": "dataflow", "flows": [{"from": "sy", "label": "Deposit collateral", "to": "cdp"}, {"from": "cdp", "label": "Mint at face value", "labelDy": -24, "route": "top-channel", "to": "uasset", "variant": "emphasis"}, {"from": "reserve", "label": "Swap in reserves", "route": "straight", "to": "psm"}, {"from": "psm", "label": "Swap out 1:1", "labelSegment": 0, "to": "uasset", "variant": "emphasis"}, {"from": "reserve", "label": "Pay interest", "to": "polend"}, {"from": "polend", "label": "Mint quota as uAsset", "route": "bottom-channel", "to": "uasset"}, {"from": "uasset", "label": "Genesis funding · interest · unit of account", "to": "memeverse", "variant": "emphasis"}, {"from": "uasset", "label": "Deposit to earn · withdraw anytime", "to": "usr"}], "meta": {"locale": "en", "output": "assets/diagrams/uasset-supply.html", "quality_profile": "showcase", "title": "The three supply paths of uAsset"}, "nodes": [{"id": "sy", "label": "Yield assets", "row": 0, "stage": 0, "sublabel": "Standardized SY layer", "tag": "wstETH · sUSDS · sUSDe…", "type": "external"}, {"id": "reserve", "label": "Reserve assets", "row": 1, "stage": 0, "sublabel": "USDC · ETH · BNB", "type": "external"}, {"id": "cdp", "label": "Genesis Staking", "row": 0, "stage": 1, "sublabel": "Mint at par · opens position", "type": "backend"}, {"id": "psm", "label": "PSM par swap", "row": 1, "stage": 1, "sublabel": "1:1 at par · no position", "type": "backend"}, {"id": "polend", "label": "Leveraged Genesis", "row": 2, "stage": 1, "sublabel": "Interest buys shares", "type": "backend"}, {"id": "uasset", "label": "uAsset", "row": 1, "stage": 2, "sublabel": "UETH/UUSD/UBNB", "tag": "Pegged stablecoin", "type": "database"}, {"id": "memeverse", "label": "Memeverse", "row": 0, "stage": 3, "sublabel": "Genesis · leverage · settle", "type": "backend"}, {"id": "usr", "label": "USR savings", "row": 2, "stage": 3, "sublabel": "Earns interest on uAsset", "type": "backend"}], "schema_version": 1, "stages": [{"label": "Supply inputs"}, {"label": "Supply paths"}, {"label": "uAsset"}, {"label": "Where it goes"}]}
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "The three supply paths of uAsset",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "output": "assets/diagrams/uasset-supply.html",
+    "viewBox": [860, 560]
+  },
+  "stages": [
+    { "label": "Supply inputs" },
+    { "label": "Supply paths" },
+    { "label": "uAsset" },
+    { "label": "Where it goes" }
+  ],
+  "nodes": [
+    { "id": "sy", "type": "external", "label": "Yield assets", "sublabel": "Standardized SY layer", "tag": "wstETH · sUSDS · sUSDe…", "stage": 0, "row": 0 },
+    { "id": "reserve", "type": "external", "label": "Reserve assets", "sublabel": "USDC · USDT · ETH · BNB", "stage": 0, "row": 1, "width": 124 },
+    { "id": "cdp", "type": "backend", "label": "Genesis Staking", "sublabel": "Mint at face value", "stage": 1, "row": 0 },
+    { "id": "psm", "type": "backend", "label": "PSM par swap", "sublabel": "Two-way 1:1 at par", "stage": 1, "row": 1 },
+    { "id": "polend", "type": "backend", "label": "Leveraged Genesis", "sublabel": "Interest buys shares", "stage": 1, "row": 2 },
+    { "id": "uasset", "type": "database", "label": "uAsset", "sublabel": "UETH/UUSD/UBNB", "tag": "Pegged stablecoin", "stage": 2, "row": 1 },
+    { "id": "memeverse", "type": "backend", "label": "Memeverse", "sublabel": "Demand side · consumes uAsset", "stage": 3, "row": 0, "width": 140 },
+    { "id": "usr", "type": "backend", "label": "USR savings", "sublabel": "Earns interest on uAsset", "stage": 3, "row": 2 }
+  ],
+  "flows": [
+    { "from": "sy", "to": "cdp", "label": "Deposit collateral" },
+    { "from": "cdp", "to": "uasset", "label": "Mint at face value", "route": "top-channel", "fromSide": "top", "toSide": "top", "variant": "emphasis" },
+    { "from": "reserve", "to": "psm", "label": "Swap in reserves", "route": "straight" },
+    { "from": "psm", "to": "uasset", "label": "Swap out 1:1", "labelSegment": 0, "variant": "emphasis" },
+    { "from": "polend", "to": "uasset", "label": "Mint quota as uAsset", "route": "bottom-channel", "fromSide": "bottom", "toSide": "bottom", "variant": "emphasis" },
+    { "from": "uasset", "to": "memeverse", "label": "Genesis funding · interest · unit of account", "variant": "emphasis", "labelAt": [651, 201] },
+    { "from": "uasset", "to": "usr", "label": "Deposit to earn · withdraw anytime" }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "At-par supply",
+      "items": [
+        "Three independent paths, each supplying at par",
+        "Genesis Staking opens a position; PSM swaps do not",
+        "Leverage quotas settle through Memeverse's unified settlement"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Mint-cap brake",
+      "items": [
+        "Position managers and PSM pools each have a mint cap",
+        "A mint that hits the cap reverts entirely",
+        "Redeeming or swapping back burns and releases room"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Where uAsset goes",
+      "items": [
+        "Genesis funding · leverage interest · settlement unit",
+        "Idle uAsset can earn interest in USR savings",
+        "uAsset circulates omnichain over LayerZero",
+        "OutStake mints it; Memeverse consumes it — the two sides interlock"
+      ]
+    }
+  ]
+}

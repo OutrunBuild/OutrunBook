@@ -13,6 +13,10 @@
           "label": "Funds & split steps",
           "visible": true
         },
+        "emphasis": {
+          "label": "Capital split",
+          "visible": true
+        },
         "database": {
           "label": "Liquidity pools",
           "visible": true
@@ -76,7 +80,7 @@
       "sublabel": "Primary-pool LP is POL",
       "stage": 2,
       "row": 1,
-      "width": 132
+      "width": 150
     },
     {
       "id": "ptysplit",
@@ -109,7 +113,7 @@
       "id": "ytdist",
       "type": "external",
       "label": "Genesis participants' YT",
-      "sublabel": "Claimable from Locked, permanently",
+      "sublabel": "Claimable from Locked",
       "stage": 4,
       "row": 2,
       "width": 176
@@ -170,11 +174,11 @@
           214
         ],
         [
-          1050,
+          1040,
           214
         ],
         [
-          1050,
+          1040,
           110
         ],
         [
@@ -207,29 +211,29 @@
       "via": [
         [
           530,
-          560
+          545
         ],
         [
           960,
-          560
+          545
         ]
       ],
       "labelAt": [
         700,
-        576
+        545
       ]
     },
     {
       "id": "aux-to-polpool",
       "from": "aux",
       "to": "pool-pol-uasset",
-      "label": "uAsset ~2/3"
+      "label": "uAsset"
     },
     {
       "id": "aux-to-ptpool",
       "from": "aux",
       "to": "pool-pt-uasset",
-      "label": "uAsset ~1/3",
+      "label": "uAsset",
       "fromSide": "top",
       "toSide": "bottom",
       "via": [
@@ -238,11 +242,11 @@
           94
         ],
         [
-          1060,
+          1076,
           94
         ],
         [
-          1060,
+          1076,
           330
         ],
         [
@@ -252,27 +256,59 @@
       ],
       "labelAt": [
         500,
-        87
+        94
       ]
     },
     {
       "id": "split-to-ptuasset",
       "from": "ptysplit",
       "to": "pool-pt-uasset",
-      "label": "PT ~1/3"
+      "label": "PT ~1/3",
+      "fromSide": "top",
+      "toSide": "left",
+      "via": [
+        [
+          745,
+          328
+        ],
+        [
+          854,
+          328
+        ],
+        [
+          854,
+          271
+        ]
+      ]
     },
     {
       "id": "split-to-ptpol",
       "from": "ptysplit",
       "to": "pool-pt-pol",
-      "label": "PT ~2/3"
+      "label": "PT ~2/3",
+      "fromSide": "bottom",
+      "toSide": "left",
+      "via": [
+        [
+          745,
+          442
+        ],
+        [
+          862,
+          442
+        ],
+        [
+          862,
+          499
+        ]
+      ]
     },
     {
       "id": "split-to-yt",
       "from": "ptysplit",
       "to": "ytdist",
       "label": "YT",
-      "labelDy": 13
+      "via": []
     }
   ],
   "cards": [
@@ -289,8 +325,9 @@
       "dot": "cyan",
       "title": "How to read the ratios",
       "items": [
-        "About 70% enters the primary pool, about 30% becomes auxiliary-pool uAsset (~2/3 into POL/uAsset, ~1/3 into PT/uAsset)",
-        "The POL minted by the primary pool splits roughly 2:3:2; the PT split's rounding difference goes to the PT/POL side",
+        "About 70% of the uAsset enters the primary pool; the remaining ~30% is the uAsset capital of the auxiliary pools (POL/uAsset + PT/uAsset)",
+        "The minted POL splits roughly 2:3:2: 2 parts to the POL/uAsset pool, 3 split into PT + YT, 2 to the PT/POL pool; the PT then splits roughly 1:2",
+        "The four-pool liquidity is locked for 365 days (hard contract constraint)",
         "Ratios follow the actual deployment execution"
       ]
     },

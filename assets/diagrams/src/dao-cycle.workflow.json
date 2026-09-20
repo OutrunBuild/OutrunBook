@@ -47,7 +47,7 @@
       "type": "external",
       "width": 110,
       "label": "Delegate votes",
-      "sublabel": "no votes; counts in base"
+      "sublabel": "shares then carry votes"
     },
     {
       "id": "vote",
@@ -74,7 +74,7 @@
       "type": "backend",
       "width": 110,
       "label": "3-condition gate",
-      "sublabel": "enrolled / revenue / votes"
+      "sublabel": "enrolled/revenue/votes"
     },
     {
       "id": "allocate",
@@ -83,16 +83,16 @@
       "type": "backend",
       "width": 120,
       "label": "Allocate rewards",
-      "sublabel": "25% default; governance-set"
+      "sublabel": "25% default; adjustable"
     },
     {
       "id": "claim",
       "lane": "claim",
       "col": 1,
       "type": "external",
-      "width": 106,
+      "width": 110,
       "label": "Active claim",
-      "sublabel": "by vote share, self-claim"
+      "sublabel": "your share of the votes"
     },
     {
       "id": "rollover",
@@ -131,12 +131,12 @@
     {
       "from": "gate",
       "to": "allocate",
-      "label": "All three conditions hold",
+      "label": "All 3 hold",
       "fromSide": "left",
       "toSide": "right",
       "labelAt": [
         530,
-        283
+        243
       ]
     },
     {
@@ -144,39 +144,31 @@
       "to": "rollover",
       "label": "One missing: full rollover",
       "fromSide": "bottom",
-      "toSide": "right",
+      "toSide": "bottom",
       "via": [
         [
           625,
-          300
+          296
         ],
         [
-          155,
-          300
-        ],
-        [
-          155,
-          243
-        ],
-        [
-          136,
-          243
+          88,
+          296
         ]
       ],
       "labelAt": [
         390,
-        292
+        296
       ]
     },
     {
       "from": "allocate",
       "to": "claim",
-      "label": "Within the window",
+      "label": "In the window",
       "fromSide": "left",
       "toSide": "right",
       "labelAt": [
-        327,
-        213
+        326,
+        243
       ]
     },
     {
@@ -194,29 +186,29 @@
       "to": "gate",
       "label": "Re-allocated next epoch",
       "variant": "dashed",
-      "fromSide": "bottom",
+      "fromSide": "left",
       "toSide": "right",
       "via": [
         [
-          88,
-          305
-        ],
-        [
-          700,
-          305
-        ],
-        [
-          700,
+          28,
           243
         ],
         [
-          680,
+          28,
+          166
+        ],
+        [
+          700,
+          166
+        ],
+        [
+          700,
           243
         ]
       ],
       "labelAt": [
         450,
-        320
+        166
       ]
     }
   ],
@@ -241,7 +233,7 @@
     },
     {
       "dot": "rose",
-      "title": "Only the immediately preceding epoch",
+      "title": "Only the preceding epoch",
       "items": [
         "After settlement, claim actively within the claim window; only your own share",
         "Only the immediately preceding epoch counts; miss it and the amount rolls into the treasury, with no reissue",

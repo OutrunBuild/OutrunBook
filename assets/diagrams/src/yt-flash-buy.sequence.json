@@ -6,6 +6,8 @@
     "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/yt-flash-buy.html",
+    "column_fit": "spread",
+    "titleInSvg": true,
     "viewBox": [
       820,
       500
@@ -54,7 +56,7 @@
       "from": "user",
       "to": "pool",
       "y": 285,
-      "label": "Repay with the y PT from the split",
+      "label": "Repay with the split's y PT",
       "variant": "return"
     },
     {

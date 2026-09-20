@@ -58,7 +58,7 @@
       --lane-fill: rgba(15, 23, 42, 0.22);
       --lane-stroke: #334155;
 
-      --arrow: #8fa3bd;
+      --arrow: #64748b;
       --arrow-emphasis: #34d399;
 
       /* Opaque mask color used behind semi-transparent component fills
@@ -78,7 +78,7 @@
       --messagebus-fill:  rgba(251, 146, 60, 0.3);
       --messagebus-stroke:#fb923c;
       --external-fill:    rgba(30, 41, 59, 0.5);
-      --external-stroke:  #cbd5e1;
+      --external-stroke:  #94a3b8;
 
       --toolbar-bg:       rgba(15, 23, 42, 0.8);
       --toolbar-border:   #334155;
@@ -5044,36 +5044,36 @@
         <g data-edge-from="user" data-edge-to="pool" data-edge-label="Buy y PT for Q POL" data-edge-key="0" data-edge-id="borrow">
           <path data-composition-edge-from="user" data-composition-edge-to="pool" data-composition-edge-id="borrow" data-composition-points="164,185;414,185" d="M 164 185 L 414 185" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         <g data-detail="context">
-          <rect x="236.2" y="165" width="105.60000000000001" height="16" rx="3" class="c-mask"/>
-          <text x="289" y="175" class="t-backend" font-size="9" text-anchor="middle">Buy y PT for Q POL</text>
+          <rect x="218.2" y="165" width="141.6" height="16" rx="3" class="c-mask"/>
+          <text x="289" y="175" class="t-backend" font-size="12" text-anchor="middle">Buy y PT for Q POL</text>
         </g>
-        <text data-detail="fine" x="176" y="203" class="t-dim" font-size="7">This Q POL is &quot;borrowed&quot;</text>
+        <g data-detail="fine"><rect x="172" y="192" width="141.60000000000002" height="14" rx="3" class="c-mask"/><text data-detail="fine" x="178" y="203" class="t-dim" font-size="9">This Q POL is &quot;borrowed&quot;</text></g>
         </g>
 
         <g data-edge-from="user" data-edge-to="merge" data-edge-label="Merge y PT + your y YT" data-edge-key="1" data-edge-id="merge-leg">
           <path data-composition-edge-from="user" data-composition-edge-to="merge" data-composition-edge-id="merge-leg" data-composition-points="164,235;678,235" d="M 164 235 L 678 235" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <g data-detail="context">
-          <rect x="357.8" y="215" width="126.4" height="16" rx="3" class="c-mask"/>
-          <text x="421" y="225" class="t-backend" font-size="9" text-anchor="middle">Merge y PT + your y YT</text>
+          <rect x="335.8" y="215" width="170.4" height="16" rx="3" class="c-mask"/>
+          <text x="421" y="225" class="t-muted" font-size="12" text-anchor="middle">Merge y PT + your y YT</text>
         </g>
-        <text data-detail="fine" x="176" y="253" class="t-dim" font-size="7">Back into y POL</text>
+        <g data-detail="fine"><rect x="172" y="242" width="93" height="14" rx="3" class="c-mask"/><text data-detail="fine" x="178" y="253" class="t-dim" font-size="9">Back into y POL</text></g>
         </g>
 
         <g data-edge-from="user" data-edge-to="pool" data-edge-label="Repay Q POL" data-edge-key="2" data-edge-id="repay">
           <path data-composition-edge-from="user" data-composition-edge-to="pool" data-composition-edge-id="repay" data-composition-points="164,285;414,285" d="M 164 285 L 414 285" class="a-default" stroke-width="1.4" stroke-dasharray="3,5" marker-end="url(#arrowhead)"/>
         <g data-detail="context">
-          <rect x="254.4" y="265" width="69.2" height="16" rx="3" class="c-mask"/>
-          <text x="289" y="275" class="t-muted" font-size="9" text-anchor="middle">Repay Q POL</text>
+          <rect x="243.4" y="265" width="91.2" height="16" rx="3" class="c-mask"/>
+          <text x="289" y="275" class="t-muted" font-size="12" text-anchor="middle">Repay Q POL</text>
         </g>
         </g>
 
-        <g data-edge-from="pool" data-edge-to="user" data-edge-label="Receive y − Q POL" data-edge-key="3" data-edge-id="receive">
-          <path data-composition-edge-from="pool" data-composition-edge-to="user" data-composition-edge-id="receive" data-composition-points="414,330;164,330" d="M 414 330 L 164 330" class="a-default" stroke-width="1.4" stroke-dasharray="3,5" marker-end="url(#arrowhead)"/>
+        <g data-edge-from="merge" data-edge-to="user" data-edge-label="Receive y − Q POL" data-edge-key="3" data-edge-id="receive">
+          <path data-composition-edge-from="merge" data-composition-edge-to="user" data-composition-edge-id="receive" data-composition-points="678,330;164,330" d="M 678 330 L 164 330" class="a-default" stroke-width="1.4" stroke-dasharray="3,5" marker-end="url(#arrowhead)"/>
         <g data-detail="context">
-          <rect x="238.8" y="310" width="100.4" height="16" rx="3" class="c-mask"/>
-          <text x="289" y="320" class="t-muted" font-size="9" text-anchor="middle">Receive y − Q POL</text>
+          <rect x="353.8" y="310" width="134.4" height="16" rx="3" class="c-mask"/>
+          <text x="421" y="320" class="t-muted" font-size="12" text-anchor="middle">Receive y − Q POL</text>
         </g>
-        <text data-detail="fine" x="176" y="348" class="t-dim" font-size="7">Displayed price is indicative only; execution follows the pool state at fill time</text>
+        <g data-detail="fine"><rect x="172" y="337" width="449.40000000000003" height="14" rx="3" class="c-mask"/><text data-detail="fine" x="178" y="348" class="t-dim" font-size="9">Displayed price is indicative only; execution follows the pool state at fill time</text></g>
         </g>
 
         <!-- Segment Labels -->
@@ -5088,8 +5088,8 @@
             <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="157" y="94" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">User</text>
-          <text data-detail="context" x="157" y="111" class="t-muted" font-size="7" text-anchor="middle">Sets minimum-receive floor</text>
+          <text data-node-label="" data-detail-anchor="" x="157" y="94" class="t-primary" font-size="12" font-weight="600" text-anchor="middle">User</text>
+          <text data-detail="context" x="157" y="111" class="t-muted" font-size="10" text-anchor="middle">Sets minimum-receive floor</text>
         </g>
 
         <g id="node-pool" data-node-id="pool" data-node-label="PT/POL pool" tabindex="0" role="button" aria-label="Focus PT/POL pool, Reuses liquidity, Sequence participant" aria-pressed="false" data-node-kind="database" data-node-sublabel="Reuses liquidity" data-node-context="Sequence participant">
@@ -5100,8 +5100,8 @@
             <ellipse cx="8" cy="4" rx="5" ry="2"/>
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="421" y="94" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">PT/POL pool</text>
-          <text data-detail="context" x="421" y="111" class="t-muted" font-size="7" text-anchor="middle">Reuses liquidity</text>
+          <text data-node-label="" data-detail-anchor="" x="421" y="94" class="t-primary" font-size="12" font-weight="600" text-anchor="middle">PT/POL pool</text>
+          <text data-detail="context" x="421" y="111" class="t-muted" font-size="10" text-anchor="middle">Reuses liquidity</text>
         </g>
 
         <g id="node-merge" data-node-id="merge" data-node-label="Merge" tabindex="0" role="button" aria-label="Focus Merge, 1 PT + 1 YT = 1 POL, Sequence participant" aria-pressed="false" data-node-kind="backend" data-node-sublabel="1 PT + 1 YT = 1 POL" data-node-context="Sequence participant">
@@ -5111,24 +5111,24 @@
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(596 78) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="685" y="94" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Merge</text>
-          <text data-detail="context" x="685" y="111" class="t-muted" font-size="7" text-anchor="middle">1 PT + 1 YT = 1 POL</text>
+          <text data-node-label="" data-detail-anchor="" x="685" y="94" class="t-primary" font-size="12" font-weight="600" text-anchor="middle">Merge</text>
+          <text data-detail="context" x="685" y="111" class="t-muted" font-size="10" text-anchor="middle">1 PT + 1 YT = 1 POL</text>
         </g>
 
         <!-- Legend -->
         <g data-legend="">
           <text x="40" y="426" class="t-primary" font-size="12" font-weight="650">Legend</text>
-          <g data-legend-semantic-kind="emphasis" data-legend-x="40" data-legend-baseline="446" data-legend-width="78">
+          <g data-legend-semantic-kind="emphasis" data-legend-x="40" data-legend-baseline="446" data-legend-width="87">
             <path d="M 40 443 L 74 443" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
             <text x="83" y="446" class="t-muted" font-size="10" font-weight="500">request</text>
           </g>
-          <g data-legend-semantic-kind="return" data-legend-x="140" data-legend-baseline="446" data-legend-width="73">
-            <path d="M 140 443 L 174 443" class="a-default" stroke-width="1.4" stroke-dasharray="3,5" marker-end="url(#arrowhead)"/>
-            <text x="183" y="446" class="t-muted" font-size="10" font-weight="500">return</text>
+          <g data-legend-semantic-kind="return" data-legend-x="149" data-legend-baseline="446" data-legend-width="81">
+            <path d="M 149 443 L 183 443" class="a-default" stroke-width="1.4" stroke-dasharray="3,5" marker-end="url(#arrowhead)"/>
+            <text x="192" y="446" class="t-muted" font-size="10" font-weight="500">return</text>
           </g>
-          <g data-legend-semantic-kind="default" data-legend-x="235" data-legend-baseline="446" data-legend-width="118">
-            <path d="M 235 443 L 269 443" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-            <text x="278" y="446" class="t-muted" font-size="10" font-weight="500">default message</text>
+          <g data-legend-semantic-kind="default" data-legend-x="252" data-legend-baseline="446" data-legend-width="136">
+            <path d="M 252 443 L 286 443" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+            <text x="295" y="446" class="t-muted" font-size="10" font-weight="500">default message</text>
           </g>
         </g>
       </svg>

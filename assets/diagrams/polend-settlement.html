@@ -58,7 +58,7 @@
       --lane-fill: rgba(15, 23, 42, 0.22);
       --lane-stroke: #334155;
 
-      --arrow: #8fa3bd;
+      --arrow: #64748b;
       --arrow-emphasis: #34d399;
 
       /* Opaque mask color used behind semi-transparent component fills
@@ -78,7 +78,7 @@
       --messagebus-fill:  rgba(251, 146, 60, 0.3);
       --messagebus-stroke:#fb923c;
       --external-fill:    rgba(30, 41, 59, 0.5);
-      --external-stroke:  #cbd5e1;
+      --external-stroke:  #94a3b8;
 
       --toolbar-bg:       rgba(15, 23, 42, 0.8);
       --toolbar-border:   #334155;
@@ -5050,57 +5050,58 @@
         <path data-edge-from="capture" data-edge-to="unlock" data-edge-key="0" data-composition-points="136,119;165,119" d="M 136 119 L 165 119" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="unlock" data-edge-to="gsettle" data-edge-key="1" data-composition-points="275,119;370,119" d="M 275 119 L 370 119" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="gsettle" data-edge-to="protect" data-edge-key="2" data-composition-points="490,119;570,119" d="M 490 119 L 570 119" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="gsettle" data-edge-to="cut" data-edge-label="Runs only with leveraged debt" data-edge-key="3" data-composition-points="430,145;430,170;20,170;20,243;40,243" d="M 430 145 L 430 170 L 20 170 L 20 243 L 40 243" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="gsettle" data-edge-to="cut" data-edge-label="Runs only with leveraged debt" data-edge-key="3" data-composition-points="430,145;430,170;14,170;14,243;40,243" d="M 430 145 L 430 170 L 14 170 L 14 243 L 40 243" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="cut" data-edge-to="liquidate" data-edge-key="4" data-composition-points="136,243;165,243" d="M 136 243 L 165 243" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="liquidate" data-edge-to="repay" data-edge-key="5" data-composition-points="275,243;355,243" d="M 275 243 L 355 243" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="repay" data-edge-to="residual" data-edge-label="Surplus" data-edge-key="6" data-composition-points="505,243;570,243" d="M 505 243 L 570 243" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="repay" data-edge-to="reserve" data-edge-label="Shortfall" data-edge-key="7" data-composition-points="430,269;430,290;220,290;220,341" d="M 430 269 L 430 290 L 220 290 L 220 341" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
-        <path data-edge-from="reserve" data-edge-to="rollback" data-edge-label="Shortfall exceeds reserve" data-edge-key="8" data-composition-points="284,367;344,367" d="M 284 367 L 344 367" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
-        <path data-edge-from="rollback" data-edge-to="fund" data-edge-label="After revert" data-edge-key="9" data-composition-points="516,367;570,367" d="M 516 367 L 570 367" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="fund" data-edge-to="cut" data-edge-label="Retry once reserve replenished" data-edge-key="10" data-composition-points="625,393;625,420;150,420;150,163;88,163;88,217" d="M 625 393 L 625 420 L 150 420 L 150 163 L 88 163 L 88 217" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="reserve" data-edge-to="protect" data-edge-label="Reserve covers it" data-edge-key="8" data-composition-points="220,393;220,414;716,414;716,44;625,44;625,93" d="M 220 393 L 220 414 L 716 414 L 716 44 L 625 44 L 625 93" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="reserve" data-edge-to="rollback" data-edge-label="Revert" data-edge-key="9" data-composition-points="284,367;344,367" d="M 284 367 L 344 367" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path data-edge-from="rollback" data-edge-to="fund" data-edge-label="Top up" data-edge-key="10" data-composition-points="516,367;570,367" d="M 516 367 L 570 367" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="fund" data-edge-to="cut" data-edge-label="Retry once reserve replenished" data-edge-key="11" data-composition-points="625,341;625,332;690,332;690,206;88,206;88,217" d="M 625 341 L 625 332 L 690 332 L 690 206 L 88 206 L 88 217" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
 
         <!-- Nodes -->
-        <g id="node-capture" data-node-id="capture" data-node-label="Capture fees" tabindex="0" role="button" aria-label="Focus Capture fees, Last tx before unlock, Unlock transaction (atomic: any step fails → whole reverts, stays Locked)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Last tx before unlock" data-node-context="Unlock transaction (atomic: any step fails → whole reverts, stays Locked)">
-          <title>Capture fees · Last tx before unlock · Unlock transaction (atomic: any step fails → whole reverts, stays Locked)</title>
+        <g id="node-capture" data-node-id="capture" data-node-label="Capture fees" tabindex="0" role="button" aria-label="Focus Capture fees, Last pre-unlock tx, Unlock transaction (atomic: any step fails → whole reverts, stays Locked)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Last pre-unlock tx" data-node-context="Unlock transaction (atomic: any step fails → whole reverts, stays Locked)">
+          <title>Capture fees · Last pre-unlock tx · Unlock transaction (atomic: any step fails → whole reverts, stays Locked)</title>
           <rect x="40" y="93" width="96" height="52" rx="6" class="c-mask"/>
           <rect x="40" y="93" width="96" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(46 99) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="88" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Capture fees</text>
-          <text data-detail="context" x="88" y="131" class="t-muted" font-size="6.9" text-anchor="middle">Last tx before unlock</text>
+          <text data-detail="context" x="88" y="131" class="t-muted" font-size="8" text-anchor="middle">Last pre-unlock tx</text>
         </g>
 
-        <g id="node-unlock" data-node-id="unlock" data-node-label="Enter unlock" tabindex="0" role="button" aria-label="Focus Enter unlock, POL unified settlement, Unlock transaction (atomic: any step fails → whole reverts, stays Locked)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="POL unified settlement" data-node-context="Unlock transaction (atomic: any step fails → whole reverts, stays Locked)">
-          <title>Enter unlock · POL unified settlement · Unlock transaction (atomic: any step fails → whole reverts, stays Locked)</title>
+        <g id="node-unlock" data-node-id="unlock" data-node-label="Enter unlock" tabindex="0" role="button" aria-label="Focus Enter unlock, Starts settlement, Unlock transaction (atomic: any step fails → whole reverts, stays Locked)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Starts settlement" data-node-context="Unlock transaction (atomic: any step fails → whole reverts, stays Locked)">
+          <title>Enter unlock · Starts settlement · Unlock transaction (atomic: any step fails → whole reverts, stays Locked)</title>
           <rect x="165" y="93" width="110" height="52" rx="6" class="c-mask"/>
           <rect x="165" y="93" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(171 99) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="220" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Enter unlock</text>
-          <text data-detail="context" x="220" y="131" class="t-muted" font-size="7.7" text-anchor="middle">POL unified settlement</text>
+          <text data-detail="context" x="220" y="131" class="t-muted" font-size="8" text-anchor="middle">Starts settlement</text>
         </g>
 
-        <g id="node-gsettle" data-node-id="gsettle" data-node-label="Unified settlement" tabindex="0" role="button" aria-label="Focus Unified settlement, Only if leveraged debt, Unlock transaction (atomic: any step fails → whole reverts, stays Locked)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Only if leveraged debt" data-node-context="Unlock transaction (atomic: any step fails → whole reverts, stays Locked)">
-          <title>Unified settlement · Only if leveraged debt · Unlock transaction (atomic: any step fails → whole reverts, stays Locked)</title>
+        <g id="node-gsettle" data-node-id="gsettle" data-node-label="Unified settlement" tabindex="0" role="button" aria-label="Focus Unified settlement, Skipped if no leverage, Unlock transaction (atomic: any step fails → whole reverts, stays Locked)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Skipped if no leverage" data-node-context="Unlock transaction (atomic: any step fails → whole reverts, stays Locked)">
+          <title>Unified settlement · Skipped if no leverage · Unlock transaction (atomic: any step fails → whole reverts, stays Locked)</title>
           <rect x="370" y="93" width="120" height="52" rx="6" class="c-mask"/>
           <rect x="370" y="93" width="120" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(376 99) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="430" y="114" class="t-primary" font-size="10.3" font-weight="600" text-anchor="middle">Unified settlement</text>
-          <text data-detail="context" x="430" y="131" class="t-muted" font-size="8" text-anchor="middle">Only if leveraged debt</text>
+          <text data-detail="context" x="430" y="131" class="t-muted" font-size="8" text-anchor="middle">Skipped if no leverage</text>
         </g>
 
-        <g id="node-protect" data-node-id="protect" data-node-label="Protection window" tabindex="0" role="button" aria-label="Focus Protection window, 24 hours · fixed, Unlock transaction (atomic: any step fails → whole reverts, stays Locked)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="24 hours · fixed" data-node-context="Unlock transaction (atomic: any step fails → whole reverts, stays Locked)">
-          <title>Protection window · 24 hours · fixed · Unlock transaction (atomic: any step fails → whole reverts, stays Locked)</title>
+        <g id="node-protect" data-node-id="protect" data-node-label="Protection" tabindex="0" role="button" aria-label="Focus Protection, 24 hours · fixed, Unlock transaction (atomic: any step fails → whole reverts, stays Locked)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="24 hours · fixed" data-node-context="Unlock transaction (atomic: any step fails → whole reverts, stays Locked)">
+          <title>Protection · 24 hours · fixed · Unlock transaction (atomic: any step fails → whole reverts, stays Locked)</title>
           <rect x="570" y="93" width="110" height="52" rx="6" class="c-mask"/>
           <rect x="570" y="93" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(576 99) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="625" y="114" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Protection window</text>
+          <text data-node-label="" data-detail-anchor="" x="625" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Protection</text>
           <text data-detail="context" x="625" y="131" class="t-muted" font-size="8" text-anchor="middle">24 hours · fixed</text>
         </g>
 
@@ -5115,48 +5116,48 @@
           <text data-detail="context" x="88" y="255" class="t-muted" font-size="8" text-anchor="middle">Pro rata to debt</text>
         </g>
 
-        <g id="node-liquidate" data-node-id="liquidate" data-node-label="Unwind, recover" tabindex="0" role="button" aria-label="Focus Unwind, recover, POL burn-redeem; PT → uAsset, Unified settlement" aria-pressed="false" data-node-kind="backend" data-node-sublabel="POL burn-redeem; PT → uAsset" data-node-context="Unified settlement">
-          <title>Unwind, recover · POL burn-redeem; PT → uAsset · Unified settlement</title>
+        <g id="node-liquidate" data-node-id="liquidate" data-node-label="Unwind, recover" tabindex="0" role="button" aria-label="Focus Unwind, recover, Burn POL; PT → uAsset, Unified settlement" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Burn POL; PT → uAsset" data-node-context="Unified settlement">
+          <title>Unwind, recover · Burn POL; PT → uAsset · Unified settlement</title>
           <rect x="165" y="217" width="110" height="52" rx="6" class="c-mask"/>
           <rect x="165" y="217" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(171 223) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="220" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Unwind, recover</text>
-          <text data-detail="context" x="220" y="255" class="t-muted" font-size="6" text-anchor="middle">POL burn-redeem; PT → uAsset</text>
+          <text data-detail="context" x="220" y="255" class="t-muted" font-size="8" text-anchor="middle">Burn POL; PT → uAsset</text>
         </g>
 
-        <g id="node-repay" data-node-id="repay" data-node-label="Repay leveraged debt" tabindex="0" role="button" aria-label="Focus Repay leveraged debt, Recovered uAsset repays and is burned, Unified settlement" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Recovered uAsset repays and is burned" data-node-context="Unified settlement">
-          <title>Repay leveraged debt · Recovered uAsset repays and is burned · Unified settlement</title>
+        <g id="node-repay" data-node-id="repay" data-node-label="Repay leveraged debt" tabindex="0" role="button" aria-label="Focus Repay leveraged debt, Recovered uAsset repays, Unified settlement" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Recovered uAsset repays" data-node-context="Unified settlement">
+          <title>Repay leveraged debt · Recovered uAsset repays · Unified settlement</title>
           <rect x="355" y="217" width="150" height="52" rx="6" class="c-mask"/>
           <rect x="355" y="217" width="150" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(361 223) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="430" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Repay leveraged debt</text>
-          <text data-detail="context" x="430" y="255" class="t-muted" font-size="6.3" text-anchor="middle">Recovered uAsset repays and is burned</text>
+          <text data-detail="context" x="430" y="255" class="t-muted" font-size="8" text-anchor="middle">Recovered uAsset repays</text>
         </g>
 
-        <g id="node-residual" data-node-id="residual" data-node-label="One-time residual" tabindex="0" role="button" aria-label="Focus One-time residual, Pro rata to interest—forever, Unified settlement" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Pro rata to interest—forever" data-node-context="Unified settlement">
-          <title>One-time residual · Pro rata to interest—forever · Unified settlement</title>
+        <g id="node-residual" data-node-id="residual" data-node-label="Residual payout" tabindex="0" role="button" aria-label="Focus Residual payout, Pro rata to interest, Unified settlement" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Pro rata to interest" data-node-context="Unified settlement">
+          <title>Residual payout · Pro rata to interest · Unified settlement</title>
           <rect x="570" y="217" width="110" height="52" rx="6" class="c-mask"/>
           <rect x="570" y="217" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(576 223) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="625" y="238" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">One-time residual</text>
-          <text data-detail="context" x="625" y="255" class="t-muted" font-size="6" text-anchor="middle">Pro rata to interest—forever</text>
+          <text data-node-label="" data-detail-anchor="" x="625" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Residual payout</text>
+          <text data-detail="context" x="625" y="255" class="t-muted" font-size="8" text-anchor="middle">Pro rata to interest</text>
         </g>
 
-        <g id="node-reserve" data-node-id="reserve" data-node-label="Draw reserve" tabindex="0" role="button" aria-label="Focus Draw reserve, Capped rounding-level shortfall, Shortfall and retry" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Capped rounding-level shortfall" data-node-context="Shortfall and retry">
-          <title>Draw reserve · Capped rounding-level shortfall · Shortfall and retry</title>
+        <g id="node-reserve" data-node-id="reserve" data-node-label="Draw reserve" tabindex="0" role="button" aria-label="Focus Draw reserve, Rounding-level only, Shortfall and retry" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Rounding-level only" data-node-context="Shortfall and retry">
+          <title>Draw reserve · Rounding-level only · Shortfall and retry</title>
           <rect x="156" y="341" width="128" height="52" rx="6" class="c-mask"/>
           <rect x="156" y="341" width="128" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(162 347) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="220" y="362" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Draw reserve</text>
-          <text data-detail="context" x="220" y="379" class="t-muted" font-size="6.4" text-anchor="middle">Capped rounding-level shortfall</text>
+          <text data-detail="context" x="220" y="379" class="t-muted" font-size="8" text-anchor="middle">Rounding-level only</text>
         </g>
 
         <g id="node-rollback" data-node-id="rollback" data-node-label="Revert whole transaction" tabindex="0" role="button" aria-label="Focus Revert whole transaction, Stays Locked, Shortfall and retry" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Stays Locked" data-node-context="Shortfall and retry">
@@ -5170,16 +5171,16 @@
           <text data-detail="context" x="430" y="379" class="t-muted" font-size="8" text-anchor="middle">Stays Locked</text>
         </g>
 
-        <g id="node-fund" data-node-id="fund" data-node-label="Replenish reserve" tabindex="0" role="button" aria-label="Focus Replenish reserve, Unaffected by protocol pause, Shortfall and retry" aria-pressed="false" data-node-kind="external" data-node-sublabel="Unaffected by protocol pause" data-node-context="Shortfall and retry">
-          <title>Replenish reserve · Unaffected by protocol pause · Shortfall and retry</title>
+        <g id="node-fund" data-node-id="fund" data-node-label="Replenish" tabindex="0" role="button" aria-label="Focus Replenish, Cap may be raised, Shortfall and retry" aria-pressed="false" data-node-kind="external" data-node-sublabel="Cap may be raised" data-node-context="Shortfall and retry">
+          <title>Replenish · Cap may be raised · Shortfall and retry</title>
           <rect x="570" y="341" width="110" height="52" rx="6" class="c-mask"/>
           <rect x="570" y="341" width="110" height="52" rx="6" class="c-external" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(576 347) scale(0.6875)">
             <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="625" y="362" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Replenish reserve</text>
-          <text data-detail="context" x="625" y="379" class="t-muted" font-size="6" text-anchor="middle">Unaffected by protocol pause</text>
+          <text data-node-label="" data-detail-anchor="" x="625" y="362" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Replenish</text>
+          <text data-detail="context" x="625" y="379" class="t-muted" font-size="8" text-anchor="middle">Cap may be raised</text>
         </g>
 
         <!-- Edge labels -->
@@ -5187,42 +5188,46 @@
 
 
         <g data-detail="context" data-edge-from="gsettle" data-edge-to="cut" data-edge-label="Runs only with leveraged debt" data-edge-key="3">
-          <rect x="158.4" y="150" width="149.2" height="14" rx="3" class="c-mask"/>
-          <text x="233" y="160" class="t-muted" font-size="8" text-anchor="middle">Runs only with leveraged debt</text>
+          <rect x="147.4" y="156" width="149.2" height="14" rx="3" class="c-mask"/>
+          <text x="222" y="166" class="t-muted" font-size="8" text-anchor="middle">Runs only with leveraged debt</text>
         </g>
 
 
         <g data-detail="context" data-edge-from="repay" data-edge-to="residual" data-edge-label="Surplus" data-edge-key="6">
-          <rect x="515.7" y="273" width="43.6" height="14" rx="3" class="c-mask"/>
-          <text x="537.5" y="283" class="t-muted" font-size="8" text-anchor="middle">Surplus</text>
+          <rect x="515.7" y="223" width="43.6" height="14" rx="3" class="c-mask"/>
+          <text x="537.5" y="233" class="t-muted" font-size="8" text-anchor="middle">Surplus</text>
         </g>
         <g data-detail="context" data-edge-from="repay" data-edge-to="reserve" data-edge-label="Shortfall" data-edge-key="7">
           <rect x="298.4" y="270" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
           <text x="325" y="280" class="t-database" font-size="8" text-anchor="middle">Shortfall</text>
         </g>
-        <g data-detail="context" data-edge-from="reserve" data-edge-to="rollback" data-edge-label="Shortfall exceeds reserve" data-edge-key="8">
-          <rect x="159" y="397" width="130" height="14" rx="3" class="c-mask"/>
-          <text x="224" y="407" class="t-database" font-size="8" text-anchor="middle">Shortfall exceeds reserve</text>
+        <g data-detail="context" data-edge-from="reserve" data-edge-to="protect" data-edge-label="Reserve covers it" data-edge-key="8">
+          <rect x="414.2" y="410" width="91.6" height="14" rx="3" class="c-mask"/>
+          <text x="460" y="420" class="t-muted" font-size="8" text-anchor="middle">Reserve covers it</text>
         </g>
-        <g data-detail="context" data-edge-from="rollback" data-edge-to="fund" data-edge-label="After revert" data-edge-key="9">
-          <rect x="509.2" y="397" width="67.6" height="14" rx="3" class="c-mask"/>
-          <text x="543" y="407" class="t-muted" font-size="8" text-anchor="middle">After revert</text>
+        <g data-detail="context" data-edge-from="reserve" data-edge-to="rollback" data-edge-label="Revert" data-edge-key="9">
+          <rect x="294.6" y="347" width="38.8" height="14" rx="3" class="c-mask"/>
+          <text x="314" y="357" class="t-database" font-size="8" text-anchor="middle">Revert</text>
         </g>
-        <g data-detail="context" data-edge-from="fund" data-edge-to="cut" data-edge-label="Retry once reserve replenished" data-edge-key="10">
-          <rect x="310.5" y="400" width="154" height="14" rx="3" class="c-mask"/>
-          <text x="387.5" y="410" class="t-muted" font-size="8" text-anchor="middle">Retry once reserve replenished</text>
+        <g data-detail="context" data-edge-from="rollback" data-edge-to="fund" data-edge-label="Top up" data-edge-key="10">
+          <rect x="523.6" y="347" width="38.8" height="14" rx="3" class="c-mask"/>
+          <text x="543" y="357" class="t-muted" font-size="8" text-anchor="middle">Top up</text>
+        </g>
+        <g data-detail="context" data-edge-from="fund" data-edge-to="cut" data-edge-label="Retry once reserve replenished" data-edge-key="11">
+          <rect x="323" y="196" width="154" height="14" rx="3" class="c-mask"/>
+          <text x="400" y="206" class="t-database" font-size="8" text-anchor="middle">Retry once reserve replenished</text>
         </g>
 
         <!-- Legend -->
         <g data-legend="" data-legend-bridge="">
           <text x="20" y="428" class="t-primary" font-size="12" font-weight="650">Legend</text>
-          <g data-legend-semantic-kind="backend" data-legend-kind="backend" data-legend-label="Protocol actions" data-legend-x="20" data-legend-baseline="448" data-legend-width="113">
+          <g data-legend-semantic-kind="backend" data-legend-kind="backend" data-legend-label="Protocol actions" data-legend-x="20" data-legend-baseline="448" data-legend-width="118">
             <rect x="20" y="440" width="14" height="9" rx="2" class="c-backend" stroke-width="1"/>
             <text x="42" y="448" class="t-muted" font-size="7.5" font-weight="500">Protocol actions</text>
           </g>
-          <g data-legend-semantic-kind="external" data-legend-kind="external" data-legend-label="Anyone can execute" data-legend-x="140" data-legend-baseline="448" data-legend-width="122">
-            <rect x="140" y="440" width="14" height="9" rx="2" class="c-external" stroke-width="1"/>
-            <text x="162" y="448" class="t-muted" font-size="7.5" font-weight="500">Anyone can execute</text>
+          <g data-legend-semantic-kind="external" data-legend-kind="external" data-legend-label="External action" data-legend-x="145" data-legend-baseline="448" data-legend-width="113">
+            <rect x="145" y="440" width="14" height="9" rx="2" class="c-external" stroke-width="1"/>
+            <text x="167" y="448" class="t-muted" font-size="7.5" font-weight="500">External action</text>
           </g>
         </g>
       </svg>
@@ -5419,7 +5424,7 @@
         <ul>
           <li>&bull; The final auxiliary-pool fee capture, unlock, unified settlement, and protection-window opening all complete in one transaction</li>
           <li>&bull; Any failed step reverts the whole transaction; the Verse stays Locked and the process can be re-initiated</li>
-          <li>&bull; Protection window: 24 hours · fixed</li>
+          <li>&bull; Protection window: 24 hours; the standard side can exit principal while pools are static</li>
         </ul>
       </div>
 
@@ -5431,7 +5436,8 @@
         <ul>
           <li>&bull; Auxiliary-pool shares are cut out pro rata to the leveraged debt; rounding remainders go to the standard side</li>
           <li>&bull; POL is burned to redeem; PT swaps into uAsset at par</li>
-          <li>&bull; Recovered uAsset repays the full leveraged debt first; repaid uAsset is burned</li>
+          <li>&bull; Recovered uAsset repays the full leveraged debt first</li>
+          <li>&bull; Leveraged participants also receive leveraged YT, pro rata to the interest each paid</li>
         </ul>
       </div>
 
@@ -5443,7 +5449,8 @@
         <ul>
           <li>&bull; Surplus: residual value = remaining uAsset + all recovered Memecoin, distributed once pro rata to interest paid, claimable forever</li>
           <li>&bull; Shortfall: the settlement reserve covers only a capped rounding-level shortfall, never insolvency</li>
-          <li>&bull; A shortfall over the reserve reverts the whole transaction; once anyone replenishes the reserve it can be retried, unaffected by the protocol pause</li>
+          <li>&bull; A shortfall over the reserve reverts the whole transaction; once the reserve is replenished (cap may be raised) it is retried</li>
+          <li>&bull; Captured fees: POL-denominated fees are burned; uAsset fees go to the protocol treasury</li>
         </ul>
       </div>
     </div>

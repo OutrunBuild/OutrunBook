@@ -5,7 +5,11 @@
     "title": "Memecoin lifecycle: from Genesis to steady state",
     "locale": "en",
     "quality_profile": "showcase",
-    "output": "assets/diagrams/verse-lifecycle.html"
+    "output": "assets/diagrams/verse-lifecycle.html",
+    "viewBox": [
+      720,
+      660
+    ]
   },
   "lanes": [
     {
@@ -13,8 +17,8 @@
       "label": "Main track"
     },
     {
-      "id": "branch",
-      "label": "Branch track"
+      "id": "window",
+      "label": "Protection window"
     },
     {
       "id": "terminal",
@@ -45,7 +49,7 @@
       "id": "unlocked",
       "type": "active",
       "label": "Unlocked",
-      "sublabel": "Unified settlement + 24h",
+      "sublabel": "Unified settlement",
       "lane": "main",
       "col": 2,
       "step": "03"
@@ -58,6 +62,14 @@
       "lane": "main",
       "col": 3,
       "step": "04"
+    },
+    {
+      "id": "protection",
+      "type": "waiting",
+      "label": "Protection window",
+      "sublabel": "24h · pools paused",
+      "lane": "window",
+      "col": 0
     },
     {
       "id": "refund",
@@ -73,13 +85,22 @@
       "id": "to-locked-flash",
       "from": "genesis",
       "to": "locked",
-      "label": "Fast Genesis: met before deadline, triggers early",
-      "route": "top-channel",
+      "label": "Fast Genesis: threshold met; trigger early",
       "fromSide": "top",
       "toSide": "top",
+      "via": [
+        [
+          94,
+          88
+        ],
+        [
+          248,
+          88
+        ]
+      ],
       "labelAt": [
         171,
-        96
+        78
       ]
     },
     {
@@ -87,9 +108,12 @@
       "from": "genesis",
       "to": "locked",
       "label": "No Fast Genesis: at deadline",
+      "note": "requires threshold met",
+      "fromSide": "right",
+      "toSide": "left",
       "labelAt": [
-        178,
-        205
+        240,
+        214
       ]
     },
     {
@@ -97,23 +121,92 @@
       "from": "genesis",
       "to": "refund",
       "label": "After deadline, neither threshold met",
+      "variant": "security",
       "fromSide": "bottom",
-      "toSide": "top"
+      "toSide": "left",
+      "via": [
+        [
+          94,
+          230
+        ],
+        [
+          40,
+          230
+        ],
+        [
+          40,
+          479
+        ]
+      ],
+      "labelSegment": 3
     },
     {
       "id": "to-unlocked",
       "from": "locked",
       "to": "unlocked",
-      "label": "Lock-up ends; anyone triggers unified settlement",
-      "labelDy": 88
+      "label": "Lock-up ends",
+      "note": "transaction triggers unified settlement",
+      "fromSide": "right",
+      "toSide": "top",
+      "via": [
+        [
+          325,
+          157
+        ],
+        [
+          325,
+          90
+        ],
+        [
+          402,
+          90
+        ]
+      ],
+      "labelAt": [
+        400,
+        80
+      ]
+    },
+    {
+      "id": "to-protection",
+      "from": "unlocked",
+      "to": "protection",
+      "label": "Settlement done; window opens",
+      "fromSide": "right",
+      "toSide": "right",
+      "via": [
+        [
+          475,
+          157
+        ],
+        [
+          475,
+          307
+        ]
+      ],
+      "labelSegment": 1,
+      "labelDx": -6,
+      "labelDy": -14
     },
     {
       "id": "to-normal",
-      "from": "unlocked",
+      "from": "protection",
       "to": "normal",
-      "label": "Protection window ends, auto-resume",
+      "label": "Window ends; auto-resume",
       "note": "Public trading resumes; no transaction needed",
-      "labelDy": 55
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "via": [
+        [
+          402,
+          370
+        ],
+        [
+          556,
+          370
+        ]
+      ],
+      "labelDy": 16
     }
   ],
   "cards": [
@@ -128,7 +221,7 @@
     },
     {
       "dot": "cyan",
-      "title": "Phase advances are transaction-triggered",
+      "title": "Advances take a transaction",
       "items": [
         "Apart from the protection window's automatic resume, every phase advance takes a public transaction to trigger",
         "Unlock time = Genesis deadline + 365 days (fixed); entering Locked early does not change it",

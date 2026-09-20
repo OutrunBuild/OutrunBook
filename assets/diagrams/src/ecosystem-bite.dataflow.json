@@ -6,120 +6,42 @@
     "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/ecosystem-bite.html",
-    "viewBox": [
-      1080,
-      640
-    ],
+    "viewBox": [860, 360],
     "legend": {
       "mode": "auto",
       "entries": {
         "default": {
           "label": "Modules and flows",
+          "visible": false
+        },
+        "dashed": {
+          "label": "demand signal — no yields flow back",
           "visible": true
         },
         "database": {
-          "label": "uAsset assets",
+          "label": "uAsset (UETH/UUSD/UBNB)",
           "visible": true
         }
       }
     }
   },
   "stages": [
-    {
-      "label": "OutStake supply side"
-    },
-    {
-      "label": "Mint uAsset"
-    },
-    {
-      "label": "Lifeline"
-    },
-    {
-      "label": "Memeverse use side"
-    }
+    { "label": "OutStake supply side" },
+    { "label": "Mint uAsset" },
+    { "label": "Lifeline" },
+    { "label": "Memeverse use side" }
   ],
   "nodes": [
-    {
-      "id": "supply",
-      "type": "external",
-      "label": "OutStake supply side",
-      "sublabel": "multi-protocol yield assets",
-      "tag": "wstETH · sUSDS · sUSDe…",
-      "stage": 0,
-      "row": 1,
-      "width": 124
-    },
-    {
-      "id": "mint",
-      "type": "backend",
-      "label": "Mint uAsset",
-      "sublabel": "Genesis Staking · PSM",
-      "stage": 1,
-      "row": 1
-    },
-    {
-      "id": "uasset",
-      "type": "database",
-      "label": "uAsset",
-      "sublabel": "UETH/UUSD/UBNB",
-      "tag": "lifeline between modules",
-      "stage": 2,
-      "row": 1
-    },
-    {
-      "id": "memeverse",
-      "type": "backend",
-      "label": "Memeverse use side",
-      "sublabel": "4 pools · leverage · Staking · DAO",
-      "stage": 3,
-      "row": 1,
-      "width": 160
-    }
+    { "id": "supply", "type": "external", "label": "OutStake supply side", "sublabel": "multi-protocol yield assets", "tag": "wstETH · sUSDS · sUSDe…", "stage": 0, "row": 0, "width": 150 },
+    { "id": "mint", "type": "backend", "label": "Mint uAsset", "sublabel": "Genesis Staking · PSM", "stage": 1, "row": 0 },
+    { "id": "uasset", "type": "database", "label": "uAsset", "sublabel": "UETH/UUSD/UBNB", "tag": "lifeline between modules", "stage": 2, "row": 0 },
+    { "id": "memeverse", "type": "backend", "label": "Memeverse use side", "sublabel": "4 pools · leverage · Staking · DAO", "stage": 3, "row": 0, "width": 160 }
   ],
   "flows": [
-    {
-      "id": "supply-mint",
-      "from": "supply",
-      "to": "mint",
-      "label": "Genesis Staking / PSM",
-      "variant": "emphasis",
-      "labelAt": [
-        211,
-        314
-      ]
-    },
-    {
-      "id": "mint-uasset",
-      "from": "mint",
-      "to": "uasset",
-      "label": "mint",
-      "variant": "emphasis"
-    },
-    {
-      "id": "uasset-memeverse",
-      "from": "uasset",
-      "to": "memeverse",
-      "label": "Genesis funding · leverage interest · Preorder · settlement denomination",
-      "variant": "emphasis",
-      "labelAt": [
-        638,
-        232
-      ]
-    },
-    {
-      "id": "bite-back",
-      "from": "memeverse",
-      "to": "uasset",
-      "label": "Two-way supply-demand interlock (yields do not flow back)",
-      "variant": "dashed",
-      "fromSide": "bottom",
-      "toSide": "bottom",
-      "route": "bottom-channel",
-      "labelAt": [
-        637,
-        332
-      ]
-    }
+    { "id": "supply-mint", "from": "supply", "to": "mint", "label": "Genesis Staking / PSM", "variant": "emphasis", "labelAt": [211, 200] },
+    { "id": "mint-uasset", "from": "mint", "to": "uasset", "label": "mint", "variant": "emphasis" },
+    { "id": "uasset-memeverse", "from": "uasset", "to": "memeverse", "label": "Genesis funding · leverage interest · settlement denomination", "variant": "emphasis", "labelAt": [558, 201] },
+    { "id": "bite-back", "from": "memeverse", "to": "mint", "label": "Two-way supply-demand interlock (yields do not flow back)", "variant": "dashed", "fromSide": "bottom", "toSide": "bottom", "route": "bottom-channel", "labelAt": [530, 232] }
   ],
   "cards": [
     {

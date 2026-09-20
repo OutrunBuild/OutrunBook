@@ -58,7 +58,7 @@
       --lane-fill: rgba(15, 23, 42, 0.22);
       --lane-stroke: #334155;
 
-      --arrow: #8fa3bd;
+      --arrow: #64748b;
       --arrow-emphasis: #34d399;
 
       /* Opaque mask color used behind semi-transparent component fills
@@ -78,7 +78,7 @@
       --messagebus-fill:  rgba(251, 146, 60, 0.3);
       --messagebus-stroke:#fb923c;
       --external-fill:    rgba(30, 41, 59, 0.5);
-      --external-stroke:  #cbd5e1;
+      --external-stroke:  #94a3b8;
 
       --toolbar-bg:       rgba(15, 23, 42, 0.8);
       --toolbar-border:   #334155;
@@ -5051,52 +5051,52 @@
         <path data-edge-from="vol" data-edge-to="short" data-edge-key="2" data-composition-points="485,119;570,119" d="M 485 119 L 570 119" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="short" data-edge-to="dyn" data-edge-key="3" data-composition-points="625,145;625,166;625,166;625,217" d="M 625 145 L 625 166 L 625 166 L 625 217" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="dyn" data-edge-to="actual" data-edge-key="4" data-composition-points="570,243;485,243" d="M 570 243 L 485 243" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="decay" data-edge-to="actual" data-edge-key="5" data-composition-points="275,243;375,243" d="M 275 243 L 375 243" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="ewvap" data-edge-to="actual" data-edge-label="Exempt: base fee only" data-edge-key="6" data-composition-points="430,333;430,290;430,290;430,277" d="M 430 333 L 430 290 L 430 290 L 430 277" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path data-edge-from="decay" data-edge-to="actual" data-edge-key="5" data-composition-points="282,243;375,243" d="M 282 243 L 375 243" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="ewvap" data-edge-to="actual" data-edge-label="Exempt: base fee only" data-edge-key="6" data-composition-points="430,341;430,290;430,290;430,269" d="M 430 341 L 430 290 L 430 290 L 430 269" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
 
         <!-- Nodes -->
-        <g id="node-base" data-node-id="base" data-node-label="Base fee 1%" tabindex="0" role="button" aria-label="Focus Base fee 1%, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-tag="Fixed in contract" data-node-context="Dynamic fee = base fee + three dynamic components">
-          <title>Base fee 1% · Dynamic fee = base fee + three dynamic components · Fixed in contract</title>
-          <rect x="40" y="85" width="96" height="68" rx="6" class="c-mask"/>
-          <rect x="40" y="85" width="96" height="68" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(46 91) scale(0.6875)">
+        <g id="node-base" data-node-id="base" data-node-label="Base fee" tabindex="0" role="button" aria-label="Focus Base fee, 1% floor, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="1% floor" data-node-context="Dynamic fee = base fee + three dynamic components">
+          <title>Base fee · 1% floor · Dynamic fee = base fee + three dynamic components</title>
+          <rect x="40" y="93" width="96" height="52" rx="6" class="c-mask"/>
+          <rect x="40" y="93" width="96" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(46 99) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" x="88" y="106" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Base fee 1%</text>
-        <text data-detail="fine" x="88" y="141" class="t-backend" font-size="7" text-anchor="middle">Fixed in contract</text>
+          <text data-node-label="" data-detail-anchor="" x="88" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Base fee</text>
+          <text data-detail="context" x="88" y="131" class="t-muted" font-size="8" text-anchor="middle">1% floor</text>
         </g>
 
-        <g id="node-adverse" data-node-id="adverse" data-node-label="+ adverse fee" tabindex="0" role="button" aria-label="Focus + adverse fee, 3s window; splitting fails, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="3s window; splitting fails" data-node-context="Dynamic fee = base fee + three dynamic components">
-          <title>+ adverse fee · 3s window; splitting fails · Dynamic fee = base fee + three dynamic components</title>
+        <g id="node-adverse" data-node-id="adverse" data-node-label="+ adverse fee" tabindex="0" role="button" aria-label="Focus + adverse fee, per address; 3s window, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="per address; 3s window" data-node-context="Dynamic fee = base fee + three dynamic components">
+          <title>+ adverse fee · per address; 3s window · Dynamic fee = base fee + three dynamic components</title>
           <rect x="165" y="93" width="110" height="52" rx="6" class="c-mask"/>
           <rect x="165" y="93" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(171 99) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="220" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">+ adverse fee</text>
-          <text data-detail="context" x="220" y="131" class="t-muted" font-size="6.5" text-anchor="middle">3s window; splitting fails</text>
+          <text data-detail="context" x="220" y="131" class="t-muted" font-size="7.7" text-anchor="middle">per address; 3s window</text>
         </g>
 
-        <g id="node-vol" data-node-id="vol" data-node-label="+ volatility fee" tabindex="0" role="button" aria-label="Focus + volatility fee, per pool; volatility-linked, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="per pool; volatility-linked" data-node-context="Dynamic fee = base fee + three dynamic components">
-          <title>+ volatility fee · per pool; volatility-linked · Dynamic fee = base fee + three dynamic components</title>
+        <g id="node-vol" data-node-id="vol" data-node-label="+ volatility fee" tabindex="0" role="button" aria-label="Focus + volatility fee, per pool, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="per pool" data-node-context="Dynamic fee = base fee + three dynamic components">
+          <title>+ volatility fee · per pool · Dynamic fee = base fee + three dynamic components</title>
           <rect x="375" y="93" width="110" height="52" rx="6" class="c-mask"/>
           <rect x="375" y="93" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(381 99) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="430" y="114" class="t-primary" font-size="10.6" font-weight="600" text-anchor="middle">+ volatility fee</text>
-          <text data-detail="context" x="430" y="131" class="t-muted" font-size="6.2" text-anchor="middle">per pool; volatility-linked</text>
+          <text data-detail="context" x="430" y="131" class="t-muted" font-size="8" text-anchor="middle">per pool</text>
         </g>
 
-        <g id="node-short" data-node-id="short" data-node-label="+ short-term fee" tabindex="0" role="button" aria-label="Focus + short-term fee, above 2% only; 15s decay, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="above 2% only; 15s decay" data-node-context="Dynamic fee = base fee + three dynamic components">
-          <title>+ short-term fee · above 2% only; 15s decay · Dynamic fee = base fee + three dynamic components</title>
+        <g id="node-short" data-node-id="short" data-node-label="+ short-term fee" tabindex="0" role="button" aria-label="Focus + short-term fee, above 2%; 15s decay, Dynamic fee = base fee + three dynamic components" aria-pressed="false" data-node-kind="backend" data-node-sublabel="above 2%; 15s decay" data-node-context="Dynamic fee = base fee + three dynamic components">
+          <title>+ short-term fee · above 2%; 15s decay · Dynamic fee = base fee + three dynamic components</title>
           <rect x="570" y="93" width="110" height="52" rx="6" class="c-mask"/>
           <rect x="570" y="93" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(576 99) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="625" y="114" class="t-primary" font-size="10.6" font-weight="600" text-anchor="middle">+ short-term fee</text>
-          <text data-detail="context" x="625" y="131" class="t-muted" font-size="7" text-anchor="middle">above 2% only; 15s decay</text>
+          <text data-detail="context" x="625" y="131" class="t-muted" font-size="8" text-anchor="middle">above 2%; 15s decay</text>
         </g>
 
         <g id="node-dyn" data-node-id="dyn" data-node-label="= dynamic fee" tabindex="0" role="button" aria-label="Focus = dynamic fee, sum of the four, Actual fee = max(dynamic fee, pool-opening decay fee)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="sum of the four" data-node-context="Actual fee = max(dynamic fee, pool-opening decay fee)">
@@ -5110,39 +5110,37 @@
           <text data-detail="context" x="625" y="255" class="t-muted" font-size="8" text-anchor="middle">sum of the four</text>
         </g>
 
-        <g id="node-actual" data-node-id="actual" data-node-label="Actual fee" tabindex="0" role="button" aria-label="Focus Actual fee, takes the higher one, Actual fee = max(dynamic fee, pool-opening decay fee)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="takes the higher one" data-node-tag="Cap 100% · fixed" data-node-context="Actual fee = max(dynamic fee, pool-opening decay fee)">
-          <title>Actual fee · takes the higher one · Actual fee = max(dynamic fee, pool-opening decay fee) · Cap 100% · fixed</title>
-          <rect x="375" y="209" width="110" height="68" rx="6" class="c-mask"/>
-          <rect x="375" y="209" width="110" height="68" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(381 215) scale(0.6875)">
+        <g id="node-actual" data-node-id="actual" data-node-label="Actual fee" tabindex="0" role="button" aria-label="Focus Actual fee, cap 100% · fixed, Actual fee = max(dynamic fee, pool-opening decay fee)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="cap 100% · fixed" data-node-context="Actual fee = max(dynamic fee, pool-opening decay fee)">
+          <title>Actual fee · cap 100% · fixed · Actual fee = max(dynamic fee, pool-opening decay fee)</title>
+          <rect x="375" y="217" width="110" height="52" rx="6" class="c-mask"/>
+          <rect x="375" y="217" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(381 223) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="430" y="230" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Actual fee</text>
-          <text data-detail="context" x="430" y="247" class="t-muted" font-size="8" text-anchor="middle">takes the higher one</text>
-        <text data-detail="fine" x="430" y="265" class="t-backend" font-size="7" text-anchor="middle">Cap 100% · fixed</text>
+          <text data-node-label="" data-detail-anchor="" x="430" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Actual fee</text>
+          <text data-detail="context" x="430" y="255" class="t-muted" font-size="8" text-anchor="middle">cap 100% · fixed</text>
         </g>
 
-        <g id="node-decay" data-node-id="decay" data-node-label="Pool-opening fee" tabindex="0" role="button" aria-label="Focus Pool-opening fee, 50%→1%, defaults adjustable, Actual fee = max(dynamic fee, pool-opening decay fee)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="50%→1%, defaults adjustable" data-node-context="Actual fee = max(dynamic fee, pool-opening decay fee)">
-          <title>Pool-opening fee · 50%→1%, defaults adjustable · Actual fee = max(dynamic fee, pool-opening decay fee)</title>
-          <rect x="165" y="217" width="110" height="52" rx="6" class="c-mask"/>
-          <rect x="165" y="217" width="110" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(171 223) scale(0.6875)">
+        <g id="node-decay" data-node-id="decay" data-node-label="Pool-opening fee" tabindex="0" role="button" aria-label="Focus Pool-opening fee, 50%→1% in 15 min, Actual fee = max(dynamic fee, pool-opening decay fee)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="50%→1% in 15 min" data-node-context="Actual fee = max(dynamic fee, pool-opening decay fee)">
+          <title>Pool-opening fee · 50%→1% in 15 min · Actual fee = max(dynamic fee, pool-opening decay fee)</title>
+          <rect x="158" y="217" width="124" height="52" rx="6" class="c-mask"/>
+          <rect x="158" y="217" width="124" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(164 223) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="220" y="238" class="t-primary" font-size="10.6" font-weight="600" text-anchor="middle">Pool-opening fee</text>
-          <text data-detail="context" x="220" y="255" class="t-muted" font-size="6.2" text-anchor="middle">50%→1%, defaults adjustable</text>
+          <text data-node-label="" data-detail-anchor="" x="220" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Pool-opening fee</text>
+          <text data-detail="context" x="220" y="255" class="t-muted" font-size="8" text-anchor="middle">50%→1% in 15 min</text>
         </g>
 
-        <g id="node-ewvap" data-node-id="ewvap" data-node-label="EWVWAP exemption" tabindex="0" role="button" aria-label="Focus EWVWAP exemption, history + reversal → 1%, EWVWAP exemption (first trade not exempt)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="history + reversal → 1%" data-node-tag="First trade not exempt" data-node-context="EWVWAP exemption (first trade not exempt)">
-          <title>EWVWAP exemption · history + reversal → 1% · EWVWAP exemption (first trade not exempt) · First trade not exempt</title>
-          <rect x="375" y="333" width="110" height="68" rx="6" class="c-mask"/>
-          <rect x="375" y="333" width="110" height="68" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(381 339) scale(0.6875)">
+        <g id="node-ewvap" data-node-id="ewvap" data-node-label="EWVWAP exemption" tabindex="0" role="button" aria-label="Focus EWVWAP exemption, history + reversal → 1%, EWVWAP exemption (first trade not exempt)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="history + reversal → 1%" data-node-context="EWVWAP exemption (first trade not exempt)">
+          <title>EWVWAP exemption · history + reversal → 1% · EWVWAP exemption (first trade not exempt)</title>
+          <rect x="368" y="341" width="124" height="52" rx="6" class="c-mask"/>
+          <rect x="368" y="341" width="124" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(374 347) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="430" y="354" class="t-primary" font-size="10.6" font-weight="600" text-anchor="middle">EWVWAP exemption</text>
-          <text data-detail="context" x="430" y="371" class="t-muted" font-size="7.3" text-anchor="middle">history + reversal → 1%</text>
-        <text data-detail="fine" x="430" y="389" class="t-backend" font-size="7" text-anchor="middle">First trade not exempt</text>
+          <text data-node-label="" data-detail-anchor="" x="430" y="362" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">EWVWAP exemption</text>
+          <text data-detail="context" x="430" y="379" class="t-muted" font-size="8" text-anchor="middle">history + reversal → 1%</text>
         </g>
 
         <!-- Edge labels -->
@@ -5153,8 +5151,8 @@
 
 
         <g data-detail="context" data-edge-from="ewvap" data-edge-to="actual" data-edge-label="Exempt: base fee only" data-edge-key="6">
-          <rect x="374.6" y="320" width="110.8" height="14" rx="3" class="c-mask"/>
-          <text x="430" y="330" class="t-database" font-size="8" text-anchor="middle">Exempt: base fee only</text>
+          <rect x="374.6" y="310" width="110.8" height="14" rx="3" class="c-mask"/>
+          <text x="430" y="320" class="t-database" font-size="8" text-anchor="middle">Exempt: base fee only</text>
         </g>
 
         <!-- Legend -->
@@ -5354,7 +5352,7 @@
       <div class="card">
         <div class="card-header">
           <div class="card-dot cyan"></div>
-          <h3>How the four components are computed</h3>
+          <h3>Computing the four components</h3>
         </div>
         <ul>
           <li>&bull; The adverse impact fee is tracked per address × pool; impacts accumulate within a 3-second window, so order splitting fails</li>

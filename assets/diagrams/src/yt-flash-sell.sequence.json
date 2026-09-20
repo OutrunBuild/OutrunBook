@@ -7,6 +7,7 @@
     "quality_profile": "showcase",
     "output": "assets/diagrams/yt-flash-sell.html",
     "column_fit": "spread",
+    "titleInSvg": true,
     "viewBox": [
       820,
       500
@@ -60,7 +61,7 @@
     },
     {
       "id": "receive",
-      "from": "pool",
+      "from": "merge",
       "to": "user",
       "y": 330,
       "label": "Receive y − Q POL",

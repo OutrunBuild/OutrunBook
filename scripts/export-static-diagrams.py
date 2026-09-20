@@ -212,7 +212,7 @@ def bake_computed(html_path: pathlib.Path, svg: str, var_map: dict):
                 const baseline = isTextEl ? cs['dominant-baseline'] : '';
                 const dataAttrs = [...el.attributes]
                   .filter(a => a.name.startsWith('data-'))
-                  .map(a => a.name + '=' + a.value).sort().join(';');
+                  .map(a => a.name + '=' + a.value).sort().join('\\x1f');
                 out.push({tag, cls: el.getAttribute('class') || '',
                           data: dataAttrs, props, anchor, baseline});
               }
@@ -234,9 +234,13 @@ def bake_computed(html_path: pathlib.Path, svg: str, var_map: dict):
         cls_sel = "".join("." + c for c in rec["cls"].split())
         # quoted attribute selectors: values may contain commas/spaces; a
         # bare [name] per fragment produced invalid selectors, which drop
-        # the whole CSS rule and default fills bleed through (black wedges)
+        # the whole CSS rule and default fills bleed through (black wedges).
+        # fragments are joined on \x1f (unit separator), never on ";": data
+        # values themselves contain ";" (multi-point composition routes), so
+        # a ";" split shattered selectors like data-composition-points into
+        # invalid [x,y=""] fragments and dropped every multi-segment edge rule
         attr_sels = ""
-        for d in rec["data"].split(";"):
+        for d in rec["data"].split("\x1f"):
             if not d:
                 continue
             name, _, value = d.partition("=")
@@ -275,6 +279,20 @@ def bake_computed(html_path: pathlib.Path, svg: str, var_map: dict):
             if prop == "font-weight" and value == "400":
                 continue
             if is_text and prop == "fill" and rgb_str_is_gray(value):
+                value = "rgb(255, 255, 255)"
+            # detail toggles (data-detail) hide content in the interactive
+            # viewer only — the static artifact must show everything
+            if prop == "opacity" and value == "0" and "data-detail" in rec["data"]:
+                value = "1"
+            # accent-colored tag text (t-backend teal) sits on its own node's
+            # tinted fill — near-invisible; tags carry facts, use white ink
+            if (is_text and prop == "fill" and value == "rgb(52, 211, 153)"
+                    and "data-detail" in rec["data"]):
+                value = "rgb(255, 255, 255)"
+            # same for the violet t-database tag (e.g. "Pegged stablecoin")
+            # on the violet database-node surface — ~3.5:1 at 7px
+            if (is_text and prop == "fill" and value == "rgb(167, 139, 250)"
+                    and "data-detail" in rec["data"]):
                 value = "rgb(255, 255, 255)"
             decls.append(f"{prop}: {value}")
         if decls:
@@ -379,6 +397,21 @@ def render_cards(svg: str, cards: list, bg: str) -> str:
     return svg.replace("</svg>", "".join(g) + "</svg>")
 
 
+def render_svg_title(svg: str, title: str) -> str:
+    """Bake meta.title as a visible header line (opt-in via titleInSvg).
+
+    The standalone SVG is what chapters embed; without this the title exists
+    only as an invisible a11y <title>.
+    """
+    esc = title.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    g = (
+        '<g id="svg-title">'
+        f'<text x="24" y="30" fill="#ffffff" font-size="13" font-weight="600" '
+        f'font-family="JetBrains Mono, monospace">{esc}</text></g>'
+    )
+    return svg.replace("</svg>", g + "</svg>")
+
+
 def export_one(html_path: pathlib.Path):
     html = html_path.read_text()
     svg_m = re.search(r"<svg[\s\S]*?</svg>", html)
@@ -452,7 +485,10 @@ def export_one(html_path: pathlib.Path):
     src_jsons = sorted((DIAG / "src").glob(f"{html_path.stem}.*.json"))
     if src_jsons:
         try:
-            cards = json.loads(src_jsons[0].read_text()).get("cards", [])
+            src = json.loads(src_jsons[0].read_text())
+            if src.get("meta", {}).get("titleInSvg") and src.get("meta", {}).get("title"):
+                svg = render_svg_title(svg, src["meta"]["title"])
+            cards = src.get("cards", [])
             if cards:
                 svg = render_cards(svg, cards, bg)
         except (json.JSONDecodeError, OSError) as e:
@@ -467,15 +503,20 @@ def export_one(html_path: pathlib.Path):
     out = html_path.with_suffix(".svg")
     out.write_text(svg)
 
-    # guards: leftover gray text fills or unresolved vars = palette drift
-    gray_left = [h for h in GRAY_TEXT_FILLS if h in svg]
+    # guards: leftover gray TEXT fills or unresolved vars = palette drift.
+    # Scoped to text rules/elements — slate hexes legitimately survive as
+    # arrow marker fills (m-*) and lane strokes.
+    gray_left = []
+    for m in re.finditer(r"(text\.[^\n{]*|<text[^>]*?)fill:\s*(#[0-9a-fA-F]{6})", svg):
+        if m.group(2).upper() in {h.upper() for h in GRAY_TEXT_FILLS}:
+            gray_left.append(m.group(2))
     residue = "var(--" in svg.replace("<defs", "", 1) if "<defs" in svg else "var(--" in svg
     html_status = patch_html_dark_theme(html_path)
     status = "OK"
     if residue:
         status = "OK (UNRESOLVED var residue outside defs!)"
     if gray_left:
-        status += f" (GRAY FILL LEFT: {','.join(gray_left)}!)"
+        status += f" (GRAY FILL LEFT: {','.join(sorted(set(gray_left)))}!)"
     return (html_path.name, len(computed_css.splitlines()), f"{status} | {html_status}")
 
 

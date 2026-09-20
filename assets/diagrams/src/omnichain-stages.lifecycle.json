@@ -5,89 +5,24 @@
     "title": "The three cross-chain stages: send, arrival, placement",
     "locale": "en",
     "quality_profile": "showcase",
-    "output": "assets/diagrams/omnichain-stages.html"
+    "output": "assets/diagrams/omnichain-stages.html",
+    "viewBox": [870, 660]
   },
   "lanes": [
-    {
-      "id": "main",
-      "label": "The three cross-chain stages"
-    },
-    {
-      "id": "branch",
-      "label": "Waiting and retries"
-    },
-    {
-      "id": "terminal",
-      "label": "Degraded and stranded exits"
-    }
+    { "id": "main", "label": "The three cross-chain stages" },
+    { "id": "branch", "label": "Waiting and retries" },
+    { "id": "terminal", "label": "Degraded and stranded exits" }
   ],
   "states": [
-    {
-      "id": "send",
-      "type": "start",
-      "label": "Send (source chain)",
-      "sublabel": "Pay messaging fee exactly",
-      "lane": "main",
-      "col": 0,
-      "step": "01"
-    },
-    {
-      "id": "receive",
-      "type": "active",
-      "label": "Arrival (minted)",
-      "lane": "main",
-      "col": 1,
-      "step": "02"
-    },
-    {
-      "id": "settle",
-      "type": "active",
-      "label": "Placement (staked)",
-      "lane": "main",
-      "col": 2,
-      "step": "03"
-    },
-    {
-      "id": "success",
-      "type": "success",
-      "label": "Staking succeeds",
-      "sublabel": "Verify YieldVault shares",
-      "lane": "main",
-      "col": 3,
-      "step": "04"
-    },
-    {
-      "id": "return",
-      "type": "failure",
-      "label": "Placement reverts",
-      "sublabel": "Reverts; can be retried",
-      "lane": "branch",
-      "col": 0
-    },
-    {
-      "id": "revert",
-      "type": "failure",
-      "label": "Transaction reverts",
-      "sublabel": "Funds do not move",
-      "lane": "terminal",
-      "col": 0
-    },
-    {
-      "id": "stuck",
-      "type": "failure",
-      "label": "Burned, not minted",
-      "sublabel": "Stranded; manual recovery",
-      "lane": "terminal",
-      "col": 1
-    },
-    {
-      "id": "bare",
-      "type": "failure",
-      "label": "Bare tokens",
-      "sublabel": "No shares or voting power",
-      "lane": "terminal",
-      "col": 2
-    }
+    { "id": "send", "type": "start", "label": "Send", "sublabel": "Source chain · exact fee", "lane": "main", "col": 0, "step": "01" },
+    { "id": "receive", "type": "active", "label": "Arrival", "sublabel": "Destination mints", "lane": "main", "col": 1, "step": "02" },
+    { "id": "settle", "type": "active", "label": "Placement", "sublabel": "Stakes into YieldVault", "lane": "main", "col": 2, "step": "03" },
+    { "id": "success", "type": "success", "label": "Staking succeeds", "sublabel": "Verify YieldVault shares", "lane": "main", "col": 3 },
+    { "id": "return", "type": "failure", "label": "Placement reverts", "sublabel": "Reverts; can be retried", "lane": "branch", "col": 0 },
+    { "id": "queued", "type": "waiting", "label": "Queued for redelivery", "sublabel": "No rollback · redelivered", "lane": "branch", "col": 0, "yOffset": 90 },
+    { "id": "revert", "type": "failure", "label": "Transaction reverts", "sublabel": "Funds do not move", "lane": "terminal", "col": 0 },
+    { "id": "stuck", "type": "failure", "label": "Burned, not minted", "sublabel": "Stranded; manual recovery", "lane": "terminal", "col": 1 },
+    { "id": "bare", "type": "failure", "label": "Bare tokens", "sublabel": "No shares or voting power", "lane": "terminal", "col": 2 }
   ],
   "transitions": [
     {
@@ -95,10 +30,7 @@
       "from": "send",
       "to": "receive",
       "label": "Full amount sent",
-      "labelAt": [
-        171,
-        116
-      ]
+      "labelAt": [171, 116]
     },
     {
       "id": "send-receive-cut",
@@ -108,10 +40,8 @@
       "route": "top-channel",
       "fromSide": "top",
       "toSide": "top",
-      "labelAt": [
-        171,
-        72
-      ]
+      "channelY": 84,
+      "labelAt": [171, 68]
     },
     {
       "id": "send-revert",
@@ -121,42 +51,13 @@
       "note": "Transaction reverts; funds do not move",
       "fromSide": "left",
       "toSide": "left",
-      "via": [
-        [
-          35,
-          157
-        ],
-        [
-          35,
-          560
-        ],
-        [
-          300,
-          560
-        ],
-        [
-          300,
-          479
-        ],
-        [
-          343,
-          479
-        ]
-      ],
-      "labelAt": [
-        200,
-        552
-      ]
+      "via": [[25, 157], [25, 560], [300, 560], [300, 479], [343, 479]],
+      "labelAt": [200, 552]
     },
     {
       "id": "receive-settle",
       "from": "receive",
-      "to": "settle",
-      "label": "Arrived",
-      "labelAt": [
-        356,
-        202
-      ]
+      "to": "settle"
     },
     {
       "id": "settle-return",
@@ -166,10 +67,7 @@
       "note": "Reverts; can be retried",
       "fromSide": "bottom",
       "toSide": "top",
-      "labelAt": [
-        402,
-        233
-      ]
+      "labelAt": [402, 233]
     },
     {
       "id": "return-settle",
@@ -177,51 +75,28 @@
       "to": "settle",
       "fromSide": "left",
       "toSide": "left",
-      "via": [
-        [
-          325,
-          307
-        ],
-        [
-          325,
-          157
-        ],
-        [
-          343,
-          157
-        ]
-      ]
+      "via": [[325, 307], [325, 172], [343, 172]]
+    },
+    {
+      "id": "receive-queued",
+      "from": "receive",
+      "to": "queued",
+      "label": "Can't receive yet",
+      "note": "Source not rolled back",
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "via": [[248, 438], [402, 438]],
+      "labelAt": [270, 455]
     },
     {
       "id": "receive-stuck",
       "from": "receive",
       "to": "stuck",
       "label": "Budget too low (extremely rare)",
-      "note": "Stranded; manual recovery",
       "fromSide": "right",
       "toSide": "left",
-      "via": [
-        [
-          315,
-          157
-        ],
-        [
-          315,
-          370
-        ],
-        [
-          470,
-          370
-        ],
-        [
-          470,
-          479
-        ]
-      ],
-      "labelAt": [
-        360,
-        362
-      ]
+      "via": [[315, 157], [315, 350], [478, 350], [478, 479]],
+      "labelAt": [395, 352]
     },
     {
       "id": "settle-bare",
@@ -231,32 +106,8 @@
       "note": "Retry once it is in place",
       "fromSide": "top",
       "toSide": "top",
-      "via": [
-        [
-          402,
-          95
-        ],
-        [
-          790,
-          95
-        ],
-        [
-          790,
-          385
-        ],
-        [
-          710,
-          385
-        ],
-        [
-          710,
-          450
-        ]
-      ],
-      "labelAt": [
-        600,
-        87
-      ]
+      "via": [[402, 95], [790, 95], [790, 385], [710, 385], [710, 450]],
+      "labelAt": [600, 87]
     },
     {
       "id": "settle-success",

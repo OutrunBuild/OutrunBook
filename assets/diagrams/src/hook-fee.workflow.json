@@ -37,8 +37,8 @@
       "col": 0,
       "type": "backend",
       "width": 96,
-      "label": "Base fee 1%",
-      "tag": "Fixed in contract"
+      "label": "Base fee",
+      "sublabel": "1% floor"
     },
     {
       "id": "adverse",
@@ -47,7 +47,7 @@
       "type": "backend",
       "width": 110,
       "label": "+ adverse fee",
-      "sublabel": "3s window; splitting fails"
+      "sublabel": "per address; 3s window"
     },
     {
       "id": "vol",
@@ -56,7 +56,7 @@
       "type": "backend",
       "width": 110,
       "label": "+ volatility fee",
-      "sublabel": "per pool; volatility-linked"
+      "sublabel": "per pool"
     },
     {
       "id": "short",
@@ -65,7 +65,7 @@
       "type": "backend",
       "width": 110,
       "label": "+ short-term fee",
-      "sublabel": "above 2% only; 15s decay"
+      "sublabel": "above 2%; 15s decay"
     },
     {
       "id": "dyn",
@@ -83,27 +83,25 @@
       "type": "backend",
       "width": 110,
       "label": "Actual fee",
-      "sublabel": "takes the higher one",
-      "tag": "Cap 100% · fixed"
+      "sublabel": "cap 100% · fixed"
     },
     {
       "id": "decay",
       "lane": "actual",
       "col": 1,
       "type": "backend",
-      "width": 110,
+      "width": 124,
       "label": "Pool-opening fee",
-      "sublabel": "50%→1%, defaults adjustable"
+      "sublabel": "50%→1% in 15 min"
     },
     {
       "id": "ewvap",
       "lane": "exempt",
       "col": 3,
       "type": "backend",
-      "width": 110,
+      "width": 124,
       "label": "EWVWAP exemption",
-      "sublabel": "history + reversal → 1%",
-      "tag": "First trade not exempt"
+      "sublabel": "history + reversal → 1%"
     }
   ],
   "edges": [
@@ -142,14 +140,14 @@
       "toSide": "bottom",
       "labelAt": [
         430,
-        330
+        320
       ]
     }
   ],
   "cards": [
     {
       "dot": "cyan",
-      "title": "How the four components are computed",
+      "title": "Computing the four components",
       "items": [
         "The adverse impact fee is tracked per address × pool; impacts accumulate within a 3-second window, so order splitting fails",
         "The volatility fee is per pool and rises with volatility; the short-term impact fee is per pool, charging only the portion above 2%",

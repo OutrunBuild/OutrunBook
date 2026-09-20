@@ -8,13 +8,17 @@
     "output": "assets/diagrams/genesis-rights.html",
     "viewBox": [
       1080,
-      640
+      530
     ],
     "legend": {
       "mode": "auto",
       "entries": {
         "default": {
-          "label": "Rights & flow",
+          "label": "Lifecycle",
+          "visible": true
+        },
+        "emphasis": {
+          "label": "Genesis rights",
           "visible": true
         },
         "database": {
@@ -55,7 +59,7 @@
       "id": "yt",
       "type": "backend",
       "label": "Initial YT",
-      "sublabel": "Claimable from Locked, permanently",
+      "sublabel": "Claimable from Locked",
       "stage": 1,
       "row": 0,
       "width": 152
@@ -120,7 +124,7 @@
       "id": "in-yt",
       "from": "genesis-in",
       "to": "yt",
-      "label": "Genesis succeeds; pro rata",
+      "label": "Pro rata on success",
       "variant": "emphasis",
       "fromSide": "top",
       "toSide": "left",
@@ -129,10 +133,6 @@
           100,
           157
         ]
-      ],
-      "labelAt": [
-        210,
-        200
       ]
     },
     {
@@ -142,11 +142,7 @@
       "label": "From Locked",
       "variant": "emphasis",
       "fromSide": "right",
-      "toSide": "left",
-      "labelAt": [
-        220,
-        428
-      ]
+      "toSide": "left"
     },
     {
       "id": "in-unlock",
@@ -158,39 +154,64 @@
       "via": [
         [
           100,
-          470
+          434
         ],
         [
-          400,
-          470
+          414,
+          434
         ],
         [
-          400,
+          414,
           271
         ]
-      ],
-      "labelAt": [
-        250,
-        462
       ]
     },
     {
       "id": "unlock-lp",
       "from": "unlock-tx",
       "to": "lp",
-      "label": "One-time claim"
+      "label": "After settlement",
+      "fromSide": "right",
+      "toSide": "left",
+      "via": [
+        [
+          649,
+          271
+        ],
+        [
+          649,
+          157
+        ]
+      ]
     },
     {
       "id": "unlock-static",
       "from": "unlock-tx",
       "to": "static",
-      "label": "Opens protection window"
+      "label": "Opens protection window",
+      "fromSide": "bottom",
+      "toSide": "left",
+      "via": [
+        [
+          530,
+          342
+        ],
+        [
+          634,
+          342
+        ],
+        [
+          634,
+          385
+        ]
+      ]
     },
     {
       "id": "lp-anchor",
       "from": "lp",
       "to": "anchor",
-      "label": "Sum of three parts"
+      "label": "Covered by pools",
+      "labelDy": 30
     },
     {
       "id": "anchor-static",
@@ -203,7 +224,11 @@
       "id": "static-resume",
       "from": "static",
       "to": "resume",
-      "label": "Auto-resumes at expiry"
+      "label": "Resumes at expiry",
+      "labelAt": [
+        871,
+        318
+      ]
     }
   ],
   "cards": [
@@ -211,7 +236,7 @@
       "dot": "emerald",
       "title": "When each right becomes claimable",
       "items": [
-        "Initial YT: claimable from Locked, permanently",
+        "Initial YT: claimable from Locked",
         "Auxiliary-pool fee share: accrues from Locked onward",
         "Auxiliary-pool LP + residual POL/PT: one-time claim after Unlocked"
       ]

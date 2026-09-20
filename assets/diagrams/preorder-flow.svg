@@ -12,24 +12,24 @@ rect.c-lane[data-composition-frame-id="1"][data-composition-frame-kind="stage"][
 rect.c-lane[data-composition-frame-id="2"][data-composition-frame-kind="stage"][data-graph-role="structural-frame"] { fill: rgba(15, 23, 42, 0.22); stroke: rgb(51, 65, 85); stroke-width: 1px; stroke-dasharray: 6px, 6px; }
 rect.c-lane[data-composition-frame-id="3"][data-composition-frame-kind="stage"][data-graph-role="structural-frame"] { fill: rgba(15, 23, 42, 0.22); stroke: rgb(51, 65, 85); stroke-width: 1px; stroke-dasharray: 6px, 6px; }
 rect.c-lane[data-composition-frame-id="4"][data-composition-frame-kind="stage"][data-graph-role="structural-frame"] { fill: rgba(15, 23, 42, 0.22); stroke: rgb(51, 65, 85); stroke-width: 1px; stroke-dasharray: 6px, 6px; }
-path.a-emphasis[data-composition-points="156,271"][315,271=""][474,271=""][data-edge-from="users"][data-edge-id="agg-buy"][data-edge-key="0"][data-edge-label="All preorder funds aggregated"][data-edge-to="aggregate"] { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
-path.a-default[data-composition-points="371,157"][422.5,157=""][422.5,271=""][474,271=""][data-edge-from="pool"][data-edge-id="pool-first"][data-edge-key="1"][data-edge-label="After primary pool created"][data-edge-to="aggregate"] { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
-path.a-default[data-composition-points="586,271"][637.5,271=""][637.5,157=""][689,157=""][data-edge-from="aggregate"][data-edge-id="agg-dist"][data-edge-key="2"][data-edge-label="Memecoin bought"][data-edge-to="distribute"] { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
-path.a-default[data-composition-points="745,186"][745,186=""][745,356=""][745,356=""][data-edge-from="distribute"][data-edge-id="dist-vest"][data-edge-key="3"][data-edge-label="Escrowed"][data-edge-to="vesting"] { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
-path.a-default[data-composition-points="801,385"][852.5,385=""][852.5,271=""][904,271=""][data-edge-from="vesting"][data-edge-id="vest-claim"][data-edge-key="4"][data-edge-label="Gradually claimable"][data-edge-to="claim"] { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
-path.a-dashed[data-composition-points="100,300"][100,499=""][200,499=""][259,499=""][data-edge-from="users"][data-edge-id="users-refund"][data-edge-key="5"][data-edge-label="Genesis below threshold"][data-edge-to="refund"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
-path.a-dashed[data-composition-points="530,300"][530,300=""][530,470=""][530,470=""][data-edge-from="aggregate"][data-edge-id="agg-rollback"][data-edge-key="6"][data-edge-label="Cannot execute in full"][data-edge-to="rollback"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
+path.a-emphasis[data-composition-points="156,271;315,271;474,271"][data-edge-from="users"][data-edge-id="agg-buy"][data-edge-key="0"][data-edge-label="All preorder funds aggregated"][data-edge-to="aggregate"] { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
+path.a-default[data-composition-points="371,157;530,157;530,242"][data-edge-from="pool"][data-edge-id="pool-first"][data-edge-key="1"][data-edge-label="After primary pool created"][data-edge-to="aggregate"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="586,271;637.5,271;637.5,157;689,157"][data-edge-from="aggregate"][data-edge-id="agg-dist"][data-edge-key="2"][data-edge-label="Memecoin bought"][data-edge-to="distribute"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="745,186;745,186;745,356;745,356"][data-edge-from="distribute"][data-edge-id="dist-vest"][data-edge-key="3"][data-edge-label="Escrowed"][data-edge-to="vesting"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="801,385;852.5,385;852.5,271;904,271"][data-edge-from="vesting"][data-edge-id="vest-claim"][data-edge-key="4"][data-edge-label="Gradually claimable"][data-edge-to="claim"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-dashed[data-composition-points="100,300;100,300;100,470;100,470"][data-edge-from="users"][data-edge-id="users-refund"][data-edge-key="5"][data-edge-label="Genesis below threshold"][data-edge-to="refund"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
+path.a-dashed[data-composition-points="530,300;530,300;530,470;530,470"][data-edge-from="aggregate"][data-edge-id="agg-rollback"][data-edge-key="6"][data-edge-label="Cannot execute in full"][data-edge-to="rollback"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
 rect.c-mask { fill: rgb(15, 23, 42); stroke-width: 1px; }
-rect.c-external { fill: rgba(30, 41, 59, 0.5); stroke: rgb(203, 213, 225); stroke-width: 1.5px; }
+rect.c-external { fill: rgba(30, 41, 59, 0.5); stroke: rgb(148, 163, 184); stroke-width: 1.5px; }
 g.semantic-sigil.s-external[data-semantic-sigil="external"] { opacity: 0.76; }
 text.t-primary[data-detail-anchor=""][data-node-label=""] { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 10px; font-weight: 600; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 text.t-muted[data-detail="context"] { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 7px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
-text.t-external[data-detail="fine"] { fill: rgb(255, 255, 255); stroke-width: 1px; opacity: 0; font-size: 7px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
+text.t-external[data-detail="fine"] { fill: rgb(255, 255, 255); stroke-width: 1px; opacity: 1; font-size: 7px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 rect.c-database { fill: rgba(76, 29, 149, 0.4); stroke: rgb(167, 139, 250); stroke-width: 1.5px; }
 g.semantic-sigil.s-database[data-semantic-sigil="database"] { opacity: 0.76; }
 rect.c-backend { fill: rgba(6, 78, 59, 0.4); stroke: rgb(52, 211, 153); stroke-width: 1.5px; }
 g.semantic-sigil.s-backend[data-semantic-sigil="backend"] { opacity: 0.76; }
-text.t-backend[data-detail="fine"] { fill: rgb(52, 211, 153); stroke-width: 1px; opacity: 0; font-size: 7px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
+text.t-backend[data-detail="fine"] { fill: rgb(255, 255, 255); stroke-width: 1px; opacity: 1; font-size: 7px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 rect.c-security { fill: rgba(136, 19, 55, 0.4); stroke: rgb(251, 113, 133); stroke-width: 1.5px; }
 g.semantic-sigil.s-security[data-semantic-sigil="security"] { opacity: 0.76; }
 text.t-backend { fill: rgb(52, 211, 153); stroke-width: 1px; font-size: 8px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
@@ -37,9 +37,8 @@ text.t-muted { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 8px; font
 text.t-messagebus { fill: rgb(251, 146, 60); stroke-width: 1px; font-size: 8px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 text.t-primary { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 12px; font-weight: 650; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 path.a-emphasis { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
-path.a-security { fill: none; stroke: rgb(251, 113, 133); stroke-width: 1.4px; stroke-dasharray: 5px, 5px; }
 path.a-dashed { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
-path.a-default { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
+path.a-default { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
 ]]></style><rect x="0" y="0" width="100%" height="100%" fill="rgb(2, 6, 23)"/>
         <title id="archify-diagram-title">Preorder: aggregated execution and linear unlock</title>
         <desc id="archify-diagram-description">A data-flow diagram generated by Archify.</desc>
@@ -73,7 +72,7 @@ path.a-default { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
         <text x="315" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">02 / Launch transaction</text>
 
         <rect data-graph-role="structural-frame" data-composition-frame-kind="stage" data-composition-frame-id="2" x="446" y="46" width="168" height="520" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="530" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">03 / Aggregated settlement</text>
+        <text x="530" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">03 / Same-tx settlement</text>
 
         <rect data-graph-role="structural-frame" data-composition-frame-kind="stage" data-composition-frame-id="3" x="661" y="46" width="168" height="520" rx="10" class="c-lane" stroke-width="1"/>
         <text x="745" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">04 / Distribution &amp; unlock</text>
@@ -83,11 +82,11 @@ path.a-default { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
 
         <!-- Flow paths -->
         <path data-edge-from="users" data-edge-to="aggregate" data-edge-label="All preorder funds aggregated" data-edge-key="0" data-edge-id="agg-buy" data-composition-points="156,271;315,271;474,271" d="M 156 271 L 315 271 L 474 271" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="pool" data-edge-to="aggregate" data-edge-label="After primary pool created" data-edge-key="1" data-edge-id="pool-first" data-composition-points="371,157;422.5,157;422.5,271;474,271" d="M 371 157 L 422.5 157 L 422.5 271 L 474 271" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="pool" data-edge-to="aggregate" data-edge-label="After primary pool created" data-edge-key="1" data-edge-id="pool-first" data-composition-points="371,157;530,157;530,242" d="M 371 157 L 530 157 L 530 242" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="aggregate" data-edge-to="distribute" data-edge-label="Memecoin bought" data-edge-key="2" data-edge-id="agg-dist" data-composition-points="586,271;637.5,271;637.5,157;689,157" d="M 586 271 L 637.5 271 L 637.5 157 L 689 157" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="distribute" data-edge-to="vesting" data-edge-label="Escrowed" data-edge-key="3" data-edge-id="dist-vest" data-composition-points="745,186;745,186;745,356;745,356" d="M 745 186 L 745 186 L 745 356 L 745 356" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="vesting" data-edge-to="claim" data-edge-label="Gradually claimable" data-edge-key="4" data-edge-id="vest-claim" data-composition-points="801,385;852.5,385;852.5,271;904,271" d="M 801 385 L 852.5 385 L 852.5 271 L 904 271" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="users" data-edge-to="refund" data-edge-label="Genesis below threshold" data-edge-key="5" data-edge-id="users-refund" data-composition-points="100,300;100,499;200,499;259,499" d="M 100 300 L 100 499 L 200 499 L 259 499" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path data-edge-from="users" data-edge-to="refund" data-edge-label="Genesis below threshold" data-edge-key="5" data-edge-id="users-refund" data-composition-points="100,300;100,300;100,470;100,470" d="M 100 300 L 100 300 L 100 470 L 100 470" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
         <path data-edge-from="aggregate" data-edge-to="rollback" data-edge-label="Cannot execute in full" data-edge-key="6" data-edge-id="agg-rollback" data-composition-points="530,300;530,300;530,470;530,470" d="M 530 300 L 530 300 L 530 470 L 530 470" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
 
         <!-- Nodes -->
@@ -116,8 +115,8 @@ path.a-default { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
           <text data-detail="context" x="315" y="165" class="t-muted" font-size="7" text-anchor="middle">Same launch transaction</text>
         </g>
 
-        <g id="node-aggregate" data-node-id="aggregate" data-node-label="Aggregated buy" tabindex="0" role="button" aria-label="Focus Aggregated buy, Fixed 1% settlement fee, 03 / Aggregated settlement" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Fixed 1% settlement fee" data-node-tag="LP 65% / protocol 35%" data-node-context="03 / Aggregated settlement">
-          <title>Aggregated buy · Fixed 1% settlement fee · 03 / Aggregated settlement · LP 65% / protocol 35%</title>
+        <g id="node-aggregate" data-node-id="aggregate" data-node-label="Aggregated buy" tabindex="0" role="button" aria-label="Focus Aggregated buy, Fixed 1% settlement fee, 03 / Same-tx settlement" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Fixed 1% settlement fee" data-node-tag="LP 65% / protocol 35%" data-node-context="03 / Same-tx settlement">
+          <title>Aggregated buy · Fixed 1% settlement fee · 03 / Same-tx settlement · LP 65% / protocol 35%</title>
           <rect x="474" y="242" width="112" height="58" rx="6" class="c-mask"/>
           <rect x="474" y="242" width="112" height="58" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(480 248) scale(0.6875)">
@@ -162,20 +161,20 @@ path.a-default { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
           <text data-detail="context" x="960" y="279" class="t-muted" font-size="7" text-anchor="middle">Stays claimable</text>
         </g>
 
-        <g id="node-refund" data-node-id="refund" data-node-label="Refunded in full" tabindex="0" role="button" aria-label="Focus Refunded in full, Preorder beneficiary, 02 / Launch transaction" aria-pressed="false" data-node-kind="security" data-node-sublabel="Preorder beneficiary" data-node-context="02 / Launch transaction">
-          <title>Refunded in full · Preorder beneficiary · 02 / Launch transaction</title>
-          <rect x="259" y="470" width="112" height="58" rx="6" class="c-mask"/>
-          <rect x="259" y="470" width="112" height="58" rx="6" class="c-security" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(265 476) scale(0.6875)">
+        <g id="node-refund" data-node-id="refund" data-node-label="Refunded in full" tabindex="0" role="button" aria-label="Focus Refunded in full, Preorder beneficiary, 01 / Genesis" aria-pressed="false" data-node-kind="security" data-node-sublabel="Preorder beneficiary" data-node-context="01 / Genesis">
+          <title>Refunded in full · Preorder beneficiary · 01 / Genesis</title>
+          <rect x="44" y="470" width="112" height="58" rx="6" class="c-mask"/>
+          <rect x="44" y="470" width="112" height="58" rx="6" class="c-security" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(50 476) scale(0.6875)">
             <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
             <path d="m5.8 8 1.5 1.5 3-3"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="315" y="491" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Refunded in full</text>
-          <text data-detail="context" x="315" y="507" class="t-muted" font-size="7" text-anchor="middle">Preorder beneficiary</text>
+          <text data-node-label="" data-detail-anchor="" x="100" y="491" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Refunded in full</text>
+          <text data-detail="context" x="100" y="507" class="t-muted" font-size="7" text-anchor="middle">Preorder beneficiary</text>
         </g>
 
-        <g id="node-rollback" data-node-id="rollback" data-node-label="Launch reverts" tabindex="0" role="button" aria-label="Focus Launch reverts, No partial settlement, 03 / Aggregated settlement" aria-pressed="false" data-node-kind="security" data-node-sublabel="No partial settlement" data-node-context="03 / Aggregated settlement">
-          <title>Launch reverts · No partial settlement · 03 / Aggregated settlement</title>
+        <g id="node-rollback" data-node-id="rollback" data-node-label="Launch reverts" tabindex="0" role="button" aria-label="Focus Launch reverts, No partial settlement, 03 / Same-tx settlement" aria-pressed="false" data-node-kind="security" data-node-sublabel="No partial settlement" data-node-context="03 / Same-tx settlement">
+          <title>Launch reverts · No partial settlement · 03 / Same-tx settlement</title>
           <rect x="474" y="470" width="112" height="58" rx="6" class="c-mask"/>
           <rect x="474" y="470" width="112" height="58" rx="6" class="c-security" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(480 476) scale(0.6875)">
@@ -192,8 +191,8 @@ path.a-default { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
           <text x="300" y="263" class="t-backend" font-size="8" text-anchor="middle">All preorder funds aggregated</text>
         </g>
         <g data-detail="context" data-edge-from="pool" data-edge-to="aggregate" data-edge-label="After primary pool created" data-edge-key="1" data-edge-id="pool-first">
-          <rect x="400.3" y="189" width="139.4" height="16" rx="4" class="c-mask"/>
-          <text x="470" y="200" class="t-muted" font-size="8" text-anchor="middle">After primary pool created</text>
+          <rect x="460.3" y="178" width="139.4" height="16" rx="4" class="c-mask"/>
+          <text x="530" y="189" class="t-muted" font-size="8" text-anchor="middle">After primary pool created</text>
         </g>
         <g data-detail="context" data-edge-from="aggregate" data-edge-to="distribute" data-edge-label="Memecoin bought" data-edge-key="2" data-edge-id="agg-dist">
           <rect x="594.75" y="193" width="85.5" height="16" rx="4" class="c-mask"/>
@@ -208,8 +207,8 @@ path.a-default { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
           <text x="852.5" y="318" class="t-muted" font-size="8" text-anchor="middle">Gradually claimable</text>
         </g>
         <g data-detail="context" data-edge-from="users" data-edge-to="refund" data-edge-label="Genesis below threshold" data-edge-key="5" data-edge-id="users-refund">
-          <rect x="87.65" y="478" width="124.7" height="16" rx="4" class="c-mask"/>
-          <text x="150" y="489" class="t-messagebus" font-size="8" text-anchor="middle">Genesis below threshold</text>
+          <rect x="37.65" y="364" width="124.7" height="16" rx="4" class="c-mask"/>
+          <text x="100" y="375" class="t-messagebus" font-size="8" text-anchor="middle">Genesis below threshold</text>
         </g>
         <g data-detail="context" data-edge-from="aggregate" data-edge-to="rollback" data-edge-label="Cannot execute in full" data-edge-key="6" data-edge-id="agg-rollback">
           <rect x="470.1" y="364" width="119.8" height="16" rx="4" class="c-mask"/>
@@ -219,21 +218,17 @@ path.a-default { fill: none; stroke: rgb(143, 163, 189); stroke-width: 1.4px; }
         <!-- Legend -->
         <g data-legend="">
           <text x="40" y="584" class="t-primary" font-size="12" font-weight="650">Legend</text>
-          <g data-legend-semantic-kind="emphasis" data-legend-x="40" data-legend-baseline="604" data-legend-width="103">
+          <g data-legend-semantic-kind="emphasis" data-legend-x="40" data-legend-baseline="604" data-legend-width="161">
             <path d="M 40 601 L 74 601" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-            <text x="83" y="604" class="t-muted" font-size="10" font-weight="500">primary data</text>
+            <text x="83" y="604" class="t-muted" font-size="10" font-weight="500">Preorder funds flow</text>
           </g>
-          <g data-legend-semantic-kind="security" data-legend-x="165" data-legend-baseline="604" data-legend-width="113">
-            <path d="M 165 601 L 199 601" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
-            <text x="208" y="604" class="t-muted" font-size="10" font-weight="500">Failure branch</text>
+          <g data-legend-semantic-kind="dashed" data-legend-x="223" data-legend-baseline="604" data-legend-width="130">
+            <path d="M 223 601 L 257 601" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+            <text x="266" y="604" class="t-muted" font-size="10" font-weight="500">Failure branch</text>
           </g>
-          <g data-legend-semantic-kind="dashed" data-legend-x="300" data-legend-baseline="604" data-legend-width="98">
-            <path d="M 300 601 L 334 601" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
-            <text x="343" y="604" class="t-muted" font-size="10" font-weight="500">async batch</text>
-          </g>
-          <g data-legend-semantic-kind="default" data-legend-x="420" data-legend-baseline="604" data-legend-width="103">
-            <path d="M 420 601 L 454 601" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-            <text x="463" y="604" class="t-muted" font-size="10" font-weight="500">Funds &amp; flow</text>
+          <g data-legend-semantic-kind="default" data-legend-x="375" data-legend-baseline="604" data-legend-width="118">
+            <path d="M 375 601 L 409 601" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+            <text x="418" y="604" class="t-muted" font-size="10" font-weight="500">Funds &amp; flow</text>
           </g>
         </g>
       <g id="cards" font-family="JetBrains Mono, monospace"><rect x="0" y="640" width="1080" height="124" fill="rgb(2, 6, 23)"/><rect x="24" y="646" width="333.333" height="101" rx="8" fill="rgba(15, 23, 42, 0.55)" stroke="#1e293b" stroke-width="1"/><circle cx="39" cy="658" r="3" fill="#22d3ee"/><text x="48" y="661" fill="#ffffff" font-size="10" font-weight="600">Capacity and basis</text><text x="39" y="678" fill="#ffffff" font-size="8">Total preorder capacity = (standard Genesis capital +</text><text x="39" y="689" fill="#ffffff" font-size="8">leverage debt principal) × 70% × protocol-configured ratio</text><text x="39" y="700" fill="#ffffff" font-size="8">First come, first served; preorder funds themselves do not</text><text x="39" y="711" fill="#ffffff" font-size="8">count toward the capacity base</text><text x="39" y="722" fill="#ffffff" font-size="8">Ledgered separately; not part of the success check</text><rect x="373.333" y="646" width="333.333" height="112" rx="8" fill="rgba(15, 23, 42, 0.55)" stroke="#1e293b" stroke-width="1"/><circle cx="388.333" cy="658" r="3" fill="#a78bfa"/><text x="397.333" y="661" fill="#ffffff" font-size="10" font-weight="600">The fee rate is fixed</text><text x="388.333" y="678" fill="#ffffff" font-size="8">Fixed 1% settlement fee · fixed, bypassing dynamic fees and</text><text x="388.333" y="689" fill="#ffffff" font-size="8">elevated pool-opening fees</text><text x="388.333" y="700" fill="#ffffff" font-size="8">Still split LP 65% / protocol 35%; not eligible for referral</text><text x="388.333" y="711" fill="#ffffff" font-size="8">rebate</text><text x="388.333" y="722" fill="#ffffff" font-size="8">Public trading cannot jump the queue; the fee rate is fixed,</text><text x="388.333" y="733" fill="#ffffff" font-size="8">not the price</text><rect x="722.667" y="646" width="333.333" height="112" rx="8" fill="rgba(15, 23, 42, 0.55)" stroke="#1e293b" stroke-width="1"/><circle cx="737.667" cy="658" r="3" fill="#fb7185"/><text x="746.667" y="661" fill="#ffffff" font-size="10" font-weight="600">Failure and retention</text><text x="737.667" y="678" fill="#ffffff" font-size="8">Genesis below threshold: refunded in full to the preorder</text><text x="737.667" y="689" fill="#ffffff" font-size="8">record's beneficiary</text><text x="737.667" y="700" fill="#ffffff" font-size="8">Cannot execute in full: the entire launch reverts, no partial</text><text x="737.667" y="711" fill="#ffffff" font-size="8">settlement</text><text x="737.667" y="722" fill="#ffffff" font-size="8">Unclaimed amounts during the linear unlock stay reserved and</text><text x="737.667" y="733" fill="#ffffff" font-size="8">keep accumulating</text></g></svg>

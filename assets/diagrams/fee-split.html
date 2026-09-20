@@ -58,7 +58,7 @@
       --lane-fill: rgba(15, 23, 42, 0.22);
       --lane-stroke: #334155;
 
-      --arrow: #8fa3bd;
+      --arrow: #64748b;
       --arrow-emphasis: #34d399;
 
       /* Opaque mask color used behind semi-transparent component fills
@@ -78,7 +78,7 @@
       --messagebus-fill:  rgba(251, 146, 60, 0.3);
       --messagebus-stroke:#fb923c;
       --external-fill:    rgba(30, 41, 59, 0.5);
-      --external-stroke:  #cbd5e1;
+      --external-stroke:  #94a3b8;
 
       --toolbar-bg:       rgba(15, 23, 42, 0.8);
       --toolbar-border:   #334155;
@@ -5037,7 +5037,7 @@
         <text x="315" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">02 / Dimension 1: the split</text>
 
         <rect data-graph-role="structural-frame" data-composition-frame-kind="stage" data-composition-frame-id="2" x="446" y="46" width="168" height="520" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="530" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">03 / Dimension 2: by denomination</text>
+        <text x="530" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">03 / Routing the protocol share</text>
 
         <rect data-graph-role="structural-frame" data-composition-frame-kind="stage" data-composition-frame-id="3" x="661" y="46" width="168" height="520" rx="10" class="c-lane" stroke-width="1"/>
         <text x="745" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">04 / Where it goes</text>
@@ -5045,9 +5045,9 @@
         <!-- Flow paths -->
         <path data-edge-from="fee" data-edge-to="lp" data-edge-label="65% · fixed" data-edge-key="0" data-edge-id="fee-lp" data-composition-points="100,242;100,157;259,157" d="M 100 242 L 100 157 L 259 157" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         <path data-edge-from="fee" data-edge-to="proto" data-edge-label="35% · fixed" data-edge-key="1" data-edge-id="fee-proto" data-composition-points="156,271;207.5,271;207.5,385;259,385" d="M 156 271 L 207.5 271 L 207.5 385 L 259 385" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="proto" data-edge-to="referrer" data-edge-label="With referrer: default 10% of total" data-edge-key="2" data-edge-id="proto-referrer" data-composition-points="315,356;315,215;400,215;440,215;440,157;474,157;474,157" d="M 315 356 L 315 215 L 400 215 L 440 215 L 440 157 L 474 157 L 474 157" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="proto" data-edge-to="referrer" data-edge-label="With referrer" data-edge-key="2" data-edge-id="proto-referrer" data-composition-points="315,356;315,328;315,300" d="M 315 356 L 315 328 L 315 300" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="proto" data-edge-to="bytoken" data-edge-label="Split by denomination" data-edge-key="3" data-edge-id="proto-bytoken" data-composition-points="371,385;422.5,385;422.5,271;474,271" d="M 371 385 L 422.5 385 L 422.5 271 L 474 271" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="proto" data-edge-to="auxsplit" data-edge-label="Auxiliary-pool uAsset/PT fees (Locked phase)" data-edge-key="4" data-edge-id="proto-auxsplit" data-composition-points="315,414;315,440;440,440;440,385;474,385;474,385" d="M 315 414 L 315 440 L 440 440 L 440 385 L 474 385 L 474 385" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="proto" data-edge-to="auxsplit" data-edge-label="Auxiliary-pool POL/uAsset/PT fees (Locked)" data-edge-key="4" data-edge-id="proto-auxsplit" data-composition-points="315,414;315,440;440,440;440,385;474,385;474,385" d="M 315 414 L 315 440 L 440 440 L 440 385 L 474 385 L 474 385" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="bytoken" data-edge-to="dao" data-edge-label="uAsset-denominated" data-edge-key="5" data-edge-id="bytoken-dao" data-composition-points="586,271;640,271;640,157;660,157;673,157" d="M 586 271 L 640 271 L 640 157 L 660 157 L 673 157" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="bytoken" data-edge-to="staking" data-edge-label="Memecoin-denominated" data-edge-key="6" data-edge-id="bytoken-staking" data-composition-points="586,271;689,271" d="M 586 271 L 689 271" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="bytoken" data-edge-to="burn" data-edge-label="POL-denominated" data-edge-key="7" data-edge-id="bytoken-burn" data-composition-points="530,300;530,340;745,340;745,356" d="M 530 300 L 530 340 L 745 340 L 745 356" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
@@ -5089,20 +5089,20 @@
           <text data-detail="context" x="315" y="393" class="t-muted" font-size="7" text-anchor="middle">35% · fixed</text>
         </g>
 
-        <g id="node-referrer" data-node-id="referrer" data-node-label="Referral rebate" tabindex="0" role="button" aria-label="Focus Referral rebate, Default 10% · adjustable, 03 / Dimension 2: by denomination" aria-pressed="false" data-node-kind="external" data-node-sublabel="Default 10% · adjustable" data-node-context="03 / Dimension 2: by denomination">
-          <title>Referral rebate · Default 10% · adjustable · 03 / Dimension 2: by denomination</title>
-          <rect x="474" y="128" width="112" height="58" rx="6" class="c-mask"/>
-          <rect x="474" y="128" width="112" height="58" rx="6" class="c-external" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(480 134) scale(0.6875)">
+        <g id="node-referrer" data-node-id="referrer" data-node-label="Referral rebate" tabindex="0" role="button" aria-label="Focus Referral rebate, Default 10% · adjustable, 02 / Dimension 1: the split" aria-pressed="false" data-node-kind="external" data-node-sublabel="Default 10% · adjustable" data-node-context="02 / Dimension 1: the split">
+          <title>Referral rebate · Default 10% · adjustable · 02 / Dimension 1: the split</title>
+          <rect x="259" y="242" width="112" height="58" rx="6" class="c-mask"/>
+          <rect x="259" y="242" width="112" height="58" rx="6" class="c-external" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(265 248) scale(0.6875)">
             <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="530" y="149" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Referral rebate</text>
-          <text data-detail="context" x="530" y="165" class="t-muted" font-size="7" text-anchor="middle">Default 10% · adjustable</text>
+          <text data-node-label="" data-detail-anchor="" x="315" y="263" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Referral rebate</text>
+          <text data-detail="context" x="315" y="279" class="t-muted" font-size="7" text-anchor="middle">Default 10% · adjustable</text>
         </g>
 
-        <g id="node-bytoken" data-node-id="bytoken" data-node-label="By denomination" tabindex="0" role="button" aria-label="Focus By denomination, uAsset/Memecoin/POL, 03 / Dimension 2: by denomination" aria-pressed="false" data-node-kind="backend" data-node-sublabel="uAsset/Memecoin/POL" data-node-context="03 / Dimension 2: by denomination">
-          <title>By denomination · uAsset/Memecoin/POL · 03 / Dimension 2: by denomination</title>
+        <g id="node-bytoken" data-node-id="bytoken" data-node-label="By denomination" tabindex="0" role="button" aria-label="Focus By denomination, uAsset/Memecoin/POL, 03 / Routing the protocol share" aria-pressed="false" data-node-kind="backend" data-node-sublabel="uAsset/Memecoin/POL" data-node-context="03 / Routing the protocol share">
+          <title>By denomination · uAsset/Memecoin/POL · 03 / Routing the protocol share</title>
           <rect x="474" y="242" width="112" height="58" rx="6" class="c-mask"/>
           <rect x="474" y="242" width="112" height="58" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(480 248) scale(0.6875)">
@@ -5112,20 +5112,20 @@
           <text data-detail="context" x="530" y="279" class="t-muted" font-size="7" text-anchor="middle">uAsset/Memecoin/POL</text>
         </g>
 
-        <g id="node-auxsplit" data-node-id="auxsplit" data-node-label="Aux-pool split" tabindex="0" role="button" aria-label="Focus Aux-pool split, Leverage side to DAO, 03 / Dimension 2: by denomination" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Leverage side to DAO" data-node-tag="Locked phase" data-node-context="03 / Dimension 2: by denomination">
-          <title>Aux-pool split · Leverage side to DAO · 03 / Dimension 2: by denomination · Locked phase</title>
+        <g id="node-auxsplit" data-node-id="auxsplit" data-node-label="Aux-pool split" tabindex="0" role="button" aria-label="Focus Aux-pool split, rest to DAO treasury, 03 / Routing the protocol share" aria-pressed="false" data-node-kind="backend" data-node-sublabel="rest to DAO treasury" data-node-tag="Locked phase" data-node-context="03 / Routing the protocol share">
+          <title>Aux-pool split · rest to DAO treasury · 03 / Routing the protocol share · Locked phase</title>
           <rect x="474" y="356" width="112" height="58" rx="6" class="c-mask"/>
           <rect x="474" y="356" width="112" height="58" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(480 362) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="530" y="377" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Aux-pool split</text>
-          <text data-detail="context" x="530" y="393" class="t-muted" font-size="7" text-anchor="middle">Leverage side to DAO</text>
+          <text data-detail="context" x="530" y="393" class="t-muted" font-size="7" text-anchor="middle">rest to DAO treasury</text>
         <text data-detail="fine" x="530" y="403" class="t-backend" font-size="7" text-anchor="middle">Locked phase</text>
         </g>
 
-        <g id="node-dao" data-node-id="dao" data-node-label="DAO treasury" tabindex="0" role="button" aria-label="Focus DAO treasury, 0.25% carved out · default, 04 / Where it goes" aria-pressed="false" data-node-kind="database" data-node-sublabel="0.25% carved out · default" data-node-context="04 / Where it goes">
-          <title>DAO treasury · 0.25% carved out · default · 04 / Where it goes</title>
+        <g id="node-dao" data-node-id="dao" data-node-label="DAO treasury" tabindex="0" role="button" aria-label="Focus DAO treasury, 0.25% to executor · default, 04 / Where it goes" aria-pressed="false" data-node-kind="database" data-node-sublabel="0.25% to executor · default" data-node-context="04 / Where it goes">
+          <title>DAO treasury · 0.25% to executor · default · 04 / Where it goes</title>
           <rect x="673" y="128" width="144" height="58" rx="6" class="c-mask"/>
           <rect x="673" y="128" width="144" height="58" rx="6" class="c-database" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(679 134) scale(0.6875)">
@@ -5133,7 +5133,7 @@
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="745" y="149" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">DAO treasury</text>
-          <text data-detail="context" x="745" y="165" class="t-muted" font-size="7" text-anchor="middle">0.25% carved out · default</text>
+          <text data-detail="context" x="745" y="165" class="t-muted" font-size="7" text-anchor="middle">0.25% to executor · default</text>
         </g>
 
         <g id="node-staking" data-node-id="staking" data-node-label="Staking YieldVault" tabindex="0" role="button" aria-label="Focus Staking YieldVault, For Memecoin stakers, 04 / Where it goes" aria-pressed="false" data-node-kind="database" data-node-sublabel="For Memecoin stakers" data-node-context="04 / Where it goes">
@@ -5180,29 +5180,29 @@
           <rect x="174.05" y="252" width="65.9" height="16" rx="4" class="c-mask"/>
           <text x="207" y="263" class="t-backend" font-size="8" text-anchor="middle">35% · fixed</text>
         </g>
-        <g data-detail="context" data-edge-from="proto" data-edge-to="referrer" data-edge-label="With referrer: default 10% of total" data-edge-key="2" data-edge-id="proto-referrer">
-          <rect x="285.25" y="196" width="183.5" height="16" rx="4" class="c-mask"/>
-          <text x="377" y="207" class="t-muted" font-size="8" text-anchor="middle">With referrer: default 10% of total</text>
+        <g data-detail="context" data-edge-from="proto" data-edge-to="referrer" data-edge-label="With referrer" data-edge-key="2" data-edge-id="proto-referrer">
+          <rect x="302.15" y="333" width="75.7" height="16" rx="4" class="c-mask"/>
+          <text x="340" y="344" class="t-muted" font-size="8" text-anchor="middle">With referrer</text>
         </g>
         <g data-detail="context" data-edge-from="proto" data-edge-to="bytoken" data-edge-label="Split by denomination" data-edge-key="3" data-edge-id="proto-bytoken">
           <rect x="365.05" y="307" width="114.9" height="16" rx="4" class="c-mask"/>
           <text x="422.5" y="318" class="t-muted" font-size="8" text-anchor="middle">Split by denomination</text>
         </g>
-        <g data-detail="context" data-edge-from="proto" data-edge-to="auxsplit" data-edge-label="Auxiliary-pool uAsset/PT fees (Locked phase)" data-edge-key="4" data-edge-id="proto-auxsplit">
-          <rect x="271.2" y="421" width="227.6" height="16" rx="4" class="c-mask"/>
-          <text x="385" y="432" class="t-muted" font-size="8" text-anchor="middle">Auxiliary-pool uAsset/PT fees (Locked phase)</text>
+        <g data-detail="context" data-edge-from="proto" data-edge-to="auxsplit" data-edge-label="Auxiliary-pool POL/uAsset/PT fees (Locked)" data-edge-key="4" data-edge-id="proto-auxsplit">
+          <rect x="276.1" y="421" width="217.8" height="16" rx="4" class="c-mask"/>
+          <text x="385" y="432" class="t-muted" font-size="8" text-anchor="middle">Auxiliary-pool POL/uAsset/PT fees (Locked)</text>
         </g>
         <g data-detail="context" data-edge-from="bytoken" data-edge-to="dao" data-edge-label="uAsset-denominated" data-edge-key="5" data-edge-id="bytoken-dao">
-          <rect x="589.9" y="244" width="100.2" height="16" rx="4" class="c-mask"/>
-          <text x="640" y="255" class="t-muted" font-size="8" text-anchor="middle">uAsset-denominated</text>
+          <rect x="585.9" y="197" width="100.2" height="16" rx="4" class="c-mask"/>
+          <text x="636" y="208" class="t-muted" font-size="8" text-anchor="middle">uAsset-denominated</text>
         </g>
         <g data-detail="context" data-edge-from="bytoken" data-edge-to="staking" data-edge-label="Memecoin-denominated" data-edge-key="6" data-edge-id="bytoken-staking">
           <rect x="695" y="214" width="110" height="16" rx="4" class="c-mask"/>
           <text x="750" y="225" class="t-muted" font-size="8" text-anchor="middle">Memecoin-denominated</text>
         </g>
         <g data-detail="context" data-edge-from="bytoken" data-edge-to="burn" data-edge-label="POL-denominated" data-edge-key="7" data-edge-id="bytoken-burn">
-          <rect x="697.25" y="421" width="85.5" height="16" rx="4" class="c-mask"/>
-          <text x="740" y="432" class="t-muted" font-size="8" text-anchor="middle">POL-denominated</text>
+          <rect x="597.25" y="329" width="85.5" height="16" rx="4" class="c-mask"/>
+          <text x="640" y="340" class="t-muted" font-size="8" text-anchor="middle">POL-denominated</text>
         </g>
         <g data-detail="context" data-edge-from="auxsplit" data-edge-to="genesis" data-edge-label="Standard side: pro rata by Genesis share" data-edge-key="8" data-edge-id="aux-genesis">
           <rect x="528.5" y="445" width="208" height="16" rx="4" class="c-mask"/>
@@ -5212,17 +5212,17 @@
         <!-- Legend -->
         <g data-legend="" data-legend-bridge="">
           <text x="40" y="584" class="t-primary" font-size="12" font-weight="650">Legend</text>
-          <g data-legend-semantic-kind="emphasis" data-legend-x="40" data-legend-baseline="604" data-legend-width="103">
+          <g data-legend-semantic-kind="emphasis" data-legend-x="40" data-legend-baseline="604" data-legend-width="113">
             <path d="M 40 601 L 74 601" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-            <text x="83" y="604" class="t-muted" font-size="10" font-weight="500">primary data</text>
+            <text x="83" y="604" class="t-muted" font-size="10" font-weight="500">Main fee split</text>
           </g>
-          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="Treasuries / vaults" data-legend-x="165" data-legend-baseline="604" data-legend-width="138">
-            <rect x="165" y="596" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
-            <text x="187" y="604" class="t-muted" font-size="10" font-weight="500">Treasuries / vaults</text>
+          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="Treasuries / vaults" data-legend-x="175" data-legend-baseline="604" data-legend-width="138">
+            <rect x="175" y="596" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
+            <text x="197" y="604" class="t-muted" font-size="10" font-weight="500">Treasuries / vaults</text>
           </g>
-          <g data-legend-semantic-kind="default" data-legend-x="325" data-legend-baseline="604" data-legend-width="118">
-            <path d="M 325 601 L 359 601" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-            <text x="368" y="604" class="t-muted" font-size="10" font-weight="500">Funds and flows</text>
+          <g data-legend-semantic-kind="default" data-legend-x="335" data-legend-baseline="604" data-legend-width="118">
+            <path d="M 335 601 L 369 601" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+            <text x="378" y="604" class="t-muted" font-size="10" font-weight="500">Funds and flows</text>
           </g>
         </g>
       </svg>
@@ -5431,7 +5431,7 @@
         <ul>
           <li>&bull; With a referrer, the rebate is carved from the protocol share (default 10% of the total fee, adjustable), leaving the protocol treasury about 25%</li>
           <li>&bull; 0.25% of primary-pool uAsset fees (current default) goes to the executor who triggers distribution</li>
-          <li>&bull; Auxiliary-pool uAsset/PT fees are split by leverage-debt share during the Locked phase</li>
+          <li>&bull; Locked-phase aux-pool fees (POL/uAsset, PT/uAsset, PT/POL): part shared with standard Genesis participants pro rata by share, the rest to the DAO treasury</li>
         </ul>
       </div>
 

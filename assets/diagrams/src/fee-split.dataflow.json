@@ -20,6 +20,10 @@
         "database": {
           "label": "Treasuries / vaults",
           "visible": true
+        },
+        "emphasis": {
+          "label": "Main fee split",
+          "visible": true
         }
       }
     }
@@ -32,7 +36,7 @@
       "label": "Dimension 1: the split"
     },
     {
-      "label": "Dimension 2: by denomination"
+      "label": "Routing the protocol share"
     },
     {
       "label": "Where it goes"
@@ -68,8 +72,8 @@
       "type": "external",
       "label": "Referral rebate",
       "sublabel": "Default 10% · adjustable",
-      "stage": 2,
-      "row": 0
+      "stage": 1,
+      "row": 1
     },
     {
       "id": "bytoken",
@@ -83,7 +87,7 @@
       "id": "auxsplit",
       "type": "backend",
       "label": "Aux-pool split",
-      "sublabel": "Leverage side to DAO",
+      "sublabel": "rest to DAO treasury",
       "tag": "Locked phase",
       "stage": 2,
       "row": 2
@@ -92,7 +96,7 @@
       "id": "dao",
       "type": "database",
       "label": "DAO treasury",
-      "sublabel": "0.25% carved out · default",
+      "sublabel": "0.25% to executor · default",
       "stage": 3,
       "row": 0,
       "width": 144
@@ -158,34 +162,18 @@
       "id": "proto-referrer",
       "from": "proto",
       "to": "referrer",
-      "label": "With referrer: default 10% of total",
+      "label": "With referrer",
       "fromSide": "top",
-      "toSide": "left",
+      "toSide": "bottom",
       "via": [
         [
           315,
-          215
-        ],
-        [
-          400,
-          215
-        ],
-        [
-          440,
-          215
-        ],
-        [
-          440,
-          157
-        ],
-        [
-          474,
-          157
+          328
         ]
       ],
       "labelAt": [
-        377,
-        207
+        340,
+        344
       ]
     },
     {
@@ -198,7 +186,7 @@
       "id": "proto-auxsplit",
       "from": "proto",
       "to": "auxsplit",
-      "label": "Auxiliary-pool uAsset/PT fees (Locked phase)",
+      "label": "Auxiliary-pool POL/uAsset/PT fees (Locked)",
       "fromSide": "bottom",
       "toSide": "left",
       "via": [
@@ -245,7 +233,10 @@
           157
         ]
       ],
-      "labelDy": 51
+      "labelAt": [
+        636,
+        208
+      ]
     },
     {
       "id": "bytoken-staking",
@@ -275,8 +266,8 @@
         ]
       ],
       "labelAt": [
-        740,
-        432
+        640,
+        340
       ]
     },
     {
@@ -303,7 +294,7 @@
       "items": [
         "With a referrer, the rebate is carved from the protocol share (default 10% of the total fee, adjustable), leaving the protocol treasury about 25%",
         "0.25% of primary-pool uAsset fees (current default) goes to the executor who triggers distribution",
-        "Auxiliary-pool uAsset/PT fees are split by leverage-debt share during the Locked phase"
+        "Locked-phase aux-pool fees (POL/uAsset, PT/uAsset, PT/POL): part shared with standard Genesis participants pro rata by share, the rest to the DAO treasury"
       ]
     },
     {
