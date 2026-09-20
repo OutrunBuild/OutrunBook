@@ -146,6 +146,27 @@ def collect_rules(css: str, svg_classes: set, var_map: dict) -> list:
     return rules
 
 
+def patch_html_dark_theme(html_path: pathlib.Path) -> str:
+    """Apply the readability overrides to the interactive HTML's DARK var block.
+
+    The same hex values mean different things per theme (e.g. #475569 is the
+    dark --text-dim but a readable light --text-muted), so the replacement is
+    scoped to the :root/[data-theme="dark"] block only. Returns a status line.
+    """
+    html = html_path.read_text()
+    m = re.search(r"(:root\s*,\s*\[data-theme=\"dark\"\]\s*\{)([\s\S]*?)(\})", html)
+    if not m:
+        return "dark var block not found (skipped)"
+    block = m.group(2)
+    patched = block
+    for old, new in READABILITY_OVERRIDES.items():
+        patched = patched.replace(old, new)
+    if patched != block:
+        html_path.write_text(html[: m.start(2)] + patched + html[m.end(2):])
+        return "HTML dark block patched"
+    return "HTML already patched (no change)"
+
+
 def export_one(html_path: pathlib.Path) -> tuple:
     html = html_path.read_text()
     svg_m = re.search(r"<svg[\s\S]*?</svg>", html)
@@ -214,8 +235,15 @@ def export_one(html_path: pathlib.Path) -> tuple:
 
     out = html_path.with_suffix(".svg")
     out.write_text(svg)
+    # guard: if an override target still survives the bake, archify changed
+    # its palette and READABILITY_OVERRIDES needs updating — fail loudly
+    stale = [old for old in READABILITY_OVERRIDES if old in svg]
+    html_status = patch_html_dark_theme(html_path)
     residue = "var(--" in svg
-    return (html_path.name, len(rules), f"OK{' (UNRESOLVED var residue!)' if residue else ''}")
+    return (html_path.name, len(rules),
+            f"OK{' (UNRESOLVED var residue!)' if residue else ''}"
+            f"{' (STALE PALETTE: ' + ','.join(stale) + '!)' if stale else ''}"
+            f" | {html_status}")
 
 
 def main() -> int:
