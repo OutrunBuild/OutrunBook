@@ -24,7 +24,7 @@ The uAsset raised in Genesis follows two flows: one part goes into the pools dir
 
 These ratios are the target allocation at Genesis completion. The actual amounts entering each pool are determined by market prices at deployment time and may differ slightly. The small remainder of POL/PT that does not enter a pool is claimed pro rata after unlock. uAsset left over after the pools are built goes into the settlement reserve (once the reserve is full, the excess goes to the treasury), and leftover Memecoin is burned outright.
 
-<iframe src="../assets/diagrams/four-pools.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="Pool funding flow: how one allocation of capital is split across four pools"></iframe>
+![Pool funding flow: how one allocation of capital is split across four pools](../assets/diagrams/four-pools.png)
 
 This structure keeps the primary pool deep while giving POL and PT each a tradable secondary market. During the lock-up period, YT can be bought and sold against POL through **YT Flash Swap**, which reuses the PT/POL pool instead of running a separate trading pool (see [YT Flash Swap](yt-flash-swap.md) for details). After unlock settlement, the settlement residual value is redeemed pro rata.
 

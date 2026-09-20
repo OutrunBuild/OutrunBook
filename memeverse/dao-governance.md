@@ -50,7 +50,7 @@ To turn governance from a burden into an activity that pays, the DAO distributes
 - **Active claim**: after settlement, voters must claim their share within the claim window, calculated from their share of the votes cast that epoch.
 - **Missed deadline**: rewards left unclaimed after the window closes roll into the treasury for later epochs and are not reissued.
 
-<iframe src="../assets/diagrams/dao-cycle.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="DAO epoch rewards: one epoch, start to finish"></iframe>
+![DAO epoch rewards: one epoch, start to finish](../assets/diagrams/dao-cycle.png)
 
 Voting, triggering settlement, and claiming rewards are all on-chain operations; your wallet needs the native token of the chain in question to pay network fees (gas).
 

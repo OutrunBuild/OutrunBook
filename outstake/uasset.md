@@ -22,7 +22,7 @@ uAsset has three supply paths, independent of one another:
 - **PSM reserve swaps**: swap reserve assets such as USDC, USDT, ETH, and BNB for uAsset and back, 1:1 at par. Each swap pool is backed unit for unit by reserves held by the protocol. See [PSM par swaps](psm.md).
 - **Leveraged Genesis supply**: on the Memeverse side, the debt quota drawn for leveraged Genesis is also minted as uAsset and committed to Genesis, with the protocol settling it in one unified pass (see [leveraged Genesis](../memeverse/polend.md)).
 
-<iframe src="../assets/diagrams/uasset-supply.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="The three supply paths of uAsset"></iframe>
+![The three supply paths of uAsset](../assets/diagrams/uasset-supply.png)
 
 ## Mint caps prevent oversupply
 

@@ -42,7 +42,7 @@ A cross-chain transfer is not a single action but three stages, and each can suc
 | Arrival | Destination chain's receiving budget configured too low | Funds stranded (burned on source, not minted on destination); manual recovery required |
 | Placement | YieldVault does not exist | Arrived Memecoin transferred directly to the recipient; no staking shares created |
 
-<iframe src="../assets/diagrams/omnichain-stages.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="The three cross-chain stages: send, arrival, placement"></iframe>
+![The three cross-chain stages: send, arrival, placement](../assets/diagrams/omnichain-stages.png)
 
 "Sent cross-chain", "arrived on the destination chain", and "staked on the destination chain" are therefore three different things: the previous step succeeding does not mean the next one will.
 

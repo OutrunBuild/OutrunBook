@@ -36,7 +36,7 @@ Once Genesis reaches its target and the lock-up expires, settlement begins. Unlo
 3. **If there is a shortfall** (recovery cannot cover the debt): the settlement reserve covers only a capped integer-rounding shortfall, and only within the current balance of that uAsset. If the shortfall exceeds the reserve balance, the settlement reverts and the Verse stays in the Locked phase. After the reserve is replenished (raising the reserve cap if necessary), the unlock settlement is retried.
 4. At the same time, Leveraged Genesis participants also receive a proportional share of **YT** (the Yield Token; see [POL split](pol-splitter.md)).
 
-<iframe src="../assets/diagrams/polend-settlement.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="Settlement at expiry: the unlock transaction and the unified settlement waterfall"></iframe>
+![Settlement at expiry: the unlock transaction and the unified settlement waterfall](../assets/diagrams/polend-settlement.png)
 
 ## Where the interest goes
 

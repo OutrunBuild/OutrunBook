@@ -4,7 +4,7 @@ A Memecoin passes through a few clearly defined stages from launch to circulatio
 
 ## Phases at a glance
 
-<iframe src="../assets/diagrams/verse-lifecycle.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="Memecoin lifecycle: from Genesis to steady state"></iframe>
+![Memecoin lifecycle: from Genesis to steady state](../assets/diagrams/verse-lifecycle.png)
 
 ### Phases × available operations
 
