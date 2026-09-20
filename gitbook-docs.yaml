@@ -4,31 +4,10 @@ site:
   title: OutrunBook
   structure:
     - type: space
-      key: space-outstake
-      title: OutStake
-      path: outstake
+      key: space-outrunbook
+      title: OutrunBook
+      path: docs
       default: true
       content:
-        directory: ./outstake
-        language: en
-    - type: space
-      key: space-memeverse
-      title: Memeverse
-      path: memeverse
-      content:
-        directory: ./memeverse
-        language: en
-    - type: space
-      key: space-ecosystem
-      title: Ecosystem
-      path: ecosystem
-      content:
-        directory: ./ecosystem
-        language: en
-    - type: space
-      key: space-reference
-      title: Reference
-      path: reference
-      content:
-        directory: ./reference
+        directory: ./
         language: en
