@@ -17,6 +17,15 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 DIAG = REPO / "assets" / "diagrams"
 FONT = DIAG / "fonts" / "jetbrains-mono-subset.woff2"
 
+# Static diagrams render smaller than the interactive viewer, and the dark
+# theme's secondary text (#475569, 2.7:1 on the background) and default
+# message text (#64748b, 4.2:1) fall below WCAG AA (4.5:1). Lift both while
+# keeping them visibly dimmer than the primary/muted tiers.
+READABILITY_OVERRIDES = {
+    "#475569": "#8494ab",  # t-dim / legend badges: 2.7:1 -> 6.1:1
+    "#64748b": "#7b8ca4",  # default message text & arrows: 4.2:1 -> 5.5:1
+}
+
 SVG_ELEMENTS = {
     "svg", "g", "rect", "path", "text", "tspan", "line", "circle", "ellipse",
     "polygon", "polyline", "defs", "marker", "use", "image", "title", "desc",
@@ -130,6 +139,8 @@ def collect_rules(css: str, svg_classes: set, var_map: dict) -> list:
                 kept.append(b)
         if kept:
             body_resolved = resolve_vars(body, var_map)
+            for old, new in READABILITY_OVERRIDES.items():
+                body_resolved = body_resolved.replace(old, new)
             if "var(--" not in body_resolved:
                 rules.append((", ".join(kept), body_resolved.strip()))
     return rules

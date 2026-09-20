@@ -18,7 +18,7 @@ svg[data-chapter-preview] [data-node-id], svg[data-chapter-preview] [data-edge-f
 .c-external { fill: rgba(30, 41, 59, 0.5);   stroke: #94a3b8; }
 .t-primary { fill: #ffffff; }
 .t-muted { fill: #94a3b8; }
-.t-dim { fill: #475569; }
+.t-dim { fill: #8494ab; }
 .t-backend { fill: #34d399; }
 svg .semantic-sigil { fill: none;
       stroke: currentColor;
@@ -39,9 +39,9 @@ svg [data-detail-anchor] { transform-box: fill-box;
 svg[data-focus-active] [data-focus-match][data-detail], svg[data-focus-active] [data-focus-match] [data-detail], svg[data-reach-active] [data-reach-match][data-detail], svg[data-reach-active] [data-reach-match] [data-detail], svg[data-lens-active] [data-lens-match][data-detail], svg[data-lens-active] [data-lens-match] [data-detail], svg[data-legend-preview-active] [data-legend-preview-match][data-detail], svg[data-legend-preview-active] [data-legend-preview-match] [data-detail], svg[data-intent-trace-active] [data-intent-trace-match][data-detail], svg[data-intent-trace-active] [data-intent-trace-match] [data-detail], svg[data-route-active] [data-route-match][data-detail], svg[data-route-active] [data-route-match] [data-detail], svg[data-story-active] [data-story-step][data-detail], svg[data-story-active] [data-story-step] [data-detail], svg[data-relationship-preview-active] [data-relationship-preview][data-detail], svg[data-relationship-preview-active] [data-relationship-preview] [data-detail] { opacity: 1;
       pointer-events: auto; }
 svg[data-focus-active] [data-focus-match] [data-detail-anchor], svg[data-reach-active] [data-reach-match] [data-detail-anchor], svg[data-lens-active] [data-lens-match] [data-detail-anchor], svg[data-legend-preview-active] [data-legend-preview-match] [data-detail-anchor], svg[data-intent-trace-active] [data-intent-trace-match] [data-detail-anchor], svg[data-route-active] [data-route-match] [data-detail-anchor], svg[data-story-active] [data-story-step] [data-detail-anchor] { transform: none; }
-.a-default { stroke: #64748b; fill: none; }
+.a-default { stroke: #7b8ca4; fill: none; }
 .a-emphasis { stroke: #34d399; fill: none; }
-.m-default { fill: #64748b; }
+.m-default { fill: #7b8ca4; }
 .m-emphasis { fill: #34d399; }
 .m-security { fill: #fb7185; }
 .m-dashed { fill: #a78bfa; }
