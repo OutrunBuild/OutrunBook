@@ -17,8 +17,8 @@ svg[data-chapter-preview] [data-node-id], svg[data-chapter-preview] [data-edge-f
 .c-database { fill: rgba(76, 29, 149, 0.4);   stroke: #a78bfa; }
 .c-external { fill: rgba(30, 41, 59, 0.5);   stroke: #cbd5e1; }
 .t-primary { fill: #ffffff; }
-.t-muted { fill: #cbd5e1; }
-.t-dim { fill: #b6c2d4; }
+.t-muted { fill: #ffffff; }
+.t-dim { fill: #ffffff; }
 .t-backend { fill: #34d399; }
 svg .semantic-sigil { fill: none;
       stroke: currentColor;
@@ -41,7 +41,7 @@ svg[data-focus-active] [data-focus-match][data-detail], svg[data-focus-active] [
 svg[data-focus-active] [data-focus-match] [data-detail-anchor], svg[data-reach-active] [data-reach-match] [data-detail-anchor], svg[data-lens-active] [data-lens-match] [data-detail-anchor], svg[data-legend-preview-active] [data-legend-preview-match] [data-detail-anchor], svg[data-intent-trace-active] [data-intent-trace-match] [data-detail-anchor], svg[data-route-active] [data-route-match] [data-detail-anchor], svg[data-story-active] [data-story-step] [data-detail-anchor] { transform: none; }
 .a-default { stroke: #8fa3bd; fill: none; }
 .a-emphasis { stroke: #34d399; fill: none; }
-.m-default { fill: #8fa3bd; }
+.m-default { fill: #ffffff; }
 .m-emphasis { fill: #34d399; }
 .m-security { fill: #fb7185; }
 .m-dashed { fill: #a78bfa; }
@@ -59,7 +59,7 @@ svg [data-legend-count-badge] rect { fill: #ffffff;
       stroke: #1e293b;
       stroke-width: 1;
       vector-effect: non-scaling-stroke; }
-svg [data-legend-count-badge] text { fill: #cbd5e1;
+svg [data-legend-count-badge] text { fill: #ffffff;
       font-size: 8px;
       font-weight: 700;
       text-anchor: middle; }

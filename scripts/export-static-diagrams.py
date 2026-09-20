@@ -17,19 +17,32 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 DIAG = REPO / "assets" / "diagrams"
 FONT = DIAG / "fonts" / "jetbrains-mono-subset.woff2"
 
-# Static diagrams render much smaller than the interactive viewer. WCAG AA
-# (4.5:1) proved insufficient in practice: grays at 5.5-6.5:1 were still
-# unreadable at page width. Lift every gray tier to >=7:1, keeping the
-# hierarchy (primary > muted > dim > faint) visible. Keys cover both the
-# original archify palette and the previous (lower) override generation.
+# Static diagrams render much smaller than the interactive viewer, and every
+# gray text tier proved unreadable in practice (even 10:1 grays drew
+# complaints at page width). Text is therefore never gray: all gray text
+# fills are whitened; hierarchy comes from font size/weight, and semantic
+# colors (green/purple/orange/cyan/rose) stay. Only `fill:` declarations are
+# rewritten — strokes and panel fills keep their designed slate tones.
+GRAY_TEXT_FILLS = (
+    "#475569", "#64748b", "#7d8da1", "#94a3b8",  # archify palette
+    "#8494ab", "#7b8ca4", "#cbd5e1", "#b6c2d4", "#a5b4c9", "#8fa3bd",  # prior overrides
+)
+FILL_WHITEN = re.compile(
+    r"fill:\s*(?:" + "|".join(GRAY_TEXT_FILLS) + r")\b", re.IGNORECASE
+)
+
+# Interactive HTML: the text variables in the dark block go white (same rule).
+# Stroke variables (--arrow, borders) are left untouched. Keys cover both the
+# original archify values and the previous override generation.
 READABILITY_OVERRIDES = {
-    "#475569": "#b6c2d4",  # t-dim            2.7:1 -> 10.4:1
-    "#64748b": "#8fa3bd",  # messages/arrows  4.2:1 ->  7.3:1
-    "#94a3b8": "#cbd5e1",  # t-muted          7.9:1 -> 12.6:1
-    "#7d8da1": "#a5b4c9",  # t-faint          4.6:1 ->  8.9:1
-    "#8494ab": "#b6c2d4",  # prior t-dim override
-    "#7b8ca4": "#8fa3bd",  # prior arrow override
+    "--text-muted": "#ffffff",
+    "--text-dim": "#ffffff",
+    "--text-faint": "#ffffff",
 }
+
+
+def whiten_gray_text_fills(body: str) -> str:
+    return FILL_WHITEN.sub("fill: #ffffff", body)
 
 SVG_ELEMENTS = {
     "svg", "g", "rect", "path", "text", "tspan", "line", "circle", "ellipse",
@@ -144,28 +157,26 @@ def collect_rules(css: str, svg_classes: set, var_map: dict) -> list:
                 kept.append(b)
         if kept:
             body_resolved = resolve_vars(body, var_map)
-            for old, new in READABILITY_OVERRIDES.items():
-                body_resolved = body_resolved.replace(old, new)
+            body_resolved = whiten_gray_text_fills(body_resolved)
             if "var(--" not in body_resolved:
                 rules.append((", ".join(kept), body_resolved.strip()))
     return rules
 
 
 def patch_html_dark_theme(html_path: pathlib.Path) -> str:
-    """Apply the readability overrides to the interactive HTML's DARK var block.
+    """Whiten the text variables in the interactive HTML's DARK block.
 
-    The same hex values mean different things per theme (e.g. #475569 is the
-    dark --text-dim but a readable light --text-muted), so the replacement is
-    scoped to the :root/[data-theme="dark"] block only. Returns a status line.
+    Only the :root/[data-theme="dark"] block is touched: the same hexes mean
+    different things in the light theme, and stroke variables (--arrow,
+    borders) keep their designed slate tones. Returns a status line.
     """
     html = html_path.read_text()
     m = re.search(r"(:root\s*,\s*\[data-theme=\"dark\"\]\s*\{)([\s\S]*?)(\})", html)
     if not m:
         return "dark var block not found (skipped)"
-    block = m.group(2)
-    patched = block
-    for old, new in READABILITY_OVERRIDES.items():
-        patched = patched.replace(old, new)
+    block, patched = m.group(2), m.group(2)
+    for var, value in READABILITY_OVERRIDES.items():
+        patched = re.sub(rf"({var}\s*:\s*)#[0-9a-fA-F]{{6}}", rf"\g<1>{value}", patched)
     if patched != block:
         html_path.write_text(html[: m.start(2)] + patched + html[m.end(2):])
         return "HTML dark block patched"
@@ -240,14 +251,14 @@ def export_one(html_path: pathlib.Path) -> tuple:
 
     out = html_path.with_suffix(".svg")
     out.write_text(svg)
-    # guard: if an override target still survives the bake, archify changed
-    # its palette and READABILITY_OVERRIDES needs updating — fail loudly
-    stale = [old for old in READABILITY_OVERRIDES if old in svg]
+    # guard: any gray fill surviving the whiten pass means archify added new
+    # text colors and GRAY_TEXT_FILLS needs updating — fail loudly
+    stale = bool(FILL_WHITEN.search(svg))
     html_status = patch_html_dark_theme(html_path)
     residue = "var(--" in svg
     return (html_path.name, len(rules),
             f"OK{' (UNRESOLVED var residue!)' if residue else ''}"
-            f"{' (STALE PALETTE: ' + ','.join(stale) + '!)' if stale else ''}"
+            f"{' (STALE GRAY FILL!)' if stale else ''}"
             f" | {html_status}")
 
 
