@@ -1,31 +1,31 @@
-# 跨链与速率限制
+# Cross-chain and rate limits
 
-## uAsset 天生可跨链
+## uAsset is natively omnichain
 
-uAsset（UETH / UUSD / UBNB）基于 **LayerZero OFT** 标准，可以在不同链之间 1:1 流转：从源链转出时销毁，在目标链上等量铸造。总量不变，只是跨越了链的边界。
+uAsset (UETH / UUSD / UBNB) is built on the **LayerZero OFT** standard and moves 1:1 between chains: tokens are burned when they leave the source chain and minted in equal amount on the destination chain. Total supply never changes; the tokens have simply crossed a chain boundary.
 
-发送跨链时，需以源链原生代币按系统报价支付一笔消息费，费用会随通道状态变化。跨链金额按 6 位小数精度传递：余额超出 6 位小数的部分会留在源链，不随跨链移动。例如持有 100.000000123 UUSD 并整额跨链，实际转出并到账的是 100.000000，尾数 0.000000123 留在源链钱包。
+Every cross-chain send pays a messaging fee, quoted by the system and paid in the source chain's native token; the fee varies with the state of the pathway. Cross-chain amounts are carried at 6-decimal precision: any balance beyond six decimals stays on the source chain and does not travel. For example, if you hold 100.000000123 UUSD and send the full balance cross-chain, the amount transferred and delivered is 100.000000; the trailing 0.000000123 stays in your wallet on the source chain.
 
-这意味着你可以在一条链上铸出 UUSD，跨到另一条链上使用，或把 UETH 从以太坊送到 Base —— uAsset 不绑死在任何一条链上。
+This means you can mint UUSD on one chain and use it on another, or send UETH from Ethereum to Base: uAsset is not tied to any single chain.
 
-## 速率限制：防止异常流出
+## Rate limits: preventing abnormal outflows
 
-跨链桥存在风险（桥本身的安全、突发的大额流出）。因此每条跨链路径都有一个**速率限制**：
+Cross-chain bridges carry risks (the security of the bridge itself, and sudden large outflows). Every cross-chain pathway therefore has a **rate limit**:
 
-- 设定一个额度上限和恢复时间窗口。
-- 已转出在途的量，会随时间**逐步恢复**可用额度。
-- 正常使用不受影响；但如果短期内出现**异常的大额跨链流出**，超出额度的部分会被暂时卡住。
+- It defines a volume cap and a recovery time window.
+- Capacity consumed by transfers already in flight **recovers gradually** over time.
+- Normal usage is unaffected. If an **abnormally large cross-chain outflow** occurs within a short period, the portion above the cap is temporarily blocked.
 
-效果是：日常跨链畅通，一旦出现异常，系统有缓冲时间应对，不至于在短时间内被抽空。
+The effect: everyday cross-chain traffic flows freely, and if something abnormal happens the system has buffer time to respond instead of being drained in a short burst.
 
-## 已发跨链不受暂停影响
+## Transfers already in flight are unaffected by pauses
 
-一个细节保障：即使 uAsset 处于临时暂停状态，**已经发出的跨链转账仍会在目标链上完成到账**——跨链消息到达时，目标链会铸造出对应的 uAsset，暂停约束不作用于这条到账路径。这是为了让用户资金不因状态问题滞留。对称地，暂停期间**新发起的跨链发送会暂时受阻**，待恢复后自动可用。需注意，跨链到账并非绝对保证：极端的配置或通道问题下，仍可能出现源链已销毁、目标链尚未到账的滞留状态。
+One detail acts as a safeguard: even when uAsset is temporarily paused, **a cross-chain transfer that has already been sent still completes its delivery on the destination chain**. When the cross-chain message arrives, the destination chain mints the corresponding uAsset; the pause does not apply to this delivery path. This is so user funds aren't stranded by a pause. Symmetrically, **newly initiated cross-chain sends are temporarily blocked** during a pause and become available again automatically once it lifts. Note that cross-chain delivery is not absolutely guaranteed. Under extreme configuration or pathway problems, a stranded state can still occur: the tokens are already burned on the source chain but have not yet arrived on the destination chain.
 
-## 可按链调整
+## Adjustable per chain
 
-每条目标链、每种 uAsset 的速率限额都可以单独设置，由协议根据实际安全需要调整。
+The rate limit for each destination chain and each uAsset can be set independently, and the protocol adjusts them according to actual security needs.
 
-## 跨链带来什么
+## What cross-chain enables
 
-跨链能力让 uAsset 真正成为**全链通用媒介**：它可以从 OutStake 流向 Memeverse 部署的任意一条链，参与任意链上的创世与杠杆，不被链的边界困住。
+Cross-chain capability makes uAsset a true **omnichain medium**: it can flow from OutStake to any chain where Memeverse is deployed, take part in Genesis and leverage on any chain, and never gets trapped on a single chain.

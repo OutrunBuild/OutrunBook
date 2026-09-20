@@ -1,62 +1,62 @@
-# 目标受众
+# Target audience
 
-Outrun 服务几类不同需求的人。下面逐一看他们想要什么、Outrun 怎么满足。
+Outrun serves several distinct groups. This page walks through what each of them wants and how Outrun delivers it.
 
-## Memecoin 社区核心
+## Core Memecoin community
 
-**他们是谁**：Memecoin 的早期信仰者、社区组织者、想做公平发射的发起人。
+**Who they are**: Early Memecoin believers, community organizers, and launchers who want to run a fair launch.
 
-**他们的痛点**：传统 Memecoin 启动充满 rug、抢跑、内幕；社区没有治理权；热度一过就归零。
+**Their pain points**: Traditional Memecoin launches are riddled with rugs, front-running, and insider deals; communities hold no governance power; and once the hype fades, the token goes to zero.
 
-**Outrun 给他们**：
-- 一个公平、抗 rug 的启动平台（流动性锁定、创世退款、动态费率防抢跑）。
-- 杠杆创世放大早期参与。
-- DAO 治理让社区真正掌权，国库透明。
+**What Outrun gives them**:
+- A fair, rug-resistant launch platform (liquidity lock-up, Genesis refund, dynamic fees that discourage front-running).
+- Leveraged Genesis amplifies early participation.
+- DAO governance gives the community real control, with a transparent treasury.
 
-## DeFi 用户 / 收益农夫
+## DeFi users / yield farmers
 
-**他们是谁**：在各类协议间寻找收益的 DeFi 玩家，持有 LST、稳定币等生息资产。
+**Who they are**: DeFi users chasing yield across protocols, holding yield-bearing assets such as LSTs and stablecoins.
 
-**他们的痛点**：生息资产碎片化，流动性分散，跨协议组合麻烦，收益难统一利用。
+**Their pain points**: Yield-bearing assets are fragmented, liquidity is scattered, composing positions across protocols is tedious, and the yield is hard to put to unified use.
 
-**Outrun 给他们**：
-- 把多种生息资产统一成 uAsset，一个出口。
-- 创世质押铸 uAsset（抵押继续生息），或经 PSM 直接兑换、存 USR 吃利息。
-- uAsset 可跨链、可参与 Memeverse 创世，资金用途多元。
+**What Outrun gives them**:
+- Multiple yield-bearing assets unified into uAsset, a single token.
+- Mint uAsset through Genesis Staking (the collateral keeps earning), swap directly through the PSM (the par swap pool), or deposit into USR (uAsset savings) to earn interest.
+- uAsset moves across chains and can be committed to Memeverse Genesis, so the capital has many uses.
 
-## 稳定币 / uAsset 使用者
+## Stablecoin / uAsset users
 
-**他们是谁**：需要稳定、可跨链的价值媒介进行交易、结算、转账的人。
+**Who they are**: People who need a stable, cross-chain medium of value for trading, settlement, and transfers.
 
-**他们的痛点**：稳定币种类多但流动性割裂，跨链成本高、风险大。
+**Their pain points**: There are many stablecoins but liquidity is fragmented, and moving value across chains is costly and risky.
 
-**Outrun 给他们**：
-- 锚定型稳定币（UETH/UUSD/UBNB），有底层资产支撑、有铸币上限。
-- 原生跨链，速率限制保护安全。
-- 在 Outrun 生态内有丰富用途（创世、杠杆、结算）。
+**What Outrun gives them**:
+- Pegged stablecoins (UETH/UUSD/UBNB), backed by underlying assets and subject to mint caps.
+- Natively omnichain, with rate limits for security.
+- Many uses within the Outrun ecosystem (Genesis, leverage, settlement).
 
-## 杠杆 / 进阶玩家
+## Leverage / advanced users
 
-**他们是谁**：愿意用更高资本效率博取收益的进阶用户。
+**Who they are**: Advanced users pursuing yield with higher capital efficiency.
 
-**他们的痛点**：传统杠杆借贷有清算风险、预言机依赖，DeFi 杠杆产品复杂且风险高。
+**Their pain points**: Traditional leveraged borrowing carries liquidation risk and depends on oracles, and DeFi leverage products are complex and risky.
 
-**Outrun 给他们**：
-- 杠杆创世：无清算、无预言机，付利息放大早期份额。
-- PT/YT 拆分：本金与收益分离。普通创世者领 YT + 辅助池份额，本金 uAsset 在四池守恒、与 Memecoin 涨跌无关；PT 主要进辅助池作 LP。
-- 创世积分：降低参与门槛。
+**What Outrun gives them**:
+- Leveraged Genesis: no liquidations, no oracle dependency; pay interest to amplify an early share.
+- PT/YT split: principal and yield separated. Standard Genesis participants claim YT plus auxiliary-pool shares, while the uAsset principal stays conserved in the four pools and is unaffected by Memecoin price moves. PT flows mainly into the auxiliary pools as LP.
+- GenesisCredit: lowers the barrier to participation.
 
-## Memecoin 发起人 / 项目方
+## Memecoin launchers / project teams
 
-**他们是谁**：想公平发射一个 Memecoin、建立长期社区的发起者。
+**Who they are**: Launchers who want to fair-launch a Memecoin and build a lasting community.
 
-**他们的痛点**：自建流动性门槛高，容易被抢跑，缺乏可信的启动工具。
+**Their pain points**: Bootstrapping liquidity has a high barrier to entry, front-running is a constant threat, and credible launch tooling is scarce.
 
-**Outrun 给他们**：
-- 一键在多链启动，四池流动性自动建立。
-- 锁定期机制向社区证明流动性 rug 路径被阻断。
-- 内置 Staking 与 DAO，启动即具备持续价值基础设施。
+**What Outrun gives them**:
+- Launch on multiple chains in one action, with the four-pool liquidity set up automatically.
+- The lock-up mechanism shows the community that the liquidity cannot be rug-pulled.
+- Built-in staking and DAO, so a launch starts with durable value infrastructure.
 
-## 共性
+## Common ground
 
-这些受众看似不同，但都被 uAsset 串起来：**他们的需求和资金，最终都流经 uAsset**。不同的人在同一套基础设施里各取所需，彼此为飞轮贡献动力。
+These audiences look different, but uAsset strings them together: **their needs and their capital ultimately flow through uAsset**. Different people take what they need from the same infrastructure, and each contributes momentum to the flywheel.

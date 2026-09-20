@@ -1,55 +1,55 @@
-# 预购（Preorder）
+# Preorder
 
-## 什么是预购
+## What is Preorder
 
-预购让用户在 Memecoin 正式开池交易**之前**，提前锁定预购额度和后续分配权。具体获得多少 Memecoin，要等主池建立后完成聚合结算才能确定。
+Preorder lets users lock in an early allocation and the distribution rights that follow **before** the Memecoin opens for trading. How much Memecoin each participant actually receives is only determined once the primary pool has been created and the aggregated settlement completes.
 
-## 怎么参与
+## How to participate
 
-- 在创世阶段，用户存入 uAsset 参与预购。
-- 预购有**总容量上限**，先到先得，避免预购规模相对主池过大。
-- 主池建立后，预购资金通过一条**专用结算通道**（由 [Hook](hook.md) 提供），以固定的低费率一次性换成 Memecoin。
+- During Genesis, users deposit uAsset to join the Preorder.
+- Preorder has a **total capacity cap** and is first come, first served, so the preorder size cannot grow out of proportion to the primary pool.
+- After the primary pool is created, the Preorder funds are swapped into Memecoin in a single transaction through a **dedicated settlement channel** (provided by the [hook](hook.md)) at a fixed low fee.
 
-预购总容量按以下公式计算：
+Total preorder capacity is calculated as:
 
 ```text
-预购总容量 =（普通创世资金 + 杠杆债务本金）x 70% x 预购容量比例
+Total preorder capacity = (standard Genesis capital + leveraged debt principal) x 70% x preorder capacity ratio
 ```
 
-预购容量比例由协议方全局配置，上限为 100%。预购资金本身不计入容量基数。
+The Preorder capacity ratio is configured globally by the protocol and capped at 100%. Preorder funds themselves do not count toward the capacity base.
 
-## 固定费率结算
+## Settlement at a fixed fee rate
 
-与公开交易的动态费率不同，预购结算走的是**固定 1% 总费率**的专用通道，跳过动态费率和开池高费率机制。
+Unlike the dynamic fees of public trading, preorder settlement runs through the dedicated channel at a **fixed 1% total fee**, bypassing the dynamic fee schedule and the elevated fees at pool opening.
 
-- 全部预购 uAsset 聚合为主池建立后的第一笔 exact-input AMM 交易。
-- 所有预购者统一适用 1% 结算费率，并按各自预购资金占比分配聚合交易所得的 Memecoin。
-- 所有预购者共享同一笔聚合交易的平均成交成本；固定的是结算费率，不是预先约定的 Memecoin 价格。
-- 聚合成交数量由主池初始储备、AMM 曲线、预购总规模和价格影响共同决定。
-- 结算与主池建立在同一笔启动交易中完成，公开交易无法插入两者之间。
+- All preorder uAsset is aggregated into the first exact-input AMM trade after the primary pool is created.
+- Every Preorder participant pays the same 1% settlement fee rate, and the Memecoin bought by the aggregated trade is distributed in proportion to each participant's share of the Preorder funds.
+- All participants share the average execution cost of that single aggregated trade; what is fixed is the settlement fee rate, not a pre-agreed Memecoin price.
+- The amount the aggregated trade executes for is determined by the primary pool's initial reserves, the AMM curve, the total preorder size, and price impact.
+- Settlement and primary-pool creation happen in the same launch transaction, so public trades cannot slip in between them.
 
-单个预购者不能单独设置自己的最低成交数量、成交价上限或截止时间。聚合资金扣除费用后的净输入必须完整成交；无法完整成交时，本次启动交易整体回滚，不会产生部分结算结果。
+No individual participant can set their own minimum output amount, price limit, or deadline. The net input, the aggregated funds after fees, must execute in full; if it cannot, the entire launch transaction reverts and no partial settlement occurs.
 
-<iframe src="../assets/diagrams/preorder-flow.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="预购：聚合成交与线性解锁"></iframe>
+<iframe src="../assets/diagrams/preorder-flow.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="Preorder: aggregated execution and linear unlock"></iframe>
 
-## 线性解锁
+## Linear unlock
 
-预购换到的 Memecoin **不是一次性全部到账**，而是按时间**线性解锁**：
+The Memecoin bought through Preorder does **not arrive all at once**; it **unlocks linearly** over time:
 
-- 解锁期间，份额逐步变为可领取。
-- 这鼓励预购者长期持有，而不是开池即抛，减少砸盘压力。
-- 线性解锁时长由协议方通过全局参数配置，示例时长不代表固定参数。
+- During the unlock period, portions of the balance become claimable step by step.
+- This encourages Preorder participants to hold rather than dump the moment the pool opens, reducing sell pressure.
+- The unlock duration is configured by the protocol through a global parameter; any example duration is illustrative, not a fixed setting.
 
-**需要主动领取**：解锁后的 Memecoin 不会自动进入你的钱包——归属到什么程度，就领取多少，需要你自己在界面发起领取。记得在解锁期内查看可领取数量并及时领取，未领取的部分会一直保留、可累计，不会消失。
+**You must claim it yourself**: unlocked Memecoin does not land in your wallet automatically. You can claim exactly what has unlocked so far, and you initiate the claim yourself in the interface. Check your claimable amount during the unlock period and claim it as it unlocks. Anything left unclaimed is retained, keeps accumulating, and does not disappear.
 
-## 预购的意义
+## Why Preorder matters
 
-- **对用户**：提前锁定预购额度，统一适用固定 1% 费率，并共享聚合交易的平均成交结果。
-- **对项目**：开池时有一批有锁定承诺的持有者，流通更平稳，减少开盘剧烈波动。
-- **对市场**：限制初始流动性狙击。预购聚合买单是主池的第一笔交易，公开交易无法插在主池建立与聚合买入之间——狙击者抢不到开局第一仓，公开交易面对的起始价格已包含这次聚合买入。
+- **For users**: lock in a preorder allocation early, pay the same fixed 1% fee rate as everyone else, and share the average execution result of the aggregated trade.
+- **For the project**: the pool opens with a cohort of holders committed through the lock-up, so the circulating supply trades more steadily and violent swings at the open are reduced.
+- **For the market**: it limits sniping of the initial liquidity. The preorder aggregate buy is the primary pool's first trade: public trading cannot slip in between pool creation and the aggregate buy. Snipers cannot grab the opening position, and the starting price public traders face already includes the aggregate buy.
 
-预购是 Memeverse「公平发射」理念的一环 —— 让真正愿意早期参与的人获得优先权，用首笔聚合买入挡住开局狙击，同时以线性解锁约束短期套利。
+Preorder is part of Memeverse's fair-launch philosophy: those genuinely willing to participate early get priority, the first aggregate buy blocks the opening snipe, and the linear unlock restrains short-term arbitrage.
 
-## 举例
+## Example
 
-> 创世阶段，用户用 500 UUSD 预购。主池建立后，所有用户的预购资金聚合为第一笔交易，统一适用**固定 1% 结算费率**。该用户按 500 UUSD 占全部预购资金的比例分配聚合交易所得 Memecoin，与其他预购者共享同一平均成交成本；具体数量取决于这笔交易在主池中的实际成交结果。换到的 Memecoin 不是立刻全部到账，而是按协议配置的窗口（例如 7 天）**线性解锁**。若 Memecoin 创世最终未达标，500 UUSD 退还给该笔预购记录的受益人。
+> During Genesis, a user preorders with 500 UUSD. After the primary pool is created, all users' preorder funds are aggregated into the first trade, which uniformly applies the **fixed 1% settlement fee rate**. The user receives a share of the Memecoin bought by the aggregated trade, in proportion to their 500 UUSD of the total preorder funds, and shares the same average execution cost as the other preorder participants. The exact amount depends on how the trade actually executes in the primary pool. The Memecoin bought does not arrive all at once; it **unlocks linearly** over a protocol-configured window (for example, 7 days). If the Memecoin's Genesis ultimately falls short of its target, the 500 UUSD is refunded to the beneficiary of that preorder record.

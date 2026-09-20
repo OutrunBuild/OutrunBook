@@ -1,77 +1,77 @@
-# 商业模式
+# Business model
 
-## 价值主张
+## Value proposition
 
-Outrun 为两类需求提供一个闭环：
+Outrun serves two needs within a single closed loop:
 
-- **生息资产持有者**：想要统一、可流通、跨链的稳定币（uAsset），并希望资产持续增值。
-- **Memecoin 社区**：想要一个公平、抗 rug、有持续价值的启动平台，而非纯 PVP 的赌场。
+- **Yield-bearing asset holders**: they want a unified, liquid, cross-chain stablecoin (uAsset), and they want their assets to keep growing in value.
+- **Memecoin communities**: they want a fair, rug-resistant launchpad that builds lasting value, not a zero-sum casino.
 
-两个需求在 Outrun 里通过 uAsset 对接。OutStake 供给 uAsset，Memeverse 创造 uAsset 的用途与活力。
+Within Outrun, the two needs meet through uAsset. OutStake supplies uAsset; Memeverse creates its uses and its activity.
 
-## 收入来源
+## Revenue streams
 
-Outrun 的收入来自生态内的真实经济活动，不依赖代币增发补贴：
+Outrun's revenue comes from real economic activity inside the ecosystem, not from token-emission subsidies:
 
-| 收入来源 | 说明 |
+| Revenue stream | Description |
 |---|---|
-| **交易手续费（协议份额）** | Memeverse 每笔交易费的协议部分，含动态费率、开池衰减费、预购结算费 |
-| **杠杆创世利息** | 杠杆参与者支付的 uAsset 利息，创世锁定时归协议自留国库 |
+| **Trading fees (protocol fee)** | The protocol fee on every Memeverse trading fee, including dynamic fees, pool-opening decay fees, and Preorder settlement fees |
+| **Leveraged Genesis interest** | The uAsset interest paid by leverage participants, which accrues to the protocol treasury at Genesis lock |
 
-此外还有**结算储备金**（非收入）：由流动性部署余额注入，用于覆盖杠杆结算赤字；未消耗部分留存备用，不进国库。
+There is also the **settlement reserve** (not revenue): it is funded from liquidity deployment balances and covers leverage settlement shortfalls; whatever goes unused stays in reserve and never enters a treasury.
 
-关键特征：**收入和生态活跃度正相关** —— 交易越多、杠杆用得越多，收入越高，与飞轮同向。
+Key characteristic: **revenue is positively correlated with ecosystem activity** — the more trading and the more leverage, the higher the revenue, moving in the same direction as the flywheel.
 
-## 三个金库别混淆
+## Don't mix up the three treasuries
 
-Outrun 里有三个不同的资金池，受益人各异，别混为一谈：
+Outrun has three distinct pools of funds, each with different beneficiaries. Don't conflate them:
 
-| 金库 | 资金来源 | 受益人 / 控制人 |
+| Treasury | Source of funds | Beneficiary / controller |
 |---|---|---|
-| **Memecoin Staking 收益库** | Memecoin 计价的交易手续费 | Memecoin 质押者（份额升值） |
-| **DAO 国库** | uAsset 计价的交易手续费 | 社区（提案投票决定怎么花） |
-| **协议自留国库** | 杠杆创世的 uAsset 利息 | 协议方自留（非社区共治） |
+| **Memecoin staking YieldVault** | Trading fees denominated in Memecoin | Memecoin stakers (share price appreciation) |
+| **DAO treasury** | Trading fees denominated in uAsset | The community (spending decided by proposal votes) |
+| **Protocol treasury** | uAsset interest from leveraged Genesis | Kept by the protocol (not community-governed) |
 
-**注意**：杠杆创世的利息进的是**协议自留国库**，不进 Memeverse 社区的 DAO 国库 —— 两者是不同的池、不同的控制人。这些收益都在 Memeverse 内部分配，**不会回流给 OutStake 的参与者**（OutStake 参与者赚的是抵押生息敞口与 USR 储蓄利息，详见[增长飞轮](flywheel.md)）。
+**Note**: interest from leveraged Genesis goes to the **protocol treasury**, not to the Memeverse community's DAO treasury. The two are separate pools with separate controllers. All of these proceeds are distributed inside Memeverse and **never flow back to OutStake participants** (OutStake participants earn yield on their collateral exposure plus USR savings interest; see the [growth flywheel](flywheel.md)).
 
-## 一笔钱流向谁（核心）
+## Where a single payment goes (the core)
 
-这是理解 Outrun 经济模型的关键。一笔 Memecoin 交易费，沿**两个正交维度**分流：
+This is the key to understanding Outrun's economic model. A single Memecoin trading fee splits along **two orthogonal dimensions**:
 
-**维度一：LP 与协议的分账**（按费率比例）
-- LP 拿 65%，协议拿 35%。
-- 若有推荐人，从协议那 35% 里切出返佣给推荐人（默认相当于总费的 10%），协议国库实留约 25%。
+**Dimension 1: the split between LPs and the protocol** (a percentage split of the fee)
+- LPs take 65%, the protocol takes 35%.
+- If a referrer is involved, the referral rebate is carved out of the protocol's 35% (by default equal to 10% of the total fee), leaving the protocol treasury with about 25%.
 
-**维度二：按计价币分流**（协议那份的去向，取决于这笔费是以哪种币计价的）
-- **uAsset 计价** → DAO 国库（其中主池 uAsset 费扣 0.25%［当前默认］给触发分发的执行者，作为执行奖励）
-- **Memecoin 计价** → Memecoin Staking 收益库（给质押者）
-- **POL 计价** → 直接销毁（通缩）
+**Dimension 2: routing by denomination** (where the protocol's share goes depends on which token the fee is denominated in)
+- **uAsset-denominated** → the DAO treasury. Within this, 0.25% of the primary pool's uAsset fees (the current default) goes to the executor who triggers distribution, as the executor reward.
+- **Memecoin-denominated** → the Memecoin staking YieldVault (for stakers)
+- **POL-denominated** → burned directly (deflationary)
 
-两个维度叠加，就是一笔费的完整去向：
+Stack the two dimensions and you have the complete journey of one fee:
 
-<iframe src="../assets/diagrams/fee-split.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="一笔交易费流向谁"></iframe>
+<iframe src="../assets/diagrams/fee-split.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="Where a trading fee goes"></iframe>
 
-补充：
-- 辅助池（POL/uAsset、PT/uAsset、PT/POL）的协议费，在锁定阶段还会分一部分给**普通创世参与者**（按份额），其余进 DAO 国库。
+One more detail:
+- During the Locked phase, part of the protocol fee on the auxiliary pools (POL/uAsset, PT/uAsset, PT/POL) is also shared with **standard Genesis participants** (pro rata by share); the rest goes to the DAO treasury.
 
-## 收入去哪
+## Where the revenue goes
 
-- **反哺 Memeverse 内部参与者**：质押者收益（Memecoin 费）、普通创世者分成（辅助池费）、DAO 周期激励（uAsset 费）、推荐返佣 —— 让生态对参与者持续有吸引力。
-- **留存协议**：国库储备、持续开发、风险缓冲。
+- **Flowing back to Memeverse participants**: staker yield (Memecoin fees), the standard Genesis share (auxiliary-pool fees), DAO epoch rewards (uAsset fees), and referral rebates, keeping the ecosystem attractive to participants over time.
+- **Retained by the protocol**: treasury reserves, ongoing development, and a risk buffer.
 
-「收入大部分反哺生态内参与者」的设计，是 Memeverse 内部飞轮能自我强化的经济基础。
+Returning most of the revenue to ecosystem participants is the economic foundation that lets Memeverse's internal flywheel reinforce itself.
 
-## 关键资源
+## Key resources
 
-- **uAsset 流动性**：整个生态的基石，流动性越深，所有功能越好用。
-- **多协议适配器**：OutStake 接入的生息资产种类，决定 uAsset 的供给广度。
-- **Memecoin 社区**：Memeverse 的活跃度，决定 uAsset 的消耗与收益产出。
-- **机制安全性**：动态费率、锁定、结算储备等护栏，是信任的基础。
+- **uAsset liquidity**: the bedrock of the entire ecosystem. The deeper the liquidity, the better every feature works.
+- **Multi-protocol adapters**: the variety of yield-bearing assets OutStake integrates determines how wide uAsset supply can reach.
+- **Memecoin communities**: activity in Memeverse drives uAsset consumption and yield production.
+- **Mechanism safety**: guardrails such as dynamic fees, lock-ups, and the settlement reserve are what trust is built on.
 
-## 客户与参与者
+## Customers and participants
 
-按风险偏好分三档：**稳健型**（OutStake 质押铸 uAsset + 普通创世；成功解锁后在 24 小时保护期内完整退出，本金 uAsset 守恒）→ **平衡型**（杠杆创世 + 预购，仅利息成本）→ **共建型**（买入并质押 Memecoin、参与 DAO 治理，深度共建）。另有发起人、LP、执行者等专门角色。详见[参与方式与风险偏好](playbooks.md)。
+By risk appetite there are three tiers. **Conservative**: stake on OutStake to mint uAsset, plus standard Genesis; after a successful unlock, exit fully within the 24-hour protection window, with uAsset principal conserved. **Balanced**: leveraged Genesis plus Preorder, with interest as the only cost. **Co-build**: buy and stake Memecoin, take part in DAO governance, and participate deeply as a co-builder. There are also specialized roles such as launchers, LPs, and executors. See [participation modes and risk appetite](playbooks.md).
 
-## 可持续性
+## Sustainability
 
-传统 DeFi 常靠代币增发补贴吸引流动性，不可持续。Outrun 的收入来自**真实交易与杠杆活动**，并把收入反哺给生态参与者，形成正向循环。只要生态在运转，收入就持续；生态越繁荣，收入越多 —— 商业模式和增长飞轮同向。
+Traditional DeFi often attracts liquidity with token-emission subsidies, which cannot last. Outrun's revenue comes from real trading and leverage activity, and most of it flows back to ecosystem participants, forming a positive loop. As long as the ecosystem is running, revenue keeps coming; the more prosperous the ecosystem, the more revenue. The business model and the growth flywheel point the same way.

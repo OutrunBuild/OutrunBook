@@ -1,57 +1,57 @@
-# POL 拆分：PT 与 YT
+# POL split: PT and YT
 
-## POL 是什么
+## What POL is
 
-创世达标后，注入主池的流动性会被锁定，并生成一种叫 **POL** 的凭证，代表这部分锁定流动性的所有权。POL 本身可以交易（见 POL/uAsset 池）。
+Once Genesis reaches its target, the liquidity committed to the primary pool gets locked, and a token called **POL** is minted to represent ownership of that locked liquidity. POL itself can be traded (see the POL/uAsset pool).
 
-## 拆分：一份变两份
+## Split: one becomes two
 
-持有 POL，可以把它**拆分**成两种代币：
+If you hold POL, you can **split** it into two tokens:
 
-- **PT（本金代币）**：代表本金索取权。
-- **YT（收益代币）**：代表未来收益索取权。
+- **PT (Principal Token)**: represents the claim on the principal.
+- **YT (Yield Token)**: represents the claim on future yield.
 
-拆分是 1:1 的 —— 拆出多少 POL，就得到等量的 PT 和 YT；在锁定期内也可把它们合并回 POL（解锁或结算后不可再拆分/合并）。
+The split is 1:1: however much POL you split, you receive the same amount of PT and the same amount of YT. During the lock-up period you can also merge them back into POL (splitting and merging are no longer available after unlock or settlement).
 
-## PT 与 YT 的区别
+## How PT and YT differ
 
-| | PT（本金） | YT（收益） |
+| | PT (principal) | YT (yield) |
 |---|---|---|
-| 代表 | 本金索取权 | 收益索取权 |
-| 锚定 | 按固定比率锚定 uAsset | 分结算后的剩余 |
-| 风险偏好 | 求稳，锁定本金价值 | 求涨，博取收益增长 |
-| 适合 | 想提前拿回稳定价值的人 | 看好 Memecoin 后市的人 |
+| Represents | Claim on the principal | Claim on the yield |
+| Anchoring | Anchored to uAsset at a fixed ratio | Shares the post-settlement residual value |
+| Risk profile | Plays it safe, locking in the principal's value | Chases upside, betting on yield growth |
+| Suited for | Users who want to lock in a stable value early | Users who are bullish on the Memecoin |
 
-## 结算后才能赎回
+## Redemption only after settlement
 
-拆分本身在锁定期内可做，但**赎回**要等创世解锁、协议统一结算之后：
+Splitting itself is available during the lock-up period, but **redemption** has to wait until the Genesis unlock and the protocol's unified settlement:
 
-- **PT 赎回**：按锚定比率换回 uAsset（稳定币）。
-- **YT 赎回**：按比例分得结算后的剩余资产（uAsset 和 Memecoin）。剩余越多，YT 越值钱。直觉上，YT 的价值 ≈ 结算回收的总资产扣除 PT 本金准备后的剩余，按你持有的 YT 份额占比分配 —— Memecoin 涨得越多，结算回收越多，扣除本金后剩下的就越多，YT 越值钱；若 Memecoin 大跌，剩余可能很少甚至归零。
+- **PT redemption**: swap back into uAsset (a stablecoin) at par (1 PT = 1 uAsset).
+- **YT redemption**: receive a pro-rata share of the assets left over after settlement (uAsset and Memecoin). The larger the residual value, the more each YT is worth. Intuitively: at settlement the protocol recovers total assets and deducts the PT principal reserve. What remains is the residual value, and YT's value is that residual value distributed in proportion to the YT you hold. The more the Memecoin rises, the more settlement recovers, the more is left after the principal, and the more YT is worth. If the Memecoin falls sharply, the residual value may be small or even zero.
 
-## 锁定期内的 YT 交易
+## Trading YT during the lock-up period
 
-锁定期内，YT 已经有了交易渠道：**YT Flash Swap** 让你可以用 POL 买入 YT、或卖出 YT 换回 POL（详见 [YT 闪电兑换](yt-flash-swap.md)）。它复用 PT/POL 池的流动性完成兑换，不另设独立的 YT 交易池；解锁结算后，YT 仍按份额赎回结算残值。
+During the lock-up period, YT already has a place to trade: **YT Flash Swap** lets you buy YT with POL or sell YT back into POL (see [YT Flash Swap](yt-flash-swap.md)). It reuses the PT/POL pool's liquidity to execute the swap instead of running a separate YT trading pool. After the unlock settlement, YT still redeems its pro-rata share of the settlement residual value.
 
-## 谁实际拿到 PT / YT
+## Who actually receives PT / YT
 
-这是最容易混淆的地方，务必看清：
+This is where readers most often get confused, so read it closely:
 
-- **普通创世者**：领的是 **YT** + 锁定期内辅助池手续费分成 + 解锁后的辅助池流动性份额。这些权益如何共同覆盖本金，见 [普通创世 Genesis](genesis.md)。
-- **杠杆创世者**：按付息比例分得 **YT**，博取上涨收益。
-- **PT**：四池部署时主要进入辅助池（PT/uAsset、PT/POL）作 LP 资产。PT 本身有明确用途 —— 可在 PT/uAsset 池交易，结算后按锚定比率赎回 uAsset，适合求稳者锁定本金价值；但它**不是发给普通创世者的本金凭证**，普通创世者拿到的是上述 YT + 辅助池份额。
+- **Standard Genesis participants** receive **YT**, a share of the auxiliary-pool trading fees during the lock-up period, and their auxiliary-pool liquidity after unlock. For how these claims together cover the principal, see [standard Genesis](genesis.md).
+- **Leveraged Genesis participants** receive **YT** in proportion to the interest they paid, betting on the upside.
+- **PT**: when the four pools are deployed, PT goes mostly into the auxiliary pools (PT/uAsset and PT/POL) as LP assets. PT has a clear use of its own: it trades in the PT/uAsset pool and redeems uAsset at par after settlement. That suits stability-minded users who want to lock in the principal's value. But it is **not the principal claim issued to standard Genesis participants**; what they receive is the YT plus auxiliary-pool shares described above.
 
-换言之：普通创世者不会因为参与创世就直接拿到 PT；PT 主要在辅助池里，随辅助池 LP 在解锁后归属普通创世者。普通参与者在 Locked 阶段直接领取的收益凭证主要是 YT。详见 [普通创世 Genesis](genesis.md)、[参与方式总览](../reference/participation-map.md)。
+In other words, taking part in Genesis does not directly give a standard Genesis participant any PT. PT mostly sits in the auxiliary pools and passes to standard Genesis participants as auxiliary-pool LP after unlock. The yield claim a standard Genesis participant receives directly during the Locked phase is mainly YT. See [standard Genesis](genesis.md) and [participation overview](../reference/participation-map.md).
 
-## 为什么要拆
+## Why split
 
-拆分让一份流动性同时满足两类人：
+Splitting lets one piece of liquidity serve two kinds of users at the same time:
 
-- 想要稳定、提前落袋的人 —— 持有或卖掉 PT。
-- 想要杠杆化收益、看好后市的人 —— 持有 YT。
+- Those who want stability and to cash out early: hold PT or sell it.
+- Those who want leveraged yield exposure and are bullish on the upside: hold YT.
 
-这也为四池中的 PT/uAsset、PT/POL 池提供了交易标的，让本金和收益各有独立的市场定价。
+It also supplies the tradable asset for the PT/uAsset and PT/POL pools among the four pools, letting the principal and the yield each carry an independent market price.
 
-## 和杠杆创世的关系
+## How this relates to leveraged Genesis
 
-杠杆创世的参与者，会按各自付的利息比例分得 YT（详见 [杠杆创世](polend.md)）。也就是说，加杠杆的人拿的是收益权（YT），博取 Memecoin 上涨带来的结算结余 —— 这正是杠杆收益的来源。
+Leveraged Genesis participants receive YT in proportion to the interest each of them paid (see [leveraged Genesis](polend.md)). In other words, the people adding leverage hold the yield claim (YT) and go after the settlement surplus a rising Memecoin produces. That is exactly where the leveraged return comes from.

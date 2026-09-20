@@ -1,41 +1,41 @@
-# 产品愿景
+# Product vision
 
-> 让每一份社区共识，都能长成一个自我运转的链上国度。
+> Let every community consensus grow into an on-chain nation that runs itself.
 
-## 万物皆 Meme
+## Everything is a Meme
 
-回看加密史，各种概念潮起潮落，唯有 Memecoin 经久不衰，甚至在 VC 治理代币屡屡让人失望时愈发壮大。细看会发现：治理代币本质上也是 Memecoin，只是穿了西装。它们的价值同样依赖社区认知与叙事，同样靠情绪与传播驱动，同样充满投机。区别只在于，治理代币被监管束住手脚，既难分红、又治理失效，最终落到和 Memecoin 差不多的境地。
+Look back across crypto history and one thing endures: Memecoin. Concepts rise and fall, but Memecoin persists, and it has grown even stronger as VC-backed governance tokens keep disappointing their holders. Look closer and you find that a governance token is, at bottom, a Memecoin in a suit. Its value rests on the same community perception and the same narratives. It runs on the same emotion and virality, and it is just as speculative. The only difference is that regulation has tied governance tokens' hands: dividends are hard to pay, governance itself stops working, and they end up in much the same place as any Memecoin.
 
-既然如此，不如直面：Memecoin 是这个时代最强的共识凝聚机制。它不靠白皮书、不靠 VC 背书，只靠一个能让千万人会心一笑、愿意为之站台的符号。这种自发的、情感驱动的协调能力，是任何公司架构都做不到的。
+Given all that, we may as well face it head-on: Memecoin is the most powerful consensus-forming mechanism of our time. It depends on no whitepaper and no VC endorsement, only on a symbol that makes millions smile in recognition and want to stand behind it. That kind of spontaneous, emotion-driven coordination is something no corporate structure can achieve.
 
-但 Memecoin 今天是一座赌场。拉盘即砸盘，共识被少数人收割，社区在互相 PVP 中消耗，热度一过归零收场。它拥有最强的社区，却最缺乏把共识转化为长期价值的机制。
+But today, Memecoin is a casino. Pumps end in dumps. Consensus gets harvested by the few. Communities grind each other down in PVP, and once the hype passes, everything ends at zero. Memecoin commands the strongest communities, yet offers the fewest mechanisms for turning consensus into long-term value.
 
-## Outrun 想做的事
+## What Outrun wants to do
 
-Outrun 不想再造一个赌场，也不满足于做"更好用的发币工具"。我们想做一件更根本的事：让社区共识本身，长成一个能自我运转的有机体。
+Outrun does not want to build another casino, and it is not content to be a "better token launcher". We want to do something more fundamental: let community consensus itself grow into an organism that runs on its own.
 
-这需要两块基石。
+That takes two cornerstones.
 
-**统一的价值媒介。** Aave、Lido、Sky、Ethena、Lista、Aster……每个协议都发行自己的生息代币，底层指向同一类资产，却各自为政，收益与流动性被切碎。OutStake 用一层标准化接口把它们统一，铸成锚定型稳定币 uAsset(UETH / UUSD / UBNB)，让生息资产汇入同一种媒介，而不是各自从零攒流动性。新资产接入即共享既有深度，老资产不再被困在孤岛。
+**A unified medium of value.** Aave, Lido, Sky, Ethena, Lista, Aster: every protocol issues its own yield-bearing token, and under the hood they point to the same classes of assets. Yet each goes its own way, and yield and liquidity get sliced apart. OutStake unifies them behind a standardized interface and mints them into the pegged stablecoin uAsset (UETH / UUSD / UBNB), so that yield-bearing assets flow into one shared medium instead of each having to build liquidity from zero. A new asset that joins shares the existing depth on day one; an old asset is no longer stranded on its island.
 
-**会生长的社区。** Memeverse 是一个**全链社区共识启动器**：它启动的不是一枚代币，而是一个拥有流动性、收益与治理的链上社区。四池给它深度，动态费率给它公平的交易，杠杆创世给它资本效率，Memecoin Staking 把交易手续费变成持有者的收益，DAO 治理给它国库与方向。一个 Memecoin 在这里上线，即同时拥有流动性、收益权与治理权。它从投机符号，变成一个能自我维持的社区国度。
+**A community that grows.** Memeverse is an **omnichain community consensus launcher**: what it launches is not a token but an on-chain community that owns liquidity, yield, and governance. The four pools give it depth. Dynamic fees give it fair trading. Leveraged Genesis gives it capital efficiency. Memecoin Staking turns trading fees into yield for holders. DAO governance gives it a treasury and a direction. A Memecoin that launches here starts with liquidity, yield rights, and governance rights all at once. It turns from a speculative symbol into a self-sustaining community nation.
 
-uAsset 是连接两者的血线：OutStake 铸造，Memeverse 消耗，共识由此流动。
+uAsset is the lifeline between the two: OutStake mints it, Memeverse consumes it, and consensus flows through it.
 
-## 我们相信什么
+## What we believe
 
-- **共识是最被低估的生产力。** 一个能让千万人自发协同的符号，价值远超任何一份白皮书。
-- **Memecoin 值得更好的命运。** 它不该只是赌徒的筹码，它可以是一个社区的国库、治理与未来。
-- **投机可以转化为建设。** 当投机者的交易手续费流入质押者与国库，投机不再是零和博弈：投机者也在为社区输血。
-- **公平优先。** 没有 Creator 特权，没有 VC 预挖；流动性锁定、创世退款，规则写在链上，谁都无法篡改。
-- **机制可信，叙事才可信。** 每一项承诺都由代码定义、链上可验。
+- **Consensus is the most underrated productive force.** A symbol that gets millions of people to coordinate on their own is worth far more than any whitepaper.
+- **Memecoin deserves a better fate.** It should be more than a gambler's chip. It can be a community's treasury, governance, and future.
+- **Speculation can be channeled into building.** When speculators' trading fees flow to stakers and the treasury, speculation is no longer a zero-sum game: even the speculators are pumping blood into the community.
+- **Fairness comes first.** No Creator privileges, no VC pre-mines. Liquidity is locked, Genesis refunds are built in, and the rules are written on-chain where no one can tamper with them.
+- **The narrative is only as credible as the mechanism.** Every promise is defined in code and verifiable on-chain.
 
-## 终局想象
+## The endgame we imagine
 
-如果 Outrun 走到尽头，我们看到的是 DAO 真正走进日常。
+If Outrun makes it to the end of its road, we'll see DAOs become part of everyday life.
 
-今天大多数 DAO 形同虚设：持币者只盯币价，对社区漠不关心；治理投票无人问津，国库成了摆设。Memeverse 不靠说教改变这点，而是靠机制：把治理变成有收益的事，投票可领取周期激励，国库有交易手续费持续注入，方向由真正质押陪伴的人决定。
+Most DAOs today exist in name only. Holders watch nothing but the price and ignore the community. Governance votes go unanswered, and the treasury is just for show. Memeverse does not change this by lecturing. It changes it with mechanisms: governance becomes something that pays, voters can claim epoch rewards, trading fees keep flowing into the treasury, and direction is set by the people who actually stake and stay.
 
-终局里，当最活跃、最富情绪张力的 Memecoin 社区，习惯了自己治理自己、自己养活自己，DAO 就不再是一个生僻的概念，而是一种自然的协作方式。一个 Memecoin 社区，就是一个能自我筹资、自我建设、自我进化的链上组织，投机者的每一笔交易，都是它的收入。
+In that endgame, the most active and most emotionally charged Memecoin communities get used to governing themselves and funding themselves. Once that happens, a DAO is no longer an exotic concept; it is simply a natural way of working together. A Memecoin community is an on-chain organization that can fund itself, build itself, and evolve itself. Every trade a speculator makes becomes its income.
 
-让社区从聊天群，长成能做事的组织；让 DAO，从概念走进日常。这就是 Outrun 想去的终局。
+Let communities grow from chat groups into organizations that get things done. Let DAOs move from concept into daily life. That is the endgame Outrun wants to reach.

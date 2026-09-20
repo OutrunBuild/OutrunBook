@@ -1,33 +1,33 @@
 # vs Pump.fun
 
-Pump.fun 是当前最知名的 Memecoin 启动平台之一，以 bonding curve（联合曲线）发行、低门槛、纯市场博弈著称。Memeverse 走的是另一条路 —— 不拼谁更会投机，而拼谁能给 Memecoin 长出持续价值。
+Pump.fun is one of the best-known Memecoin launch platforms today, notable for bonding curve issuance, a low entry barrier, and pure market speculation. Memeverse takes a different path: it is not competing on who can speculate harder, but on who can grow lasting value for a Memecoin.
 
-## 核心差异
+## Core differences
 
-| 维度 | Pump.fun 模式 | Memeverse |
+| Dimension | Pump.fun model | Memeverse |
 |---|---|---|
-| **流动性** | bonding curve 发行，毕业后进入单一 PumpSwap 池（BOOST 模式在毕业时后置回购注入约 20% 流动性） | 创世即建四池，主池深度大，辅助池支撑 PT/YT 交易 |
-| **价格保护** | bonding curve 固定 1% 费率，开盘易被抢跑、夹击 | 动态费率 + 开池高费率，主动防御抢跑与三明治 |
-| **资产持续性** | meme 币本身无收益、无治理（协议侧另有创作者分成与 PUMP 收入分红） | Memecoin Staking 赚手续费 + DAO 治理权 |
-| **资本效率** | 一份资金一份参与 | 杠杆创世可用较小成本放大早期份额 |
-| **本金与收益** | 不可分离 | POL 拆分为 PT（本金）/ YT（收益），各取所需 |
-| **保护生效时点** | 仅约 1% 代币能「毕业」，LP 锁定/销毁只在毕业后才生效；多数代币死在 bonding curve 上无保护 | 创世即生效：四池建立、365 天锁、不达标全额退 |
-| **链范围** | Solana 单链 | 原生全链，多链启动 + 跨链质押 + 收益聚合 |
+| **Liquidity** | bonding curve issuance, then migration to a single PumpSwap pool at graduation; in BOOST mode, a back-loaded buyback at graduation injects about 20% liquidity | Four pools built at Genesis; deep primary pool, with auxiliary pools supporting PT/YT trading |
+| **Price protection** | Fixed 1% fee on the bonding curve; the open is easily front-run and sandwiched | Dynamic fees + a high fee at pool opening, actively defending against front-running and sandwich attacks |
+| **Asset sustainability** | The meme token itself offers no yield and no governance (the protocol side has separate Creator revenue share and PUMP income payouts) | Memecoin Staking earns fees + DAO governance rights |
+| **Capital efficiency** | One unit of capital, one unit of participation | Leveraged Genesis can amplify early share at lower cost |
+| **Principal and yield** | Cannot be separated | POL splits into PT (principal) / YT (yield); take whichever you need |
+| **When protection takes effect** | Only about 1% of tokens ever "graduate", and LP lock/burn takes effect only after graduation. Most tokens die on the bonding curve, unprotected | Effective at Genesis: four pools built, 365-day lock, full refund if the target is missed |
+| **Chain coverage** | Solana only | Natively omnichain: multi-chain launches + cross-chain staking + yield aggregation |
 
-## 不同的设计哲学
+## Different design philosophies
 
-- **Pump.fun** 把 Memecoin 当作**博弈工具**：谁的嗅觉快、谁的手速高，谁赚钱。结果是少数赢家和大量归零的 Memecoin。
-- **Memeverse** 把 Memecoin 当作**社区资产**：用锁定的流动性建立信任，用动态费率维护市场健康，用 Staking 和 DAO 让长期持有者持续受益。
+- **Pump.fun** treats the Memecoin as a **vehicle for speculation**: whoever smells the opportunity first and clicks fastest makes the money. The result is a handful of winners and a mass of Memecoins that go to zero.
+- **Memeverse** treats the Memecoin as a **community asset**: locked liquidity builds trust, dynamic fees keep the market healthy, and Staking and DAO let long-term holders benefit continuously.
 
-## 关键保护
+## Key protections
 
-- **抗 rug**：pump.fun 的 LP 锁定只在「毕业」后生效，约 99% 的代币从未毕业、死在 bonding curve 上无保护，团队/创作者仍持大量代币可抛售；Memeverse 的保护从创世生效——四池建立、流动性被锁定 365 天（合约硬约束，锁定期内任何一方都无法抽走），创世未达标则三类资金全额退款。
-- **抗抢跑**：开池高费率 + 动态费率让插队者付出代价；预购聚合买单在主池建立的同笔交易内完成，狙击者无法抢在公开交易前建仓。
-- **公平结算**：预购走固定 1% 费率专用通道，所有预购者共享同一笔聚合成交的平均价格（详见 [预购 Preorder](preorder.md)）。
+- **Rug resistance**: Pump.fun's LP lock takes effect only after "graduation"; about 99% of tokens never graduate and die on the bonding curve with no protection, while the team/Creator still holds a large supply to sell. Memeverse's protection starts at Genesis: the four pools are established, and liquidity is locked for 365 days, a hard constraint in the contract; during the lock-up period no party can withdraw it. If Genesis misses its target, all three classes of funds are refunded in full.
+- **Front-running resistance**: the high fee at pool opening plus dynamic fees make queue-jumpers pay for cutting in. The aggregated Preorder buy order is filled in the same transaction that creates the primary pool, so snipers cannot build a position ahead of public trading.
+- **Fair settlement**: Preorders go through a dedicated channel with a fixed 1% fee, and all Preorder participants share the average price of the same aggregated fill (see [Preorder](preorder.md)).
 
-## 适合谁
+## Who it's for
 
-- 喜欢**快速博弈、短期交易**的用户，Pump.fun 的模式更直接。
-- 看重**长期价值、社区治理、可持续收益**的用户，Memeverse 提供了完整的资产化路径。
+- Users who enjoy **fast speculation and short-term trading** will find Pump.fun's model more direct.
+- Users who value **long-term value, community governance, and sustainable yield** get a complete path from meme to asset in Memeverse.
 
-Memeverse 不否认 Memecoin 的投机属性，而是给它配上流动性、费率、杠杆、Staking、DAO 与跨链这层机制 —— 投机照旧，但手续费流向质押者和国库，治理权在持币者手里。
+Memeverse does not deny the speculative nature of Memecoins. It adds a mechanism layer on top: liquidity, fees, leverage, Staking, DAO, and cross-chain. The speculation goes on as before, but trading fees now flow to stakers and the treasury, and governance rights sit with holders.

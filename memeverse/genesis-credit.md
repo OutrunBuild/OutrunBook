@@ -1,37 +1,37 @@
-# 创世积分（GenesisCredit）
+# GenesisCredit
 
-## 什么是创世积分
+## What is GenesisCredit
 
-创世积分是一种参与凭证，用来**替代 uAsset 支付杠杆创世的利息**。它让一部分用户即使不拿出大量稳定币，也能参与杠杆创世、分享早期红利。
+GenesisCredit is a participation credit used to **offset the interest on a leveraged Genesis in place of uAsset**. It lets users who do not hold a large amount of stablecoins still take part in leveraged Genesis and share the early gains.
 
-## 怎么获得
+## How to get GenesisCredit
 
-创世积分通过**空投**等方式发放给早期社区成员（具体发放规则由协议决定）。空投按名单发放：符合条件的账户在**主链**（发放积分的链）领取，每个账户限领一次。持有积分，就多了一种支付杠杆利息的方式。
+GenesisCredit is distributed to early community members through **airdrops** and similar channels (the exact distribution rules are set by the protocol). Airdrops go out by allowlist: eligible accounts claim on the **home chain** (the chain that issues the credits), one claim per account. Holding GenesisCredit gives you one more way to offset leverage interest.
 
-## 可跨链
+## Cross-chain transfers
 
-创世积分基于 LayerZero OFT，可以跨链转移。领取只发生在主链：空投在主链领取后，才能跨链转移到其他链；目标链只能收到转移过来的积分，不能直接领取空投。你可以把积分跨到另一条链，参与那里的 Memecoin 创世。
+GenesisCredit is an omnichain token (OFT) built on LayerZero and can move across chains. Claiming happens only on the home chain: once the airdrop has been claimed there, the credits can be transferred to other chains. A destination chain can only receive credits that were transferred in; it cannot serve an airdrop claim directly. You can move your credits to another chain and join a Memecoin Genesis there.
 
-## 怎么用
+## How to use GenesisCredit
 
-创世积分与特定的 uAsset **一一配套**：一张积分对应一个 uAsset，只能用于对应 Memecoin 的杠杆创世，不能拿它去给别的 uAsset 的创世付利息。积分与采用 18 位小数的 uAsset 配套使用。在某个 Memecoin 的创世阶段，你可以选择用配套的创世积分（而不是 uAsset）来支付杠杆利息：
+GenesisCredit is **paired one-to-one** with a specific uAsset: one credit matches one uAsset. A credit can only be used in the leveraged Genesis of its corresponding Memecoin; it cannot pay the interest for a Genesis funded by a different uAsset. Credits pair with uAsset types that use 18 decimals. During a Memecoin's Genesis phase, you can choose to offset the leverage interest with the matching GenesisCredit instead of uAsset:
 
-- 积分换到的创世份额，和用 uAsset 付息完全一样。
-- 区别只在结算：用 uAsset 付的利息归协议自留国库；用积分付的利息在创世锁定时被**销毁**，退出流通。
+- The Genesis shares you get in exchange for credits are exactly the same as when you pay interest with uAsset.
+- The only difference is where the interest ends up: interest paid in uAsset goes to the protocol treasury, while interest paid in credits is **burned** at Genesis lock-up and removed from circulation.
 
-详见 [杠杆创世](polend.md)。
+For details, see [leveraged Genesis](polend.md).
 
-## 暂停与恢复
+## Pause and resume
 
-极端或安全应急情况下，协议方可临时暂停积分相关操作。暂停期间，积分的转移、跨链流转，以及用积分支付杠杆利息（含创世阶段的积分付息、失败时的积分退还、结算时的积分销毁）会暂时不可用，恢复后自动可用，不影响积分总量。仅用 uAsset 支付利息的杠杆路径不受影响。
+In extreme or security-emergency situations, the protocol can temporarily pause GenesisCredit operations. While the pause is in effect, credit transfers, cross-chain movement, and paying leverage interest with credits are unavailable. That includes credit interest payments during Genesis, credit refunds on a failed genesis, and credit burns at settlement. Everything becomes available again automatically once operations resume, and the total credit supply is unaffected. Leverage paths that pay interest in uAsset only are not affected.
 
-## 失败则退还
+## Refunded on failure
 
-如果创世未达标失败，你用作利息的积分会原路退还，不会白白消耗。
+If a Genesis fails to meet its target, the credits you paid as interest are returned to you in full rather than going to waste.
 
-## 积分的意义
+## Why GenesisCredit matters
 
-- **降低参与门槛**：不必持有大量稳定币，也能参与早期杠杆创世。
-- **奖励早期社区**：把参与机会给到早期支持者。
+- **Lower barrier to entry**: you can join an early leveraged Genesis without holding a large amount of stablecoins.
+- **Rewards for the early community**: participation opportunities are directed to early supporters.
 
-创世积分是 Memeverse 吸引和回馈早期社区的重要工具，也让杠杆创世的资金来源更加多元。
+GenesisCredit is a key tool for Memeverse to attract and reward its early community, and it broadens the sources of capital behind leveraged Genesis.

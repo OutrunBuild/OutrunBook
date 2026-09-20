@@ -1,109 +1,109 @@
-# Memecoin DAO 治理
+# Memecoin DAO governance
 
-> 当「社区共识」成为加密世界新的生产力。
+> When "community consensus" becomes crypto's new productive force.
 
-## Memecoin 的悖论
+## The Memecoin paradox
 
-Memecoin 是一对矛盾：草根文化的庆典，同时是金融泡沫的试验场。一个新 Memecoin 的平均存活周期往往不到两个月，市值回撤动辄八成以上。繁荣表象之下，是三道结构性裂痕：
+A Memecoin is a contradiction: a celebration of grassroots culture and, at the same time, a testing ground for financial bubbles. The average new Memecoin survives for less than two months, and market-cap drawdowns of 80% or more are routine. Beneath the boom sit three structural cracks:
 
-- **价值空心**：绝大多数 Memecoin 只靠叙事驱动，没有任何应用支撑。持有者像在玩击鼓传花，代币沦为纯投机符号。
-- **治理缺位**：发起方要么权力高度集中，要么撂挑子走人；社区既无决策权，也无分润权。一旦 rug，生态价值瞬间归零。
-- **社区撕裂**：散户、巨鲸、开发者的利益严重对立，巨鲸砸盘引发恐慌，散户无力还手，陷入"巨鲸吃肉、散户喝汤"的恶性循环。
+- **Hollow value**: the vast majority of Memecoins run on narrative alone, with no application behind them. Holding one is a game of musical chairs, and the token itself is reduced to a purely speculative symbol.
+- **Governance vacuum**: the launcher either concentrates power in a few hands or walks away entirely; the community has neither decision-making rights nor a share of the revenue. One rug pull, and the ecosystem's value goes to zero in an instant.
+- **A fractured community**: retail holders, whales, and developers have sharply conflicting interests. Whales dump, panic spreads, and retail has no way to fight back, in a vicious cycle of "the whales feast while retail picks up the scraps."
 
-Memecoin 缺一个把交易手续费沉淀为社区资产的治理结构。
+What Memecoin has been missing is a governance structure that captures trading fees and settles them into community-owned assets.
 
-## DAO 治理怎么接上 Memecoin
+## How DAO governance plugs into Memecoin
 
-DAO 不是新概念，但传统的 DAO 参与率普遍惨淡：大量用户只盯着币价，对社区事务一无所知、漠不关心。
+The DAO is not a new idea, but participation in traditional DAOs tends to be dismal: many holders watch nothing but the price, neither knowing nor caring about community affairs.
 
-而 Memecoin 恰恰相反：它是最受社区驱动、最富情绪张力的生态，拥有最活跃的用户基本盘。哪个玩 Memecoin 的人不进自己的社区？
+Memecoin is the opposite: the most community-driven, most emotionally charged ecosystem in crypto, with the most active base of users. Who trades Memecoins without joining the community behind them?
 
-- **文化共识优先**：DOGE、SHIB 的成功证明，Memecoin 的核心价值来自社区共识，而非技术白皮书。
-- **去中心化基因**：大多无 VC、无预挖，与 DAO 的平等精神天然契合。
-- **高流动性治理**：持币者分布广泛，投票能快速反映社区意志，避免了传统 DAO 的决策僵化。
+- **Culture and consensus first**: the success of DOGE and SHIB shows that a Memecoin's core value comes from community consensus, not a technical whitepaper.
+- **Decentralized by nature**: most have no VCs and no premine, a natural fit with the egalitarian spirit of DAOs.
+- **High-liquidity governance**: holders are widely distributed, so votes reflect the community's will quickly, avoiding the decision-making paralysis of traditional DAOs.
 
-Memeverse 给每个 Memecoin 配一个**链上 DAO**。
+Memeverse gives every Memecoin an **on-chain DAO** of its own.
 
-## 治理权归长期持有者
+## Governance belongs to long-term holders
 
-Memecoin 直接当治理代币最简单，但可持续发展靠的是长期陪伴社区的人，而非短期投机客。治理权应归属愿意与社区共进退的人。
+Using the Memecoin directly as the governance token would be the simplest design, but what sustains a project is the people who stay with the community for the long haul, not short-term speculators. Voting power should belong to those willing to stand with the community through its ups and downs.
 
-做法：把 Memecoin 质押进收益库，获得份额后，再把投票权**委托**给自己（或社区代表），份额才产生实际票权。只有质押、长期持有并完成委托的人才有治理话语权；投机客可以交易，但想左右社区方向，得先下场质押、与社区绑定。这让治理权落在建设者手中，而非过客手中。
+Here is how it works: stake your Memecoin into the YieldVault, and once you hold shares, **delegate** your voting power to yourself (or to a community representative). Only then do the shares carry actual votes. Only people who stake, hold for the long term, and complete delegation have a say in governance. Speculators can still trade, but if they want to steer where the community goes, they first have to come in, stake, and bind themselves to the community. Governance lands in the hands of builders, not passersby.
 
-## 投机者也是建设者
+## Speculators are builders too
 
-光有治理权不够，还得让人有动力参与。人性趋利，多数人需要即时回报而非空谈长期主义。
+Voting rights alone are not enough; people also need a reason to take part. People follow incentives, and most want immediate returns, not speeches about long-termism.
 
-Memeverse 的解法是**用收益驱动治理参与**：Memecoin 交易越活跃，流入收益库和 DAO 国库的手续费越多。
+Memeverse's answer is to **let yield drive governance participation**: the more active Memecoin trading is, the more fees flow into the YieldVault and the DAO treasury.
 
-- **质押者赚收益**：Memecoin 计价的交易手续费流入收益库，份额随收益注入而持续升值（早期收益的大部分会先被收益库的缓冲吸收，不会立即反映在份额价值上，详见 [Memecoin Staking](memecoin-staking.md)）。
-- **国库有进账**：uAsset 计价的交易手续费流入 DAO 国库，社区有了实实在在的资源去建设。
+- **Stakers earn yield**: trading fees denominated in Memecoin flow into the YieldVault, and shares keep appreciating as yield accrues (in the early phase, most incoming yield is first absorbed by the vault's buffer and does not show up in the share value right away; see [Memecoin Staking](memecoin-staking.md)).
+- **The treasury takes in revenue**: trading fees denominated in uAsset flow into the DAO treasury, giving the community real resources to build with.
 
-于是：**投机者的交易手续费，成了质押者和社区国库的持续收入**。投机不再是纯粹的零和博弈。投机者，也是建设者。
+The result: **the speculator's trading fees become recurring income for stakers and the community treasury**. Speculation is no longer a purely zero-sum game. Speculators are builders, too.
 
-## 周期激励：投票有回报
+## Epoch rewards: voting pays
 
-为把"治理"从负担变成有收益的活动，DAO 按**周期（90 天 · 固定）**发放治理激励：以该周期的投票为资格、按个人票数占比分配，投票越积极、分到的越多。但激励不会自动到账，需走完结算与领取流程：
+To turn governance from a burden into an activity that pays, the DAO distributes governance rewards by **epoch (90 days, fixed)**. Voting during the epoch is the qualifying condition, and rewards are split by each voter's share of the votes cast, so the more actively you vote, the larger your share. Rewards do not arrive automatically, though; they require a settlement and claim process:
 
-- **结算触发**：周期结束后，需有人触发结算，把该周期国库入账的一部分划为奖励池（默认按 25% 划拨，比例可由治理调整）。
-- **结算条件**：该周期有人投票、国库有入账、且币种已纳入奖励范围，三者齐备才划拨；一个周期无人投票则不分奖。
-- **主动领取**：结算后，投票者须在领取窗口内主动领取自己的份额，按该周期个人票数占比计算。
-- **逾期处理**：窗口过后未领的奖励并入后续周期的国库，不再补发。
+- **Triggering settlement**: after an epoch ends, someone must trigger settlement, which sets aside part of the epoch's treasury income as the reward pool (25% by default; the ratio can be adjusted by governance).
+- **Settlement conditions**: votes were cast during the epoch, the treasury took in revenue, and the token is enrolled in the reward program. All three must hold before anything is allocated; an epoch with no votes pays no rewards.
+- **Active claim**: after settlement, voters must claim their share within the claim window, calculated from their share of the votes cast that epoch.
+- **Missed deadline**: rewards left unclaimed after the window closes roll into the treasury for later epochs and are not reissued.
 
-<iframe src="../assets/diagrams/dao-cycle.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="DAO 周期激励：一个周期的闭环"></iframe>
+<iframe src="../assets/diagrams/dao-cycle.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="DAO epoch rewards: one epoch, start to finish"></iframe>
 
-投票、触发结算和领取激励都是链上操作，需要钱包持有对应链的原生代币支付网络手续费（gas）。
+Voting, triggering settlement, and claiming rewards are all on-chain operations; your wallet needs the native token of the chain in question to pay network fees (gas).
 
-这既提升了社区活跃度，也提高了决策质量：认真投票、及时领取，才有回报。
+This raises community activity and decision quality at the same time: you get paid only when you vote with care and claim on time.
 
-## 国库：社区的钱，社区做主
+## The treasury: the community's money, the community's call
 
-每个 Memecoin DAO 有自己的国库，收入来自该 Memecoin 交易中 uAsset 计价的手续费。国库怎么花，**由治理决定**：
+Every Memecoin DAO has its own treasury, funded by the uAsset-denominated fees from that Memecoin's trading. How the treasury is spent is **decided by governance**:
 
-- 治理发起的国库支出必须经提案投票批准，链上自动执行，无人能篡改；周期激励按治理预设的比例自动分发，无需逐笔提案。
-- 单次支出有**比例上限**，防止单次提案挪用过多资金，且无法通过预先授权等方式绕过。
-- 凡是把 DAO 治理合约本身或其激励合约作为操作对象的提案（典型如动用国库、升级治理合约、调整激励比例）不仅要求通过，还要**超级多数赞成**：赞成票需达到参与投票数的一个较高比例，比普通提案门槛更高，保护社区免受仓促改动。
-- DAO 部署后有一段**启动期**，期间不能提案，给社区组织、质押、完成委托、积累投票权的时间，避免一开始就被少数人抢占治理权。
+- Governance-initiated treasury payouts must be approved by proposal vote and then execute automatically on-chain, where no one can tamper with them. Epoch rewards are distributed automatically at the ratio governance has preset, with no per-payment proposal.
+- Each single payout has a **percentage cap**, so no one proposal can move too much of the treasury, and the cap cannot be bypassed through pre-authorization or similar means.
+- Some proposals target the DAO governance contract itself or its reward contract, typically a treasury withdrawal, a governance-contract upgrade, or a change to the reward ratio. These must not only pass but pass with a **supermajority**: for votes must reach a high share of the votes cast, a higher bar than an ordinary proposal. That higher bar protects the community from rushed changes.
+- After deployment, a DAO has a **startup period** during which no proposals can be created. This gives the community time to organize, stake, complete delegation, and build up voting power, so a small group cannot seize control from day one.
 
-社区可以用国库支持公共事务、办黑客松、做 Meme 营销、投资生态项目，怎么用由社区投票定。
+The community can spend the treasury on public goods, hackathons, meme marketing, or investments in ecosystem projects; how it is spent is decided by community vote.
 
-## 三跃迁
+## Three transitions
 
-Memecoin DAO 治理的本质，是证明「去中心化社区能比公司更高效、更公平地创造与分配价值」。它带来三重跃迁：
+Memecoin DAO governance exists to prove that a decentralized community can create and distribute value more efficiently, and more fairly, than a company. It brings three transitions:
 
-1. **从 Pump & Dump 到 Build & Earn** —— 交易手续费持续流入质押者与国库，治理参与者按周期领取激励。
-2. **从金融资产到社会契约** —— Memecoin DAO 是一份由代码约束的权利分配协议，让持币者真正成为「协议的公民」。
-3. **从一次性发行到持续治理** —— 解锁后社区仍能投票决定资金用途和发展方向。
+1. **From Pump & Dump to Build & Earn**: trading fees keep flowing to stakers and the treasury, and governance participants claim epoch rewards.
+2. **From financial asset to social contract**: a Memecoin DAO is a rights-distribution agreement enforced by code, turning holders into "citizens of the protocol."
+3. **From one-off issuance to ongoing governance**: after the unlock, the community still votes on how funds are used and where the project goes.
 
-## 举例
+## Example
 
-> 某 Memecoin 上线后交易活跃，uAsset 计价的手续费持续流入它的 DAO 国库。社区成员质押该 Memecoin 并完成委托后，有人提案把国库里的 UUSD 用于社区空投和流动性激励。这类动用国库的提案需要达到法定人数，并获得**超级多数**赞成才能通过，随后链上自动执行转账；参与投票的成员在结算后主动领取周期激励。若有人提议升级 DAO 合约，或调整激励比例，同样需要超级多数赞成。而面向社区合作方等第三方合约的提案，多数赞成即可通过。
+> A Memecoin launches and trades actively, and uAsset-denominated fees keep flowing into its DAO treasury. Once community members have staked the Memecoin and completed delegation, someone proposes using the UUSD in the treasury for a community airdrop and liquidity incentives. A proposal of this kind, drawing on the treasury, must reach quorum and win a **supermajority** to pass; the transfer then executes automatically on-chain. Members who voted claim their epoch rewards after settlement. A proposal to upgrade the DAO contract or adjust the reward ratio likewise requires a supermajority. Proposals aimed at third-party contracts, such as community partners, pass with a simple majority.
 
-## 社区实际拿到什么
+## What the community actually gets
 
-Memecoin DAO 治理不是一句口号，而是把社区变成一个**能自我运转的实体**：
+Memecoin DAO governance is not a slogan. It turns the community into an **entity that runs itself**:
 
-- 它有**国库** —— 交易越活跃，国库越充盈，这笔钱属于社区、不属于任何发起方。
-- 它有**议事规则** —— 提案、投票、法定人数、支出上限、重大事项超级多数，全部写在链上，谁都无法篡改。
-- 它有**持续收入** —— 质押者赚手续费，治理参与者按周期领取激励。
-- 它有**进化能力** —— 国库可用来支持新应用、办黑客松、做营销、投资生态，社区自己决定往哪走。
+- It has a **treasury**: the more active the trading, the fuller the treasury grows, and the money belongs to the community, not to any launcher.
+- It has **rules of order**: proposals, voting, quorum, spending caps, and supermajorities for major matters are all written on-chain, where no one can tamper with them.
+- It has **recurring income**: stakers earn fees, and governance participants claim epoch rewards.
+- It has **the capacity to evolve**: the treasury can fund new applications, hackathons, marketing, and ecosystem investments, and the community decides where to go next.
 
-当一个 Memecoin 的持有者，既能从交易中持续分到收益，又能用投票决定国库怎么花、社区往哪建。他就不再是一个赌桌上等拉盘的赌徒，而是一个有收益、有话语权、有未来的社区成员。社区也不再是一个只会喊单的聊天群，而是一个有资金、有规则、能持续做事的组织。
+A Memecoin holder who keeps earning a share of trading activity and can vote on how the treasury is spent and what the community builds is no longer a gambler at the table waiting for a pump. They are a community member with income, a voice, and a future. And the community is no longer a chat group that only knows how to shill: it is an organization with funds, rules, and the capacity to keep getting things done.
 
-Memeverse DAO 治理的目标很具体：国库里有持续进账的手续费，每一笔支出由投票决定，社区手里有钱，手里有票。
+The goal of Memeverse DAO governance is concrete: a treasury with fees arriving continuously, every payout decided by vote, a community that holds both the funds and the votes.
 
-## DAO 参数速查
+## DAO parameters at a glance
 
-| 参数 | 含义 |
+| Parameter | Meaning |
 |---|---|
-| 周期 | 90 天 · 固定，每周期结算一次激励（非投票期） |
-| 激励划拨 | 周期到点结算后，按国库入账的默认 25% 划为奖励池（比例可由治理调整）；奖励须主动领取，逾期未领并入国库 |
-| 投票权 | 质押份额并完成委托后产生投票权（标准 token 投票） |
-| 投票延迟与投票期 | 提案创建后先经一段延迟再开放投票，投票开放一段固定时间 |
-| 法定人数 | 投票需达到最低参与度才有效 |
-| 国库支出上限 | 单次提案挪用国库资金有比例上限，防一次性掏空 |
-| 超级多数事项 | 动用国库、升级治理合约、调整激励比例等以 DAO 治理合约或激励合约为对象的提案需超级多数赞成（高于普通提案） |
-| 启动期 | DAO 部署后有一段启动期，期间不能提案，给社区组织时间 |
+| Epoch | 90 days, fixed; rewards settle once per epoch (an epoch is not a voting period) |
+| Reward allocation | 25% of the epoch's treasury income is set aside as the reward pool after settlement (default; adjustable by governance). Rewards must be claimed actively; unclaimed amounts roll back into the treasury after the window |
+| Voting power | Staked shares generate voting power once delegation is complete (standard token voting) |
+| Voting delay and voting period | After a proposal is created, a delay passes before voting opens; voting then stays open for a fixed length of time |
+| Quorum | A vote is valid only if minimum participation is reached |
+| Treasury spending cap | A single proposal can move only a capped percentage of treasury funds, preventing a one-shot drain |
+| Supermajority matters | Proposals targeting the DAO governance contract or the reward contract, such as treasury withdrawals, governance-contract upgrades, or reward-ratio changes, require a supermajority (a higher bar than ordinary proposals) |
+| Startup period | After the DAO is deployed, proposals are disabled for a period, giving the community time to organize |
 
-> 注意：未委托的份额不产生票权，但仍计入投票基数，会抬高提案达成法定人数所需的票数。
-> 具体数值以各 Memecoin 部署配置为准。
+> Note: undelegated shares carry no votes but still count toward the voting base, raising the number of votes a proposal needs to reach quorum.
+> Exact values follow each Memecoin's deployment configuration.

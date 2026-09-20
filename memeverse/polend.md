@@ -1,62 +1,62 @@
-# 杠杆创世（POLend）
+# Leveraged Genesis (POLend)
 
-## 核心想法
+## The core idea
 
-普通参与创世，你存多少 uAsset，就占多少份额。杠杆创世让你**用一笔较小的成本，放大你的创世份额** —— 类似加了杠杆去参与早期。
+With standard Genesis, your share matches the uAsset you deposit, one for one. Leveraged Genesis lets you **amplify your Genesis shares for a much smaller outlay**, as if entering the earliest stage with leverage.
 
-具体做法：你支付一笔"利息"，协议据此给你一个更大的"债务额度"，这个额度会被铸成 uAsset 注入创世流动性，等于放大了你在这个 Memecoin 起步阶段的参与度和潜在回报。
+How it works: you pay an "interest" amount, and the protocol grants you a larger "debt quota" in return. That quota is minted as uAsset and injected into Genesis liquidity, amplifying both your participation and your potential return in this Memecoin's earliest stage.
 
-## 两种付息方式
+## Two ways to pay the interest
 
-利息可以用两种东西支付：
+Interest can be paid in one of two forms:
 
-- **uAsset 稳定币**：直接付真金白银。
-- **创世积分（GenesisCredit）**：用空投获得的积分抵扣（详见 [创世积分](genesis-credit.md)）。
+- **uAsset stablecoins**: paid directly in actual funds.
+- **GenesisCredit**: offset the interest with credits obtained from airdrops (see [GenesisCredit](genesis-credit.md) for details).
 
-两种方式换到的创世份额一样，区别只在结算时利息的去向。
+Both forms buy the same Genesis shares. The only difference is where the interest ends up.
 
-利息可以由他人代付：出钱的人付利息，杠杆份额记在指定的用户名下。
+The interest can also be paid by someone else: the payer covers the interest, and the leveraged shares are credited to a user you designate.
 
-## 放大倍数由利率决定
+## The rate sets the amplification
 
-协议设有一个全局默认**利率**，每个 Memecoin 注册时锁定当时的利率，之后固定不变。你付的利息按这个利率放大成债务额度：
+The protocol maintains a global default **interest rate**. Every Memecoin locks in the rate current at its registration, and it stays fixed afterward. The interest you pay is scaled up into a debt quota at this rate:
 
-- 债务额度 = 利息 ÷ 利率。
-- 利率越低，同样利息换到的份额越大（杠杆越高）。
-- 每个 Memecoin 都有**债务上限**，防止杠杆失控。
+- Debt quota = interest ÷ rate.
+- The lower the rate, the more shares the same interest buys (the higher the leverage).
+- Every Memecoin has a **debt cap** to keep leverage from running out of control.
 
-> 说明：这个利率是**一次性的创世利息比例**，不是年化利率 —— 你付一次利息，换一笔创世份额，不随时间累计。利率由协议设定，各 Memecoin 注册时固定。
+> Note: this rate is a **one-time Genesis interest ratio**, not an annualized rate. You pay interest once, receive a block of Genesis shares, and nothing accrues over time. The rate is set by the protocol and fixed for each Memecoin at registration.
 
-## 到期怎么结算
+## What happens at settlement
 
-创世达标并锁定期满后，进入结算。解锁与全局结算在同一笔交易内完成：任一步失败整笔回滚，Verse 保持锁定，补充储备后可重试：
+Once Genesis reaches its target and the lock-up expires, settlement begins. Unlock and unified settlement run in a single transaction: if any step fails, the whole transaction reverts, the Verse (the Memecoin's launch instance) stays locked, and the process can be retried after reserves are replenished:
 
-1. 协议从辅助流动性池（POL、PT 池）回收 uAsset，用于偿还杠杆债务。
-2. **若有结余**（回收的多于债务）：结余按每个人付的利息比例，分给杠杆参与者 —— 这是加杠杆的收益来源。
-3. **若有缺口**（回收不足以偿债）：结算储备金只在该 uAsset 的当前余额内补足有上限的整数舍入缺口。若缺口超过储备余额，本次结算会回退、Verse 仍停留在锁定阶段；补充储备（必要时提高储备上限）后重试解锁结算。
-4. 同时，杠杆参与者还会按比例分得 **YT**（收益代币，见 [POL 拆分](pol-splitter.md)）。
+1. The protocol recovers uAsset from the auxiliary liquidity pools (the POL and PT pools) to repay the leveraged debt.
+2. **If there is a surplus** (recovery exceeds the debt): the surplus is split among Leveraged Genesis participants in proportion to the interest each of them paid. This is where the return on leverage comes from.
+3. **If there is a shortfall** (recovery cannot cover the debt): the settlement reserve covers only a capped integer-rounding shortfall, and only within the current balance of that uAsset. If the shortfall exceeds the reserve balance, the settlement reverts and the Verse stays in the Locked phase. After the reserve is replenished (raising the reserve cap if necessary), the unlock settlement is retried.
+4. At the same time, Leveraged Genesis participants also receive a proportional share of **YT** (the Yield Token; see [POL split](pol-splitter.md)).
 
-<iframe src="../assets/diagrams/polend-settlement.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="到期结算：解锁交易与全局结算瀑布"></iframe>
+<iframe src="../assets/diagrams/polend-settlement.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="Settlement at expiry: the unlock transaction and the unified settlement waterfall"></iframe>
 
-## 利息去了哪里
+## Where the interest goes
 
-- 你付的 **uAsset 利息**：在创世锁定时归入**协议自留国库**（与 DAO 国库不同、非社区共治）—— 这是你的杠杆成本。
-- 你付的 **创世积分**：在创世锁定时被销毁，退出流通。
+- The **uAsset interest** you pay flows into the **protocol treasury** when Genesis locks (distinct from the DAO treasury and not community-governed). This is your cost of leverage.
+- The **GenesisCredit** you pay is burned when Genesis locks, taken out of circulation.
 
-## 失败则退款
+## Refund if Genesis fails
 
-如果创世未达标失败，你付的利息（无论 uAsset 还是积分）原路退还。加杠杆**没有筹资失败的本金风险**。
+If Genesis fails to reach its target, the interest you paid, whether uAsset or GenesisCredit, is refunded in full exactly as it was paid. Leverage carries **no principal risk from a failed raise**.
 
-## 为什么没有清算风险
+## Why there is no liquidation risk
 
-传统杠杆借贷靠预言机定价、靠清算维持抵押率，容易爆仓。Memeverse 的杠杆创世**不需要预言机、不需要抵押率维护** —— 它放大的是创世份额，结算由协议统一进行，不存在资不抵债被强平的场景。
+Conventional leveraged lending relies on oracle pricing and liquidations to maintain the collateral ratio, and positions get wiped out when they slip. Memeverse's Leveraged Genesis **needs no oracle and no collateral-ratio maintenance**. What it amplifies is Genesis shares, and settlement is carried out by the protocol in one unified pass, so a position can never go underwater and get force-liquidated.
 
-## 举例
+## Example
 
-> 假设用户强烈看好某 Memecoin，用杠杆创世：支付 500 UUSD 利息，按当时利率（假设对应 5 倍放大）换得约 2500 UUSD 等值的创世份额。
-> - Memecoin 达标锁定：500 UUSD 利息归协议自留国库（成本）。用户按付息比例（500 ÷ 全部杠杆利息）分得杠杆 YT。
-> - 锁定期满结算：从辅助池回收资金偿债后若有结余，用户按同一比例分得残值。Memecoin 涨得越多，残值越丰厚。
-> - 若 Memecoin 归零：用户损失这 500 利息，但不会被清算、不倒欠。
-> - 若创世未达标：500 UUSD 全额退还。
+> Suppose a user is strongly bullish on a Memecoin and uses Leveraged Genesis: they pay 500 UUSD in interest and, at the then-current rate (assume it implies 5x amplification), receive about 2500 UUSD worth of Genesis shares.
+> - The Memecoin reaches its target and locks: the 500 UUSD interest goes to the protocol treasury (the cost). The user receives leveraged YT in proportion to the interest paid (500 ÷ all leveraged interest).
+> - Settlement when the lock-up expires: if a surplus remains after funds are recovered from the auxiliary pools to repay the debt, the user receives residual value in the same proportion. The more the Memecoin rises, the larger the residual value.
+> - If the Memecoin goes to zero: the user loses the 500 UUSD interest, but is not liquidated and owes nothing further.
+> - If Genesis misses its target: the 500 UUSD is refunded in full.
 
-杠杆创世让看好某个 Memecoin 的人，能用较低成本放大早期参与；代价是支付利息，收益来自结算结余和 YT。它和四池、POL 拆分一起，构成了 Memeverse 高资本效率的启动机制。
+Leveraged Genesis lets anyone bullish on a Memecoin amplify their early participation at low cost. The cost is the interest paid; the return comes from the settlement surplus and YT. Together with the four pools and the POL split, it forms Memeverse's highly capital-efficient launch mechanism.

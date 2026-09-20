@@ -1,46 +1,46 @@
-# 参与方式总览
+# Participation at a glance
 
-这张表把分散在各章的几套分类法打通，让你一眼看清：不同风险偏好的人，具体用什么质押模式、什么创世模式、要不要预购、是否进 DAO。
+The tables on this page tie together the classification schemes scattered across earlier chapters, so you can see at a glance, for each risk appetite: which staking mode, which Genesis mode, whether to Preorder, and whether to enter the DAO.
 
-## 三档参与 × 具体模式
+## Three participation tiers × specific modes
 
-| 档位 | OutStake 质押模式 | Memeverse 创世模式 | 预购 | DAO 治理 | 本金风险 |
+| Tier | OutStake staking mode | Memeverse Genesis mode | Preorder | DAO governance | Principal risk |
 |---|---|---|---|---|---|
-| **稳健型** | 创世质押铸 uAsset（或 PSM 兑换、USR 储蓄） | 普通创世 | 可选 | 不直接参与 | **产品模型内无风险**（保护期内完整退出） |
-| **平衡型** | 铸 uAsset 付息 | 杠杆创世 | 是 | 不直接参与 | 利息成本、Memecoin 大跌 |
-| **共建型** | 不一定经 OutStake | （上线后买入） | 不一定 | 买入并质押 Memecoin，参与提案投票 | 直接持 Memecoin，价格波动 |
+| **Conservative** | Genesis Staking to mint uAsset (or PSM swap, USR savings) | standard Genesis | Optional | No direct participation | **No risk within the product model** (full exit within the protection window) |
+| **Balanced** | Mint uAsset and pay interest | leveraged Genesis | Yes | No direct participation | Interest cost; a Memecoin crash |
+| **Co-build** | Not necessarily via OutStake | (buy after listing) | Not necessarily | Buy and stake Memecoin, vote on proposals | Holds Memecoin directly; price volatility |
 
-> 「不直接参与 DAO」指：稳健/平衡型拿到的是 YT、辅助池费、结算残值等收益凭证，不持有带投票权的 Memecoin 份额；共建型才通过质押 Memecoin 并委托投票权进 DAO。
+> "No direct participation" means the Conservative and Balanced tiers hold yield claims (YT, auxiliary-pool fees, settlement residual value), not Memecoin shares with voting power. Only the Co-build tier enters the DAO, by staking Memecoin and delegating voting power.
 >
-> 关于本金：OutStake 质押端本金锚定底层资产；普通创世端投入的 uAsset 在四池组合中守恒。Verse 成功解锁后，用户需在 24 小时流动性保护期内完成组合权益退出，才能按份额恢复本金。详见 [普通创世 Genesis](../memeverse/genesis.md)。
+> On principal: on the OutStake staking side the principal stays pegged to the underlying asset; on the standard Genesis side, the uAsset committed is conserved within the four-pool portfolio. After a Verse unlocks successfully, users must unwind all portfolio claims within the 24-hour liquidity protection window to restore principal pro rata. See [standard Genesis](../memeverse/genesis.md).
 
-## 一个用户的完整路径（示例）
+## A user's full path (example)
 
-以一位从保守走向深度参与的 DeFi 用户为例，串起所有动作：
+The example follows one DeFi user from cautious beginnings to deep participation, tying all the actions together:
 
-1. 在 OutStake **创世质押** wstETH → 铸 UETH（**稳健**，本金锚定，抵押持续生息）
-2. 把部分 UETH 跨链、或换 UUSD，参与某 Memecoin **普通创世** → 无风险博收益（**稳健**，保护期内完整退出）
-3. 对特别看好的，用 UUSD **杠杆创世 + 预购** 放大早期份额（**平衡**）
-4. Memecoin 上线后，买入并**质押进收益库** → 赚手续费、获投票权、参与 DAO（**共建**）
+1. In OutStake, **Genesis Staking** of wstETH → mint UETH (**Conservative**: principal stays pegged, collateral keeps earning)
+2. Bridge part of the UETH cross-chain, or swap it for UUSD, and join a Memecoin's **standard Genesis** → a risk-free shot at the upside (**Conservative**, full exit within the protection window)
+3. For the ones they believe in most, **leveraged Genesis + Preorder** with UUSD to amplify early share (**Balanced**)
+4. Once the Memecoin lists, buy and **stake it into the YieldVault** → earn fees, gain voting power, participate in the DAO (**Co-build**)
 
-四步可同时进行，在同一个 uAsset 体系里顺畅串联。
+All four steps can run at the same time, chained together within a single uAsset system.
 
-## POL / PT / YT 凭证兑付时间线
+## POL / PT / YT redemption timeline
 
-Memeverse 里有三种凭证，各自什么时候能兑现、兑现成什么，容易混淆。下表统一：
+Memeverse has three claim tokens. When each one pays out, and into what, is easy to mix up; the table below lines them up:
 
-| 凭证 | 何时获得 | 何时能兑付 | 兑付成什么 | 风险性质 |
+| Token | When acquired | When redeemable | Redeems into | Risk profile |
 |---|---|---|---|---|
-| **POL** | 创世锁定时（主池 LP，代表锁定流动性份额） | 解锁后 | 烧 POL 赎回主池流动性（Memecoin + uAsset），或交易 | 跟随 Memecoin 价格 |
-| **PT**（本金代币） | POL 拆分得到，部署时进辅助池作 LP | 解锁结算后 | 按锚定比率赎回 uAsset | 锚定 uAsset，但 PT 主要在辅助池里，非直接发给普通创世者 |
-| **YT**（收益代币） | POL 拆分得到，按资金占比分配给普通/杠杆创世者 | 锁定期可交易（Flash Swap）；解锁结算后按份额兑付 | 按份额分得结算后的剩余资产（uAsset + Memecoin） | 博 Memecoin 上涨，归零则无收益 |
+| **POL** | At Genesis lock-up (primary-pool LP, representing a share of the locked liquidity) | After unlock | Burn POL to redeem primary-pool liquidity (Memecoin + uAsset), or trade it | Tracks the Memecoin price |
+| **PT** (Principal Token) | From splitting POL; enters the auxiliary pools as LP at deployment | After the unlock settlement | uAsset at par (1 PT = 1 uAsset) | Pegged to uAsset, but PT sits mostly in the auxiliary pools and is not issued directly to standard Genesis participants |
+| **YT** (Yield Token) | From splitting POL; allocated to standard/leveraged Genesis participants pro rata by capital | Tradeable during the lock-up (Flash Swap); redeemable pro rata after the unlock settlement | A pro-rata share of the post-settlement residual assets (uAsset + Memecoin) | Bets on the Memecoin rising; no yield if it goes to zero |
 
-要点：
-- POL 可在锁定期间拆成 PT + YT，也可合并回 POL。
-- **PT 在四池部署时主要进入辅助池作 LP 资产**，并非直接发给普通创世者作保本凭证。普通创世者领的是 **YT + 辅助池手续费分成 + 解锁后的辅助池流动性份额**。
-- 普通创世者的本金 uAsset 在四池组合中守恒。成功解锁后，四池暂停公开交易 24 小时；用户在该窗口内拆解 LP、PT、POL、YT，即可按份额恢复本金。创世失败则全额退款。详见 [普通创世 Genesis](../memeverse/genesis.md)。
-- YT 赌的是 Memecoin 上涨带来的结算结余；涨越多分越多，不涨则可能归零。
-- 杠杆创世者拿的主要是 YT（博上涨）。
-- 锁定期内 YT 可用 POL 通过 Flash Swap 买卖（见 [YT 闪电兑换](../memeverse/yt-flash-swap.md)），不必等到结算；结算后的赎回规则不变。
+Key points:
+- During the lock-up period, POL can be split into PT + YT, or merged back into POL.
+- **At four-pool deployment, PT goes mostly into the auxiliary pools as the LP asset**, not directly to standard Genesis participants as a principal-protected claim. Standard Genesis participants receive **YT + a share of auxiliary-pool fees + auxiliary-pool liquidity shares after unlock**.
+- The principal uAsset committed in standard Genesis is conserved within the four-pool portfolio. After a successful unlock, the four pools pause public trading for 24 hours; users who unwind LP, PT, POL, and YT within that window restore their principal pro rata. A failed Genesis gets a full refund. See [standard Genesis](../memeverse/genesis.md).
+- YT is a bet on the settlement surplus from a rising Memecoin price: the more it rises, the larger the share; if it does not rise, YT can go to zero.
+- Leveraged Genesis participants mainly receive YT (a bet on the upside).
+- During the lock-up, YT can be bought and sold using POL via Flash Swap (see [YT Flash Swap](../memeverse/yt-flash-swap.md)), without waiting for settlement; the post-settlement redemption rules are unchanged.
 
-详见 [普通创世 Genesis](../memeverse/genesis.md)、[POL 拆分](../memeverse/pol-splitter.md)、[启动生命周期](../memeverse/lifecycle.md)。
+For more, see [standard Genesis](../memeverse/genesis.md), [POL split](../memeverse/pol-splitter.md), and [launch lifecycle](../memeverse/lifecycle.md).

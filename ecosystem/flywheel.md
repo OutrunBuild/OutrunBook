@@ -1,81 +1,81 @@
-# 增长飞轮
+# The growth flywheel
 
-## 飞轮的核心
+## The core of the flywheel
 
-Outrun 的两个模块 OutStake 与 Memeverse 通过 uAsset 连接，但**不是靠收益互相回流**，而是靠 **uAsset 的供需互促**：OutStake 是 uAsset 的供给端，Memeverse 是 uAsset 的用途端。uAsset 流动性越深，两边都越好用。
+Outrun's two modules, OutStake and Memeverse, are connected through uAsset, but **not by yields flowing back and forth between them**. The connection is the **interlock of uAsset supply and demand**: OutStake is the supply side of uAsset; Memeverse is where it gets used. The deeper uAsset liquidity runs, the better both sides work.
 
-> ⚠️ 一个常见误区：以为 Memeverse 赚到的钱会回流给 OutStake 的质押者。**实际不会**。两个模块的参与者各赚各的钱（见下文「各自独立的收益闭环」），飞轮的轴承是 uAsset 的流动性，不是收益回流。
+> ⚠️ A common misconception: that the money earned in Memeverse flows back to OutStake stakers. **It does not.** Participants in each module earn their own returns (see "Independent yield loops" below). The flywheel's axle is uAsset liquidity, not yields flowing back.
 
-## 主飞轮：uAsset 的供需双向咬合
+## The main flywheel: a two-way interlock of uAsset supply and demand
 
-飞轮不是单向传导，而是**双向咬合** —— 供给端与用途端互为动力：
+The flywheel is not a one-way transmission; it is a **two-way interlock**, with the supply side and the use side powering each other:
 
 ```
-           ┌──────────── 供给驱动用途 ────────────┐
-           ▼                                      │
-OutStake(供给)                              Memeverse(用途)
-铸 uAsset ─────── uAsset 流动性加深 ──────► 创世更顺 / 杠杆有燃料 / 跨链更畅
-   ▲                                      │
-   │  用途越多 → 持有 uAsset 越有价值       │  产生交易与杠杆活动
-   │  → 铸造与质押意愿越强                  │
-   └──────────── 用途驱动供给 ──────────────┘
+        ┌───────── supply drives use ──────────┐
+        ▼                                      │
+OutStake (supply)                             Memeverse (use)
+mint uAsset ──── deeper uAsset liquidity ────► smoother Genesis / fuel for leverage / smoother cross-chain flow
+   ▲                                          │
+   │  more use → holding uAsset is worth      │  generates trading and
+   │  more → stronger minting and staking     │  leverage activity
+   └────────── use drives supply ─────────────┘
 ```
 
-**供给驱动用途**：OutStake 供给越足，uAsset 流动性越深 → Memeverse 启动 Memecoin 越顺（创世资金充足、跨链畅通）→ 产生更多 uAsset 用途。
+**Supply drives use**: the more OutStake supplies, the deeper uAsset liquidity runs → the more smoothly Memeverse launches Memecoins (Genesis well funded, cross-chain transfers flow freely) → more uses for uAsset emerge.
 
-**用途驱动供给**：Memeverse 让 uAsset 变得有用 —— 尤其是[普通创世](../memeverse/genesis.md)，让用户在本金守恒模型下博取 Memecoin 生态收益（YT + 辅助池手续费；成功解锁后在 24 小时保护期内完整退出）。这是 uAsset 相对普通稳定币的核心吸引力。持有 uAsset 有额外价值 → 越多人愿意在 OutStake 铸造和质押 → 供给更足。
+**Use drives supply**: Memeverse makes uAsset useful, above all through [standard Genesis](../memeverse/genesis.md). Standard Genesis lets users pursue Memecoin-ecosystem returns under the principal-conserving model: YT plus auxiliary-pool fees, and a full exit inside the 24-hour protection window after a successful unlock. That is uAsset's core draw over an ordinary stablecoin. Holding uAsset carries extra value → more people are willing to mint and stake on OutStake → supply grows.
 
-两端互相喂养：Memeverse 的繁荣让 uAsset 有用，uAsset 有用又驱动更多人去 OutStake 铸造，铸出来的 uAsset 又让 Memeverse 启动更顺。飞轮由此自我强化。
+The two ends feed each other: Memeverse's prosperity makes uAsset useful; uAsset being useful drives more people to mint on OutStake; and the uAsset they mint makes Memeverse launches run more smoothly. That is how the flywheel reinforces itself.
 
-## OutStake 的增长动力来自 Memeverse
+## OutStake's growth comes from Memeverse
 
-OutStake 不是孤立的 LST 包装器，它的增长动力恰恰来自 Memeverse 创造的用途。
+OutStake is not a standalone LST wrapper; its growth comes precisely from the uses Memeverse creates.
 
-- 若没有 Memeverse，OutStake 只是把各类生息资产统一成 uAsset —— 有用，但缺少独到的增长引擎。
-- 正是 Memeverse 给 uAsset 安排了真实用途（创世、杠杆、结算、国库），让“持有 uAsset”比“持有普通稳定币”多出一层无风险博取 Memecoin 收益的可能（普通创世在保护期内完成退出，本金守恒），OutStake 才有了持续吸引供给的理由。
+- Without Memeverse, OutStake would merely unify various yield-bearing assets into uAsset: useful, but lacking a distinctive growth engine.
+- It is Memeverse that gives uAsset real uses (Genesis, leverage, settlement, the treasury). Holding uAsset thus offers one thing an ordinary stablecoin does not: a risk-free shot at Memecoin returns (standard Genesis: exit completed inside the protection window, principal conserved). That is what gives OutStake a lasting reason to attract supply.
 
-反过来也一样：**Memeverse 没有 OutStake，就没有稳定币燃料** —— 创世无资金、杠杆无利息、结算无计价。两个模块各自都不完整，合在一起才成闭环。
+The reverse holds as well: **without OutStake, Memeverse has no stablecoin fuel**. No funding for Genesis, no interest for leverage, no unit of account for settlement. Each module is incomplete on its own; together they close the loop.
 
-## 各自独立的收益闭环
+## Independent yield loops
 
-两个模块的参与者**各赚各的钱**，收益不互相回流：
+Participants in the two modules **earn their own returns**; yields do not flow back and forth:
 
-**OutStake 参与者** —— 赚抵押生息与储蓄利息：
-- 创世质押：抵押的生息资产继续生息，敞口全归抵押方。
-- USR 储蓄：闲置 uAsset 按族利率生息。
-- PSM 兑换不产生收益，它是按面值的进出通道。
+**OutStake participants** earn yield on their collateral and savings interest:
+- Genesis Staking: the yield-bearing asset posted as collateral keeps earning, and the exposure stays entirely with the user.
+- USR savings: idle uAsset earns at the per-family rate.
+- PSM swaps generate no yield; PSM is the at-par entry and exit channel.
 
-**Memeverse 参与者** —— 赚 Memecoin 生态的交易与杠杆活动。一笔交易费按固定比例分给：
-- 流动性提供者（LP）
-- 普通创世参与者（辅助池手续费分成）
-- Memecoin 质押者（Memecoin 计价手续费）
-- DAO 国库（uAsset 计价手续费）
-- POL 计价手续费直接**销毁**
+**Memeverse participants** earn from trading and leverage activity in the Memecoin ecosystem. Each trading fee is split at fixed ratios among:
+- liquidity providers (LPs)
+- standard Genesis participants (a share of auxiliary-pool fees)
+- Memecoin stakers (fees denominated in Memecoin)
+- the DAO treasury (fees denominated in uAsset)
+- fees denominated in POL are **burned** directly
 
-杠杆创世的利息归协议自留国库（非 DAO 国库）。这些收益都在 **Memeverse 内部**循环分配，不会流回 OutStake。
+Interest from leveraged Genesis goes to the protocol treasury (not the DAO treasury). All of these yields circulate and are distributed **inside Memeverse**; none flows back to OutStake.
 
-**收益虽不回流，但 uAsset 的供需把两个模块强绑定**：OutStake 的质押者不会拿到 Memeverse 的手续费，但 Memeverse 越繁荣，uAsset 越有用，OutStake 的吸引力就越强。
+**Yields do not flow back, but uAsset supply and demand bind the two modules tightly together**: OutStake stakers never receive Memeverse fees, yet the more prosperous Memeverse becomes, the more useful uAsset gets, and the stronger OutStake's pull.
 
-## Memeverse 内部飞轮
+## Memeverse's internal flywheel
 
-Memeverse 自身也有正向循环：
+Memeverse has positive loops of its own:
 
-- 交易越活跃 → 手续费越多 → Memecoin 质押收益越高 → 持有意愿越强 → 流动性越稳 → 交易更活跃。
-- uAsset 计价手续费进 DAO 国库 → 周期激励 → 治理参与 → 社区健康 → Memecoin 更有价值。
+- More trading → more fees → higher Memecoin staking yield → greater willingness to hold → steadier liquidity → more trading.
+- Fees denominated in uAsset flow into the DAO treasury → epoch rewards → governance participation → community health → a more valuable Memecoin.
 
-## 获客引擎：推荐返佣
+## The acquisition engine: referral rebates
 
-交易费的协议份额中，有一部分作为推荐返佣，奖励带来新用户的推荐人：推荐 → 新用户交易 → 推荐人获返佣 → 继续推荐。返佣来自已有交易费、不额外增发，为飞轮持续注入新用户，可持续。
+A portion of the protocol's share of trading fees is paid out as referral rebates, rewarding the referrers who bring in new users: referral → the new user trades → the referrer earns a rebate → more referrals. Rebates are funded from fees already collected, with nothing extra minted, so they keep feeding new users into the flywheel on a sustainable basis.
 
-## 飞轮的护栏
+## The flywheel's guardrails
 
-飞轮要持续转，离不开机制保护：
+For the flywheel to keep turning, it needs protection built into the mechanisms:
 
-- **动态费率 + 开池高费率**：防抢跑、防夹，保护交易市场健康。
-- **流动性锁定 + 创世退款**：防 rug，保护参与者信任。
-- **结算储备金**：仅在当前余额与配置上限内补足杠杆结算的有界整数舍入缺口；余额不足时解锁结算回退，补充储备后重试。
-- **uAsset 铸造额度 + PSM 兑换额度 + 跨链速率限制**：防超发、防单池抽干、防异常流出，保护稳定币信用。
+- **Dynamic fees + high fees at pool opening**: counters front-running and sandwich attacks, keeping the trading market healthy.
+- **Liquidity lock-up + Genesis refund**: guards against rug pulls and protects participant trust.
+- **Settlement reserve**: tops up only the bounded integer-rounding gaps in leverage settlement, and only within the current balance and the configured cap. If the balance falls short, the unlock settlement reverts and can be retried once the reserve is replenished.
+- **uAsset mint caps + PSM swap caps + cross-chain rate limits**: prevent over-issuance, keep any single pool from being drained, and block abnormal outflows, protecting the stablecoin's credibility.
 
-## 飞轮全貌
+## The flywheel in full
 
-Outrun 的飞轮是 **uAsset 供需双向咬合 + 各模块独立收益闭环** 的组合，而非「收益回流」的闭环：OutStake 供给全链稳定币，Memeverse 创造用途与活力，两者通过 uAsset 的流动性强绑定，各自的经济激励自洽。飞轮转得越久，uAsset 流动性越深、Memeverse 生态越繁荣，壁垒越高。
+Outrun's flywheel is not a loop of yields flowing back. It is a **two-way interlock of uAsset supply and demand plus independent yield loops within each module**: OutStake supplies the omnichain stablecoins, Memeverse creates the uses and the activity, and uAsset liquidity binds the two tightly together, each with self-contained economic incentives. The longer the flywheel turns, the deeper uAsset liquidity grows, the more prosperous the Memeverse ecosystem becomes, and the deeper the moat.

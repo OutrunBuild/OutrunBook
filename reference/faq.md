@@ -1,66 +1,66 @@
-# 常见问题（FAQ）
+# FAQ
 
-## 关于 uAsset 稳定币
+## About uAsset stablecoins
 
-**uAsset 是稳定币吗？**
-是。uAsset 是锚定型稳定币：UETH 锚定 ETH、UUSD 锚定 USD、UBNB 锚定 BNB。每枚 uAsset 对应 1 单位底层资产价值，由质押的生息资产支撑。
+**Is uAsset a stablecoin?**
+Yes. uAsset is a pegged stablecoin: UETH is pegged to ETH, UUSD to USD, and UBNB to BNB. Each uAsset corresponds to one unit of the underlying asset's value and is backed by staked yield-bearing assets.
 
-> 技术注：代码层 uAsset 以"债务账本"记账（每个仓位记录其未偿铸币量，由抵押的 SY 资产足额覆盖；PSM 兑换池由协议储备逐额背书），产品层表现为锚定稳定币。铸造按实时价值足额换算，赎回按仓位比例销债；若底层协议出问题，风险会传导至对应 uAsset —— 这是持有任何生息资产的固有风险（详见[创世质押](../outstake/staking-modes.md)与 [PSM 锚定兑换](../outstake/psm.md)）。
+> Technical note: at the code level, uAsset is accounted for in a debt ledger. Each position records its outstanding minted amount, fully covered by the SY assets locked as collateral, and each PSM swap pool is backed one-for-one by protocol reserves. At the product level, uAsset works as a pegged stablecoin: minting converts at the full real-time value of the deposit, and redemption extinguishes debt in proportion to your share of the position. If an underlying protocol runs into trouble, that risk carries through to the corresponding uAsset. This is the risk inherent in holding any yield-bearing asset (see [Genesis Staking](../outstake/staking-modes.md) and [PSM par swaps](../outstake/psm.md)).
 
-**uAsset 会超发吗？**
-不会。每个仓位管理器与 PSM 兑换池都有铸造额度上限，铸造量不能超过额度；赎回或换回时销毁。铸造量严格按质押资产的当前价值或储备面值计算。
+**Can uAsset be over-minted?**
+No. Every position manager and every PSM swap pool has a mint cap that minting cannot exceed, and uAsset is burned when you redeem or swap it back. Minted amounts are calculated strictly from the current value of the staked assets or the face value of the reserves.
 
-**uAsset 跨链安全吗？**
-跨链有速率限制（异常大额流出会被缓冲）；已经发出的跨链转账不受 uAsset 临时暂停影响，会在目标链完成到账。极端配置或通道问题下仍可能滞留、需要恢复。
+**Is it safe to transfer uAsset across chains?**
+Cross-chain transfers are rate-limited, so unusually large outflows get buffered. Transfers already in flight are not affected by a temporary uAsset pause and will still arrive on the destination chain. Under extreme configurations or if a channel fails, funds can still be stranded and need recovery.
 
-## 关于参与创世
+## About participating in Genesis
 
-**参与 Memecoin 创世会亏本吗？**
-如果创世未达标失败，你存入的 uAsset（以及加杠杆付的利息）全额退还，不会损失本金。创世成功则按规则获得 Memecoin 或相关凭证。
+**Can I lose money joining a Memecoin Genesis?**
+If the Genesis fails to reach its target, the uAsset you deposited (and the leverage interest you paid) is refunded in full, so you lose no principal. If the Genesis succeeds, you receive Memecoin or related claims under the rules.
 
-**创世会被抢跑或 rug 吗？**
-创世流动性会被锁定 365 天，锁定期内项目方无法抽走。开池瞬间的高费率和动态费率是防抢跑、防夹击的**缓解手段**：它们会显著抬高插队与夹击的成本，大幅降低传统 Memecoin 常见的 rug 与抢跑风险，但不承诺绝对杜绝。
+**Can a Genesis be front-run or rugged?**
+Genesis liquidity is locked for 365 days, and the team cannot withdraw it during the lock-up. The high fee at pool opening and the dynamic fees are **mitigations** against front-running and sandwich attacks: they significantly raise the cost of jumping the queue and of sandwiching. That greatly reduces the rug and front-running risks common to traditional Memecoins, but these mitigations do not promise to eliminate the risk entirely.
 
-**什么是杠杆创世？有清算风险吗？**
-杠杆创世让你付一笔利息，放大创世份额。它**没有清算风险、不依赖预言机** —— 因为它放大的是创世份额，由协议统一结算，不存在资不抵债被强平。
+**What is leveraged Genesis? Is there liquidation risk?**
+Leveraged Genesis lets you pay an interest charge to amplify your Genesis allocation. It has **no liquidation risk and does not depend on oracles**: what it amplifies is your Genesis share, the protocol carries out the unified settlement, and no position can become insolvent and be force-liquidated.
 
-## 关于质押
+## About staking
 
-**系统会临时暂停吗？暂停时我的资金安全吗？**
-可能。系统维护或紧急情况下，协议方可能临时暂停部分操作，或 L2 汇率源短暂异常。暂停或异常期间，铸造、兑换、储蓄、赎回和转账会短暂不可用；你的资金安全留存，恢复后操作自动可用。已发出的跨链转账不受影响，仍会正常到账。
+**Can the system pause temporarily? Are my funds safe during a pause?**
+It can. During maintenance or an emergency, the protocol may temporarily suspend some operations, or an L2 rate feed may be briefly disrupted. While a pause or disruption lasts, minting, swaps, savings, redemption, and transfers are temporarily unavailable; your funds stay safe where they are, and operations become available again automatically once service resumes. Cross-chain transfers already sent are unaffected and will still arrive normally.
 
-**仓位需要自己赎回吗？有没有自动代赎？**
-没有自动代赎：仓位无到期日、不设自动赎回，赎回全靠你主动操作（准备等值 uAsset 并确认扣取授权，详见[创世质押](../outstake/staking-modes.md)）。不用担心"忘了赎" —— 仓位不会过期，抵押的资产一直在里面生息。
+**Do I have to redeem my position myself? Is there an auto-redeem?**
+There is no auto-redeem. Positions have no maturity date and no automatic redemption; redeeming is entirely up to you (have an equivalent amount of uAsset ready and approve it for deduction; see [Genesis Staking](../outstake/staking-modes.md)). You do not need to worry about forgetting to redeem: a position never expires, and the collateral keeps earning inside it.
 
-**创世质押、PSM 兑换、USR 储蓄怎么选？**
-手里有生息资产、想抵押生息的同时拿 uAsset → 创世质押。只有 USDC、ETH、BNB 等储备资产、想直接拿 uAsset → PSM 兑换。手里有闲置 uAsset、想吃利息 → USR 储蓄（族利率激活时）。
+**How do I choose between Genesis Staking, PSM swaps, and USR savings?**
+Hold yield-bearing assets and want uAsset while they keep earning → Genesis Staking. Hold only reserve assets like USDC, ETH, or BNB and want uAsset directly → PSM swaps. Hold idle uAsset and want interest on it → USR savings (when the per-family rate is active).
 
-**Memecoin 怎么产生收益？**
-把 Memecoin 质押进收益库，赚取它的交易手续费收益。交易越活跃，质押者收益越高。
+**How does a Memecoin earn yield?**
+Stake the Memecoin in the YieldVault to earn a share of its trading fees. The more active the trading, the more stakers earn.
 
-**我把代币误转进了协议合约地址怎么办？**
-部分协议合约支持由协议方执行的找回操作，可尝试通过官方渠道寻求协助；并非所有资产都能找回，转账前请仔细核对地址。
+**What if I sent tokens to a protocol contract address by mistake?**
+Some protocol contracts support a recovery operation executed by the protocol, and you can try requesting help through official channels. Not every asset can be recovered, so double-check the address before sending.
 
-## 关于治理
+## About governance
 
-**谁能参与 Memecoin 的 DAO 治理？**
-把 Memecoin 质押进收益库获得份额后，把投票权委托给自己（或指定代表），即可参与提案和投票。未委托的份额不产生票权，但仍计入投票基数。
+**Who can take part in a Memecoin's DAO governance?**
+Stake the Memecoin in the YieldVault to receive shares, then delegate the voting power to yourself (or to a delegate of your choice) to propose and vote. Shares that are not delegated produce no votes, but they still count toward the voting base.
 
-**DAO 国库的资金谁控制？**
-由治理提案决定。治理发起的国库支出需经提案投票批准，且有单次支出比例上限，防止单次挪用过多；周期激励按预设比例自动分发，无需逐笔提案。
+**Who controls the DAO treasury's funds?**
+Governance proposals decide. Treasury spending initiated through governance must be approved by a proposal vote, and a per-disbursement percentage cap prevents too much from being taken in a single action. Epoch rewards are distributed automatically at the preset ratio and need no proposal for each payment.
 
-## 关于启动 Memecoin
+## About launching a Memecoin
 
-**任何人都能启动 Memecoin 吗？**
-是的，无门槛。发起人设定规则、选择链，即可启动创世。
+**Can anyone launch a Memecoin?**
+Yes, there is no barrier to entry. The launcher sets the rules and picks the chain, then starts the Genesis.
 
-**能在多条链同时启动吗？**
-能。Memecoin 是全链代币，支持多链同时启动；各链独立募资、独立建池，阶段各自推进，一条链启动成功、另一条链也可能因募资不足退款。
+**Can I launch on multiple chains at the same time?**
+Yes. A Memecoin is an omnichain token and supports simultaneous launches on multiple chains. Each chain raises funds and builds its pools independently and advances through the phases on its own, so one chain can reach a successful launch while another falls short of its raise and refunds.
 
-## 关于生态
+## About the ecosystem
 
-**OutStake 和 Memeverse 是什么关系？**
-OutStake 铸造 uAsset，Memeverse 消耗 uAsset（创世资金、杠杆利息、积分结算）。两者通过 uAsset 的供需互相咬合 —— Memeverse 让 uAsset 有用，驱动更多人去 OutStake 铸造；收益各自独立，不互相回流。详见[增长飞轮](../ecosystem/flywheel.md)。
+**What is the relationship between OutStake and Memeverse?**
+OutStake mints uAsset; Memeverse consumes it (Genesis funding, leverage interest, GenesisCredit settlement). The two interlock through the supply and demand for uAsset: Memeverse makes uAsset useful, which drives more people to mint it on OutStake. Each side runs its own yield loop, and no yield flows back and forth between them. See the [growth flywheel](../ecosystem/flywheel.md) for details.
 
-**Outrun 和其他 Memecoin 平台（如 Pump.fun）有什么不同？**
-Memeverse 不做纯 PVP，而是给 Memecoin 配上四池深度、动态费率、杠杆创世、Staking 收益和 DAO 治理，让它成为有持续价值的社区资产。详见 [vs Pump.fun](../memeverse/vs-pump-fun.md)。
+**How is Outrun different from other Memecoin platforms like Pump.fun?**
+Memeverse is not a pure PvP launchpad: it pairs each Memecoin with four-pool depth, dynamic fees, leveraged Genesis, staking yield, and DAO governance, turning it into a community asset with lasting value. See [vs Pump.fun](../memeverse/vs-pump-fun.md) for details.

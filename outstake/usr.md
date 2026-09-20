@@ -1,29 +1,29 @@
-# USR 储蓄：拿着 uAsset 吃利息
+# USR savings: earn interest on your uAsset
 
-**USR** 是 uAsset 的储蓄层：把闲置的 uAsset 存进对应金库，换成**份额**，份额价格按该币种的储蓄利率随时间增长；想用时随时取回，利息自动结算。
+**USR** is the savings layer for uAsset. Deposit idle uAsset into the matching vault and receive **shares** in return; the share price grows over time at the per-family savings rate. Withdraw whenever you like; interest accrues automatically.
 
-## 三个金库
+## The three vaults
 
-| 存入 | 得到份额 | 说明 |
+| Deposit | You receive | Notes |
 |---|---|---|
-| UETH | suETH | ETH 族储蓄 |
-| UUSD | suUSD | 美元族储蓄 |
-| UBNB | suBNB | BNB 族储蓄 |
+| UETH | suETH | ETH-family savings |
+| UUSD | suUSD | USD-family savings |
+| UBNB | suBNB | BNB-family savings |
 
-份额就是你的存款凭证：持有多少份额、按当前单价能换回多少 uAsset，一目了然。
+Shares are your deposit receipt: at a glance you can see how many you hold and how much uAsset they convert back into at the current share price.
 
-## 存取操作
+## Depositing and withdrawing
 
-- **何时可用**：正常情况下随存随取；uAsset 临时暂停期间存取短暂不可用（详见[常见问题](../reference/faq.md)）。族利率为 0（未激活）时存取照常，只是份额不增值 —— 当前各币种利率是否激活，以界面显示为准。
-- **输入与输出**：存入 uAsset、拿回份额；取回时交回份额、拿回 uAsset 本金加利息。
-- **前置余额与授权**：钱包要有足额 uAsset，首次存入前确认扣取授权；取回不需要授权。
-- **费用与失败结果**：存取本身不收协议费，只付链上燃料费。利息来自协议注入的预算 —— 预算不足时利息暂停增长（本金与存取不受影响，之前累积的不变），注资后自动恢复。请走存入入口操作：**不要直接转账 uAsset 进金库地址**，直接转入不产生份额，且无法找回。
-- **具体步骤**：选金库 → 确认授权（首次）→ 存入并拿到份额 → 随时取回（本金加利息一次到账）。
+- **When available**: normally you can deposit and withdraw at any time. During a temporary uAsset pause, deposits and withdrawals are briefly unavailable (see the [FAQ](../reference/faq.md)). If the per-family rate is 0 (inactive), deposits and withdrawals work as usual; the shares simply do not grow in value. For whether the rate is currently active for each asset, go by what the interface shows.
+- **Inputs and outputs**: you deposit uAsset and receive shares; on withdrawal you hand back shares and receive your uAsset principal plus interest.
+- **Prerequisites and approvals**: your wallet must hold enough uAsset, and you confirm the spending approval before your first deposit; withdrawals require no approval.
+- **Fees and failure handling**: deposits and withdrawals charge no protocol fee; you only pay network gas. Interest is paid out of a budget the protocol funds. When the budget runs short, interest growth pauses and resumes automatically once the budget is refilled. During a pause, your principal and the ability to deposit or withdraw are unaffected, and interest already accumulated stays as it is. Always go through the deposit entry: **do not transfer uAsset directly to the vault address**. A direct transfer creates no shares and the funds cannot be recovered.
+- **Steps**: choose a vault → confirm the approval (first time only) → deposit and receive shares → withdraw at any time (principal plus interest arrives together).
 
-## 钱安全吗
+## Is your money safe?
 
-- **协议方也取不走**：金库没有给协议留提取口 —— 注资只能进不能出。池里的每一枚 uAsset，只属于份额持有人，只能经份额取回。
-- **利息有多少钱付多少**：利息不靠增发，靠协议实际注入的预算支付。预算不够时增长自动暂停，暂停期间不产生新的利息；预算到位即恢复。
-- **暂停只停操作不停权属**：uAsset 暂停期间存取按钮暂时不可用，你的份额与已累积利息不受影响，恢复后正常存取。
+- **Not even the protocol can withdraw it**: the vault reserves no withdrawal path for the protocol; it can only fund the vault, never withdraw from it. Every uAsset in the vault belongs to the shareholders alone and can leave only by redeeming shares.
+- **Interest is paid only from the funded budget**: interest does not come from minting; it comes from the budget the protocol actually deposits. When that budget falls short, growth pauses automatically and no new interest accrues during the pause; it resumes as soon as the budget is topped up.
+- **A pause halts operations, not ownership**: during a uAsset pause the deposit and withdraw buttons are temporarily unavailable, but your shares and accumulated interest are unaffected; once the pause lifts, deposits and withdrawals work as normal.
 
-刚换到 uAsset、还没想好去哪？先存 USR 里生息，再去参与[普通创世](../memeverse/genesis.md)也不迟。
+Just swapped into uAsset and not sure where to put it yet? Let it earn in USR for now; you can always join a [standard Genesis](../memeverse/genesis.md) later.

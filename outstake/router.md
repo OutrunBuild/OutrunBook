@@ -1,31 +1,33 @@
-# 一站式操作入口
+# One-stop entry
 
-## 一次操作，全程搞定
+## One operation, start to finish
 
-正常来说，要从手里的代币变成送进 Memeverse 创世的 uAsset，需要好几步：先换成生息代币或储备资产、再铸成 uAsset、再送去创世。
+Normally, turning the tokens in your wallet into uAsset committed to a Memeverse Genesis takes several steps: swap into a yield-bearing token or a reserve asset, convert that into uAsset, then send it into Genesis.
 
-Outrun 把这些步骤合成**一次操作**：你只需指定想用什么代币、走哪条通道，系统自动完成全过程。所有代币都从你的账户自动扣取，不需要手动搬运（首次使用需先对入口授权代币扣款）。
+The Router folds these steps into **one operation**: you specify which token to spend and which channel to take, and the system completes the entire process. All tokens are debited from your account automatically, with no manual moving of funds (on first use, you need to grant the spending approval).
 
-## 创世通道
+## Channels into Genesis
 
-- **PSM 门**：手里是 USDC、USDT、ETH、BNB 等储备资产 → 按面值换成 uAsset → 直接送进创世。**不建仓位、不产生债务**，最轻。
-- **CDP 门**：手里是任意支持的代币或已有生息资产 →（代币先换成生息资产）→ [创世质押](staking-modes.md)铸出 uAsset → 送进创世。会同时为你创建一个 OutStake 仓位（抵押继续生息、无锁定期、随时可赎回）。
-- **杠杆门**：手里是储备资产 → 按面值换成 uAsset → 全额作为利息送进杠杆创世。只付利息换份额，不建仓位（详见[杠杆创世](../memeverse/polend.md)）。
+Three channels lead from any token to Genesis:
 
-## 仓位赎回
+- **PSM channel**: you hold a reserve asset such as USDC, USDT, ETH, or BNB → swap it at par for uAsset → send it straight into Genesis. **No position, no debt**; the lightest of the three.
+- **CDP channel**: you hold any supported token, or already hold a yield-bearing asset → (the token is first swapped into a yield-bearing asset) → [Genesis Staking](staking-modes.md) mints uAsset → into Genesis. An OutStake position is created for you at the same time (the collateral keeps earning, no lock-up, redeem anytime).
+- **Leveraged Genesis channel**: you hold a reserve asset → swap it at par for uAsset → commit the full amount as interest into Leveraged Genesis. You pay only the interest to receive the shares, and no position is created (see [Leveraged Genesis](../memeverse/polend.md)).
 
-经 CDP 门创世会留下仓位。赎回时需持有与仓位债务等值的 uAsset，并确认扣取授权；赎回哪个协议的资产、到手是什么，以[适配器矩阵](sy-adapters.md)为准；跨链出去的 uAsset 需先桥回。赎回本身不收协议费，只付链上燃料费（详见[创世质押](staking-modes.md)）。
+## Redeeming the position
 
-## 交易前先预览
+Genesis through the CDP channel leaves a position behind. To redeem it, you need to hold uAsset equal to the position's debt and confirm the spending approval. Which protocol's assets you redeem into, and what you end up holding, follows the [adapter matrix](sy-adapters.md). uAsset that has been bridged to another chain must be bridged back first. Redemption itself charges no protocol fee; you only pay on-chain gas (see [Genesis Staking](staking-modes.md)).
 
-创世质押与赎回都可以**先预览、再执行**：提交前就能看到按当时链上状态估算的铸出量或赎回量，方便判断划不划算。
+## Preview before you transact
 
-注意：预览是**当前状态的估算，不是保证值**。执行那一刻的汇率、剩余铸造额度都可能与预览时不同 —— 实际到账可能更低；若铸造已触达上限，整笔交易会回滚。提交时请设一个可接受的最低到账数量作为滑点保护线，低于这条线交易同样回滚；成交前再预览一次，以最新状态为准。
+Genesis Staking and redemption both let you **preview before you execute**: before submitting, you see the estimated mint or redemption amount based on the on-chain state at that moment, so you can judge whether it is worth it.
 
-## 直通 Memeverse
+Note: the preview is an **estimate of the current state, not a guaranteed value**. The rate and the room left under the mint cap at the moment of execution may both differ from preview time, and the amount you actually receive may be lower. If minting has already hit its cap, the entire transaction reverts. When submitting, set a minimum acceptable received amount as your slippage tolerance; if execution would land below it, the transaction reverts as well. Preview once more before the transaction goes through, and go by the latest state.
 
-这是 OutStake 与 Memeverse 之间最短的桥 —— 在 OutStake 备好 uAsset，转身就能去 Memeverse 启动或参与社区。
+## Straight through to Memeverse
 
-注意：创世时投入的 uAsset 会进入 Memecoin 的四池组合，由协议统一管理。经 CDP 门创世留下的仓位若要赎回，需要**另行持有等值 uAsset**（创世投入的那部分仍在四池中），届时需先取得相应数量的 uAsset 才能完成赎回。
+This is the shortest bridge between OutStake and Memeverse: have your uAsset ready in OutStake, and you can head straight to Memeverse to launch or join a community.
 
-出钱和记名可以是两个人：你付代币，创世份额或仓位记在指定的用户名下，适合帮朋友操作。
+Note: the uAsset committed at Genesis goes into the Memecoin's four-pool portfolio and is managed by the protocol. To redeem the position left behind by the CDP channel, you must **hold an equivalent amount of uAsset separately** (the portion committed at Genesis is still in the four pools). You'll need to get that much uAsset before the redemption can go through.
+
+The one paying and the one on record can be two different people: you put up the tokens, and the Genesis shares or the position are recorded under a designated user. Handy when you are operating for a friend.

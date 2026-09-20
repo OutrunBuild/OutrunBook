@@ -1,48 +1,48 @@
 # Memecoin Staking
 
-## 质押赚手续费
+## Stake to earn trading fees
 
-一个 Memecoin 上线交易（进入锁定阶段）后，它的持有者就可以把 Memecoin **质押**进收益库（YieldVault），赚取持续的收益。
+Once a Memecoin goes live for trading (entering the Locked phase), its holders can **stake** the Memecoin into the YieldVault and earn continuous rewards.
 
-## 收益从哪来
+## Where the rewards come from
 
-收益的来源是**这个 Memecoin 交易手续费中、以 Memecoin 计价的那一部分**：市场交易越活跃、换手越高，流入收益库的手续费就越多，质押者的收益也就越高。
+The rewards come from **the Memecoin-denominated portion of this Memecoin's trading fees**: the more active the market and the higher the turnover, the more fees flow into the YieldVault, and the higher the stakers' rewards.
 
-> 注意区分：一笔交易费里，Memecoin 计价的部分进 Staking 收益库，uAsset 计价的部分进 DAO 国库，POL 计价的部分被销毁。质押者拿到的是 Memecoin 那一部分。
+> Keep the fee split straight: of every trading fee, the Memecoin-denominated portion goes to the staking YieldVault, the uAsset-denominated portion goes to the DAO treasury, and the POL-denominated portion is burned. Stakers receive the Memecoin portion.
 
-> 两个金库别混淆：**收益库（YieldVault）** 归 Memecoin 质押者，份额持续升值；**DAO 国库** 归社区治理，由提案投票决定怎么花。两者是不同的池、不同的受益人。
+> Don't confuse the two vaults: the **YieldVault** belongs to Memecoin stakers, and its shares appreciate over time; the **DAO treasury** belongs to community governance and is spent through proposal votes. They are separate pools with separate beneficiaries.
 
-这把"投机资产"变成了"能生息的资产"。
+This is what turns a "speculative asset" into a "yield-bearing asset".
 
-## 怎么运作
+## How it works
 
-- 存入 Memecoin，获得收益库的**份额代币**。
-- 交易手续费持续注入收益库，份额的价值随之上升。
-- 赎回时按份额换回 Memecoin，价值随累计收益增长。收益库设有缓冲机制，规模较小时新增收益的大部分会先计入缓冲，不会立即全部反映在份额价值上。
+- Deposit Memecoin and receive the YieldVault's **share token**.
+- Trading fees flow into the YieldVault continuously, and the value of the shares rises with them.
+- On redemption, shares are converted back into Memecoin at a value that grows with accumulated rewards. The YieldVault carries a buffer mechanism: while the vault is still small, most incoming rewards are credited to the buffer first, so they are not all immediately reflected in share value.
 
-这是一个**异步赎回**的收益库：存入即时生效，赎回须先提交申请、等待约 1 天后到账。
+The YieldVault is an **async-redemption** vault: deposits take effect immediately, while a redemption requires submitting a request first, with the payout arriving about 1 day later.
 
-## 防操纵设计
+## Manipulation-resistant design
 
-收益库内置两道保护，防止被人钻空子：
+The YieldVault has two built-in protections against gaming:
 
-- **虚拟缓冲**：在份额与资产换算中加入一个固定的缓冲量。攻击者若想用大额捐赠来操纵份额价格，必须付出与缓冲量相当的代价，使操纵不划算。缓冲的代价是：它也会分走一部分收益（金库规模越小分走越多），这部分不会反映到份额价值上——这是换取汇率稳定的必要成本。
-- **延迟赎回**：赎回不是即时到账，而是分两步——先提交赎回申请，约 1 天等待期过后，还需**主动执行第二步**，Memecoin 才会真正转回你的钱包。等待期防止有人用闪电贷瞬间存取套利；每个账户同时最多有 5 笔待执行的赎回申请，且只能赎回到自己账户。从提交申请的那一刻起，这部分就按当时价值固定下来、不再增值，投票权也随之消失——相当于提前退出治理。申请提交后记得在等待期结束后回来执行到账。
+- **Virtual buffer**: a fixed buffer amount is added to the share-to-asset conversion. To manipulate the share price with a large donation, an attacker would have to pay a cost comparable to the buffer, which makes the manipulation uneconomical. The buffer has a cost of its own: it also absorbs a portion of the rewards (the smaller the vault, the larger the portion), and that portion is not reflected in share value. That is the price paid for a stable exchange rate.
+- **Delayed redemption**: payouts are not instant. Redemption happens in two steps: first submit a redemption request, and after a waiting period of about 1 day, **execute the second step yourself**. Only then is the Memecoin actually transferred back to your wallet. The waiting period prevents flash-loan arbitrage that deposits and withdraws within an instant. Each account can have at most 5 pending redemption requests at a time, and payouts only go to your own account. From the moment the request is submitted, that portion is fixed at its then-current value, stops accruing, and loses its voting power, effectively an early exit from governance. Once you have submitted a request, remember to come back and execute the payout when the waiting period ends.
 
-## 质押加委托，才有治理权
+## Stake and delegate to gain governance rights
 
-收益库的份额代币**不直接产生投票权**。把份额的投票权**委托**给自己（或指定代表）后，票权才生效 —— 质押之后记得完成这一步，份额才拥有这个 Memecoin 社区的**投票权**，可以参与 DAO 治理（详见 [DAO 治理](dao-governance.md)，委托在周期激励闭环中的位置见该页的[周期激励图](dao-governance.md)）。
+The YieldVault share token **does not confer voting power directly**. Voting power takes effect only after the shares' voting power is **delegated** to yourself (or a designated representative). After staking, remember to complete this step: only then do the shares carry **voting power** in this Memecoin's community and let you participate in DAO governance (see [DAO governance](dao-governance.md); for where delegation sits in the epoch reward loop, see the [epoch reward diagram](dao-governance.md) on that page).
 
-投票权跟份额走、不跟出资人走：即使由他人代为存入，票权也只归份额名下的人，需要其本人完成委托。未委托的份额不产生票权，但仍计入治理的投票基数，会抬高提案达成法定人数所需的票数。
+Voting power follows the shares, not the depositor: even if someone else made the deposit, the votes belong solely to whoever holds the shares, and that holder must complete the delegation personally. Undelegated shares generate no votes, but they still count toward the governance voting base, raising the number of votes a proposal needs to reach quorum.
 
-这形成良性循环：**长期持有并质押、并完成委托的人，既赚收益、又有治理话语权**，引导社区由短期投机转向长期建设。
+This creates a virtuous cycle: **people who hold and stake long term and complete delegation earn the rewards and gain a voice in governance**, steering the community from short-term speculation toward long-term building.
 
-## 收益跨链聚合
+## Cross-chain yield aggregation
 
-Memecoin 可能在多条链上交易，各链产生的手续费收益会**跨链聚合**到治理链上的收益库，统一分配给质押者。无论交易发生在哪条链，质押者都能分到。
+A Memecoin may trade on multiple chains. The fee yield generated on each chain is **aggregated cross-chain** into the YieldVault on the governance chain and distributed to stakers from there. Wherever the trading happens, stakers receive their share.
 
-> 注意：跨链质押依赖治理链上的收益库已就位（收益库在治理链完成创世、进入锁定阶段后才部署）。若发起时收益库尚未就位、或该 Memecoin 最终创世失败，跨链到账的 Memecoin 会直接到接收人手里、不进入收益库——没有质押份额、也没有投票权。到账后请核验收益库份额，而不只是核对代币余额（详见 [跨链互操作](omnichain.md)）。
+> Note: cross-chain staking depends on the YieldVault being in place on the governance chain (the YieldVault is deployed only after the Memecoin completes Genesis on the governance chain and enters the Locked phase). If the YieldVault is not yet in place when you initiate, or the Memecoin ultimately fails its Genesis, the Memecoin arriving cross-chain goes directly to the recipient and does not enter the YieldVault. In that case there are no staking shares and no voting power. After it arrives, verify your YieldVault shares rather than just your token balance (see [Omnichain interoperability](omnichain.md)).
 
-## 举例
+## Example
 
-> 某 Memecoin 上线后交易活跃，每天产生大量手续费，其中 Memecoin 计价的部分流入收益库。持有该 Memecoin 的人把币质押进收益库，份额随手续费累积而升值；赎回时通常能拿回比存入时更多的 Memecoin。完成委托后，这份份额的投票权生效，可用于该 Memecoin DAO 的提案投票。交易越火，质押收益越高；质押又锁定流通、赋予治理权 —— 这是它从"纯投机"变成"有持续价值资产"的关键。
+> A Memecoin goes live and trades actively, generating large fees every day, with the Memecoin-denominated portion flowing into the YieldVault. Holders stake their Memecoin into the YieldVault; the shares appreciate as fees accumulate, and on redemption they typically get back more Memecoin than they deposited. Once delegation is complete, the shares' voting power takes effect and can be used to vote on proposals in that Memecoin's DAO. The hotter the trading, the higher the staking rewards; and staking in turn locks circulating supply and confers governance rights. This is the key to its shift from "pure speculation" to "an asset with ongoing value".

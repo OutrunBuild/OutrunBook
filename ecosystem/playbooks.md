@@ -1,114 +1,114 @@
-# 参与方式与风险偏好
+# Participation and risk appetite
 
-Outrun 不是只有一个入口、一种玩法。不同风险偏好的人，在生态里有完全不同的参与路径。下面按**三档**讲清楚：每档适合谁、怎么参与、赚什么、承担什么风险，并给出带数字的例子。
+Outrun does not have a single entry point or a single way to play. People with different risk appetites take entirely different paths through the ecosystem. The rest of this page walks through the **three tiers**: who each tier suits, how to participate, what you earn, and what you risk, with worked examples in concrete numbers.
 
-## 全景：按风险选你的位置
+## The big picture: pick your position by risk
 
-| 档位 | 你想做什么 | 主要参与 | 收益来源 | 下行风险 |
+| Tier | What you want to do | Main participation | Yield sources | Downside risk |
 |---|---|---|---|---|
-| **稳健型** | 保本赚收益 | OutStake 备 uAsset + 普通创世 | 抵押生息敞口自留 + YT + 辅助池手续费 | **产品模型内无风险**（保护期内完整退出） |
-| **平衡型** | 放大早期敞口 | 杠杆创世 + 预购 | YT + 结算残值 + 预购份额 | 仅利息成本 |
-| **共建型** | 深度参与社区 | 买入 Memecoin + 质押 + DAO 治理 | Staking 手续费 + 周期激励 + 治理权 + 上涨 | Memecoin 价格波动 |
+| **Conservative** | Preserve principal, earn yield | Prepare uAsset via OutStake + standard Genesis | Collateral keeps earning with exposure retained + YT + auxiliary-pool fees | **No risk within the product model** (full exit inside the protection window) |
+| **Balanced** | Amplify early exposure | Leveraged Genesis + Preorder | YT + settlement residual value + Preorder allocation | Interest cost only |
+| **Co-build** | Participate deeply in a community | Buy the Memecoin + stake + DAO governance | Staking fees + epoch rewards + governance rights + price upside | Memecoin price volatility |
 
-> **普通创世说明**：普通创世在产品模型内无风险。投入的 uAsset 在四池组合中守恒，Memecoin 是本金之外新铸造的上行权益。Verse 成功解锁后，用户在 24 小时流动性保护期内完成 LP、PT、POL、YT 的完整退出，即可按份额恢复 uAsset 本金。详见 [普通创世 Genesis](../memeverse/genesis.md)。
+> **A note on standard Genesis**: standard Genesis carries no risk within the product model. The uAsset you commit is conserved inside the four-pool portfolio, and the Memecoin is newly minted upside on top of principal. After the Verse (the Memecoin's launch instance) unlocks successfully, users who fully unwind LP, PT, POL, and YT within the 24-hour liquidity protection window restore their uAsset principal pro rata. See [standard Genesis](../memeverse/genesis.md) for details.
 >
-> 注：底层生息资产（如 wstETH、sUSDS）本身仍带各自协议风险，Lido/Aave 等出问题会传导至 uAsset —— 这是持有任何生息资产的固有风险，非 Outrun 机制风险。
+> Note: the underlying yield-bearing assets (such as wstETH and sUSDS) still carry the risks of their own protocols. If Lido, Aave, or another underlying protocol runs into trouble, it propagates to uAsset. That risk is inherent to holding any yield-bearing asset; it is not a risk of Outrun's mechanics.
 
 ---
 
-## 稳健型：保本赚收益（产品模型内无风险）
+## Conservative: preserve principal and earn yield (no risk within the product model)
 
-**画像**：持有 ETH / 稳定币 / BNB 类生息资产，希望用本金守恒的方式获取额外收益，不直接承担 Memecoin 持币成本。
+**Profile**: you hold yield-bearing assets such as ETH, stablecoins, or BNB, want extra yield on a principal-conserving basis, and prefer not to bear the cost of holding a Memecoin directly.
 
-**怎么参与（两步，在产品模型内均无风险）：**
+**How to participate (two steps, both risk-free within the product model):**
 
-1. **备好 uAsset**（三选一，看你手里有什么）：
-   - 有生息资产 → [创世质押](../outstake/staking-modes.md)铸成 uAsset，抵押继续生息、敞口自留。
-   - 只有 USDC、ETH、BNB 等储备资产 → [PSM 直接兑换](../outstake/psm.md)，不建仓位。
-   - 有闲置 uAsset、暂时不创世 → 先存 [USR 吃利息](../outstake/usr.md)，随存随取。
-2. **普通创世**：用 uAsset 参与某 Memecoin 创世，在产品模型内无风险博取额外收益。
+1. **Prepare uAsset** (pick one of three, depending on what you hold):
+   - Yield-bearing assets → mint uAsset through [Genesis Staking](../outstake/staking-modes.md); the collateral keeps earning and the exposure stays with you.
+   - Only reserve assets such as USDC, ETH, or BNB → [swap directly through PSM](../outstake/psm.md), with no position created.
+   - Idle uAsset with no Genesis plans for now → park it in [USR to earn interest](../outstake/usr.md); deposit and withdraw anytime.
+2. **Standard Genesis**: commit uAsset to a Memecoin's Genesis and pick up extra yield at no risk within the product model.
 
-**为什么普通创世无风险（核心机制）：**
-- 你投入的 uAsset **100% 进入四池**（主池 70% + 辅助池 30%），而 Memecoin 是**全新铸造**的。
-- **uAsset 在四池组合里守恒**：辅助池 uAsset、PT 对应的主池 uAsset、POL 对应的主池 uAsset 共同覆盖本金。
-- Verse 成功解锁后，四池暂停公开交易 24 小时；用户可在静态池状态下领取并拆解辅助池 LP、PT、POL、YT，按份额拿回投入的 uAsset 本金。
-- 保护期结束后四池恢复交易，仍未退出的组合权益随市场变化，风险由用户自行承担。
-- 创世失败则全额退款。
-- 上行 Memecoin 涨，你通过 YT、辅助池份额额外赚。
+**Why standard Genesis is risk-free (the core mechanics):**
+- **100% of the uAsset you commit goes into the four pools** (primary pool 70% + auxiliary pools 30%), and the Memecoin is **newly minted**.
+- **uAsset is conserved inside the four-pool portfolio**: the auxiliary-pool uAsset, together with the primary-pool uAsset behind PT and behind POL, covers the principal.
+- After the Verse unlocks successfully, the four pools pause public trading for 24 hours. With the pools static, users can claim and fully unwind auxiliary-pool LP, PT, POL, and YT, recovering the uAsset principal they committed, pro rata.
+- When the protection window ends, the four pools resume trading. Any portfolio positions not yet unwound then move with the market, at the user's own risk.
+- If Genesis fails, the full amount is refunded.
+- On the upside, a rising Memecoin pays you extra through YT and auxiliary-pool shares.
 
-**收益：**
-- OutStake 端：抵押的生息资产持续生息（敞口自留），或 USR 储蓄利息。
-- 普通创世端：**辅助池手续费分成**（只要 Memecoin 在交易就有现金流）+ **YT**（Memecoin 上涨时再加分）。
-- 即 Memecoin 涨越多赚越多；就算归零，在保护期内完成完整退出，本金 uAsset 仍按份额拿回，已累积的辅助池手续费属于额外收益。
+**Yield:**
+- On the OutStake side: the collateral keeps earning (exposure retained), or USR savings interest.
+- On the standard Genesis side: an **auxiliary-pool fee share** (cash flow as long as the Memecoin trades) plus **YT** (which adds more when the Memecoin rises).
+- In short, the more the Memecoin rises, the more you earn. Even if it goes to zero, a full exit inside the protection window still returns your uAsset principal pro rata, and the auxiliary-pool fees accumulated along the way are extra yield on top.
 
-**举例**：
-> 假设用户持有 10 ETH 的 wstETH。在 OutStake 创世质押，铸出约 10 UETH；抵押的 wstETH 在仓位里持续生息、敞口自留，仓位无锁定期、随时可赎回 —— 这一步本金锚定 ETH，与 Memecoin 无关。
+**Worked example**:
+> Suppose a user holds wstETH worth 10 ETH. Through Genesis Staking on OutStake they mint about 10 UETH. The wstETH collateral keeps earning inside the position with the exposure retained; the position has no lock-up and can be redeemed anytime. This step anchors principal to ETH and has nothing to do with any Memecoin.
 >
-> 用户再把部分 UETH 换成 UUSD（或直接用 UETH），拿 2000 UUSD 参与某 Memecoin 普通创世：创世未达标全额退；达标后，这 2000 UUSD 进入四池，Memecoin 上涨时 YT + 辅助池份额额外增值；即使 Memecoin 归零，用户仍可在成功解锁后的 24 小时流动性保护期内完成组合权益退出，按份额拿回 2000 UUSD 本金。保护期结束后仍未退出，则进入市场风险自担阶段。
+> The user then swaps part of that UETH into UUSD (or uses UETH directly) and commits 2000 UUSD to a Memecoin's standard Genesis. If Genesis misses its target, the full amount comes back. If it succeeds, the 2000 UUSD enters the four pools, and a rising Memecoin adds value through YT and auxiliary-pool shares. Even if the Memecoin goes to zero, the user can still fully exit the portfolio within the 24-hour liquidity protection window after the successful unlock and recover the 2000 UUSD principal pro rata. Anything not unwound after the window closes is at the user's own market risk.
 
 ---
 
-## 平衡型：放大早期敞口
+## Balanced: amplify early exposure
 
-**画像**：看好某个 Memecoin，愿意承担一定成本，在创世期放大份额博取倍数收益。
+**Profile**: you are bullish on a particular Memecoin and willing to bear a defined cost to scale up your share during Genesis and chase outsized returns.
 
-**怎么参与**：
-1. **杠杆创世**：支付 uAsset（或创世积分）利息，放大创世份额。
-2. 叠加**预购**，以固定低费率锁定更多早期份额。
+**How to participate**:
+1. **Leveraged Genesis**: pay interest in uAsset (or GenesisCredit) to amplify your Genesis allocation.
+2. Add a **Preorder** on top to lock in more early allocation at a fixed low fee.
 
-**收益**：
-- 杠杆：按付息比例分得杠杆 YT；结算时若 Memecoin 大涨，从结算残值按比例分得丰厚收益。
-- 预购：固定 1% 费率结算，线性解锁 Memecoin。
+**Yield:**
+- Leverage: you receive leveraged YT in proportion to the interest paid; if the Memecoin rallies hard at settlement, you take a proportional share of the settlement residual value, which can be substantial.
+- Preorder: settles at a fixed 1% fee, with the Memecoin unlocking linearly.
 
-**下行风险**：**仅有利息成本**。杠杆创世不投入本金，只付利息换份额，所以损失上限就是付的利息；Memecoin 大跌只是让 YT/残值归零（损失=已付利息），不会亏更多。**无清算风险**（不依赖预言机、不会倒欠）；创世失败则利息全额退还。
+**Downside risk**: **interest cost only**. Leveraged Genesis commits no principal; you pay interest in exchange for allocation, so the most you can lose is the interest paid. A deep Memecoin crash only takes the YT and residual value to zero (loss = interest already paid); there is no way to lose more. **No liquidation risk** (no oracle dependency, no way to end up owing anything). If Genesis fails, the interest is refunded in full.
 
-**举例**：
-> 假设用户强烈看好某 Memecoin，用杠杆创世：支付 500 UUSD 利息，按当时利率（假设对应 5 倍放大）换得约 2500 UUSD 等值的创世份额；同时预购再锁定一部分。Memecoin 锁定后，用户按付息比例分得杠杆 YT；结算时若大涨，从结算残值里分得可观收益。
+**Worked example**:
+> Suppose a user is strongly bullish on a Memecoin and uses leveraged Genesis: they pay 500 UUSD of interest and, at the going rate (assume it corresponds to 5x amplification), receive a Genesis allocation worth about 2500 UUSD. A Preorder locks in more on top. Once the Memecoin is locked, the user receives leveraged YT in proportion to the interest paid; if the price rallies at settlement, they take a sizable share of the settlement residual value.
 >
-> 代价：500 UUSD 利息在锁定时归协议自留国库；若 Memecoin 归零，损失这 500 利息，但不会被清算、不倒欠。若创世未达标，500 UUSD 全额退还。
+> The cost: the 500 UUSD of interest goes to the protocol treasury upon locking. If the Memecoin goes to zero, the loss is that 500, with no liquidation and no debt left owing. If Genesis misses its target, the 500 UUSD is refunded in full.
 
 ---
 
-## 共建型：深度参与社区
+## Co-build: deep participation in a community
 
-**画像**：相信某个 Memecoin 社区的长期价值，愿意直接持有 Memecoin，通过质押和治理参与共建。
+**Profile**: you believe in a Memecoin community's long-term value, are willing to hold the Memecoin directly, and help build it through staking and governance.
 
-**怎么参与**：
-1. Memecoin 上线后，在公开市场**买入 Memecoin**。
-2. 把 Memecoin **质押进收益库**，赚交易手续费收益。
-3. 把投票权**委托**给自己的份额，参与 DAO 提案、投票，共同决定国库与社区方向（详见 [Memecoin Staking](../memeverse/memecoin-staking.md)）。
+**How to participate**:
+1. After the Memecoin lists, **buy the Memecoin** on the open market.
+2. **Stake the Memecoin into the YieldVault** to earn trading fees.
+3. **Delegate** voting power to your own shares, take part in DAO proposals and votes, and help decide the treasury and the community's direction (see [Memecoin Staking](../memeverse/memecoin-staking.md)).
 
-**收益**：
-- **Staking 收益**：该 Memecoin 交易手续费（Memecoin 计价部分）持续流入收益库，份额升值。
-- **周期激励**：按治理参与活跃度，周期结算后领取 DAO 激励。
-- **治理话语权**：决定国库资金用途、社区方向。
-- **上涨收益**：直接持有 Memecoin，享受价格上涨。
+**Yield:**
+- **Staking yield**: the Memecoin's trading fees (the portion denominated in Memecoin) flow continuously into the YieldVault, and the share price appreciates.
+- **Epoch rewards**: DAO rewards claimed at each epoch settlement, in line with how active you are in governance.
+- **A voice in governance**: decide how treasury funds are used and where the community goes.
+- **Price upside**: hold the Memecoin directly and benefit when the price rises.
 
-**下行风险**：**直接持有 Memecoin，承担其价格波动**（这是三档中唯一本金暴露于 Memecoin 价格的）；若 Memecoin 大跌，持仓价值缩水。但通过 Staking 持续赚手续费 + 治理激励，把单纯投机转为长期共建。
+**Downside risk**: **you hold the Memecoin directly and bear its price volatility** (this is the only tier whose principal is exposed to the Memecoin price). A sharp drop shrinks the position's value. Continuous fee earnings from staking plus governance incentives turn pure speculation into long-term community building.
 
-**举例**：
-> 某 Memecoin 上线后，用户买入并质押进收益库。该 Memecoin 交易越活跃，流入收益库的手续费越多，份额持续升值，赎回时通常能拿回更多 Memecoin；同时份额带投票权，用户参与提案（如决定国库 UUSD 用于社区空投），按周期领取激励。代价是直接持有 Memecoin、承担其价格波动 —— 但用户看中的是社区长期价值，用质押 + 治理把投机变成共建。
+**Worked example**:
+> After a Memecoin lists, a user buys it and stakes it in the YieldVault. The more actively the Memecoin trades, the more fees flow into the YieldVault; the share price keeps climbing, and redemption typically returns more Memecoin than was staked. The shares also carry voting power: the user joins proposals (say, deciding to use treasury UUSD for a community airdrop) and claims the epoch rewards each epoch. The cost is holding the Memecoin directly and bearing its price volatility, but what the user is buying into is the community's long-term value, using staking plus governance to turn speculation into community building.
 
 ---
 
-## 其他角色
+## Other roles
 
-除了三档参与者，生态里还有几个专门角色：
+Beyond the three participation tiers, the ecosystem has a few specialized roles:
 
-| 角色 | 做什么 | 赚什么 |
+| Role | What they do | What they earn |
 |---|---|---|
-| **发起人** | 在多链启动一个 Memecoin、设定规则 | 社区共识（无法在锁定期抽走流动性） |
-| **流动性提供者（LP）** | Memecoin 上线后用 uAsset + Memecoin 加池 | LP 手续费分成 |
-| **执行者** | 任何人触发手续费分发 | 主池 uAsset 费 0.25%（当前默认）的执行奖励 |
+| **Launcher** | Launch a Memecoin on multiple chains and set its rules | Community consensus (liquidity cannot be pulled during the lock-up) |
+| **Liquidity provider (LP)** | Add liquidity in uAsset + the Memecoin after it lists | A share of LP trading fees |
+| **Executor** | Anyone who triggers fee distribution | An executor reward of 0.25% of primary-pool uAsset fees (current default) |
 
 ---
 
-## 你可以组合
+## You can combine them
 
-三档不是互斥的。一位用户完全可以同时：
-1. 在 OutStake 创世质押铸 UETH（**稳健**）
-2. 拿 UETH 参与普通创世，无风险博取 Memecoin 收益（**稳健**，保护期内完整退出）
-3. 对特别看好的用杠杆 + 预购放大（**平衡**）
-4. 上线后买入并质押，参与 DAO 共建（**共建**）
+The three tiers are not mutually exclusive. One user can do all of the following at once:
+1. Mint UETH through Genesis Staking on OutStake (**Conservative**)
+2. Use that UETH for standard Genesis and pick up Memecoin yield at no risk (**Conservative**, full exit inside the protection window)
+3. Amplify with leverage plus a Preorder on the ones they believe in most (**Balanced**)
+4. Buy and stake after listing, and co-build through the DAO (**Co-build**)
 
-Outrun 的设计就是让这些动作，在同一个 uAsset 体系里顺畅串联 —— 不同需求的人，在同一套基础设施里各取所需，又共同为飞轮贡献动力。
+The design of Outrun lets all of these moves chain together inside a single uAsset system: people with different needs each take what they want from the same infrastructure, and together they feed the flywheel.

@@ -1,87 +1,87 @@
-# 动态费率 Hook
+# Dynamic fee hook
 
-## 基于 Uniswap V4
+## Built on Uniswap V4
 
-Memeverse 不自研交易引擎，而是基于 **Uniswap V4 的 Hook 机制**搭建交易层。Hook 允许在每笔交易前后插入自定义逻辑 —— Memeverse 用它实现动态费率、预购结算和短期冲击计费，流动性本身享受 Uniswap V4 的成熟与安全。
+Memeverse does not build its own trading engine; its trading layer is built on **the Uniswap V4 hook mechanism**. Hooks let custom logic run before and after every swap. Memeverse uses them to implement dynamic fees, Preorder settlement, and short-term impact pricing, while the liquidity itself benefits from Uniswap V4's maturity and security.
 
-## 动态费率的组成
+## Components of the dynamic fee
 
-普通 AMM 用固定费率，容易被套利者和高频策略钻空子。Memeverse 的费率是**动态**的，由基础费率加三部分动态组件组成：
+A plain AMM has a single fixed fee tier, which arbitrageurs and high-frequency strategies can exploit. Memeverse's fee is **dynamic**: a base fee plus three dynamic components.
 
-- **基础费率**：1% 的底价。
-- **逆向冲击费（按地址）**：交易推动价格偏离均衡时，按冲击大小计费；同一地址在 3 秒窗口内的连续冲击会累积合并计费。这让拆单攻击（把大单拆成小单躲避费率）无法规避冲击成本——拆出的每一单都计入同一窗口的累积冲击。
-- **波动费（按池）**：近期价格波动越剧烈，费率越高，抑制过度投机。
-- **短期冲击费（按池）**：每笔交易按价格冲击计费，冲击不超过 2% 的部分免征（只对超过 2% 的部分计费）；冲击量在 15 秒内衰减，快速连续冲击会叠加。
+- **Base fee**: a floor of 1%.
+- **Adverse impact fee (per address)**: when a trade pushes the price away from equilibrium, it is charged in proportion to the impact. Consecutive impacts from the same address within a 3-second window accumulate into one combined charge. Order-splitting attacks (breaking a large order into small ones to dodge the fee) therefore cannot escape impact costs: every split order counts toward the same window's accumulated impact.
+- **Volatility fee (per pool)**: the more violent the pool's recent price swings, the higher the fee. This dampens excessive speculation.
+- **Short-term impact fee (per pool)**: every trade is charged on its price impact; impact up to 2% is exempt (only the portion above 2% is charged). Impact decays over 15 seconds, and rapid consecutive impacts stack.
 
-费率有硬上限 100% · 固定，不会无限飙升。
+The fee has a hard cap of 100%; the cap is fixed, so the fee can never spike without limit.
 
-<iframe src="../assets/diagrams/hook-fee.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="实际费率怎么构成"></iframe>
+<iframe src="../assets/diagrams/hook-fee.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="How the actual fee is composed"></iframe>
 
-## 什么情况加费，什么情况减免
+## When fees are added, and when they are waived
 
-动态费是否生效、加多少，由以下条件决定：
+Whether the dynamic fee applies, and by how much, is decided by these conditions:
 
-| 交易情况 | 费率 |
+| Trade condition | Fee |
 |---|---|
-| 首笔交易（池内尚无成交历史） | 全额动态费 |
-| 交易推动价格偏离均衡（EWVWAP） | 全额动态费 |
-| 交易让价格回归均衡，且池内已有成交历史 | 豁免动态费，只付基础费率 |
-| 同一地址 3 秒窗口内的累积冲击 | 逆向冲击费累积计入 |
-| 池内价格波动上升 | 波动费上升 |
-| 单笔价格冲击超过 2% | 对超出部分计短期冲击费（15 秒内快速连续冲击叠加） |
+| First trade (the pool has no trade history yet) | Full dynamic fee |
+| Trade pushes the price away from equilibrium (EWVWAP) | Full dynamic fee |
+| Trade brings the price back toward equilibrium, and the pool already has trade history | Dynamic fee waived; only the base fee applies |
+| Accumulated impact from the same address within a 3-second window | Adverse impact fee accumulates |
+| Rising price volatility in the pool | Volatility fee rises |
+| A single trade's price impact exceeds 2% | Short-term impact fee charged on the excess (rapid consecutive impacts within 15 seconds stack) |
 
-## EWVWAP 豁免：方向对了才减免
+## The EWVWAP exemption: fees waived only in the right direction
 
-动态费率对普通用户不一定友好，但存在一个关键减免：**当池内已有成交历史，且一笔交易让价格比交易前更接近均衡（EWVWAP）时，跳过全部动态费，只收基础费率。**
+The dynamic fee is not always friendly to ordinary users, but there is one key exemption. **When the pool already has trade history and a trade leaves the price closer to equilibrium (EWVWAP) than it was before the trade, all dynamic fees are skipped. Only the base fee is charged.**
 
-这意味着：
+This means:
 
-- 让价格回归均衡的交易（包括顺势买入、提供流动性），只付基础费率（开池高费率衰减窗内，取基础费率与当前开池费的较高者）。
-- 推动价格偏离均衡、制造波动的交易，按上述条件承担动态费。
+- Trades that bring the price back toward equilibrium (including buying with the trend and providing liquidity) pay only the base fee. Inside the opening-fee decay window, the higher of the base fee and the current opening fee applies instead.
+- Trades that push the price away from equilibrium and create volatility bear the dynamic fee under the conditions above.
 
-注意：没有成交历史的首笔交易，以及推动价格偏离的单笔交易，都不在豁免范围内。
+Note: the first trade, which has no trade history, and any single trade that pushes the price away from equilibrium are both outside the exemption.
 
-## 开池初期高费率防抢跑
+## High initial fee at pool open deters snipers
 
-新池刚开时最脆弱 —— 抢跑者会抢在第一笔交易前插队。Memeverse 在开池瞬间设一个**很高的初始费率**，然后随时间指数衰减到基础费率。**默认初始费率为 50%、15 分钟内衰减到 1%，二者都是 owner 可调整的默认值。**费率随时间衰减，进入越晚费率越低。
+A pool is most fragile the moment it opens: snipers race to jump ahead of the first trade. Memeverse sets a **very high opening fee** at the instant the pool opens, then decays it exponentially over time down to the base fee. **By default the opening fee is 50%, decaying to 1% within 15 minutes; both are owner-adjustable defaults.** The fee decays over time, so the later you enter, the lower the fee.
 
-以默认配置为例，开池后的费率衰减大致如下（按归一化指数曲线衰减）：
+With the default configuration, the fee decays roughly as follows after pool open (following a normalized exponential curve):
 
-| 开池后时间 | 开池费率 |
+| Time after pool open | Opening fee |
 |---|---|
-| 0 分钟 | 50% |
-| 1 分钟 | 约 38% |
-| 5 分钟 | 约 13% |
-| 10 分钟 | 约 3.6% |
-| 15 分钟 | 1% |
+| 0 minutes | 50% |
+| 1 minute | ~38% |
+| 5 minutes | ~13% |
+| 10 minutes | ~3.6% |
+| 15 minutes | 1% |
 
-两端数值（初始 50%、终值 1%）为当前默认，协议方可调；中间数值随实际参数按比例变化。
+The two endpoint values (opening 50%, final 1%) are the current defaults and adjustable by the protocol; the intermediate values scale with the actual parameters.
 
-## 费率怎么分
+## How the fee is split
 
-每笔交易费按固定比例分配：
+Each swap's fee is split at fixed proportions:
 
-| 场景 | LP | 协议国库 | 推荐返佣 |
+| Scenario | LP | Protocol treasury | Referral rebate |
 |---|---|---|---|
-| 无推荐人 | 65% | 35% | 0 |
-| 有推荐人（默认） | 65% | 25% | 10% |
+| No referrer | 65% | 35% | 0 |
+| With referrer (default) | 65% | 25% | 10% |
 
-推荐返佣来自协议费份额，奖励带来新用户的推荐人，鼓励社区传播。
+The referral rebate comes out of the protocol's fee share; it rewards referrers who bring in new users and encourages the community to spread the word.
 
-## 谁可以发起交易
+## Who can initiate a trade
 
-Memeverse 的公开交易都由**智能账户**发起。普通钱包（未部署合约代码的账户）无法直接完成交易 —— 需使用 Safe 等智能账户钱包。整笔交易在同一笔原子交易内「开启会话 → 执行交易 → 关闭会话」完成，会话由前端自动包裹、对用户不可见；没有活动会话、或会话发起者与交易发起者不是同一钱包时，交易直接回滚，不会产生资金损失。
+All public trading on Memeverse is initiated by **smart accounts**. Plain wallets (accounts with no deployed contract code) cannot execute trades directly; a smart-account wallet such as Safe is required. The entire trade completes inside a single atomic transaction as "open session → execute the swap → close session". The frontend wraps the session automatically, and it is invisible to the user. If there is no active session, or the session initiator and the trade initiator are not the same wallet, the trade simply reverts, with no loss of funds.
 
-这一要求与 [YT 闪电兑换](yt-flash-swap.md) 一致，是 Memeverse 交易层的统一规则。
+This requirement matches [YT flash swap](yt-flash-swap.md) and is the uniform rule of Memeverse's trading layer.
 
-## 预购专用结算通道
+## A dedicated settlement channel for Preorder
 
-预购（Preorder）不走公开交易路径，而是通过 Hook 内一条**专用的固定 1% 费率结算通道**（详见 [预购](preorder.md)），跳过动态费率和开池高费率机制。全部预购资金聚合为主池建立后的第一笔 AMM 交易，所得 Memecoin 按预购资金占比分配。所有预购者共享该笔交易的平均成交成本；固定的是结算费率，不是 Memecoin 单价。这笔结算会改变主池储备和后续公开交易的起始价格。
+Preorders do not go through the public trading path. They settle through a **dedicated channel inside the hook with a fixed 1% fee** (see [Preorder](preorder.md)), bypassing both the dynamic fee and the pool-opening high-fee mechanism. All Preorder funds are aggregated into the first AMM trade after the primary pool is created, and the Memecoin received is distributed pro rata to each preorder's share of the funds. All Preorder participants share the average execution cost of that single trade; what is fixed is the settlement fee, not the Memecoin's unit price. This settlement shifts the primary pool's reserves and the starting price of the public trading that follows.
 
-## 举例
+## Example
 
-> 某 Memecoin 刚开池，初始费率 50%，15 分钟内衰减到 1%。开池后的首笔交易没有成交历史，按全额动态费计费；此后一只夹击者想快速夹击一笔大单，它的交易推动价格偏离均衡、单笔冲击超过 2%，逆向冲击费与短期冲击费叠加计费。相反，一笔方向是让价格回归均衡的顺势交易，只要池内已有成交历史，就触发 EWVWAP 豁免，只付基础费率（开池衰减窗内取当前开池费的较高者）。
+> A Memecoin has just opened its pool: the opening fee is 50%, decaying to 1% over 15 minutes. The first swap after open has no swap history, so it pays the full dynamic fee. A sandwich attacker then tries to sandwich a large order: its trades push the price away from equilibrium with a single-trade impact above 2%, so the adverse impact fee and the short-term impact fee are charged together. Conversely, as long as the pool already has trade history, a trend-following trade pointed back toward equilibrium triggers the EWVWAP exemption and pays only the base fee. Inside the opening-fee decay window, the higher of the base fee and the current opening fee applies.
 
-## 定价维度与边界
+## Pricing dimensions and their limits
 
-动态费率 Hook 通过「方向、时间窗口、波动」三个维度给交易定价：方向回归均衡的交易有机会只付基础费率，推动偏离或制造冲击的交易承担更高成本。Memeverse 的交易层因此兼顾市场深度与抗操纵——但动态费率是**缓解手段而非绝对保证**，实际费率和保护效果随池内状态与 owner 配置参数而变化。
+The dynamic fee hook prices trades along three dimensions: direction, time window, and volatility. Trades that bring the price back toward equilibrium can pay as little as the base fee; trades that push the price away or create impact bear higher costs. This is how Memeverse's trading layer balances market depth with manipulation resistance. The dynamic fee is a **mitigation, not an absolute guarantee**: the actual fee and the protection it provides vary with the pool's state and the owner's configured parameters.

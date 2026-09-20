@@ -1,82 +1,82 @@
 # Table of contents
 
-> OutrunBook —— Outrun 生态面向用户的产品文档。中文撰写，术语保留英文。
+> OutrunBook — the user-facing product documentation for the Outrun ecosystem. Written in English; protocol terms kept as-is.
 
 ---
 
 ## Overview
 
-* [Outrun 概览](README.md)
-  —— 双模块生态：OutStake（收益基础设施）+ Memeverse（全链社区共识启动器），uAsset 是连接血线
-* [产品愿景](vision.md)
-  —— Outrun 要解决什么、为何是这两个模块、uAsset 作为统一价值媒介的意义
+* [Outrun at a glance](README.md)
+  — A two-module ecosystem: OutStake (yield infrastructure) + Memeverse (omnichain community consensus launcher), with uAsset as the lifeline connecting the two
+* [Product vision](vision.md)
+  — What Outrun sets out to solve, why these two modules, and the role of uAsset as a unified value medium
 
-## OutStake — 收益基础设施
+## OutStake — Yield infrastructure
 
-* [OutStake 概览](outstake/README.md)
-  —— 把多协议生息资产统一铸成锚定型稳定币 uAsset；含「为什么不直接持 wstETH」
-* [SY 标准化收益与适配器矩阵](outstake/sy-adapters.md)
-  —— 统一接口包装 Aave/Lido/Sky/Ethena/Lista/Aster 的生息代币
-* [uAsset 锚定型稳定币](outstake/uasset.md)
-  —— UETH/UUSD/UBNB 的锚定机制、铸币上限、跨链流通
-* [创世质押：为 Memeverse 而铸](outstake/staking-modes.md)
-  —— 面值铸造、无利息无清算无锁定期，抵押生息敞口自留
-* [PSM 锚定兑换](outstake/psm.md)
-  —— 储备资产与 uAsset 按 1:1 面值双向兑换
-* [USR 储蓄](outstake/usr.md)
-  —— 存 uAsset 吃利息，随存随取
-* [一站式操作入口](outstake/router.md)
-  —— 从任意代币到创世的三条通道聚合
-* [跨链与速率限制](outstake/omnichain.md)
-  —— uAsset 全链流通与安全约束
+* [OutStake at a glance](outstake/README.md)
+  — Unifies yield-bearing assets from multiple protocols into the pegged stablecoin uAsset; includes "Why not just hold wstETH?"
+* [SY standardized yield and the adapter matrix](outstake/sy-adapters.md)
+  — Wraps the yield-bearing tokens of Aave/Lido/Sky/Ethena/Lista/Aster behind one standardized interface
+* [uAsset pegged stablecoins](outstake/uasset.md)
+  — The peg mechanism behind UETH/UUSD/UBNB, mint caps, and cross-chain circulation
+* [Genesis Staking: minted for Memeverse](outstake/staking-modes.md)
+  — Mint at face value with no interest, no liquidation, and no lock-up; your collateral keeps earning and the exposure stays yours
+* [PSM par swaps](outstake/psm.md)
+  — Two-way swaps between reserve assets and uAsset, 1:1 at par
+* [USR savings](outstake/usr.md)
+  — Deposit uAsset to earn interest; deposit and withdraw anytime
+* [One-stop entry](outstake/router.md)
+  — Aggregates the three routes that take any token into Genesis
+* [Cross-chain and rate limits](outstake/omnichain.md)
+  — Omnichain circulation of uAsset and its safety constraints
 
-## Memeverse — 全链社区共识启动器
+## Memeverse — Omnichain community consensus launcher
 
-* [Memeverse 概览](memeverse/README.md)
-  —— 启动的不是代币，而是拥有流动性、收益与治理的链上社区
-* [启动生命周期](memeverse/lifecycle.md)
-  —— 创世 → 锁定/退款 → 解锁的完整流程
-* [普通创世 Genesis](memeverse/genesis.md)
-  —— uAsset 本金守恒、24 小时流动性保护与完整退出步骤
-* [四池流动性模型](memeverse/four-pools.md)
-  —— 主池 + 三个辅助池的资金结构与手续费归属
-* [动态费率 Hook](memeverse/hook.md)
-  —— 基于 Uniswap V4 的抗操纵交易层（EWVWAP 豁免、防夹、开池保护）
-* [预购 Preorder](memeverse/preorder.md)
-  —— 创世前提前锁定 Memecoin，固定费率结算，线性解锁
-* [杠杆创世 POLend](memeverse/polend.md)
-  —— 付利息放大创世份额，无清算风险
-* [POL 拆分：PT 与 YT](memeverse/pol-splitter.md)
-  —— 把 POL 拆成本金（PT）与收益（YT）两种凭证
-* [YT 闪电兑换 Flash Swap](memeverse/yt-flash-swap.md)
-  —— 锁定期内用 POL 买卖 YT，复用 PT/POL 池
-* [创世积分 GenesisCredit](memeverse/genesis-credit.md)
-  —— 可跨链的参与凭证，用于抵扣杠杆利息
+* [Memeverse at a glance](memeverse/README.md)
+  — Launches not just a token, but an on-chain community with liquidity, yield, and governance
+* [Launch lifecycle](memeverse/lifecycle.md)
+  — The full flow from Genesis → lock-up/refund → unlock
+* [Standard Genesis](memeverse/genesis.md)
+  — uAsset principal conservation, the 24-hour liquidity protection, and the complete exit steps
+* [The four-pool liquidity model](memeverse/four-pools.md)
+  — Capital structure of the primary pool + three auxiliary pools, and where the fees go
+* [Dynamic fee Hook](memeverse/hook.md)
+  — A manipulation-resistant trading layer built on Uniswap V4 (EWVWAP exemption, anti-sandwich protection, pool-opening protection)
+* [Preorder](memeverse/preorder.md)
+  — Lock in a Memecoin ahead of Genesis, settle at a fixed rate, and unlock linearly
+* [Leveraged Genesis POLend](memeverse/polend.md)
+  — Pay interest to scale up your Genesis allocation, with no liquidation risk
+* [POL split: PT and YT](memeverse/pol-splitter.md)
+  — Splits POL into two tokens: principal (PT) and yield (YT)
+* [YT Flash Swap](memeverse/yt-flash-swap.md)
+  — Buy and sell YT with POL during the lock-up, reusing the PT/POL pools
+* [GenesisCredit](memeverse/genesis-credit.md)
+  — A cross-chain participation credit used to offset leverage interest
 * [Memecoin Staking](memeverse/memecoin-staking.md)
-  —— 质押赚交易手续费，委托后获得治理权
-* [Memecoin DAO 治理](memeverse/dao-governance.md)
-  —— 社区共治国库与方向，投票领周期激励
-* [跨链互操作](memeverse/omnichain.md)
-  —— 多链启动、跨链质押与收益聚合
+  — Stake to earn trading fees; delegate to gain governance rights
+* [Memecoin DAO governance](memeverse/dao-governance.md)
+  — The community governs the treasury and the direction; vote to earn epoch rewards
+* [Omnichain interoperability](memeverse/omnichain.md)
+  — Multichain launches, cross-chain staking, and yield aggregation
 * [vs Pump.fun](memeverse/vs-pump-fun.md)
-  —— 与 Pump.fun 的机制维度对比
+  — A dimension-by-dimension mechanics comparison with Pump.fun
 
-## Ecosystem — 生态协同
+## Ecosystem — How the modules work together
 
-* [增长飞轮](ecosystem/flywheel.md)
-  —— uAsset 供需双向咬合 + 各模块独立收益闭环（非收益回流）
-* [参与方式与风险偏好](ecosystem/playbooks.md)
-  —— 稳健 / 平衡 / 共建三档参与路径与举例
-* [商业模式](ecosystem/business-model.md)
-  —— 收入来源与一笔交易费的完整流向
-* [目标受众](ecosystem/audience.md)
-  —— 不同角色在生态中的需求与参与方式
+* [Growth flywheel](ecosystem/flywheel.md)
+  — The two-way interlock of uAsset supply and demand, plus an independent yield loop in each module (yields do not flow back and forth)
+* [Participation and risk appetite](ecosystem/playbooks.md)
+  — Conservative / Balanced / Co-build: three participation paths, with examples
+* [Business model](ecosystem/business-model.md)
+  — Revenue sources and the full path of a single trading fee
+* [Target audience](ecosystem/audience.md)
+  — What different roles need from the ecosystem, and how they take part
 
-## Reference — 参考
+## Reference
 
-* [术语表](reference/glossary.md)
-  —— 核心术语速查
-* [参与方式总览](reference/participation-map.md)
-  —— 三档参与 × 各模式主映射表 + POL/PT/YT 兑付时间线
+* [Glossary](reference/glossary.md)
+  — A quick reference for core terms
+* [Participation map](reference/participation-map.md)
+  — A master map of the three tiers × every mode, plus the POL/PT/YT payout timeline
 * [FAQ](reference/faq.md)
-  —— 常见问题
+  — Frequently asked questions

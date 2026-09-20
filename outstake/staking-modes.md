@@ -1,40 +1,40 @@
-# 创世质押：为 Memeverse 而铸
+# Genesis Staking: minted for Memeverse
 
-OutStake 的质押只有一个用途：**为参与 Memeverse 创世铸出 uAsset**。你存入生息资产，按面值铸出等值 uAsset，铸出的 uAsset 直接进入创世；抵押的生息资产继续生息，敞口全归你。
+OutStake staking has exactly one use: **minting uAsset to take part in Memeverse Genesis**. You deposit a yield-bearing asset, mint an equal value of uAsset at face value, and the minted uAsset goes straight into Genesis. The collateral keeps earning, and the exposure stays 100% with you.
 
-## 面值铸造
+## Minting at face value
 
-铸造按**面值**结算，不打折、不放大：价值 1 ETH 的生息资产，铸出 1 UETH；价值 1000 美元的生息资产，铸出 1000 UUSD。
+Minting settles at **face value**, with no discount and no multiplier: a yield-bearing asset worth 1 ETH mints 1 UETH, and one worth 1,000 USD mints 1,000 UUSD.
 
-铸造会为你建立一个**仓位**，记录两样东西：你抵押了多少生息资产、你铸出了多少 uAsset（债务）。两者按铸造时的价值一一对应。
+Each mint opens a **position** for you. The position records two things: the yield-bearing asset you deposited as collateral, and the uAsset you minted (the debt). The two are matched one to one at their value at mint time.
 
-## 三个"没有"
+## Three "no"s
 
-- **无利息**：债务不随时间增长，当前版本铸造不计利息。
-- **无清算**：链上不设强制平仓。底层资产价格波动不会触发对你仓位的处置。
-- **无锁定期**：仓位没有到期日，随时可以赎回，也没有"忘了赎"的说法 —— 赎回全靠你主动操作，没有协议代赎。
+- **No interest**: the debt does not grow over time. The current version charges no interest on minting.
+- **No liquidation**: there is no forced liquidation on-chain. Price swings in the underlying asset never trigger any disposal of your position.
+- **No lock-up**: the position has no maturity date and can be redeemed at any time. There is no such thing as "forgetting to redeem": redemption only happens when you initiate it, and the protocol never redeems on your behalf.
 
-## 收益归谁：全归你
+## Who keeps the yield: you do
 
-抵押的生息资产在仓位里**继续生息**，增值敞口全归你。赎回时，你拿回抵押资产及其累计的全部生息成果。
+The collateralized yield-bearing asset **keeps earning** inside the position, and the appreciation exposure is entirely yours. On redemption you get back the collateral together with all the yield it has accumulated.
 
-代价是赎回时需要**归还等值 uAsset**（见下文）—— 如果铸出的 uAsset 已经被你用掉（如送进了创世），赎回前需先重新取得相应数量。
+The trade-off is that redemption requires you to **return an equal value of uAsset** (see below). If you have already spent the uAsset you minted (sent it into Genesis, for example), you need to acquire that amount again before you can redeem.
 
-## 赎回仓位
+## Redeeming a position
 
-- **何时可用**：仓位建立后任何时间，不要求等待；系统临时暂停期间短暂不可用（详见[常见问题](../reference/faq.md)）。
-- **输入与输出**：投入与仓位债务等值的 uAsset，拿回抵押的生息资产（含累计生息）。
-- **前置余额与授权**：动手前钱包要有足额 uAsset，并确认扣取授权；赎出时到手的代币取决于所投协议的适配器，各协议「可赎出成」的资产见[适配器矩阵](sy-adapters.md)。跨链出去的 uAsset 需先桥回原链才能用于赎回（受跨链额度与通道配置约束，详见[跨链与速率限制](omnichain.md)）。
-- **费用与失败结果**：赎回本身不收协议费，只付链上燃料费；若钱包 uAsset 不足或授权不够，整笔交易回滚，无资金损失。
-- **具体步骤**：准备等值 uAsset → 确认扣取授权 → 发起赎回并选择赎出资产 → 生息资产到账，仓位同步结清（部分赎回则剩余仓位继续存在）。
+- **When available**: any time after the position is opened; no waiting is required. Briefly unavailable during temporary system pauses (see the [FAQ](../reference/faq.md) for details).
+- **Inputs and outputs**: you put in uAsset equal to the position's debt and get back the collateralized yield-bearing asset, accumulated yield included.
+- **Prerequisites and approvals**: before you start, your wallet must hold enough uAsset, and the spending approval must be in place. The tokens you receive on redemption depend on the adapter of the protocol you deposited into; see the [adapter matrix](sy-adapters.md) for the assets each protocol can be redeemed into. uAsset that has been bridged to another chain must first be bridged back to its original chain before it can be used for redemption. Bridging is subject to cross-chain limits and channel configuration (see [Cross-chain and rate limits](omnichain.md) for details).
+- **Fees and failure handling**: redemption itself carries no protocol fee; you only pay gas. If your wallet holds insufficient uAsset or the approval is too low, the whole transaction reverts, with no loss of funds.
+- **Steps**: prepare an equal value of uAsset → confirm the spending approval → submit the redemption and choose the asset to receive → the yield-bearing asset arrives and the position settles at the same time (with a partial redemption, the remaining position stays open).
 
-## 铸币上限
+## Mint cap
 
-每个仓位管理器都有**铸币上限**：其未偿铸币量不能超过设定额度，这是 uAsset 供给的刹车。铸造触达上限时整笔交易回滚；提交前可先预览铸出量，并设一个可接受的最低到账数量作滑点保护，低于这条线交易同样回滚。
+Every position manager has a **mint cap**: its outstanding minted amount cannot exceed the configured limit, and this cap is the brake on uAsset supply. A mint that hits the cap reverts in full. Before submitting, you can preview the mint amount and set a minimum acceptable output as your slippage tolerance; below it the transaction reverts.
 
-## 风险说明
+## Risk notes
 
-- 底层生息资产本身带各自协议风险（如 Lido、Aave 等出问题），会传导至对应 uAsset —— 这是持有任何生息资产的固有风险，非 Outrun 机制风险。
-- 若某适配器的链上汇率源短暂异常或背书不足，依赖实时计价的铸造会暂时不可用，恢复后自动恢复；赎回通道不受影响。
+- The underlying yield-bearing assets carry the risks of their own protocols (if Lido, Aave, or a similar protocol runs into trouble), and those risks pass through to the corresponding uAsset. This is inherent to holding any yield-bearing asset, not a risk created by Outrun's mechanism.
+- If an adapter's on-chain rate feed is briefly off or lacks sufficient backing, minting that depends on live pricing becomes temporarily unavailable and resumes automatically once the feed recovers. The redemption path is unaffected.
 
-手里只有 USDC、ETH、BNB 等储备资产、没有生息资产？走 [PSM 锚定兑换](psm.md)直接换 uAsset，无需建仓。有闲置 uAsset 想吃利息？看 [USR 储蓄](usr.md)。
+Only have reserve assets like USDC, ETH, or BNB? Use the [PSM par swaps](psm.md) to swap directly into uAsset, no position needed. Holding idle uAsset and want it to earn? See [USR savings](usr.md).

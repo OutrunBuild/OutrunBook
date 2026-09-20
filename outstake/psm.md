@@ -1,30 +1,30 @@
-# PSM 锚定兑换：储备资产直换 uAsset
+# PSM par swaps: reserve assets straight into uAsset
 
-**PSM**（锚定兑换池）让你用储备资产与 uAsset 按 **1:1 面值**双向兑换。与[创世质押](staking-modes.md)不同：这里换完即结清，不留仓位、不欠债务 —— uAsset 背后是协议持有的储备资产。
+The **PSM** (Peg Stability Module) is a reserve-backed par swap pool: you swap between reserve assets and uAsset in either direction **at par, 1:1**. Unlike [Genesis Staking](staking-modes.md), a swap settles on completion: no position left open, no debt taken on. uAsset is backed by reserve assets held by the protocol.
 
-## 四个兑换池
+## The four swap pools
 
-| 用什么换 | 换到什么 | 方向 |
+| You swap in | You get | Direction |
 |---|---|---|
-| USDC | UUSD | 双向 |
-| USDT | UUSD | 双向 |
-| ETH | UETH | 双向 |
-| BNB | UBNB | 双向 |
+| USDC | UUSD | Both ways |
+| USDT | UUSD | Both ways |
+| ETH | UETH | Both ways |
+| BNB | UBNB | Both ways |
 
-所谓 1:1，指**面值**恒等：等面值的储备资产与 uAsset 互换，到手只扣一笔小额兑换费，不引入任何市场价格。
+The 1:1 is a relationship at **par**: you exchange reserve assets and uAsset of equal face value, and the only deduction on receipt is a small swap fee. No market price enters the exchange.
 
-## 兑换操作
+## How to swap
 
-- **何时可用**：正常情况下随时可换；uAsset 临时暂停期间双向兑换同时不可用（详见[常见问题](../reference/faq.md)）。单个兑换池的净铸出额度用满后，该池铸出方向暂停，恢复额度后自动可用。
-- **输入与输出**：储备资产换 uAsset，或 uAsset 换储备资产。每个兑换池只处理自己的一对资产（USDC 池只进出 USDC 与 UUSD），不能跨池混用。
-- **前置余额与授权**：钱包要有足额换出资产；换出的是 ERC20（USDC、USDT、uAsset）需先确认扣取授权，换出的是原生 ETH、BNB 则不需要授权。
-- **费用与失败结果**：双向各收一笔小额兑换费（当前默认各约 0.1%，可调上限 1%，以界面显示为准），沉淀在池中归协议；只付链上燃料费，无其他费用。额度用满、池中储备不足、输入过小（如粉尘金额扣费后归零）时整笔回滚，无资金损失。
-- **具体步骤**：选兑换池与方向 → 确认授权（如需）→ 发起兑换 → 到账（提交前可先查报价，报价与执行一致）。
+- **When it's available**: under normal conditions, any time. While a uAsset is temporarily paused, swaps in both directions are unavailable (see the [FAQ](../reference/faq.md)). When a single pool's net-mint cap is used up, the mint direction of that pool pauses and becomes available again automatically once capacity recovers.
+- **Inputs and outputs**: reserve assets for uAsset, or uAsset for reserve assets. Each pool handles only its own asset pair (the USDC pool takes in and pays out only USDC and UUSD); assets cannot be mixed across pools.
+- **Balance and approvals**: your wallet must hold enough of the asset you are swapping out. If the outgoing asset is an ERC20 (USDC, USDT, uAsset), confirm the spending approval first; native ETH and BNB require no approval.
+- **Fees and failure handling**: each direction charges a small swap fee (currently about 0.1% each way by default, adjustable and capped at 1%; the interface display is authoritative). The fee stays in the pool and goes to the protocol. You pay on-chain gas and nothing else. The whole transaction reverts, with no loss of funds, in three cases: the cap is exhausted; the pool's reserves run short; or the input is too small (for example, a dust amount reduced to zero by the fee).
+- **Steps**: choose a pool and direction → confirm the approval (if needed) → submit the swap → receive the assets (you can check the quote before submitting; the quote matches execution).
 
-## 拿来做什么
+## What to use it for
 
-- **备创世资金**：手里只有 USDC、ETH、BNB 时，一步换成 uAsset，直接去参与 Memeverse 创世，不必先找生息资产。
-- **日常换汇**：uAsset 与储备资产之间按面值进出，适合把 uAsset 当稳定币用的人。
-- **回锚套利**：uAsset 相对面值溢价时换出获利，折价时买入赎回 —— 这种双向套利让 uAsset 长期贴近锚定。
+- **Funding Genesis**: if you hold only USDC, ETH, or BNB, swap into uAsset in one step and go straight into a Memeverse Genesis, without first finding a yield-bearing asset.
+- **Day-to-day conversions**: move between uAsset and reserve assets at par. For anyone who uses uAsset as a stablecoin.
+- **Peg arbitrage**: when uAsset trades above par, swap it out for a profit; when it trades below par, buy in and swap it back for reserve assets. This two-way arbitrage keeps uAsset close to its peg over time.
 
-手里有生息资产、想抵押生息的同时拿 uAsset？走[创世质押](staking-modes.md)。换到 uAsset 后想吃利息？看 [USR 储蓄](usr.md)。
+Holding a yield-bearing asset and want uAsset while it keeps earning as collateral? Use [Genesis Staking](staking-modes.md). Already have uAsset and want it to earn interest? See [USR savings](usr.md).

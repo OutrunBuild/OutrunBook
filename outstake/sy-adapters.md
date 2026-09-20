@@ -1,41 +1,41 @@
-# SY：标准化收益与适配器矩阵
+# SY: Standardized Yield and the adapter matrix
 
-## SY 是什么
+## What is SY?
 
-各类生息代币长得都不一样：Aave 的 aToken、Lido 的 wstETH、Sky 的 sUSDS……它们来自不同协议，记账方式不同，支持的兑换资产也不同。
+Yield-bearing tokens come in different shapes: Aave's aToken, Lido's wstETH, Sky's sUSDS, and so on. They come from different protocols, keep their books in different ways, and support different assets for conversion.
 
-**SY（Standardized Yield，标准化收益）** 是 OutStake 给这些生息代币套上的一层统一外壳。无论底层是哪个协议，SY 对外都呈现同一种形态：存入资产得到 SY、用 SY 赎回资产、正常情况下随时可查它当前值多少底层资产。
+**SY (Standardized Yield)** is a uniform wrapper OutStake puts over these yield-bearing tokens. Whichever protocol sits underneath, SY presents the same outward shape: deposit an asset and receive SY, and redeem SY back into the asset. Under normal conditions, you can also check its current value in the underlying asset at any time.
 
-这样，上层（uAsset 的铸造、质押、跨链）就不必为每个协议单独适配，只对接 SY 一层即可。
+With this wrapper in place, the layers above (minting uAsset, staking, cross-chain transfers) integrate with the SY layer only, instead of adapting to every protocol separately.
 
-## 支持哪些协议
+## Supported protocols
 
-每接入一个协议，就配一个对应的 SY 适配器。当前已支持：
+Each integrated protocol gets a matching SY adapter. Currently supported:
 
-| 协议 | 生息代币 | 底层资产 | 可存入 | 可赎出成 |
+| Protocol | Yield-bearing token | Underlying asset | Accepted for deposit | Redeemable into |
 |---|---|---|---|---|
-| **Aave V3** | aToken（如 aUSDC） | 美元 | aToken 或底层资产（如 USDC） | aToken 或底层资产 |
-| **Lido** | wstETH | ETH | wstETH、stETH 或原生 ETH | wstETH 或 stETH |
-| **EtherFi** | weETH | ETH | 当前版本暂未接入 | 当前版本暂未接入 |
-| **Sky** | sUSDS | 美元 | sUSDS 或 USDS | sUSDS 或 USDS |
-| **Ethena** | sUSDe | 美元 | sUSDe 或 USDe | 仅 sUSDe |
-| **Lista** | slisBNB | BNB | slisBNB 或原生 BNB | 仅 slisBNB |
-| **Aster** | asBNB | BNB | asBNB、slisBNB 或原生 BNB | 仅 asBNB |
+| **Aave V3** | aToken (e.g. aUSDC) | USD | aToken or the underlying asset (e.g. USDC) | aToken or the underlying asset |
+| **Lido** | wstETH | ETH | wstETH, stETH, or native ETH | wstETH or stETH |
+| **EtherFi** | weETH | ETH | Not yet integrated in the current version | Not yet integrated in the current version |
+| **Sky** | sUSDS | USD | sUSDS or USDS | sUSDS or USDS |
+| **Ethena** | sUSDe | USD | sUSDe or USDe | sUSDe only |
+| **Lista** | slisBNB | BNB | slisBNB or native BNB | slisBNB only |
+| **Aster** | asBNB | BNB | asBNB, slisBNB, or native BNB | asBNB only |
 
-其中 Lido、Sky 各有 L1 与 L2 两个版本，L2 版本的价格来源不同：Lido 在 L2 上的汇率来自以太坊主网的汇率源；Sky 在 L2 上则直接按 Sky 储蓄利率计价，并与 PSM3 稳定模块的兑换报价互相校验。L2 版本的「可存入」「可赎出成」以对应链实际支持的资产为准（例如 Sky L2 还接受 USDC 进入）。
+Lido and Sky each come in a mainnet deployment and L2 deployments, and the L2 deployments source their prices differently. On L2, Lido's exchange rate comes from the rate feed on Ethereum mainnet. Sky on L2 is priced directly off the Sky savings rate, cross-checked against the swap quote from the PSM3 stability module. For the L2 deployments, the "Accepted for deposit" and "Redeemable into" columns follow the assets each chain actually supports (Sky on L2, for example, also accepts USDC for entry).
 
-正常情况下，L2 上的汇率随时可查、按主网价值换算。若汇率源短暂异常、L2 排序器停机、或 Sky L2 的两种价格来源出现明显偏差，依赖实时汇率计价的铸造会暂时不可用，恢复后自动恢复正常，无需额外操作。若某适配器自持的背书跌破流通份额，铸造同样自动冻结 —— 这两道只冻结铸造、不冻结赎回：赎回按仓位比例销债，不依赖实时汇率。汇率源与熔断参数由协议方维护，必要时可更换。
+Under normal conditions, exchange rates on L2 are readable at any time and quoted at mainnet value. If the rate feed fails briefly, the L2 sequencer goes down, or Sky's two price sources on L2 show a clear divergence, minting that depends on live-rate pricing becomes temporarily unavailable. It returns to normal automatically once conditions recover; no extra action is needed. If the backing an adapter itself holds falls below its outstanding shares, minting freezes automatically in the same way. Both safeguards freeze minting only, never redemption: redemption burns a proportional share of the debt and does not depend on the live rate. Rate feeds and circuit-breaker parameters are maintained by the protocol team and can be replaced when necessary.
 
-## 灵活的进出
+## Flexible entry and exit
 
-进入的路子很多：你可以直接用底层资产（ETH、USDC、BNB）进入，也可以用已有的生息代币（wstETH、sUSDS）进入，部分适配器还支持跨币种（例如在 L2 上用 USDC 进入 Sky）。适配器内部完成所有换算，你不需要自己处理。
+There are many ways in. You can enter directly with an underlying asset (ETH, USDC, BNB), or with a yield-bearing token you already hold (wstETH, sUSDS). Some adapters also accept a different currency (USDC into Sky on L2, for example). The adapter handles all conversions internally; there is nothing for you to work out yourself.
 
-**但能存进去什么，不等于能原样取回什么。** 赎回时最终到手的代币，以上表「可赎出成」为准：部分协议赎回只给出生息代币本身（如 Ethena 只给 sUSDe、Aster 只给 asBNB），不会自动拆回底层资产。想拿回底层资产，需自行到对应协议解押。
+**What you can deposit is not necessarily what you can redeem back out.** The token you actually receive on redemption follows the "Redeemable into" column in the table above: some protocols redeem only into the yield-bearing token itself (Ethena into sUSDe only, Aster into asBNB only) and never automatically unwrap it into the underlying asset. To get the underlying asset back, unstake on that protocol yourself.
 
-各协议的兑换汇率由对应协议官方提供（如 Aave 借贷利率、Lido 质押汇率），随市场实时变化。
+Exchange rates for each protocol are provided by the protocol itself (for example, Aave's lending rate or Lido's staking rate) and move with the market in real time.
 
-## 为什么这样设计
+## Why this design
 
-- **统一流动性**：同族的不同生息资产按各自实时价值换算，汇入同一个 uAsset(UETH)，不再各建各的池子。
-- **可扩展**：新增协议只需加一个适配器，不影响已有逻辑。
-- **入口友好**：用户用手里已有的任意支持资产就能参与，无需提前换成特定代币。
+- **Unified liquidity**: yield-bearing assets in the same family convert at their respective live values and flow into a single uAsset (UETH), with no separate pool for each.
+- **Extensible**: adding a new protocol takes one new adapter and leaves the existing logic untouched.
+- **Easy entry**: users can participate with any supported asset they already hold, without swapping into a specific token first.

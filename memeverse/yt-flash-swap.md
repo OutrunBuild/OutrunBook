@@ -1,93 +1,93 @@
-# YT 闪电兑换（Flash Swap）
+# YT Flash Swap
 
-## 锁定期内的 YT 交易通道
+## A trading channel for YT during the lock-up
 
-Memeverse 不为 YT 设立独立的交易池，但锁定期内 YT 有交易通道：通过复用 PT/POL 池流动性的 **YT Flash Swap**，用 POL 买入 YT、或卖出 YT 换回 POL。通道始终可用，但**不代表任意数量都能成交**：可行性与成交价由执行时的池子状态决定（详见下文「保护与安全」）。整笔兑换在单笔原子交易内完成。换腿所需的资金由池子临时垫付、交易结束前归还，对用户不可见，所以叫"闪电"。
+Memeverse does not run a separate trading pool for YT, but YT is tradable during the lock-up: **YT Flash Swap** reuses the liquidity of the PT/POL pool, so you can buy YT with POL or sell YT back into POL. The channel is always open, but that does **not mean any size can be filled**: feasibility and execution price are decided by the state of the pool at execution time (see Protection and safety below). The entire swap completes in a single atomic transaction. The funds needed for the leg swap are advanced temporarily by the pool and returned before the transaction ends. The round trip is invisible to the user, hence the name "flash".
 
-普通创世者和杠杆创世者在创世锁定后领到 **YT**（收益代币），但解锁结算前无法按份额赎回：想提前落袋的持有者、想中途上车的用户，都通过这条通道进出。
+Standard and leveraged Genesis participants receive **YT** (the yield token) once Genesis locks, but it cannot be redeemed per share before the unlock settlement. Holders who want to cash out early, and users who want to enter partway through the lock, both come and go through this channel.
 
-## 定价原理：YT = POL − PT
+## How YT is priced: YT = POL − PT
 
-YT 的定价建立在一条铁律上：**1 个 POL = 1 个 PT + 1 个 YT**（拆分与合并都是 1:1）。
+YT pricing rests on one fixed rule: **1 POL = 1 PT + 1 YT** (both split and merge are 1:1).
 
-由此推出 YT 的隐含价格：
+From this follows the implied price of YT:
 
-> **1 个 YT 的隐含价格（以 POL 计）= 1 个 POL − 1 个 PT 的市价**
+> **Implied price of 1 YT (in POL) = 1 POL − the market price of 1 PT**
 
-这条关系是**理论推导**：基于 1:1 拆并，它说明 YT 的价值锚定在哪，但不等于你一定能按这个价格成交，真实成交价由执行那一刻的池子状态决定（详见下文「保护与安全」）。
+This relationship is a **theoretical derivation**: grounded in the 1:1 split/merge, it shows where YT's value is anchored, but it is not a promise that you can trade at that price. The real execution price is decided by the pool state at the moment of execution (see Protection and safety below).
 
-PT/POL 池里 PT 有市价，YT 的隐含价格就随之确定，不必再为 YT 单独建池。PT 越接近 POL 平价（市场越看好本金兑付），YT 大体上越便宜；PT 折价越深，YT 大体上越贵。本质上，YT 是对**结算残值**（结算回收扣除 PT 本金准备后的剩余，详见 [POL 拆分](pol-splitter.md)）的市场定价。预期残值越高，YT 越贵。
+Because PT has a market price in the PT/POL pool, YT's implied price is determined along with it, and no separate pool is needed for YT. The closer PT trades to POL par (the more confidently the market expects the principal to be repaid), the cheaper YT tends to be; the deeper PT's discount, the more expensive YT tends to be. In essence, YT is the market's pricing of the **settlement residual value** (what remains of the settlement recovery after the PT principal reserve is deducted; see [POL split](pol-splitter.md)). The higher the expected residual value, the more expensive YT.
 
-## 买 YT（用 POL 买）
+## Buying YT (with POL)
 
-你指定要买 **y 个 YT**，并设一个最高支付上限。一笔原子交易内完成：
+You specify the exact amount of YT to buy, **y**, and set a maximum-pay cap. Everything completes in one atomic transaction:
 
-1. **卖出 y 个 PT 换 POL**：在 PT/POL 池按市价卖出 y 个 PT，换得一批 POL（记为 R）。此时这 y 个 PT 是"借"的：你手上还没有 PT，等于先欠池子 y 个 PT。
-2. **拆分补齐**：你拿出 y 个 POL 去**拆分**（split），得到 y 个 PT + y 个 YT。这 y 个 POL 由两部分凑成：你实际掏的钱，加上步骤 1 卖 PT 得到的 R。
-3. **归还借款**：用拆出的 y 个 PT 还掉步骤 1 欠池子的 PT 债。
-4. **到手**：y 个 YT 给你。
+1. **Sell y PT for POL**: y PT are sold at the market price in the PT/POL pool for an amount of POL (call it R). At this point those y PT are "borrowed": you hold no PT yet, so you owe the pool y PT.
+2. **Split to cover**: you put up y POL to **split**, receiving y PT + y YT. Those y POL come from two places: the money you actually pay, plus the R from selling PT in step 1.
+3. **Repay the borrowing**: the y PT produced by the split repay the y-PT debt to the pool from step 1.
+4. **Delivered**: the y YT are yours.
 
-<iframe src="../assets/diagrams/yt-flash-buy.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="买 YT：借 PT → 拆分 → 还 PT"></iframe>
+<iframe src="../assets/diagrams/yt-flash-buy.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="Buy YT: borrow PT → split → repay PT"></iframe>
 
-**你实际掏的钱 = y − R**。直觉：完整拥有 y 个 YT 本需要 y 个 POL（拿去拆分），但拆出来的 y 个 PT 能卖回 R 个 POL 帮你分摊，所以你只需补上差额 y − R。PT 越值钱（R 越大），你要补的越少，YT 对你越便宜。
+**What you actually pay = y − R**. The intuition: owning y YT outright would take y POL (to split), but the y PT that come out of the split can be sold back for R POL to cover part of the cost, so you only make up the difference y − R. The more PT is worth (the larger R), the less you top up, and the cheaper YT is for you.
 
-> 这就是"闪电"的含义：步骤 1 借入的 PT，在交易结束前（步骤 3）就已归还；要是中途算不平（比如费用、滑点让账对不上），**整笔交易原样回滚**，你的钱一分不动。
+> That is what "flash" means: the PT borrowed in step 1 is repaid before the transaction ends (in step 3). If the books fail to balance along the way (fees or slippage, say), the **entire transaction rolls back unchanged**, and not a cent of your money moves.
 
-## 卖 YT（换成 POL）
+## Selling YT (into POL)
 
-你指定要卖 **y 个 YT**，并设一个最低收到下限。一笔原子交易内完成：
+You specify the exact amount of YT to sell, **y**, and set a minimum-receive floor. Everything completes in one atomic transaction:
 
-1. **买入 y 个 PT**：在 PT/POL 池花一批 POL（记为 Q）买回 y 个 PT。这批 POL 也是"借"的：等于先欠池子 Q 个 POL。
-2. **合并变现**：把买来的 y 个 PT 和你的 y 个 YT **合并**（merge），变回 y 个 POL。
-3. **归还借款**：从这 y 个 POL 里拿出 Q 个，还掉步骤 1 欠池子的 POL 债。
-4. **到手**：剩余的 y − Q 个 POL 给你。
+1. **Buy y PT**: an amount of POL (call it Q) is spent in the PT/POL pool to buy y PT. That POL is also "borrowed": you owe the pool Q POL up front.
+2. **Merge back into POL**: **merge** the y PT just bought with your y YT, turning them back into y POL.
+3. **Repay the borrowing**: Q of those y POL repays the POL debt to the pool from step 1.
+4. **Delivered**: the remaining y − Q POL is yours.
 
-<iframe src="../assets/diagrams/yt-flash-sell.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="卖 YT：买 PT → 合并 → 还 POL"></iframe>
+<iframe src="../assets/diagrams/yt-flash-sell.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="Sell YT: buy PT → merge → repay POL"></iframe>
 
-**你实际收到的钱 = y − Q**。直觉：要把 YT 变回 POL，得给每个 YT 配一个 PT 去合并；买这 y 个 PT 花了 Q 个 POL，合并出 y 个 POL，净落 y − Q。PT 越贵（买 PT 花的 Q 越大），你净得的越少。
+**What you actually receive = y − Q**. The intuition: to turn YT back into POL, each YT needs a matching PT to merge with. Buying those y PT costs Q POL and the merge yields y POL, so you net y − Q. The more expensive PT is (the larger Q), the less you net.
 
-## YT 是杠杆资产
+## YT is a leveraged asset
 
-买 y 个 YT，你只付了价差（y − R）这一小部分，却拿到 y 份**完整**的结算残值暴露。残值的每一丝变动，都会带来 YT 回报的大幅变动，这就是"做多 Memecoin 结算残值"的杠杆工具：看对了，收益被放大；看错了，亏损同样被放大，Memecoin 大跌、残值不足时 YT 归零。
+When you buy y YT, you pay only the small difference (y − R), yet you take on the **full** settlement residual-value exposure of y shares. Every small move in the residual value translates into a large move in YT returns. This is what makes it a leveraged long on the Memecoin's settlement residual value. If the call is right, gains are amplified; if it is wrong, losses are amplified just the same. If the Memecoin crashes and the residual value falls short, YT goes to zero.
 
-## 费用：一次底层交易，一次费用
+## Fees: one underlying trade, one fee
 
-每笔 Flash Swap 只发生一次真实的底层 PT/POL 交易，因此只收一次费，没有额外的路由费或平台费，费率规则与普通 PT/POL 交易完全一致（动态费率、EWVWAP 豁免、65/35 分配、推荐返佣）。
+Each Flash Swap involves only one real underlying PT/POL trade, so it is charged once, with no extra routing fee or platform fee, and the fee rules are exactly those of a normal PT/POL swap (dynamic fees, EWVWAP exemption, the 65/35 allocation, referral rebates).
 
-但要注意杠杆的成本结构：费用按完整 PT 腿的成交规模计算，而你实际支付的本金只是价差。YT 越便宜（杠杆越高），同样费率相对你本金的比例越大。这是杠杆工具的成本，不是隐藏收费。
+Note the cost structure of leverage, though: fees are calculated on the full size of the PT leg, while the principal you actually pay is only the difference. The cheaper YT is (the higher the leverage), the larger the same fee rate becomes relative to your principal. That is the cost of a leveraged instrument, not a hidden charge.
 
-## 两种操作
+## The two operations
 
-| 操作 | 你指定什么 | 你得到什么 |
+| Operation | What you specify | What you get |
 |---|---|---|
-| 用 POL 买 YT | 精确的 YT 数量 + 最高支付上限 | 恰好那么多 YT，只扣实际成本 |
-| 卖 YT 换 POL | 精确的 YT 数量 + 最低收到下限 | 至少下限那么多的 POL |
+| Buy YT with POL | The exact YT amount + a maximum-pay cap | Exactly that many YT, with only the actual cost taken |
+| Sell YT into POL | The exact YT amount + a minimum-receive floor | At least the floor amount of POL |
 
-注意语义：买入是「精确拿到指定数量的 YT」，不是「花光预算买最多」。设了 100 的上限，若实际只需 60，剩余 40 留在你钱包，不会多买。
+Mind the semantics: buying means "receive exactly the specified amount of YT", not "spend the whole budget for as much YT as possible". If you set a cap of 100 and only 60 is needed, the remaining 40 stays in your wallet; nothing extra is bought.
 
-## 保护与安全
+## Protection and safety
 
-- **滑点与价格保护**：买入设最高支付上限，卖出设最低收到下限，还可设价格保护线、有过期时限，超出即整笔回滚。
-- **报价仅供参考**：交易前看到的价格是基于当时链上状态的参考价，**不代表保证成交价**。实际成交价由执行那一刻的状态决定，可能更好、也可能更差：抢先交易（MEV）或市场变动都可能让成交价偏离参考价，只要没超过你设的保护线，交易仍会按更差的价格成交，超过则整笔回滚。大额订单建议设紧价格保护线、尽快成交。
-- **单笔原子执行**：要么全部完成，要么分毫不差回滚 —— 不会出现「扣了钱没拿到 YT」或「YT 没了钱也没到」。
-- **不预扣、不退款**：买入只拉取实际成本，上限只是护栏。
-- **诚实失败**：受手续费、舍入、池子深度和容量影响，某些目标数量可能没有可行成交价，交易会直接回滚，重试或调整数量即可，不会产生损失。
-- **会话前置**：钱包不是智能账户、未开启会话、或会话发起者与交易发起者不是同一钱包时，交易直接回滚，不会产生资金损失。
-- **只走 POL**：通道只做 POL ↔ YT，不支持其他代币绕路中转。
+- **Slippage and price protection**: buys carry a maximum-pay cap and sells a minimum-receive floor. You can also set a price-protection limit with an expiry; breaching it rolls back the whole transaction.
+- **Quotes are indicative only**: the price you see before trading is a reference price based on the on-chain state at that moment, **not a guaranteed execution price**. The actual fill price is decided by the state at the moment of execution and can be better or worse. Front-running (MEV) or market moves can push the fill away from the reference price. As long as it stays within your protection limit, the trade still executes at the worse price; beyond the limit, the whole transaction rolls back. For large orders, set a tight price-protection limit and execute promptly.
+- **Single atomic execution**: all or nothing. The transaction either completes in full or rolls back to the last cent, so there is no "charged but no YT delivered" and no "YT gone but nothing received".
+- **No pre-deduction, no refunds**: a buy only pulls the actual cost; the cap is a guardrail.
+- **Clean failure**: due to fees, rounding, and pool depth and capacity, some target amounts may have no feasible execution price. The transaction simply reverts; just retry or adjust the amount. You lose nothing.
+- **Session precondition**: if the wallet is not a smart account, no session is open, or the session initiator and the transaction sender are not the same wallet, the transaction reverts outright, with no loss of funds.
+- **POL only**: the channel does POL ↔ YT only and does not support routing through other tokens.
 
-## 谁能用、什么时候用
+## Who can use it, and when
 
-- **YT 持有者**（普通创世者、杠杆创世者）：锁定期间想提前落袋，可以卖出 YT。
-- **看好的用户**：用 POL 买入 YT，等于用一小部分价格杠杆做多结算残值：Memecoin 结算表现越好，YT 越值钱；大跌则可能归零。
-- 仅在该 Memecoin **锁定阶段**可用：解锁或结算后，拆分/合并关闭，Flash Swap 随之不可用，回到结算赎回规则。
-- 交易须由**智能账户**发起。普通钱包（未部署合约代码的账户，如常见的浏览器插件钱包）无法直接完成这笔兑换，需使用 Safe 等智能账户钱包。整笔兑换在同一笔原子交易内「开启会话 → 执行兑换 → 关闭会话」三步完成，会话由前端自动包裹、对用户不可见；若未开启会话、或会话发起者与交易发起者不是同一钱包，交易会直接回滚，不会产生资金损失。这也是 Memeverse 交易层的统一要求。
+- **YT holders** (standard and leveraged Genesis participants): anyone wanting to cash out early during the lock-up can sell YT.
+- **Bullish users**: buying YT with POL is a leveraged long on the settlement residual value at a fraction of the price. The better the Memecoin's settlement outcome, the more YT is worth; a deep crash can take it to zero.
+- Available only during that Memecoin's **Locked phase**: after unlock or settlement, split/merge closes, Flash Swap becomes unavailable with it, and the settlement-redemption rules take over again.
+- The transaction must be initiated by a **smart account**. A plain wallet (an account without deployed contract code, such as a common browser-extension wallet) cannot complete this swap directly; use a smart-account wallet such as Safe. The whole swap wraps three steps, open session → execute swap → close session, into one atomic transaction. The session is wrapped automatically by the frontend and is invisible to the user. If no session is open, or the session initiator and the transaction sender are not the same wallet, the transaction reverts outright, with no loss of funds. This is a uniform requirement of Memeverse's trading layer.
 
-## 和结算赎回的分工
+## Division of labor with settlement redemption
 
-Flash Swap 是锁定期内的**提前进出通道**，改变的是「什么时候能买卖 YT」，不改变结算规则：解锁结算后，YT 仍按份额分得剩余资产，Memecoin 归零则 YT 无收益。
+Flash Swap is the early entry-and-exit channel of the lock-up. It changes when YT can be bought and sold; it does not change the settlement rules: after the unlock settlement, YT still receives its pro-rata share of the remaining assets, and if the Memecoin goes to zero, YT earns nothing.
 
-## 举例
+## Examples
 
-> 某 Memecoin 创世锁定后，PT 市价约 0.9 POL，YT 隐含价格约 0.1 POL。一位用户用 1,000 POL 买入 10,000 YT（设好最高支付额），等于花一小部分价格拿到 10,000 份结算残值的完整暴露：结算残值每比预期多 0.01 POL，他就多赚 100 POL（相对本金约 10%）；残值比预期少则亏损同样放大，Memecoin 大跌、残值降低时 YT 价值也会降低。
+> After a certain Memecoin's Genesis locks, PT trades at roughly 0.9 POL and YT's implied price at roughly 0.1 POL. A user buys 10,000 YT with 1,000 POL (maximum-pay cap set), taking on full exposure to the settlement residual value of 10,000 shares for a fraction of the price: for every 0.01 POL that the settlement residual value comes in above expectations, the user earns an extra 100 POL (about 10% of the principal). If the residual value falls short, the loss is amplified just the same. If the Memecoin crashes and the residual value declines, YT's value declines with it.
 >
-> 另一位持有创世 YT 的用户想趁热度落袋：设好最低收到额，卖出 10,000 YT。系统按市价买入等量 PT，与你的 YT 合并回 POL，扣除归还池子的部分后，把净得的 POL 转入用户钱包，全程一笔交易，成交价低于预期下限则自动回滚。
+> Another user holding Genesis YT wants to cash out while demand is hot: they set the minimum-receive floor and sell 10,000 YT. The system buys an equal amount of PT at the market price, merges it with the user's YT back into POL, deducts the portion owed to the pool, and transfers the net POL to the user's wallet, all in one transaction. If the fill price would fall below the expected floor, it rolls back automatically.

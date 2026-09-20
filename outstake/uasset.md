@@ -1,50 +1,50 @@
-# uAsset：锚定型稳定币
+# uAsset: the pegged stablecoin
 
-## uAsset 是什么
+## What is uAsset?
 
-**uAsset** 是 OutStake 铸造的统一稳定币，分三类，各自锚定一种底层资产：
+**uAsset** is the unified stablecoin minted by OutStake. It comes in three types, each pegged to one underlying asset:
 
-| uAsset | 锚定 | 底层生息资产来源 |
+| uAsset | Peg | Underlying yield-bearing assets |
 |---|---|---|
-| **UETH** | ETH | wstETH 等 ETH 类生息资产 |
-| **UUSD** | USD | sUSDS / sUSDe / aUSDC 等美元收益资产 |
-| **UBNB** | BNB | slisBNB / asBNB 等 BNB 类生息资产 |
+| **UETH** | ETH | wstETH and other ETH-family yield-bearing assets |
+| **UUSD** | USD | sUSDS / sUSDe / aUSDC and other USD yield assets |
+| **UBNB** | BNB | slisBNB / asBNB and other BNB-family yield-bearing assets |
 
-**锚定的含义：1 枚 uAsset 始终对应 1 单位底层资产价值。** 1 UETH 对应 1 ETH 的价值，1 UUSD 对应 1 美元，1 UBNB 对应 1 BNB。这一对应按面值记账：铸造按实时价值足额换算，赎回按仓位比例销债，兑换按面值双向进出。
+**What the peg means: 1 uAsset always corresponds to the value of 1 unit of the underlying asset.** 1 UETH corresponds to 1 ETH of value, 1 UUSD to one US dollar, and 1 UBNB to 1 BNB. This correspondence is accounted for at face value: minting converts at the asset's full real-time value, redemption settles position debt pro rata, and swaps go both directions at par.
 
-> 注意：这里的"稳定币"指**相对底层资产保持稳定价值**，而非锚定法币。UUSD 是美元稳定币；但 UETH、UBNB 锚定的是 ETH、BNB，会随底层资产价格波动 —— 它们是 ETH/BNB 计价的稳定凭证，不是法币稳定币。
+> Note: "stablecoin" here means **stable in value relative to the underlying asset**, not pegged to fiat. UUSD is a dollar stablecoin; UETH and UBNB are pegged to ETH and BNB, so their value moves with the underlying asset's price. They are stable tokens denominated in ETH or BNB, not fiat stablecoins.
 
-## 锚定是怎么做到的
+## How the peg is maintained
 
-uAsset 有三条供给路径，彼此独立：
+uAsset has three supply paths, independent of one another:
 
-- **创世质押铸造**：存入生息资产，按其当前价值面值铸出 uAsset（价值 1 ETH 的 wstETH → 1 UETH）。同族的不同生息资产按各自实时价值换算，汇入同一个 uAsset，流动性不再碎片化。详见[创世质押](staking-modes.md)。
-- **PSM 储备兑换**：用 USDC、USDT、ETH、BNB 等储备资产，按 1:1 面值双向兑换 uAsset。兑换池由协议持有的储备逐额背书。详见 [PSM 锚定兑换](psm.md)。
-- **杠杆创世供给**：Memeverse 侧杠杆创世的债务额度也会铸成 uAsset 进入创世，由协议统一结算（详见[杠杆创世](../memeverse/polend.md)）。
+- **Genesis Staking minting**: deposit a yield-bearing asset and uAsset is minted 1:1 with the asset's current value (wstETH worth 1 ETH → 1 UETH). Yield-bearing assets within the same family convert at their real-time values into the same uAsset, so liquidity stops being fragmented. See [Genesis Staking](staking-modes.md).
+- **PSM reserve swaps**: swap reserve assets such as USDC, USDT, ETH, and BNB for uAsset and back, 1:1 at par. Each swap pool is backed unit for unit by reserves held by the protocol. See [PSM par swaps](psm.md).
+- **Leveraged Genesis supply**: on the Memeverse side, the debt quota drawn for leveraged Genesis is also minted as uAsset and committed to Genesis, with the protocol settling it in one unified pass (see [leveraged Genesis](../memeverse/polend.md)).
 
-<iframe src="../assets/diagrams/uasset-supply.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="uAsset 三条供给路径"></iframe>
+<iframe src="../assets/diagrams/uasset-supply.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="The three supply paths of uAsset"></iframe>
 
-## 铸币上限，防止超发
+## Mint caps prevent oversupply
 
-每个仓位管理器与每个 PSM 兑换池都有**铸造额度上限**：未偿铸币量不能超过设定额度。铸造时增加额度占用，赎回（销毁 uAsset）时释放。这是 uAsset 作为稳定币的保障之一 —— 有上限、可审计、不会无限增发。
+Every position manager and every PSM swap pool has a **mint cap**: outstanding minted supply cannot exceed the configured amount. Minting takes up room under the cap; redemption (burning uAsset) releases it. This is one of the safeguards behind uAsset as a stablecoin: supply is capped, auditable, and cannot be minted without limit.
 
-## 全链流通
+## Omnichain circulation
 
-uAsset 基于 **LayerZero OFT** 标准，可在不同链之间 1:1 流转。你可以在一条链铸出 UUSD，跨到另一条链上使用。详见 [跨链与速率限制](omnichain.md)。
+uAsset follows the **LayerZero OFT** standard and moves 1:1 across chains. You can mint UUSD on one chain and use it on another. See [Cross-chain and rate limits](omnichain.md).
 
-## uAsset 在生态中的角色
+## uAsset's role in the ecosystem
 
-uAsset 不只是 OutStake 的产物，它是整个 Outrun 的价值媒介：
+uAsset is not just an OutStake product; it is the medium of value for the entire Outrun ecosystem:
 
-- **Memeverse 创世资金**：启动 Memecoin 时用 uAsset 注入流动性。
-- **杠杆创世利息**：在 Memeverse 加杠杆时，uAsset 作为利息支付币。
-- **创世积分结算**：积分型杠杆也以 uAsset 计价。
-- **USR 储蓄**：闲置的 uAsset 可以存进储蓄金库吃利息（详见 [USR 储蓄](usr.md)）。
+- **Memeverse Genesis funding**: uAsset supplies the liquidity injected when a Memecoin launches.
+- **Leveraged Genesis interest**: when you take on leverage in Memeverse, interest is paid in uAsset.
+- **GenesisCredit settlement**: GenesisCredit-based leverage is also denominated in uAsset.
+- **USR savings**: idle uAsset can be deposited into the savings vault to earn interest (see [USR savings](usr.md)).
 
-OutStake 铸造，uAsset 流向 Memeverse，构成生态资本循环的起点。
+OutStake mints uAsset and it flows into Memeverse; that flow is the starting point of the ecosystem's capital cycle.
 
-## 举例
+## Examples
 
-> 用户有 5 个 wstETH(Lido)，当时每个约值 1.05 ETH，合计约 5.25 ETH。他在 OutStake 创世质押，铸出约 5.25 UETH（锚定 ETH）。抵押的 wstETH 在仓位里继续生息，敞口全归他；需要时归还等值 UETH 即可赎回。同族的不同生息资产按各自实时价值换算，汇入同一个 UETH，流动性不再碎片化。
+> A user holds 5 wstETH (Lido), each worth about 1.05 ETH at the time, for a total of about 5.25 ETH. Through Genesis Staking on OutStake, they mint about 5.25 UETH (pegged to ETH). The wstETH collateral keeps earning inside the position and the exposure stays entirely with the user; returning the equivalent UETH redeems it whenever needed. Yield-bearing assets within the same family convert at their real-time values into the same UETH, so liquidity stops being fragmented.
 >
-> 另一位用户手里只有 USDC：他经 PSM 按面值换成 UUSD（扣一笔小额兑换费），直接去参与 Memeverse 创世，全程不建仓位。
+> Another user holds only USDC: they swap it for UUSD at par through the PSM (minus a small swap fee) and join Memeverse Genesis directly, never opening a position along the way.
