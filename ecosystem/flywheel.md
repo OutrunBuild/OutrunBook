@@ -29,7 +29,7 @@ OutStake(供给)                              Memeverse(用途)
 
 ## OutStake 的增长动力来自 Memeverse
 
-值得单独点明：**OutStake 不是孤立的 LST 包装器，它的增长动力恰恰来自 Memeverse 创造的用途。**
+OutStake 不是孤立的 LST 包装器，它的增长动力恰恰来自 Memeverse 创造的用途。
 
 - 若没有 Memeverse，OutStake 只是把各类生息资产统一成 uAsset —— 有用，但缺少独到的增长引擎。
 - 正是 Memeverse 给 uAsset 安排了真实用途（创世、杠杆、结算、国库），让“持有 uAsset”比“持有普通稳定币”多出一层无风险博取 Memecoin 收益的可能（普通创世在保护期内完成退出，本金守恒），OutStake 才有了持续吸引供给的理由。
@@ -54,7 +54,7 @@ OutStake(供给)                              Memeverse(用途)
 
 杠杆创世的利息归协议自留国库（非 DAO 国库）。这些收益都在 **Memeverse 内部**循环分配，不会流回 OutStake。
 
-**收益虽不回流，但 uAsset 的供需把两个模块强绑定**：OutStake 的质押者不会拿到 Memeverse 的手续费，但 Memeverse 越繁荣，uAsset 越有用，OutStake 的吸引力就越强 —— 这才是两者经济耦合的真正纽带，而非收益分润。
+**收益虽不回流，但 uAsset 的供需把两个模块强绑定**：OutStake 的质押者不会拿到 Memeverse 的手续费，但 Memeverse 越繁荣，uAsset 越有用，OutStake 的吸引力就越强。
 
 ## Memeverse 内部飞轮
 
@@ -76,6 +76,6 @@ Memeverse 自身也有正向循环：
 - **结算储备金**：仅在当前余额与配置上限内补足杠杆结算的有界整数舍入缺口；余额不足时解锁结算回退，补充储备后重试。
 - **uAsset 铸造额度 + PSM 兑换额度 + 跨链速率限制**：防超发、防单池抽干、防异常流出，保护稳定币信用。
 
-## 小结
+## 飞轮全貌
 
-Outrun 的飞轮是 **uAsset 供需双向咬合 + 各模块独立收益闭环** 的组合，而非「收益回流」的闭环：OutStake 供给全链稳定币，Memeverse 创造用途与活力，两者通过 uAsset 的流动性互相喂养、强绑定，各自的经济激励自洽。飞轮转得越久，uAsset 流动性越深、Memeverse 生态越繁荣，壁垒越高。
+Outrun 的飞轮是 **uAsset 供需双向咬合 + 各模块独立收益闭环** 的组合，而非「收益回流」的闭环：OutStake 供给全链稳定币，Memeverse 创造用途与活力，两者通过 uAsset 的流动性强绑定，各自的经济激励自洽。飞轮转得越久，uAsset 流动性越深、Memeverse 生态越繁荣，壁垒越高。

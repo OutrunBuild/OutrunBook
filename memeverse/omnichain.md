@@ -52,7 +52,7 @@ Memecoin 与创世积分跨链时，协议要求发送方**精确支付**跨链�
 
 > 注：uAsset（OutStake 侧）的跨链另带速率限制，防异常大额流出；Memeverse 侧的 Memecoin / 创世积分跨链采用不同的安全约束。
 
-## 意义
+## 全链带来什么
 
 全链原生让 Memeverse 的 Memecoin 从一出生就是**多链资产**：
 

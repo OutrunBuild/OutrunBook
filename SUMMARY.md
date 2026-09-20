@@ -55,7 +55,7 @@
 * [Memecoin Staking](memeverse/memecoin-staking.md)
   —— 质押赚交易手续费，委托后获得治理权
 * [Memecoin DAO 治理](memeverse/dao-governance.md)
-  —— 社区共治国库与方向，周期激励，投机转化为建设
+  —— 社区共治国库与方向，投票领周期激励
 * [跨链互操作](memeverse/omnichain.md)
   —— 多链启动、跨链质押与收益聚合
 * [vs Pump.fun](memeverse/vs-pump-fun.md)
