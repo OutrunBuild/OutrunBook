@@ -30,7 +30,7 @@ Unlike the dynamic fees of public trading, preorder settlement runs through the 
 
 No individual participant can set their own minimum output amount, price limit, or deadline. The net input, the aggregated funds after fees, must execute in full; if it cannot, the entire launch transaction reverts and no partial settlement occurs.
 
-![Preorder: aggregated execution and linear unlock](../assets/diagrams/preorder-flow.png)
+![Preorder: aggregated execution and linear unlock](../assets/diagrams/preorder-flow.svg)
 
 ## Linear unlock
 

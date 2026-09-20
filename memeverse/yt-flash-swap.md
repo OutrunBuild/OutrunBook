@@ -27,7 +27,7 @@ You specify the exact amount of YT to buy, **y**, and set a maximum-pay cap. Eve
 3. **Repay the borrowing**: the y PT produced by the split repay the y-PT debt to the pool from step 1.
 4. **Delivered**: the y YT are yours.
 
-![Buy YT: borrow PT → split → repay PT](../assets/diagrams/yt-flash-buy.png)
+![Buy YT: borrow PT → split → repay PT](../assets/diagrams/yt-flash-buy.svg)
 
 **What you actually pay = y − R**. The intuition: owning y YT outright would take y POL (to split), but the y PT that come out of the split can be sold back for R POL to cover part of the cost, so you only make up the difference y − R. The more PT is worth (the larger R), the less you top up, and the cheaper YT is for you.
 
@@ -42,7 +42,7 @@ You specify the exact amount of YT to sell, **y**, and set a minimum-receive flo
 3. **Repay the borrowing**: Q of those y POL repays the POL debt to the pool from step 1.
 4. **Delivered**: the remaining y − Q POL is yours.
 
-![Sell YT: buy PT → merge → repay POL](../assets/diagrams/yt-flash-sell.png)
+![Sell YT: buy PT → merge → repay POL](../assets/diagrams/yt-flash-sell.svg)
 
 **What you actually receive = y − Q**. The intuition: to turn YT back into POL, each YT needs a matching PT to merge with. Buying those y PT costs Q POL and the merge yields y POL, so you net y − Q. The more expensive PT is (the larger Q), the less you net.
 

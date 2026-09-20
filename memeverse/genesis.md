@@ -51,7 +51,7 @@ With no public trading to change prices inside the pools, all exits execute agai
 
 The window starts at **the transaction that actually moves the Verse to Unlocked**, not early at the scheduled unlock time.
 
-![Standard Genesis: three classes of rights and the 24-hour protection window](../assets/diagrams/genesis-rights.png)
+![Standard Genesis: three classes of rights and the 24-hour protection window](../assets/diagrams/genesis-rights.svg)
 
 ## How to exit in full
 

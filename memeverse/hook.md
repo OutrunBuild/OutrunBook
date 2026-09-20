@@ -15,7 +15,7 @@ A plain AMM has a single fixed fee tier, which arbitrageurs and high-frequency s
 
 The fee has a hard cap of 100%; the cap is fixed, so the fee can never spike without limit.
 
-![How the actual fee is composed](../assets/diagrams/hook-fee.png)
+![How the actual fee is composed](../assets/diagrams/hook-fee.svg)
 
 ## When fees are added, and when they are waived
 

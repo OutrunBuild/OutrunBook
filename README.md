@@ -39,7 +39,7 @@ See the [Memeverse overview](memeverse/README.md).
 
 uAsset (UETH / UUSD / UBNB) is Outrun's pegged stablecoin system. The three tokens are pegged to ETH, USD, and BNB respectively, and they move across chains via LayerZero OFT:
 
-![Two modules interlocked: uAsset is the lifeline](assets/diagrams/ecosystem-bite.png)
+![Two modules interlocked: uAsset is the lifeline](assets/diagrams/ecosystem-bite.svg)
 
 - On the OutStake side: stake yield-bearing assets to mint uAsset.
 - On the Memeverse side: uAsset is consumed as Genesis funding, leverage interest, and the payment currency for GenesisCredit.

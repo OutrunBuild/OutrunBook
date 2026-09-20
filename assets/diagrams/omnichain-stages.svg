@@ -1,0 +1,379 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 660" role="img" lang="en" aria-labelledby="archify-diagram-title archify-diagram-description" data-preset="classic" data-quality-profile="showcase"><style type="text/css"><![CDATA[
+svg { width: 100%;
+      min-width: min(900px, 100%);
+      display: block;
+      transform-origin: 0 0;
+      transition: transform 0.18s ease; }
+svg[data-chapter-handoff] [data-node-id][data-chapter-role="stay"] { opacity: 1; }
+svg[data-chapter-handoff] [data-node-id][data-chapter-role="enter"] { opacity: 0.78; }
+svg[data-chapter-handoff] [data-node-id][data-chapter-role="leave"] { opacity: 0.26; }
+svg [data-node-id][data-chapter-role] { opacity: 1 !important; }
+svg[data-chapter-preview] [data-node-id], svg[data-chapter-preview] [data-edge-from] { opacity: 1 !important; filter: none !important; }
+.c-grid { stroke: #1e293b; fill: none; }
+.c-mask { fill: #ffffff; stroke: none; }
+.c-frontend { fill: rgba(8, 51, 68, 0.4);   stroke: #22d3ee; }
+.c-backend { fill: rgba(6, 78, 59, 0.4);    stroke: #34d399; }
+.c-database { fill: rgba(76, 29, 149, 0.4);   stroke: #a78bfa; }
+.c-security { fill: rgba(136, 19, 55, 0.4);   stroke: #fb7185; }
+.t-primary { fill: #ffffff; }
+.t-muted { fill: #94a3b8; }
+.t-dim { fill: #475569; }
+.t-frontend { fill: #22d3ee; }
+.t-backend { fill: #34d399; }
+.t-database { fill: #a78bfa; }
+svg .semantic-sigil { fill: none;
+      stroke: currentColor;
+      stroke-width: 1.35;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.76;
+      pointer-events: none; }
+svg .semantic-sigil > * { vector-effect: non-scaling-stroke; }
+svg .semantic-sigil .sigil-fill { fill: currentColor; stroke: none; }
+svg .s-frontend { color: #22d3ee; }
+svg .s-backend { color: #34d399; }
+svg .s-database { color: #a78bfa; }
+svg .s-security { color: #fb7185; }
+svg [data-detail] { transition: opacity 160ms ease; }
+svg [data-detail-anchor] { transform-box: fill-box;
+      transform-origin: center;
+      transition: transform 160ms ease; }
+svg[data-focus-active] [data-focus-match][data-detail], svg[data-focus-active] [data-focus-match] [data-detail], svg[data-reach-active] [data-reach-match][data-detail], svg[data-reach-active] [data-reach-match] [data-detail], svg[data-lens-active] [data-lens-match][data-detail], svg[data-lens-active] [data-lens-match] [data-detail], svg[data-legend-preview-active] [data-legend-preview-match][data-detail], svg[data-legend-preview-active] [data-legend-preview-match] [data-detail], svg[data-intent-trace-active] [data-intent-trace-match][data-detail], svg[data-intent-trace-active] [data-intent-trace-match] [data-detail], svg[data-route-active] [data-route-match][data-detail], svg[data-route-active] [data-route-match] [data-detail], svg[data-story-active] [data-story-step][data-detail], svg[data-story-active] [data-story-step] [data-detail], svg[data-relationship-preview-active] [data-relationship-preview][data-detail], svg[data-relationship-preview-active] [data-relationship-preview] [data-detail] { opacity: 1;
+      pointer-events: auto; }
+svg[data-focus-active] [data-focus-match] [data-detail-anchor], svg[data-reach-active] [data-reach-match] [data-detail-anchor], svg[data-lens-active] [data-lens-match] [data-detail-anchor], svg[data-legend-preview-active] [data-legend-preview-match] [data-detail-anchor], svg[data-intent-trace-active] [data-intent-trace-match] [data-detail-anchor], svg[data-route-active] [data-route-match] [data-detail-anchor], svg[data-story-active] [data-story-step] [data-detail-anchor] { transform: none; }
+.a-default { stroke: #64748b; fill: none; }
+.a-emphasis { stroke: #34d399; fill: none; }
+.m-default { fill: #64748b; }
+.m-emphasis { fill: #34d399; }
+.m-security { fill: #fb7185; }
+.m-dashed { fill: #a78bfa; }
+svg [data-node-id] { cursor: pointer;
+      transition: opacity 0.18s ease, filter 0.18s ease; }
+svg [data-edge-from] { transition: opacity 0.18s ease, filter 0.18s ease; }
+svg [data-legend-hit] { fill: transparent;
+      stroke: transparent;
+      stroke-width: 1.4;
+      pointer-events: all;
+      vector-effect: non-scaling-stroke;
+      transition: stroke 150ms ease, stroke-width 150ms ease, filter 150ms ease; }
+svg [data-legend-count-badge] { pointer-events: none; }
+svg [data-legend-count-badge] rect { fill: #ffffff;
+      stroke: #1e293b;
+      stroke-width: 1;
+      vector-effect: non-scaling-stroke; }
+svg [data-legend-count-badge] text { fill: #94a3b8;
+      font-size: 8px;
+      font-weight: 700;
+      text-anchor: middle; }
+svg [data-legend-kind][data-legend-selected] [data-legend-hit] { stroke: #a78bfa;
+      stroke-width: 2.2;
+      stroke-dasharray: 3 2; }
+svg [data-legend-kind][data-legend-selected] [data-legend-count-badge] rect { stroke: #a78bfa;
+      stroke-width: 1.8; }
+svg [data-legend-kind][data-legend-zero] { opacity: 0.44; }
+svg[data-preset="signal-flow"] [data-legend-kind][data-legend-selected] [data-legend-hit] { filter: drop-shadow(0 0 4px #a78bfa); }
+svg[data-preset="blueprint"] [data-legend-hit], svg[data-preset="blueprint"] [data-legend-count-badge] rect { rx: 0; filter: none; }
+svg[data-legend-preview-active] [data-node-id], svg[data-legend-preview-active] [data-edge-from] { opacity: 0.11; }
+svg[data-legend-preview-active] [data-legend-preview-match] { opacity: 1; }
+svg[data-legend-preview-active] [data-legend-preview-peer] { opacity: 0.62; }
+svg[data-legend-preview-active] [data-legend-preview-selected] { filter: drop-shadow(0 0 8px #a78bfa); }
+svg[data-lens-active] [data-node-id], svg[data-lens-active] [data-edge-from] { opacity: 0.11; }
+svg[data-lens-active] [data-lens-match] { opacity: 1; }
+svg[data-lens-active] [data-lens-peer] { opacity: 0.62; }
+svg[data-lens-active] [data-lens-selected] { filter: drop-shadow(0 0 10px #a78bfa); }
+svg[data-focus-active] [data-node-id], svg[data-focus-active] [data-edge-from] { opacity: 0.13; }
+svg[data-focus-active] [data-focus-match] { opacity: 1; }
+svg[data-focus-active] [data-focus-selected] { filter: drop-shadow(0 0 10px #22d3ee); }
+svg[data-reach-active] [data-node-id], svg[data-reach-active] [data-edge-from] { opacity: 0.09; }
+svg[data-reach-active] [data-reach-match] { opacity: 1; }
+svg[data-reach-active="upstream"] [data-reach-origin] { filter: drop-shadow(0 0 11px #a78bfa); }
+svg[data-reach-active="downstream"] [data-reach-origin] { filter: drop-shadow(0 0 11px #34d399); }
+svg[data-reach-active="upstream"] [data-edge-from][data-reach-match] { filter: drop-shadow(0 0 4px color-mix(in srgb, #a78bfa 72%, transparent)); }
+svg[data-reach-active="downstream"] [data-edge-from][data-reach-match] { filter: drop-shadow(0 0 4px color-mix(in srgb, #34d399 72%, transparent)); }
+svg[data-preset="blueprint"][data-reach-active] [data-reach-origin], svg[data-preset="blueprint"][data-reach-active] [data-edge-from][data-reach-match] { filter: none; }
+svg[data-relationship-direct-active] [data-node-id], svg[data-relationship-direct-active] [data-edge-from] { opacity: 0.16; }
+svg[data-relationship-direct-active] [data-relationship-preview], svg[data-relationship-direct-active] [data-relationship-preview-node] { opacity: 1; }
+svg[data-relationship-preview-active] [data-focus-match] { opacity: 0.18; }
+svg[data-relationship-preview-active] [data-relationship-preview], svg[data-relationship-preview-active] [data-relationship-preview-node] { opacity: 1; }
+svg[data-relationship-preview-active] [data-relationship-preview] { filter: drop-shadow(0 0 5px #34d399); }
+svg[data-relationship-preview-active] [data-relationship-preview] path, svg[data-relationship-preview-active] path[data-relationship-preview], svg[data-relationship-preview-active] [data-relationship-preview] line, svg[data-relationship-preview-active] line[data-relationship-preview], svg[data-relationship-preview-active] [data-relationship-preview] polyline, svg[data-relationship-preview-active] polyline[data-relationship-preview] { stroke-width: 2.75; }
+svg[data-relationship-preview-active] [data-relationship-preview-source] { filter: drop-shadow(0 0 7px #22d3ee); }
+svg[data-relationship-preview-active] [data-relationship-preview-target] { filter: drop-shadow(0 0 7px #a78bfa); }
+svg[data-intent-trace-active] [data-node-id], svg[data-intent-trace-active] [data-edge-from] { opacity: 0.2; }
+svg[data-intent-trace-active] [data-intent-trace-match] { opacity: 1; }
+svg[data-intent-trace-active] [data-intent-trace-selected] { filter: drop-shadow(0 0 10px #22d3ee); }
+svg[data-preset="blueprint"] [data-intent-trace-selected] { filter: none;
+      stroke-linecap: square; }
+svg[data-preset="editorial"] [data-intent-trace-selected] { filter: none; }
+svg[data-route-picking="target"] [data-node-id] { opacity: 0.24; }
+svg[data-route-picking="target"] [data-route-candidate], svg[data-route-picking="target"] [data-route-start] { opacity: 1; }
+svg[data-route-picking] [data-node-id] { cursor: crosshair; }
+svg[data-route-picking] [data-route-start] { filter: drop-shadow(0 0 10px #22d3ee); }
+svg[data-route-active] [data-node-id], svg[data-route-active] [data-edge-from] { opacity: 0.11; }
+svg[data-route-active] [data-route-match] { opacity: 1; }
+svg[data-route-active] [data-route-start] { filter: drop-shadow(0 0 11px #22d3ee); }
+svg[data-route-active] [data-route-end] { filter: drop-shadow(0 0 11px #fb7185); }
+svg[data-route-active] [data-route-step]:not([data-route-start]):not([data-route-end]) { filter: drop-shadow(0 0 7px #34d399); }
+svg[data-route-journey] [data-route-match][data-route-journey-state="past"] { opacity: 0.62; }
+svg[data-route-journey] [data-route-match][data-route-journey-state="future"] { opacity: 0.34; }
+svg[data-route-journey] [data-route-match][data-route-journey-state="current"] { opacity: 1; }
+svg[data-route-journey] [data-node-id][data-route-journey-current] { filter: drop-shadow(0 0 10px #34d399); }
+svg[data-route-journey] [data-edge-from][data-route-journey-current] { opacity: 1;
+      filter: drop-shadow(0 0 6px #34d399); }
+svg[data-preset="blueprint"] [data-route-start], svg[data-preset="blueprint"] [data-route-end], svg[data-preset="blueprint"] [data-route-step] { filter: none;
+      stroke-linecap: square; }
+svg[data-preset="editorial"] [data-route-start], svg[data-preset="editorial"] [data-route-end], svg[data-preset="editorial"] [data-route-step] { filter: none; }
+svg[data-preset="editorial"] .c-grid { stroke-dasharray: 1 4;
+      opacity: 0.48; }
+svg[data-preset="editorial"][data-focus-active] [data-focus-selected] { filter: drop-shadow(0 2px 2px color-mix(in srgb, #ffffff 18%, transparent)); }
+svg[data-preset="blueprint"] .c-grid { stroke-dasharray: 1 3;
+      opacity: 0.78; }
+svg[data-preset="blueprint"][data-focus-active] [data-focus-selected] { filter: drop-shadow(0 0 3px #22d3ee); }
+svg[data-preset="blueprint"][data-focus-active][data-reach-active] [data-focus-selected][data-reach-origin] { filter: none; }
+svg[data-preset="blueprint"][data-relationship-preview-active] [data-relationship-preview], svg[data-preset="blueprint"][data-relationship-preview-active] [data-relationship-preview-source], svg[data-preset="blueprint"][data-relationship-preview-active] [data-relationship-preview-target] { filter: drop-shadow(0 0 3px #22d3ee); }
+svg[data-story-beat] [data-story-step] { opacity: 0.22;
+      filter: saturate(0.42);
+      transition: opacity 180ms ease, filter 180ms ease; }
+svg[data-story-beat] [data-story-step][data-story-beat-state="past"] { opacity: 0.72;
+      filter: saturate(0.82); }
+svg[data-story-beat] [data-story-step][data-story-beat-state="next"] { opacity: 0.5;
+      filter: saturate(0.66); }
+svg[data-story-beat] [data-story-step][data-story-beat-state="active"] { opacity: 1;
+      filter: drop-shadow(0 0 7px #22d3ee);
+      animation: archify-story-beat-node 360ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+svg[data-story-beat] [data-edge-from][data-story-beat-step] { opacity: 0.16;
+      transition: opacity 160ms ease; }
+svg[data-story-beat] [data-edge-from][data-story-beat-step][data-story-beat-state="past"] { opacity: 0.58; }
+svg[data-story-beat] [data-edge-from][data-story-beat-step][data-story-beat-state="next"] { opacity: 0.34; }
+svg[data-story-beat] [data-edge-from][data-story-beat-step][data-story-beat-state="active"] { opacity: 1; }
+svg[data-preset="blueprint"][data-story-beat] [data-story-step][data-story-beat-state="active"] { filter: none;
+      animation: none; }
+svg[data-preset="editorial"][data-story-beat] [data-story-step][data-story-beat-state="active"] { filter: drop-shadow(0 2px 2px color-mix(in srgb, #ffffff 16%, transparent)); }
+svg[data-chapter-preview] [data-node-id], svg[data-chapter-preview] [data-edge-from] { opacity: 0.1 !important;
+      filter: none !important;
+      transition: none !important; }
+svg[data-chapter-preview] [data-node-id][data-chapter-preview-role="stay"] { opacity: 0.76 !important;
+      filter: saturate(0.7) !important; }
+svg[data-chapter-preview] [data-node-id][data-chapter-preview-role="enter"] { opacity: 1 !important;
+      filter: saturate(1.2) !important; }
+svg[data-chapter-preview] [data-node-id][data-chapter-preview-role="leave"] { opacity: 0.28 !important;
+      filter: grayscale(0.72) !important; }
+svg[data-preset="blueprint"][data-chapter-preview] [data-node-id] { filter: none !important; }
+svg[data-preset="signal-flow"][data-animation="trace"] [data-animate="edge"] { stroke-linecap: round;
+      filter: drop-shadow(0 0 3px #34d399);
+      animation-duration: 1.75s; }
+svg[data-preset="signal-flow"][data-animation="trace"] [data-animate="node"] { animation-duration: 3.1s; }
+svg[data-preset="blueprint"][data-animation="trace"] [data-animate="edge"] { stroke-linecap: square;
+      filter: none;
+      animation-duration: 2.15s; }
+svg[data-preset="blueprint"][data-animation="trace"] [data-animate="node"] { animation-name: archify-blueprint-node-pulse;
+      animation-duration: 3.8s; }
+svg[data-preset="editorial"][data-animation="trace"] [data-animate="edge"] { filter: none;
+      animation-duration: 2.2s; }
+svg[data-preset="editorial"][data-animation="trace"] [data-animate="node"] { animation-name: archify-editorial-node-pulse;
+      animation-duration: 3.5s; }
+svg[data-animation="trace"] [data-animate] { animation: none !important;
+        stroke-dashoffset: 0; }
+svg[data-chapter-preview] [data-node-id], svg[data-chapter-preview] [data-edge-from] { transition: none !important; }
+svg [data-node-id], svg [data-edge-from], svg [data-detail], svg [data-detail-anchor], svg [data-legend-hit], svg { transition: none !important; }
+]]></style><rect x="0" y="0" width="100%" height="100%" fill="#020617"/>
+        <title id="archify-diagram-title">The three cross-chain stages: send, arrival, placement</title>
+        <desc id="archify-diagram-description">A lifecycle diagram generated by Archify.</desc>
+        <!-- Definitions -->
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-default" />
+          </marker>
+          <marker id="arrowhead-emphasis" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-emphasis" />
+          </marker>
+          <marker id="arrowhead-security" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-security" />
+          </marker>
+          <marker id="arrowhead-dashed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-dashed" />
+          </marker>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" class="c-grid" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+
+        <!-- Background Grid -->
+        <rect width="100%" height="100%" fill="url(#grid)" />
+
+        <!-- Lifecycle bands -->
+        <path d="M 72 112 L 908 112" class="a-default" stroke-width="0.8" stroke-dasharray="3,8"/>
+        <text x="72" y="100" class="t-dim" font-size="10" font-weight="600">01 / The three cross-chain stages</text>
+        <path d="M 72 264 L 908 264" class="a-default" stroke-width="0.8" stroke-dasharray="3,8"/>
+        <text x="72" y="252" class="t-dim" font-size="10" font-weight="600">02 / Waiting and retries</text>
+        <path d="M 72 436 L 908 436" class="a-default" stroke-width="0.8" stroke-dasharray="3,8"/>
+        <text x="72" y="424" class="t-dim" font-size="10" font-weight="600">03 / Degraded and stranded exits</text>
+
+        <!-- Primary lifecycle rail -->
+        <path d="M 154 157 L 594 157" class="a-emphasis" stroke-width="2.2" marker-end="url(#arrowhead-emphasis)"/>
+
+        <!-- Transition paths -->
+        <path data-edge-from="send" data-edge-to="receive" data-edge-label="Full amount sent" data-edge-key="0" data-edge-id="send-receive-full" data-composition-points="153,157;189,157" d="M 153 157 L 189 157" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="send" data-edge-to="receive" data-edge-label="Non-integer multiple: truncated, remainder refunded" data-edge-key="1" data-edge-id="send-receive-cut" data-composition-points="94,126;94,98;248,98;248,126" d="M 94 126 L 94 108 Q 94 98 104 98 L 238 98 Q 248 98 248 108 L 248 126" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="send" data-edge-to="revert" data-edge-label="Fee inexact / below minimum unit" data-edge-key="2" data-edge-id="send-revert" data-composition-points="35,157;35,157;35,560;300,560;300,479;343,479;343,479" d="M 35 157 L 35 157 L 35 550 Q 35 560 45 560 L 290 560 Q 300 560 300 550 L 300 489 Q 300 479 310 479 L 343 479 L 343 479" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="receive" data-edge-to="settle" data-edge-label="Arrived" data-edge-key="3" data-edge-id="receive-settle" data-composition-points="307,157;343,157" d="M 307 157 L 343 157" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="settle" data-edge-to="return" data-edge-label="Placement fails" data-edge-key="4" data-edge-id="settle-return" data-composition-points="402,188;402,278" d="M 402 188 L 402 278" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="return" data-edge-to="settle" data-edge-key="5" data-edge-id="return-settle" data-composition-points="339,307;325,307;325,157;343,157;343,157" d="M 339 307 L 332 307 Q 325 307 325 300 L 325 166 Q 325 157 334 157 L 343 157 L 343 157" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="receive" data-edge-to="stuck" data-edge-label="Budget too low (extremely rare)" data-edge-key="6" data-edge-id="receive-stuck" data-composition-points="307,157;315,157;315,370;470,370;470,479;497,479" d="M 307 157 L 311 157 Q 315 157 315 161 L 315 360 Q 315 370 325 370 L 460 370 Q 470 370 470 380 L 470 469 Q 470 479 480 479 L 497 479" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="settle" data-edge-to="bare" data-edge-label="YieldVault does not exist" data-edge-key="7" data-edge-id="settle-bare" data-composition-points="402,126;402,95;790,95;790,385;710,385;710,450;710,450" d="M 402 126 L 402 105 Q 402 95 412 95 L 780 95 Q 790 95 790 105 L 790 375 Q 790 385 780 385 L 720 385 Q 710 385 710 395 L 710 450 L 710 450" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="settle" data-edge-to="success" data-edge-key="8" data-edge-id="settle-success" data-composition-points="461,157;497,157" d="M 461 157 L 497 157" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
+
+        <!-- States -->
+        <g id="node-send" data-node-id="send" data-node-label="Send (source chain)" tabindex="0" role="button" aria-label="Focus Send (source chain), Pay messaging fee exactly, The three cross-chain stages" aria-pressed="false" data-node-kind="start" data-node-sublabel="Pay messaging fee exactly" data-node-context="The three cross-chain stages">
+          <title>Send (source chain) · Pay messaging fee exactly · The three cross-chain stages</title>
+          <rect x="35" y="126" width="118" height="62" rx="7" class="c-mask"/>
+          <rect x="35" y="126" width="118" height="62" rx="7" class="c-frontend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="start" class="semantic-sigil s-frontend" transform="translate(136 132) scale(0.6875)">
+            <circle cx="8" cy="8" r="5"/>
+            <path d="m7 5.4 3.6 2.6L7 10.6Z" class="sigil-fill"/>
+          </g>
+        <text data-detail="fine" x="45" y="140" class="t-frontend" font-size="7" font-weight="700">01</text>
+          <text data-node-label="" data-detail-anchor="" x="94" y="147" class="t-primary" font-size="9.6" font-weight="600" text-anchor="middle">Send (source chain)</text>
+          <text data-detail="context" x="94" y="163" class="t-muted" font-size="7" text-anchor="middle">Pay messaging fee exactly</text>
+        </g>
+
+        <g id="node-receive" data-node-id="receive" data-node-label="Arrival (minted)" tabindex="0" role="button" aria-label="Focus Arrival (minted), The three cross-chain stages" aria-pressed="false" data-node-kind="active" data-node-context="The three cross-chain stages">
+          <title>Arrival (minted) · The three cross-chain stages</title>
+          <rect x="189" y="126" width="118" height="62" rx="7" class="c-mask"/>
+          <rect x="189" y="126" width="118" height="62" rx="7" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="active" class="semantic-sigil s-backend" transform="translate(290 132) scale(0.6875)">
+            <path d="M2 8h3l1.5-3.5L9 12l1.6-4H14"/>
+          </g>
+        <text data-detail="fine" x="199" y="140" class="t-backend" font-size="7" font-weight="700">02</text>
+          <text data-node-label="" x="248" y="147" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Arrival (minted)</text>
+        </g>
+
+        <g id="node-settle" data-node-id="settle" data-node-label="Placement (staked)" tabindex="0" role="button" aria-label="Focus Placement (staked), The three cross-chain stages" aria-pressed="false" data-node-kind="active" data-node-context="The three cross-chain stages">
+          <title>Placement (staked) · The three cross-chain stages</title>
+          <rect x="343" y="126" width="118" height="62" rx="7" class="c-mask"/>
+          <rect x="343" y="126" width="118" height="62" rx="7" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="active" class="semantic-sigil s-backend" transform="translate(444 132) scale(0.6875)">
+            <path d="M2 8h3l1.5-3.5L9 12l1.6-4H14"/>
+          </g>
+        <text data-detail="fine" x="353" y="140" class="t-backend" font-size="7" font-weight="700">03</text>
+          <text data-node-label="" x="402" y="147" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Placement (staked)</text>
+        </g>
+
+        <g id="node-success" data-node-id="success" data-node-label="Staking succeeds" tabindex="0" role="button" aria-label="Focus Staking succeeds, Verify YieldVault shares, The three cross-chain stages" aria-pressed="false" data-node-kind="success" data-node-sublabel="Verify YieldVault shares" data-node-context="The three cross-chain stages">
+          <title>Staking succeeds · Verify YieldVault shares · The three cross-chain stages</title>
+          <rect x="497" y="126" width="118" height="62" rx="7" class="c-mask"/>
+          <rect x="497" y="126" width="118" height="62" rx="7" class="c-database" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="success" class="semantic-sigil s-database" transform="translate(598 132) scale(0.6875)">
+            <circle cx="8" cy="8" r="5.3"/>
+            <path d="m5.2 8 1.8 1.8 3.8-4"/>
+          </g>
+        <text data-detail="fine" x="507" y="140" class="t-database" font-size="7" font-weight="700">04</text>
+          <text data-node-label="" data-detail-anchor="" x="556" y="147" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Staking succeeds</text>
+          <text data-detail="context" x="556" y="163" class="t-muted" font-size="7" text-anchor="middle">Verify YieldVault shares</text>
+        </g>
+
+        <g id="node-return" data-node-id="return" data-node-label="Placement reverts" tabindex="0" role="button" aria-label="Focus Placement reverts, Reverts; can be retried, Waiting and retries" aria-pressed="false" data-node-kind="failure" data-node-sublabel="Reverts; can be retried" data-node-context="Waiting and retries">
+          <title>Placement reverts · Reverts; can be retried · Waiting and retries</title>
+          <rect x="339" y="278" width="126" height="58" rx="7" class="c-mask"/>
+          <rect x="339" y="278" width="126" height="58" rx="7" class="c-security" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="failure" class="semantic-sigil s-security" transform="translate(448 284) scale(0.6875)">
+            <circle cx="8" cy="8" r="5.3"/>
+            <path d="m5.7 5.7 4.6 4.6m0-4.6-4.6 4.6"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="402" y="299" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Placement reverts</text>
+          <text data-detail="context" x="402" y="315" class="t-muted" font-size="7" text-anchor="middle">Reverts; can be retried</text>
+        </g>
+
+        <g id="node-revert" data-node-id="revert" data-node-label="Transaction reverts" tabindex="0" role="button" aria-label="Focus Transaction reverts, Funds do not move, Degraded and stranded exits" aria-pressed="false" data-node-kind="failure" data-node-sublabel="Funds do not move" data-node-context="Degraded and stranded exits">
+          <title>Transaction reverts · Funds do not move · Degraded and stranded exits</title>
+          <rect x="343" y="450" width="118" height="58" rx="7" class="c-mask"/>
+          <rect x="343" y="450" width="118" height="58" rx="7" class="c-security" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="failure" class="semantic-sigil s-security" transform="translate(444 456) scale(0.6875)">
+            <circle cx="8" cy="8" r="5.3"/>
+            <path d="m5.7 5.7 4.6 4.6m0-4.6-4.6 4.6"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="402" y="471" class="t-primary" font-size="9.6" font-weight="600" text-anchor="middle">Transaction reverts</text>
+          <text data-detail="context" x="402" y="487" class="t-muted" font-size="7" text-anchor="middle">Funds do not move</text>
+        </g>
+
+        <g id="node-stuck" data-node-id="stuck" data-node-label="Burned, not minted" tabindex="0" role="button" aria-label="Focus Burned, not minted, Stranded; manual recovery, Degraded and stranded exits" aria-pressed="false" data-node-kind="failure" data-node-sublabel="Stranded; manual recovery" data-node-context="Degraded and stranded exits">
+          <title>Burned, not minted · Stranded; manual recovery · Degraded and stranded exits</title>
+          <rect x="497" y="450" width="118" height="58" rx="7" class="c-mask"/>
+          <rect x="497" y="450" width="118" height="58" rx="7" class="c-security" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="failure" class="semantic-sigil s-security" transform="translate(598 456) scale(0.6875)">
+            <circle cx="8" cy="8" r="5.3"/>
+            <path d="m5.7 5.7 4.6 4.6m0-4.6-4.6 4.6"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="556" y="471" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Burned, not minted</text>
+          <text data-detail="context" x="556" y="487" class="t-muted" font-size="7" text-anchor="middle">Stranded; manual recovery</text>
+        </g>
+
+        <g id="node-bare" data-node-id="bare" data-node-label="Bare tokens" tabindex="0" role="button" aria-label="Focus Bare tokens, No shares or voting power, Degraded and stranded exits" aria-pressed="false" data-node-kind="failure" data-node-sublabel="No shares or voting power" data-node-context="Degraded and stranded exits">
+          <title>Bare tokens · No shares or voting power · Degraded and stranded exits</title>
+          <rect x="651" y="450" width="118" height="58" rx="7" class="c-mask"/>
+          <rect x="651" y="450" width="118" height="58" rx="7" class="c-security" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="failure" class="semantic-sigil s-security" transform="translate(752 456) scale(0.6875)">
+            <circle cx="8" cy="8" r="5.3"/>
+            <path d="m5.7 5.7 4.6 4.6m0-4.6-4.6 4.6"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="710" y="471" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Bare tokens</text>
+          <text data-detail="context" x="710" y="487" class="t-muted" font-size="7" text-anchor="middle">No shares or voting power</text>
+        </g>
+
+        <!-- Transition labels -->
+        <g data-detail="context" data-edge-from="send" data-edge-to="receive" data-edge-label="Full amount sent" data-edge-key="0" data-edge-id="send-receive-full">
+          <rect x="125.8" y="105" width="90.4" height="16" rx="4" class="c-mask"/>
+          <text x="171" y="116" class="t-muted" font-size="8" text-anchor="middle">Full amount sent</text>
+        </g>
+        <g data-detail="context" data-edge-from="send" data-edge-to="receive" data-edge-label="Non-integer multiple: truncated, remainder refunded" data-edge-key="1" data-edge-id="send-receive-cut">
+          <rect x="40.05000000000001" y="61" width="261.9" height="16" rx="4" class="c-mask"/>
+          <text x="171" y="72" class="t-muted" font-size="8" text-anchor="middle">Non-integer multiple: truncated, remainder refunded</text>
+        </g>
+        <g data-detail="context" data-edge-from="send" data-edge-to="revert" data-edge-label="Fee inexact / below minimum unit" data-edge-key="2" data-edge-id="send-revert">
+          <rect x="100.89999999999999" y="541" width="198.20000000000002" height="27" rx="4" class="c-mask"/>
+          <text x="200" y="552" class="t-muted" font-size="8" text-anchor="middle">Fee inexact / below minimum unit</text>
+        <text data-detail="fine" x="200" y="563" class="t-dim" font-size="7" text-anchor="middle">Transaction reverts; funds do not move</text>
+        </g>
+        <g data-detail="context" data-edge-from="receive" data-edge-to="settle" data-edge-label="Arrived" data-edge-key="3" data-edge-id="receive-settle">
+          <rect x="332.85" y="191" width="46.300000000000004" height="16" rx="4" class="c-mask"/>
+          <text x="356" y="202" class="t-muted" font-size="8" text-anchor="middle">Arrived</text>
+        </g>
+        <g data-detail="context" data-edge-from="settle" data-edge-to="return" data-edge-label="Placement fails" data-edge-key="4" data-edge-id="settle-return">
+          <rect x="339.65" y="222" width="124.7" height="27" rx="4" class="c-mask"/>
+          <text x="402" y="233" class="t-muted" font-size="8" text-anchor="middle">Placement fails</text>
+        <text data-detail="fine" x="402" y="244" class="t-dim" font-size="7" text-anchor="middle">Reverts; can be retried</text>
+        </g>
+
+        <g data-detail="context" data-edge-from="receive" data-edge-to="stuck" data-edge-label="Budget too low (extremely rare)" data-edge-key="6" data-edge-id="receive-stuck">
+          <rect x="278.05" y="351" width="163.9" height="27" rx="4" class="c-mask"/>
+          <text x="360" y="362" class="t-muted" font-size="8" text-anchor="middle">Budget too low (extremely rare)</text>
+        <text data-detail="fine" x="360" y="373" class="t-dim" font-size="7" text-anchor="middle">Stranded; manual recovery</text>
+        </g>
+        <g data-detail="context" data-edge-from="settle" data-edge-to="bare" data-edge-label="YieldVault does not exist" data-edge-key="7" data-edge-id="settle-bare">
+          <rect x="532.75" y="76" width="134.5" height="27" rx="4" class="c-mask"/>
+          <text x="600" y="87" class="t-muted" font-size="8" text-anchor="middle">YieldVault does not exist</text>
+        <text data-detail="fine" x="600" y="98" class="t-dim" font-size="7" text-anchor="middle">Retry once it is in place</text>
+        </g>
+
+
+        <!-- Legend -->
+        <g data-legend="" data-legend-bridge="">
+          <text x="40" y="604" class="t-primary" font-size="12" font-weight="650">Legend</text>
+          <g data-legend-semantic-kind="start" data-legend-kind="start" data-legend-label="start" data-legend-x="40" data-legend-baseline="624" data-legend-width="68">
+            <rect x="40" y="616" width="14" height="9" rx="2" class="c-frontend" stroke-width="1"/>
+            <text x="62" y="624" class="t-muted" font-size="10" font-weight="500">start</text>
+          </g>
+          <g data-legend-semantic-kind="active" data-legend-kind="active" data-legend-label="active state" data-legend-x="130" data-legend-baseline="624" data-legend-width="103">
+            <rect x="130" y="616" width="14" height="9" rx="2" class="c-backend" stroke-width="1"/>
+            <text x="152" y="624" class="t-muted" font-size="10" font-weight="500">active state</text>
+          </g>
+          <g data-legend-semantic-kind="success" data-legend-kind="success" data-legend-label="terminal success" data-legend-x="255" data-legend-baseline="624" data-legend-width="123">
+            <rect x="255" y="616" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
+            <text x="277" y="624" class="t-muted" font-size="10" font-weight="500">terminal success</text>
+          </g>
+          <g data-legend-semantic-kind="failure" data-legend-kind="failure" data-legend-label="failure / exit" data-legend-x="400" data-legend-baseline="624" data-legend-width="113">
+            <rect x="400" y="616" width="14" height="9" rx="2" class="c-security" stroke-width="1"/>
+            <text x="422" y="624" class="t-muted" font-size="10" font-weight="500">failure / exit</text>
+          </g>
+        </g>
+      </svg>

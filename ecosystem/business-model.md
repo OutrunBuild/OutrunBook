@@ -49,7 +49,7 @@ This is the key to understanding Outrun's economic model. A single Memecoin trad
 
 Stack the two dimensions and you have the complete journey of one fee:
 
-![Where a trading fee goes](../assets/diagrams/fee-split.png)
+![Where a trading fee goes](../assets/diagrams/fee-split.svg)
 
 One more detail:
 - During the Locked phase, part of the protocol fee on the auxiliary pools (POL/uAsset, PT/uAsset, PT/POL) is also shared with **standard Genesis participants** (pro rata by share); the rest goes to the DAO treasury.

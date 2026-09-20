@@ -1,0 +1,398 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 640" role="img" lang="en" aria-labelledby="archify-diagram-title archify-diagram-description" data-preset="classic" data-quality-profile="showcase"><style type="text/css"><![CDATA[
+svg { width: 100%;
+      min-width: min(900px, 100%);
+      display: block;
+      transform-origin: 0 0;
+      transition: transform 0.18s ease; }
+svg[data-chapter-handoff] [data-node-id][data-chapter-role="stay"] { opacity: 1; }
+svg[data-chapter-handoff] [data-node-id][data-chapter-role="enter"] { opacity: 0.78; }
+svg[data-chapter-handoff] [data-node-id][data-chapter-role="leave"] { opacity: 0.26; }
+svg [data-node-id][data-chapter-role] { opacity: 1 !important; }
+svg[data-chapter-preview] [data-node-id], svg[data-chapter-preview] [data-edge-from] { opacity: 1 !important; filter: none !important; }
+.c-grid { stroke: #1e293b; fill: none; }
+.c-mask { fill: #ffffff; stroke: none; }
+.c-backend { fill: rgba(6, 78, 59, 0.4);    stroke: #34d399; }
+.c-database { fill: rgba(76, 29, 149, 0.4);   stroke: #a78bfa; }
+.c-external { fill: rgba(30, 41, 59, 0.5);   stroke: #94a3b8; }
+.t-primary { fill: #ffffff; }
+.t-muted { fill: #94a3b8; }
+.t-dim { fill: #475569; }
+.t-backend { fill: #34d399; }
+svg .semantic-sigil { fill: none;
+      stroke: currentColor;
+      stroke-width: 1.35;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.76;
+      pointer-events: none; }
+svg .semantic-sigil > * { vector-effect: non-scaling-stroke; }
+svg .semantic-sigil .sigil-fill { fill: currentColor; stroke: none; }
+svg .s-backend { color: #34d399; }
+svg .s-database { color: #a78bfa; }
+svg .s-external { color: #94a3b8; }
+svg [data-detail] { transition: opacity 160ms ease; }
+svg [data-detail-anchor] { transform-box: fill-box;
+      transform-origin: center;
+      transition: transform 160ms ease; }
+svg[data-focus-active] [data-focus-match][data-detail], svg[data-focus-active] [data-focus-match] [data-detail], svg[data-reach-active] [data-reach-match][data-detail], svg[data-reach-active] [data-reach-match] [data-detail], svg[data-lens-active] [data-lens-match][data-detail], svg[data-lens-active] [data-lens-match] [data-detail], svg[data-legend-preview-active] [data-legend-preview-match][data-detail], svg[data-legend-preview-active] [data-legend-preview-match] [data-detail], svg[data-intent-trace-active] [data-intent-trace-match][data-detail], svg[data-intent-trace-active] [data-intent-trace-match] [data-detail], svg[data-route-active] [data-route-match][data-detail], svg[data-route-active] [data-route-match] [data-detail], svg[data-story-active] [data-story-step][data-detail], svg[data-story-active] [data-story-step] [data-detail], svg[data-relationship-preview-active] [data-relationship-preview][data-detail], svg[data-relationship-preview-active] [data-relationship-preview] [data-detail] { opacity: 1;
+      pointer-events: auto; }
+svg[data-focus-active] [data-focus-match] [data-detail-anchor], svg[data-reach-active] [data-reach-match] [data-detail-anchor], svg[data-lens-active] [data-lens-match] [data-detail-anchor], svg[data-legend-preview-active] [data-legend-preview-match] [data-detail-anchor], svg[data-intent-trace-active] [data-intent-trace-match] [data-detail-anchor], svg[data-route-active] [data-route-match] [data-detail-anchor], svg[data-story-active] [data-story-step] [data-detail-anchor] { transform: none; }
+.a-default { stroke: #64748b; fill: none; }
+.a-emphasis { stroke: #34d399; fill: none; }
+.m-default { fill: #64748b; }
+.m-emphasis { fill: #34d399; }
+.m-security { fill: #fb7185; }
+.m-dashed { fill: #a78bfa; }
+svg [data-node-id] { cursor: pointer;
+      transition: opacity 0.18s ease, filter 0.18s ease; }
+svg [data-edge-from] { transition: opacity 0.18s ease, filter 0.18s ease; }
+svg [data-legend-hit] { fill: transparent;
+      stroke: transparent;
+      stroke-width: 1.4;
+      pointer-events: all;
+      vector-effect: non-scaling-stroke;
+      transition: stroke 150ms ease, stroke-width 150ms ease, filter 150ms ease; }
+svg [data-legend-count-badge] { pointer-events: none; }
+svg [data-legend-count-badge] rect { fill: #ffffff;
+      stroke: #1e293b;
+      stroke-width: 1;
+      vector-effect: non-scaling-stroke; }
+svg [data-legend-count-badge] text { fill: #94a3b8;
+      font-size: 8px;
+      font-weight: 700;
+      text-anchor: middle; }
+svg [data-legend-kind][data-legend-selected] [data-legend-hit] { stroke: #a78bfa;
+      stroke-width: 2.2;
+      stroke-dasharray: 3 2; }
+svg [data-legend-kind][data-legend-selected] [data-legend-count-badge] rect { stroke: #a78bfa;
+      stroke-width: 1.8; }
+svg [data-legend-kind][data-legend-zero] { opacity: 0.44; }
+svg[data-preset="signal-flow"] [data-legend-kind][data-legend-selected] [data-legend-hit] { filter: drop-shadow(0 0 4px #a78bfa); }
+svg[data-preset="blueprint"] [data-legend-hit], svg[data-preset="blueprint"] [data-legend-count-badge] rect { rx: 0; filter: none; }
+svg[data-legend-preview-active] [data-node-id], svg[data-legend-preview-active] [data-edge-from] { opacity: 0.11; }
+svg[data-legend-preview-active] [data-legend-preview-match] { opacity: 1; }
+svg[data-legend-preview-active] [data-legend-preview-peer] { opacity: 0.62; }
+svg[data-legend-preview-active] [data-legend-preview-selected] { filter: drop-shadow(0 0 8px #a78bfa); }
+svg[data-lens-active] [data-node-id], svg[data-lens-active] [data-edge-from] { opacity: 0.11; }
+svg[data-lens-active] [data-lens-match] { opacity: 1; }
+svg[data-lens-active] [data-lens-peer] { opacity: 0.62; }
+svg[data-lens-active] [data-lens-selected] { filter: drop-shadow(0 0 10px #a78bfa); }
+svg[data-focus-active] [data-node-id], svg[data-focus-active] [data-edge-from] { opacity: 0.13; }
+svg[data-focus-active] [data-focus-match] { opacity: 1; }
+svg[data-focus-active] [data-focus-selected] { filter: drop-shadow(0 0 10px #22d3ee); }
+svg[data-reach-active] [data-node-id], svg[data-reach-active] [data-edge-from] { opacity: 0.09; }
+svg[data-reach-active] [data-reach-match] { opacity: 1; }
+svg[data-reach-active="upstream"] [data-reach-origin] { filter: drop-shadow(0 0 11px #a78bfa); }
+svg[data-reach-active="downstream"] [data-reach-origin] { filter: drop-shadow(0 0 11px #34d399); }
+svg[data-reach-active="upstream"] [data-edge-from][data-reach-match] { filter: drop-shadow(0 0 4px color-mix(in srgb, #a78bfa 72%, transparent)); }
+svg[data-reach-active="downstream"] [data-edge-from][data-reach-match] { filter: drop-shadow(0 0 4px color-mix(in srgb, #34d399 72%, transparent)); }
+svg[data-preset="blueprint"][data-reach-active] [data-reach-origin], svg[data-preset="blueprint"][data-reach-active] [data-edge-from][data-reach-match] { filter: none; }
+svg[data-relationship-direct-active] [data-node-id], svg[data-relationship-direct-active] [data-edge-from] { opacity: 0.16; }
+svg[data-relationship-direct-active] [data-relationship-preview], svg[data-relationship-direct-active] [data-relationship-preview-node] { opacity: 1; }
+svg[data-relationship-preview-active] [data-focus-match] { opacity: 0.18; }
+svg[data-relationship-preview-active] [data-relationship-preview], svg[data-relationship-preview-active] [data-relationship-preview-node] { opacity: 1; }
+svg[data-relationship-preview-active] [data-relationship-preview] { filter: drop-shadow(0 0 5px #34d399); }
+svg[data-relationship-preview-active] [data-relationship-preview] path, svg[data-relationship-preview-active] path[data-relationship-preview], svg[data-relationship-preview-active] [data-relationship-preview] line, svg[data-relationship-preview-active] line[data-relationship-preview], svg[data-relationship-preview-active] [data-relationship-preview] polyline, svg[data-relationship-preview-active] polyline[data-relationship-preview] { stroke-width: 2.75; }
+svg[data-relationship-preview-active] [data-relationship-preview-source] { filter: drop-shadow(0 0 7px #22d3ee); }
+svg[data-relationship-preview-active] [data-relationship-preview-target] { filter: drop-shadow(0 0 7px #a78bfa); }
+svg[data-intent-trace-active] [data-node-id], svg[data-intent-trace-active] [data-edge-from] { opacity: 0.2; }
+svg[data-intent-trace-active] [data-intent-trace-match] { opacity: 1; }
+svg[data-intent-trace-active] [data-intent-trace-selected] { filter: drop-shadow(0 0 10px #22d3ee); }
+svg[data-preset="blueprint"] [data-intent-trace-selected] { filter: none;
+      stroke-linecap: square; }
+svg[data-preset="editorial"] [data-intent-trace-selected] { filter: none; }
+svg[data-route-picking="target"] [data-node-id] { opacity: 0.24; }
+svg[data-route-picking="target"] [data-route-candidate], svg[data-route-picking="target"] [data-route-start] { opacity: 1; }
+svg[data-route-picking] [data-node-id] { cursor: crosshair; }
+svg[data-route-picking] [data-route-start] { filter: drop-shadow(0 0 10px #22d3ee); }
+svg[data-route-active] [data-node-id], svg[data-route-active] [data-edge-from] { opacity: 0.11; }
+svg[data-route-active] [data-route-match] { opacity: 1; }
+svg[data-route-active] [data-route-start] { filter: drop-shadow(0 0 11px #22d3ee); }
+svg[data-route-active] [data-route-end] { filter: drop-shadow(0 0 11px #fb7185); }
+svg[data-route-active] [data-route-step]:not([data-route-start]):not([data-route-end]) { filter: drop-shadow(0 0 7px #34d399); }
+svg[data-route-journey] [data-route-match][data-route-journey-state="past"] { opacity: 0.62; }
+svg[data-route-journey] [data-route-match][data-route-journey-state="future"] { opacity: 0.34; }
+svg[data-route-journey] [data-route-match][data-route-journey-state="current"] { opacity: 1; }
+svg[data-route-journey] [data-node-id][data-route-journey-current] { filter: drop-shadow(0 0 10px #34d399); }
+svg[data-route-journey] [data-edge-from][data-route-journey-current] { opacity: 1;
+      filter: drop-shadow(0 0 6px #34d399); }
+svg[data-preset="blueprint"] [data-route-start], svg[data-preset="blueprint"] [data-route-end], svg[data-preset="blueprint"] [data-route-step] { filter: none;
+      stroke-linecap: square; }
+svg[data-preset="editorial"] [data-route-start], svg[data-preset="editorial"] [data-route-end], svg[data-preset="editorial"] [data-route-step] { filter: none; }
+svg[data-preset="editorial"] .c-grid { stroke-dasharray: 1 4;
+      opacity: 0.48; }
+svg[data-preset="editorial"][data-focus-active] [data-focus-selected] { filter: drop-shadow(0 2px 2px color-mix(in srgb, #ffffff 18%, transparent)); }
+svg[data-preset="blueprint"] .c-grid { stroke-dasharray: 1 3;
+      opacity: 0.78; }
+svg[data-preset="blueprint"] .c-lane { stroke-dasharray: 7 3; }
+svg[data-preset="blueprint"][data-focus-active] [data-focus-selected] { filter: drop-shadow(0 0 3px #22d3ee); }
+svg[data-preset="blueprint"][data-focus-active][data-reach-active] [data-focus-selected][data-reach-origin] { filter: none; }
+svg[data-preset="blueprint"][data-relationship-preview-active] [data-relationship-preview], svg[data-preset="blueprint"][data-relationship-preview-active] [data-relationship-preview-source], svg[data-preset="blueprint"][data-relationship-preview-active] [data-relationship-preview-target] { filter: drop-shadow(0 0 3px #22d3ee); }
+svg[data-story-beat] [data-story-step] { opacity: 0.22;
+      filter: saturate(0.42);
+      transition: opacity 180ms ease, filter 180ms ease; }
+svg[data-story-beat] [data-story-step][data-story-beat-state="past"] { opacity: 0.72;
+      filter: saturate(0.82); }
+svg[data-story-beat] [data-story-step][data-story-beat-state="next"] { opacity: 0.5;
+      filter: saturate(0.66); }
+svg[data-story-beat] [data-story-step][data-story-beat-state="active"] { opacity: 1;
+      filter: drop-shadow(0 0 7px #22d3ee);
+      animation: archify-story-beat-node 360ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+svg[data-story-beat] [data-edge-from][data-story-beat-step] { opacity: 0.16;
+      transition: opacity 160ms ease; }
+svg[data-story-beat] [data-edge-from][data-story-beat-step][data-story-beat-state="past"] { opacity: 0.58; }
+svg[data-story-beat] [data-edge-from][data-story-beat-step][data-story-beat-state="next"] { opacity: 0.34; }
+svg[data-story-beat] [data-edge-from][data-story-beat-step][data-story-beat-state="active"] { opacity: 1; }
+svg[data-preset="blueprint"][data-story-beat] [data-story-step][data-story-beat-state="active"] { filter: none;
+      animation: none; }
+svg[data-preset="editorial"][data-story-beat] [data-story-step][data-story-beat-state="active"] { filter: drop-shadow(0 2px 2px color-mix(in srgb, #ffffff 16%, transparent)); }
+svg[data-chapter-preview] [data-node-id], svg[data-chapter-preview] [data-edge-from] { opacity: 0.1 !important;
+      filter: none !important;
+      transition: none !important; }
+svg[data-chapter-preview] [data-node-id][data-chapter-preview-role="stay"] { opacity: 0.76 !important;
+      filter: saturate(0.7) !important; }
+svg[data-chapter-preview] [data-node-id][data-chapter-preview-role="enter"] { opacity: 1 !important;
+      filter: saturate(1.2) !important; }
+svg[data-chapter-preview] [data-node-id][data-chapter-preview-role="leave"] { opacity: 0.28 !important;
+      filter: grayscale(0.72) !important; }
+svg[data-preset="blueprint"][data-chapter-preview] [data-node-id] { filter: none !important; }
+.c-lane { fill: rgba(15, 23, 42, 0.22); stroke: #334155; stroke-dasharray: 6,6; }
+svg[data-preset="signal-flow"][data-animation="trace"] [data-animate="edge"] { stroke-linecap: round;
+      filter: drop-shadow(0 0 3px #34d399);
+      animation-duration: 1.75s; }
+svg[data-preset="signal-flow"][data-animation="trace"] [data-animate="node"] { animation-duration: 3.1s; }
+svg[data-preset="blueprint"][data-animation="trace"] [data-animate="edge"] { stroke-linecap: square;
+      filter: none;
+      animation-duration: 2.15s; }
+svg[data-preset="blueprint"][data-animation="trace"] [data-animate="node"] { animation-name: archify-blueprint-node-pulse;
+      animation-duration: 3.8s; }
+svg[data-preset="editorial"][data-animation="trace"] [data-animate="edge"] { filter: none;
+      animation-duration: 2.2s; }
+svg[data-preset="editorial"][data-animation="trace"] [data-animate="node"] { animation-name: archify-editorial-node-pulse;
+      animation-duration: 3.5s; }
+svg[data-animation="trace"] [data-animate] { animation: none !important;
+        stroke-dashoffset: 0; }
+svg[data-chapter-preview] [data-node-id], svg[data-chapter-preview] [data-edge-from] { transition: none !important; }
+svg [data-node-id], svg [data-edge-from], svg [data-detail], svg [data-detail-anchor], svg [data-legend-hit], svg { transition: none !important; }
+]]></style><rect x="0" y="0" width="100%" height="100%" fill="#020617"/>
+        <title id="archify-diagram-title">Where a trading fee goes</title>
+        <desc id="archify-diagram-description">A data-flow diagram generated by Archify.</desc>
+        <!-- Definitions -->
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-default" />
+          </marker>
+          <marker id="arrowhead-emphasis" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-emphasis" />
+          </marker>
+          <marker id="arrowhead-security" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-security" />
+          </marker>
+          <marker id="arrowhead-dashed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-dashed" />
+          </marker>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" class="c-grid" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+
+        <!-- Background Grid -->
+        <rect width="100%" height="100%" fill="url(#grid)" />
+
+        <!-- Data Stages -->
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="stage" data-composition-frame-id="0" x="16" y="46" width="168" height="520" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="100" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">01 / One trading fee</text>
+
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="stage" data-composition-frame-id="1" x="231" y="46" width="168" height="520" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="315" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">02 / Dimension 1: the split</text>
+
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="stage" data-composition-frame-id="2" x="446" y="46" width="168" height="520" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="530" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">03 / Dimension 2: by denomination</text>
+
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="stage" data-composition-frame-id="3" x="661" y="46" width="168" height="520" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="745" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">04 / Where it goes</text>
+
+        <!-- Flow paths -->
+        <path data-edge-from="fee" data-edge-to="lp" data-edge-label="65% · fixed" data-edge-key="0" data-edge-id="fee-lp" data-composition-points="100,242;100,157;259,157" d="M 100 242 L 100 157 L 259 157" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="fee" data-edge-to="proto" data-edge-label="35% · fixed" data-edge-key="1" data-edge-id="fee-proto" data-composition-points="156,271;207.5,271;207.5,385;259,385" d="M 156 271 L 207.5 271 L 207.5 385 L 259 385" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="proto" data-edge-to="referrer" data-edge-label="With referrer: default 10% of total" data-edge-key="2" data-edge-id="proto-referrer" data-composition-points="315,356;315,215;400,215;440,215;440,157;474,157;474,157" d="M 315 356 L 315 215 L 400 215 L 440 215 L 440 157 L 474 157 L 474 157" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="proto" data-edge-to="bytoken" data-edge-label="Split by denomination" data-edge-key="3" data-edge-id="proto-bytoken" data-composition-points="371,385;422.5,385;422.5,271;474,271" d="M 371 385 L 422.5 385 L 422.5 271 L 474 271" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="proto" data-edge-to="auxsplit" data-edge-label="Auxiliary-pool uAsset/PT fees (Locked phase)" data-edge-key="4" data-edge-id="proto-auxsplit" data-composition-points="315,414;315,440;440,440;440,385;474,385;474,385" d="M 315 414 L 315 440 L 440 440 L 440 385 L 474 385 L 474 385" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="bytoken" data-edge-to="dao" data-edge-label="uAsset-denominated" data-edge-key="5" data-edge-id="bytoken-dao" data-composition-points="586,271;640,271;640,157;660,157;673,157" d="M 586 271 L 640 271 L 640 157 L 660 157 L 673 157" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="bytoken" data-edge-to="staking" data-edge-label="Memecoin-denominated" data-edge-key="6" data-edge-id="bytoken-staking" data-composition-points="586,271;689,271" d="M 586 271 L 689 271" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="bytoken" data-edge-to="burn" data-edge-label="POL-denominated" data-edge-key="7" data-edge-id="bytoken-burn" data-composition-points="530,300;530,340;745,340;745,356" d="M 530 300 L 530 340 L 745 340 L 745 356" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="auxsplit" data-edge-to="genesis" data-edge-label="Standard side: pro rata by Genesis share" data-edge-key="8" data-edge-id="aux-genesis" data-composition-points="586,385;632.5,385;632.5,499;679,499" d="M 586 385 L 632.5 385 L 632.5 499 L 679 499" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+
+        <!-- Nodes -->
+        <g id="node-fee" data-node-id="fee" data-node-label="One trading fee" tabindex="0" role="button" aria-label="Focus One trading fee, Fee on a Memecoin trade, 01 / One trading fee" aria-pressed="false" data-node-kind="external" data-node-sublabel="Fee on a Memecoin trade" data-node-context="01 / One trading fee">
+          <title>One trading fee · Fee on a Memecoin trade · 01 / One trading fee</title>
+          <rect x="44" y="242" width="112" height="58" rx="6" class="c-mask"/>
+          <rect x="44" y="242" width="112" height="58" rx="6" class="c-external" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(50 248) scale(0.6875)">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="100" y="263" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">One trading fee</text>
+          <text data-detail="context" x="100" y="279" class="t-muted" font-size="7" text-anchor="middle">Fee on a Memecoin trade</text>
+        </g>
+
+        <g id="node-lp" data-node-id="lp" data-node-label="LP holders" tabindex="0" role="button" aria-label="Focus LP holders, By share · 65% · fixed, 02 / Dimension 1: the split" aria-pressed="false" data-node-kind="external" data-node-sublabel="By share · 65% · fixed" data-node-context="02 / Dimension 1: the split">
+          <title>LP holders · By share · 65% · fixed · 02 / Dimension 1: the split</title>
+          <rect x="259" y="128" width="112" height="58" rx="6" class="c-mask"/>
+          <rect x="259" y="128" width="112" height="58" rx="6" class="c-external" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(265 134) scale(0.6875)">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="315" y="149" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">LP holders</text>
+          <text data-detail="context" x="315" y="165" class="t-muted" font-size="7" text-anchor="middle">By share · 65% · fixed</text>
+        </g>
+
+        <g id="node-proto" data-node-id="proto" data-node-label="Protocol share" tabindex="0" role="button" aria-label="Focus Protocol share, 35% · fixed, 02 / Dimension 1: the split" aria-pressed="false" data-node-kind="backend" data-node-sublabel="35% · fixed" data-node-context="02 / Dimension 1: the split">
+          <title>Protocol share · 35% · fixed · 02 / Dimension 1: the split</title>
+          <rect x="259" y="356" width="112" height="58" rx="6" class="c-mask"/>
+          <rect x="259" y="356" width="112" height="58" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(265 362) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="315" y="377" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Protocol share</text>
+          <text data-detail="context" x="315" y="393" class="t-muted" font-size="7" text-anchor="middle">35% · fixed</text>
+        </g>
+
+        <g id="node-referrer" data-node-id="referrer" data-node-label="Referral rebate" tabindex="0" role="button" aria-label="Focus Referral rebate, Default 10% · adjustable, 03 / Dimension 2: by denomination" aria-pressed="false" data-node-kind="external" data-node-sublabel="Default 10% · adjustable" data-node-context="03 / Dimension 2: by denomination">
+          <title>Referral rebate · Default 10% · adjustable · 03 / Dimension 2: by denomination</title>
+          <rect x="474" y="128" width="112" height="58" rx="6" class="c-mask"/>
+          <rect x="474" y="128" width="112" height="58" rx="6" class="c-external" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(480 134) scale(0.6875)">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="530" y="149" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Referral rebate</text>
+          <text data-detail="context" x="530" y="165" class="t-muted" font-size="7" text-anchor="middle">Default 10% · adjustable</text>
+        </g>
+
+        <g id="node-bytoken" data-node-id="bytoken" data-node-label="By denomination" tabindex="0" role="button" aria-label="Focus By denomination, uAsset/Memecoin/POL, 03 / Dimension 2: by denomination" aria-pressed="false" data-node-kind="backend" data-node-sublabel="uAsset/Memecoin/POL" data-node-context="03 / Dimension 2: by denomination">
+          <title>By denomination · uAsset/Memecoin/POL · 03 / Dimension 2: by denomination</title>
+          <rect x="474" y="242" width="112" height="58" rx="6" class="c-mask"/>
+          <rect x="474" y="242" width="112" height="58" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(480 248) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="530" y="263" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">By denomination</text>
+          <text data-detail="context" x="530" y="279" class="t-muted" font-size="7" text-anchor="middle">uAsset/Memecoin/POL</text>
+        </g>
+
+        <g id="node-auxsplit" data-node-id="auxsplit" data-node-label="Aux-pool split" tabindex="0" role="button" aria-label="Focus Aux-pool split, Leverage side to DAO, 03 / Dimension 2: by denomination" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Leverage side to DAO" data-node-tag="Locked phase" data-node-context="03 / Dimension 2: by denomination">
+          <title>Aux-pool split · Leverage side to DAO · 03 / Dimension 2: by denomination · Locked phase</title>
+          <rect x="474" y="356" width="112" height="58" rx="6" class="c-mask"/>
+          <rect x="474" y="356" width="112" height="58" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(480 362) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="530" y="377" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Aux-pool split</text>
+          <text data-detail="context" x="530" y="393" class="t-muted" font-size="7" text-anchor="middle">Leverage side to DAO</text>
+        <text data-detail="fine" x="530" y="403" class="t-backend" font-size="7" text-anchor="middle">Locked phase</text>
+        </g>
+
+        <g id="node-dao" data-node-id="dao" data-node-label="DAO treasury" tabindex="0" role="button" aria-label="Focus DAO treasury, 0.25% carved out · default, 04 / Where it goes" aria-pressed="false" data-node-kind="database" data-node-sublabel="0.25% carved out · default" data-node-context="04 / Where it goes">
+          <title>DAO treasury · 0.25% carved out · default · 04 / Where it goes</title>
+          <rect x="673" y="128" width="144" height="58" rx="6" class="c-mask"/>
+          <rect x="673" y="128" width="144" height="58" rx="6" class="c-database" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(679 134) scale(0.6875)">
+            <ellipse cx="8" cy="4" rx="5" ry="2"/>
+            <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="745" y="149" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">DAO treasury</text>
+          <text data-detail="context" x="745" y="165" class="t-muted" font-size="7" text-anchor="middle">0.25% carved out · default</text>
+        </g>
+
+        <g id="node-staking" data-node-id="staking" data-node-label="Staking YieldVault" tabindex="0" role="button" aria-label="Focus Staking YieldVault, For Memecoin stakers, 04 / Where it goes" aria-pressed="false" data-node-kind="database" data-node-sublabel="For Memecoin stakers" data-node-context="04 / Where it goes">
+          <title>Staking YieldVault · For Memecoin stakers · 04 / Where it goes</title>
+          <rect x="689" y="242" width="112" height="58" rx="6" class="c-mask"/>
+          <rect x="689" y="242" width="112" height="58" rx="6" class="c-database" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(695 248) scale(0.6875)">
+            <ellipse cx="8" cy="4" rx="5" ry="2"/>
+            <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="745" y="263" class="t-primary" font-size="9.6" font-weight="600" text-anchor="middle">Staking YieldVault</text>
+          <text data-detail="context" x="745" y="279" class="t-muted" font-size="7" text-anchor="middle">For Memecoin stakers</text>
+        </g>
+
+        <g id="node-burn" data-node-id="burn" data-node-label="Burned directly" tabindex="0" role="button" aria-label="Focus Burned directly, Deflationary, 04 / Where it goes" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Deflationary" data-node-context="04 / Where it goes">
+          <title>Burned directly · Deflationary · 04 / Where it goes</title>
+          <rect x="689" y="356" width="112" height="58" rx="6" class="c-mask"/>
+          <rect x="689" y="356" width="112" height="58" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(695 362) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="745" y="377" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Burned directly</text>
+          <text data-detail="context" x="745" y="393" class="t-muted" font-size="7" text-anchor="middle">Deflationary</text>
+        </g>
+
+        <g id="node-genesis" data-node-id="genesis" data-node-label="Genesis participants" tabindex="0" role="button" aria-label="Focus Genesis participants, Pro rata by Genesis share, 04 / Where it goes" aria-pressed="false" data-node-kind="external" data-node-sublabel="Pro rata by Genesis share" data-node-context="04 / Where it goes">
+          <title>Genesis participants · Pro rata by Genesis share · 04 / Where it goes</title>
+          <rect x="679" y="470" width="132" height="58" rx="6" class="c-mask"/>
+          <rect x="679" y="470" width="132" height="58" rx="6" class="c-external" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(685 476) scale(0.6875)">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="745" y="491" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Genesis participants</text>
+          <text data-detail="context" x="745" y="507" class="t-muted" font-size="7" text-anchor="middle">Pro rata by Genesis share</text>
+        </g>
+
+        <!-- Flow labels -->
+        <g data-detail="context" data-edge-from="fee" data-edge-to="lp" data-edge-label="65% · fixed" data-edge-key="0" data-edge-id="fee-lp">
+          <rect x="67.05" y="189" width="65.9" height="16" rx="4" class="c-mask"/>
+          <text x="100" y="200" class="t-backend" font-size="8" text-anchor="middle">65% · fixed</text>
+        </g>
+        <g data-detail="context" data-edge-from="fee" data-edge-to="proto" data-edge-label="35% · fixed" data-edge-key="1" data-edge-id="fee-proto">
+          <rect x="174.05" y="252" width="65.9" height="16" rx="4" class="c-mask"/>
+          <text x="207" y="263" class="t-backend" font-size="8" text-anchor="middle">35% · fixed</text>
+        </g>
+        <g data-detail="context" data-edge-from="proto" data-edge-to="referrer" data-edge-label="With referrer: default 10% of total" data-edge-key="2" data-edge-id="proto-referrer">
+          <rect x="285.25" y="196" width="183.5" height="16" rx="4" class="c-mask"/>
+          <text x="377" y="207" class="t-muted" font-size="8" text-anchor="middle">With referrer: default 10% of total</text>
+        </g>
+        <g data-detail="context" data-edge-from="proto" data-edge-to="bytoken" data-edge-label="Split by denomination" data-edge-key="3" data-edge-id="proto-bytoken">
+          <rect x="365.05" y="307" width="114.9" height="16" rx="4" class="c-mask"/>
+          <text x="422.5" y="318" class="t-muted" font-size="8" text-anchor="middle">Split by denomination</text>
+        </g>
+        <g data-detail="context" data-edge-from="proto" data-edge-to="auxsplit" data-edge-label="Auxiliary-pool uAsset/PT fees (Locked phase)" data-edge-key="4" data-edge-id="proto-auxsplit">
+          <rect x="271.2" y="421" width="227.6" height="16" rx="4" class="c-mask"/>
+          <text x="385" y="432" class="t-muted" font-size="8" text-anchor="middle">Auxiliary-pool uAsset/PT fees (Locked phase)</text>
+        </g>
+        <g data-detail="context" data-edge-from="bytoken" data-edge-to="dao" data-edge-label="uAsset-denominated" data-edge-key="5" data-edge-id="bytoken-dao">
+          <rect x="589.9" y="244" width="100.2" height="16" rx="4" class="c-mask"/>
+          <text x="640" y="255" class="t-muted" font-size="8" text-anchor="middle">uAsset-denominated</text>
+        </g>
+        <g data-detail="context" data-edge-from="bytoken" data-edge-to="staking" data-edge-label="Memecoin-denominated" data-edge-key="6" data-edge-id="bytoken-staking">
+          <rect x="695" y="214" width="110" height="16" rx="4" class="c-mask"/>
+          <text x="750" y="225" class="t-muted" font-size="8" text-anchor="middle">Memecoin-denominated</text>
+        </g>
+        <g data-detail="context" data-edge-from="bytoken" data-edge-to="burn" data-edge-label="POL-denominated" data-edge-key="7" data-edge-id="bytoken-burn">
+          <rect x="697.25" y="421" width="85.5" height="16" rx="4" class="c-mask"/>
+          <text x="740" y="432" class="t-muted" font-size="8" text-anchor="middle">POL-denominated</text>
+        </g>
+        <g data-detail="context" data-edge-from="auxsplit" data-edge-to="genesis" data-edge-label="Standard side: pro rata by Genesis share" data-edge-key="8" data-edge-id="aux-genesis">
+          <rect x="528.5" y="445" width="208" height="16" rx="4" class="c-mask"/>
+          <text x="632.5" y="456" class="t-muted" font-size="8" text-anchor="middle">Standard side: pro rata by Genesis share</text>
+        </g>
+
+        <!-- Legend -->
+        <g data-legend="" data-legend-bridge="">
+          <text x="40" y="584" class="t-primary" font-size="12" font-weight="650">Legend</text>
+          <g data-legend-semantic-kind="emphasis" data-legend-x="40" data-legend-baseline="604" data-legend-width="103">
+            <path d="M 40 601 L 74 601" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+            <text x="83" y="604" class="t-muted" font-size="10" font-weight="500">primary data</text>
+          </g>
+          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="Treasuries / vaults" data-legend-x="165" data-legend-baseline="604" data-legend-width="138">
+            <rect x="165" y="596" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
+            <text x="187" y="604" class="t-muted" font-size="10" font-weight="500">Treasuries / vaults</text>
+          </g>
+          <g data-legend-semantic-kind="default" data-legend-x="325" data-legend-baseline="604" data-legend-width="118">
+            <path d="M 325 601 L 359 601" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+            <text x="368" y="604" class="t-muted" font-size="10" font-weight="500">Funds and flows</text>
+          </g>
+        </g>
+      </svg>
