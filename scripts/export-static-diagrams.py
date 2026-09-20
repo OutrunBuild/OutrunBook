@@ -17,13 +17,18 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 DIAG = REPO / "assets" / "diagrams"
 FONT = DIAG / "fonts" / "jetbrains-mono-subset.woff2"
 
-# Static diagrams render smaller than the interactive viewer, and the dark
-# theme's secondary text (#475569, 2.7:1 on the background) and default
-# message text (#64748b, 4.2:1) fall below WCAG AA (4.5:1). Lift both while
-# keeping them visibly dimmer than the primary/muted tiers.
+# Static diagrams render much smaller than the interactive viewer. WCAG AA
+# (4.5:1) proved insufficient in practice: grays at 5.5-6.5:1 were still
+# unreadable at page width. Lift every gray tier to >=7:1, keeping the
+# hierarchy (primary > muted > dim > faint) visible. Keys cover both the
+# original archify palette and the previous (lower) override generation.
 READABILITY_OVERRIDES = {
-    "#475569": "#8494ab",  # t-dim / legend badges: 2.7:1 -> 6.1:1
-    "#64748b": "#7b8ca4",  # default message text & arrows: 4.2:1 -> 5.5:1
+    "#475569": "#b6c2d4",  # t-dim            2.7:1 -> 10.4:1
+    "#64748b": "#8fa3bd",  # messages/arrows  4.2:1 ->  7.3:1
+    "#94a3b8": "#cbd5e1",  # t-muted          7.9:1 -> 12.6:1
+    "#7d8da1": "#a5b4c9",  # t-faint          4.6:1 ->  8.9:1
+    "#8494ab": "#b6c2d4",  # prior t-dim override
+    "#7b8ca4": "#8fa3bd",  # prior arrow override
 }
 
 SVG_ELEMENTS = {
