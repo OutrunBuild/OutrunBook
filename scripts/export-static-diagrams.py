@@ -9,11 +9,13 @@ the HTML. Re-run after every `archify deliver`.
 """
 import re
 import sys
+import base64
 import pathlib
 import xml.etree.ElementTree as ET
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 DIAG = REPO / "assets" / "diagrams"
+FONT = DIAG / "fonts" / "jetbrains-mono-subset.woff2"
 
 SVG_ELEMENTS = {
     "svg", "g", "rect", "path", "text", "tspan", "line", "circle", "ellipse",
@@ -150,6 +152,20 @@ def export_one(html_path: pathlib.Path) -> tuple:
     rules = collect_rules(css, svg_classes, var_map)
     bg = var_map["--bg"]
 
+    # embed the subsetted variable font so <img>-rendered SVGs keep the real
+    # typography (external font links are forbidden in image context)
+    font_face = ""
+    if FONT.exists():
+        b64 = base64.b64encode(FONT.read_bytes()).decode()
+        font_face = (
+            "@font-face { font-family: 'JetBrains Mono'; font-style: normal; "
+            "font-weight: 100 800; "
+            f"src: url(data:font/woff2;base64,{b64}) format('woff2'); }}"
+        )
+    else:
+        print(f"warning: {FONT} missing; SVGs will fall back to system fonts",
+              file=sys.stderr)
+
     root_open = svg[: svg.index(">") + 1]
     if "xmlns=" not in root_open:
         new_open = root_open.replace(
@@ -161,8 +177,16 @@ def export_one(html_path: pathlib.Path) -> tuple:
             "<svg ", '<svg xmlns:xlink="http://www.w3.org/1999/xlink" ', 1
         )
 
+    # the interactive page sets the font on <body>; standalone SVGs have no
+    # body, so the family must be set on the text elements themselves
+    text_font = (
+        "text, tspan { font-family: 'JetBrains Mono', ui-monospace, "
+        "SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace; }"
+    )
+
     style_block = (
         "<style type=\"text/css\"><![CDATA[\n"
+        + font_face + "\n" + text_font + "\n"
         + "\n".join(f"{sel} {{ {body} }}" for sel, body in rules)
         + "\n]]></style>"
     )
