@@ -23,3 +23,4 @@ dist/
 # Local-only: agent skills and assistant config (not for publish)
 .agents/skills/
 .claude/
+.baoyu-skills/
