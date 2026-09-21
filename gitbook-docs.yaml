@@ -7,6 +7,7 @@ site:
       title: OutrunBook
       path: en
       description: ""
+      icon: book
       default: true
       children:
         - type: space
