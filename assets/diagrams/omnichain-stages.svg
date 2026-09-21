@@ -205,9 +205,9 @@ text.t-primary { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 12px; f
           <text x="171" y="68" class="t-muted" font-size="8" text-anchor="middle">Non-integer multiple: truncated, remainder refunded</text>
         </g>
         <g data-detail="context" data-edge-from="send" data-edge-to="revert" data-edge-label="Fee inexact / below minimum unit" data-edge-key="2" data-edge-id="send-revert">
-          <rect x="100.89999999999999" y="541" width="198.20000000000002" height="27" rx="4" class="c-mask"/>
-          <text x="200" y="552" class="t-muted" font-size="8" text-anchor="middle">Fee inexact / below minimum unit</text>
-        <text data-detail="fine" x="200" y="563" class="t-dim" font-size="7" text-anchor="middle">Transaction reverts; funds do not move</text>
+          <rect x="-74.10000000000001" y="345" width="198.20000000000002" height="27" rx="4" class="c-mask"/>
+          <text x="25" y="356" class="t-muted" font-size="8" text-anchor="middle">Fee inexact / below minimum unit</text>
+        <text data-detail="fine" x="25" y="367" class="t-dim" font-size="7" text-anchor="middle">Transaction reverts; funds do not move</text>
         </g>
 
         <g data-detail="context" data-edge-from="settle" data-edge-to="return" data-edge-label="Placement fails" data-edge-key="4" data-edge-id="settle-return">
@@ -222,8 +222,8 @@ text.t-primary { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 12px; f
         <text data-detail="fine" x="248" y="311" class="t-dim" font-size="7" text-anchor="middle">Source not rolled back</text>
         </g>
         <g data-detail="context" data-edge-from="receive" data-edge-to="stuck" data-edge-label="Budget too low (extremely rare)" data-edge-key="7" data-edge-id="receive-stuck">
-          <rect x="313.05" y="341" width="163.9" height="16" rx="4" class="c-mask"/>
-          <text x="395" y="352" class="t-muted" font-size="8" text-anchor="middle">Budget too low (extremely rare)</text>
+          <rect x="354.05" y="339" width="163.9" height="16" rx="4" class="c-mask"/>
+          <text x="436" y="350" class="t-muted" font-size="8" text-anchor="middle">Budget too low (extremely rare)</text>
         </g>
         <g data-detail="context" data-edge-from="settle" data-edge-to="bare" data-edge-label="YieldVault does not exist" data-edge-key="8" data-edge-id="settle-bare">
           <rect x="532.75" y="76" width="134.5" height="27" rx="4" class="c-mask"/>

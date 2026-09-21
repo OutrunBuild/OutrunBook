@@ -175,8 +175,8 @@ path.a-default { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
 
         <!-- Flow labels -->
         <g data-detail="context" data-edge-from="genesis-in" data-edge-to="yt" data-edge-label="Pro rata on success" data-edge-key="0" data-edge-id="in-yt">
-          <rect x="116.95" y="136" width="105.1" height="16" rx="4" class="c-mask"/>
-          <text x="169.5" y="147" class="t-backend" font-size="8" text-anchor="middle">Pro rata on success</text>
+          <rect x="47.45" y="246" width="105.1" height="16" rx="4" class="c-mask"/>
+          <text x="100" y="257" class="t-backend" font-size="8" text-anchor="middle">Pro rata on success</text>
         </g>
         <g data-detail="context" data-edge-from="genesis-in" data-edge-to="fees" data-edge-label="From Locked" data-edge-key="1" data-edge-id="in-fees">
           <rect x="170.55" y="364" width="65.9" height="16" rx="4" class="c-mask"/>

@@ -204,12 +204,12 @@ path.a-default { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
 
         <!-- Flow labels -->
         <g data-detail="context" data-edge-from="fee" data-edge-to="lp" data-edge-label="65% · fixed" data-edge-key="0" data-edge-id="fee-lp">
-          <rect x="67.05" y="189" width="65.9" height="16" rx="4" class="c-mask"/>
-          <text x="100" y="200" class="t-backend" font-size="8" text-anchor="middle">65% · fixed</text>
+          <rect x="147.05" y="146" width="65.9" height="16" rx="4" class="c-mask"/>
+          <text x="180" y="157" class="t-backend" font-size="8" text-anchor="middle">65% · fixed</text>
         </g>
         <g data-detail="context" data-edge-from="fee" data-edge-to="proto" data-edge-label="35% · fixed" data-edge-key="1" data-edge-id="fee-proto">
-          <rect x="174.05" y="252" width="65.9" height="16" rx="4" class="c-mask"/>
-          <text x="207" y="263" class="t-backend" font-size="8" text-anchor="middle">35% · fixed</text>
+          <rect x="175.05" y="317" width="65.9" height="16" rx="4" class="c-mask"/>
+          <text x="208" y="328" class="t-backend" font-size="8" text-anchor="middle">35% · fixed</text>
         </g>
         <g data-detail="context" data-edge-from="proto" data-edge-to="referrer" data-edge-label="With referrer" data-edge-key="2" data-edge-id="proto-referrer">
           <rect x="302.15" y="333" width="75.7" height="16" rx="4" class="c-mask"/>
@@ -228,8 +228,8 @@ path.a-default { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
           <text x="636" y="208" class="t-muted" font-size="8" text-anchor="middle">uAsset-denominated</text>
         </g>
         <g data-detail="context" data-edge-from="bytoken" data-edge-to="staking" data-edge-label="Memecoin-denominated" data-edge-key="6" data-edge-id="bytoken-staking">
-          <rect x="695" y="214" width="110" height="16" rx="4" class="c-mask"/>
-          <text x="750" y="225" class="t-muted" font-size="8" text-anchor="middle">Memecoin-denominated</text>
+          <rect x="583" y="337" width="110" height="16" rx="4" class="c-mask"/>
+          <text x="638" y="348" class="t-muted" font-size="8" text-anchor="middle">Memecoin-denominated</text>
         </g>
         <g data-detail="context" data-edge-from="bytoken" data-edge-to="burn" data-edge-label="POL-denominated" data-edge-key="7" data-edge-id="bytoken-burn">
           <rect x="597.25" y="309" width="85.5" height="16" rx="4" class="c-mask"/>

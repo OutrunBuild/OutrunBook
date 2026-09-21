@@ -143,8 +143,8 @@
         ]
       ],
       "labelAt": [
-        100,
-        200
+        180,
+        157
       ]
     },
     {
@@ -154,8 +154,8 @@
       "label": "35% · fixed",
       "variant": "emphasis",
       "labelAt": [
-        207,
-        263
+        208,
+        328
       ]
     },
     {
@@ -244,8 +244,8 @@
       "to": "staking",
       "label": "Memecoin-denominated",
       "labelAt": [
-        750,
-        225
+        638,
+        348
       ]
     },
     {
