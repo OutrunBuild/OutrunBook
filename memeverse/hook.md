@@ -15,7 +15,7 @@ Memeverse 不自研交易引擎，而是基于 **Uniswap V4 的 Hook 机制**搭
 
 费率有硬上限 100% · 固定，不会无限飙升。
 
-<iframe src="../assets/diagrams/hook-fee.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="实际费率怎么构成"></iframe>
+![实际费率怎么构成](../assets/diagrams/hook-fee.svg)
 
 ## 什么情况加费，什么情况减免
 

@@ -4,7 +4,7 @@
 
 ## 阶段一览
 
-<iframe src="../assets/diagrams/verse-lifecycle.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="Memecoin 生命周期：从创世到常态运行"></iframe>
+![Memecoin 生命周期：从创世到常态运行](../assets/diagrams/verse-lifecycle.svg)
 
 ### 阶段 × 开放操作
 

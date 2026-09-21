@@ -42,7 +42,7 @@ Memecoin 与创世积分跨链时，协议要求发送方**精确支付**跨链�
 | 到账 | 目标链接收预算配置过低 | 源链已销毁、目标链未铸造的滞留，需手动恢复 |
 | 落位 | 收益库不存在 | 到账 Memecoin 直接转给接收人，不产生质押份额 |
 
-<iframe src="../assets/diagrams/omnichain-stages.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="跨链三阶段：发送、到账、落位"></iframe>
+![跨链三阶段：发送、到账、落位](../assets/diagrams/omnichain-stages.svg)
 
 所以「跨链发送成功」「目标链到账成功」「目标链质押成功」是三件不同的事：前一步成功不代表后一步成功。
 

@@ -51,7 +51,7 @@
 
 保护期从 Verse **实际进入 Unlocked 的交易时间**开始计算，不从计划解锁时间提前计算。
 
-<iframe src="../assets/diagrams/genesis-rights.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="普通创世：三类权益与 24 小时保护窗"></iframe>
+![普通创世：三类权益与 24 小时保护窗](../assets/diagrams/genesis-rights.svg)
 
 ## 如何完整退出
 

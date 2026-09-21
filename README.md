@@ -39,7 +39,7 @@ Memeverse 让任何人在多条链上同时启动一个 Memecoin，上线即同�
 
 uAsset（UETH / UUSD / UBNB）是 Outrun 的锚定型稳定币体系，分别锚定 ETH / USD / BNB，基于 LayerZero OFT 可跨链流转：
 
-<iframe src="assets/diagrams/ecosystem-bite.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="双模块咬合：uAsset 是血线"></iframe>
+![双模块咬合：uAsset 是血线](assets/diagrams/ecosystem-bite.svg)
 
 - OutStake 端：质押生息资产，铸出 uAsset。
 - Memeverse 端：uAsset 作为创世资金、杠杆利息、创世积分的支付币被消耗。

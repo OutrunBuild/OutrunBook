@@ -36,7 +36,7 @@
 3. **若有缺口**（回收不足以偿债）：结算储备金只在该 uAsset 的当前余额内补足有上限的整数舍入缺口。若缺口超过储备余额，本次结算会回退、Verse 仍停留在锁定阶段；补充储备（必要时提高储备上限）后重试解锁结算。
 4. 同时，杠杆参与者还会按比例分得 **YT**（收益代币，见 [POL 拆分](pol-splitter.md)）。
 
-<iframe src="../assets/diagrams/polend-settlement.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="到期结算：解锁交易与全局结算瀑布"></iframe>
+![到期结算：解锁交易与全局结算瀑布](../assets/diagrams/polend-settlement.svg)
 
 ## 利息去了哪里
 

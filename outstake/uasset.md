@@ -22,7 +22,7 @@ uAsset 有三条供给路径，彼此独立：
 - **PSM 储备兑换**：用 USDC、USDT、ETH、BNB 等储备资产，按 1:1 面值双向兑换 uAsset。兑换池由协议持有的储备逐额背书。详见 [PSM 锚定兑换](psm.md)。
 - **杠杆创世供给**：Memeverse 侧杠杆创世的债务额度也会铸成 uAsset 进入创世，由协议统一结算（详见[杠杆创世](../memeverse/polend.md)）。
 
-<iframe src="../assets/diagrams/uasset-supply.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="uAsset 三条供给路径"></iframe>
+![uAsset 三条供给路径](../assets/diagrams/uasset-supply.svg)
 
 ## 铸币上限，防止超发
 

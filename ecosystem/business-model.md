@@ -49,7 +49,7 @@ Outrun 里有三个不同的资金池，受益人各异，别混为一谈：
 
 两个维度叠加，就是一笔费的完整去向：
 
-<iframe src="../assets/diagrams/fee-split.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="一笔交易费流向谁"></iframe>
+![一笔交易费流向谁](../assets/diagrams/fee-split.svg)
 
 补充：
 - 辅助池（POL/uAsset、PT/uAsset、PT/POL）的协议费，在锁定阶段还会分一部分给**普通创世参与者**（按份额），其余进 DAO 国库。

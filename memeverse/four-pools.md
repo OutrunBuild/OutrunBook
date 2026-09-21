@@ -24,7 +24,7 @@
 
 以上比例为创世达成时的目标配置，实际进入各池的数量以部署时的市场价为准，可能略有出入；未进入池子的少量剩余 POL/PT 在解锁后按份额领取。建池没用完的 uAsset 注入全局结算储备金（储备金已满时超额部分进国库），没用完的 Memecoin 直接销毁。
 
-<iframe src="../assets/diagrams/four-pools.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="建池资金流：一笔资金如何分成四个池"></iframe>
+![建池资金流：一笔资金如何分成四个池](../assets/diagrams/four-pools.svg)
 
 这种结构让主池保持深度，同时为 POL、PT 各自建立可交易的二级市场；YT 在锁定期内可通过 **YT Flash Swap** 用 POL 买卖（复用 PT/POL 池，不设独立交易池，详见 [YT 闪电兑换](yt-flash-swap.md)），解锁结算后按份额赎回结算残值。
 

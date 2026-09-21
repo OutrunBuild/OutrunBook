@@ -50,7 +50,7 @@ Memeverse 的解法是**用收益驱动治理参与**：Memecoin 交易越活跃
 - **主动领取**：结算后，投票者须在领取窗口内主动领取自己的份额，按该周期个人票数占比计算。
 - **逾期处理**：窗口过后未领的奖励并入后续周期的国库，不再补发。
 
-<iframe src="../assets/diagrams/dao-cycle.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="DAO 周期激励：一个周期的闭环"></iframe>
+![DAO 周期激励：一个周期的闭环](../assets/diagrams/dao-cycle.svg)
 
 投票、触发结算和领取激励都是链上操作，需要钱包持有对应链的原生代币支付网络手续费（gas）。
 

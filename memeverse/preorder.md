@@ -30,7 +30,7 @@
 
 单个预购者不能单独设置自己的最低成交数量、成交价上限或截止时间。聚合资金扣除费用后的净输入必须完整成交；无法完整成交时，本次启动交易整体回滚，不会产生部分结算结果。
 
-<iframe src="../assets/diagrams/preorder-flow.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="预购：聚合成交与线性解锁"></iframe>
+![预购：聚合成交与线性解锁](../assets/diagrams/preorder-flow.svg)
 
 ## 线性解锁
 

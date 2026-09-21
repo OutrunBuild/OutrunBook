@@ -27,7 +27,7 @@ PT/POL 池里 PT 有市价，YT 的隐含价格就随之确定，不必再为 YT
 3. **归还借款**：用拆出的 y 个 PT 还掉步骤 1 欠池子的 PT 债。
 4. **到手**：y 个 YT 给你。
 
-<iframe src="../assets/diagrams/yt-flash-buy.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="买 YT：借 PT → 拆分 → 还 PT"></iframe>
+![买 YT：借 PT → 拆分 → 还 PT](../assets/diagrams/yt-flash-buy.svg)
 
 **你实际掏的钱 = y − R**。直觉：完整拥有 y 个 YT 本需要 y 个 POL（拿去拆分），但拆出来的 y 个 PT 能卖回 R 个 POL 帮你分摊，所以你只需补上差额 y − R。PT 越值钱（R 越大），你要补的越少，YT 对你越便宜。
 
@@ -42,7 +42,7 @@ PT/POL 池里 PT 有市价，YT 的隐含价格就随之确定，不必再为 YT
 3. **归还借款**：从这 y 个 POL 里拿出 Q 个，还掉步骤 1 欠池子的 POL 债。
 4. **到手**：剩余的 y − Q 个 POL 给你。
 
-<iframe src="../assets/diagrams/yt-flash-sell.html" loading="lazy" style="width:100%;height:800px;border:1px solid #e5e7eb;border-radius:8px" title="卖 YT：买 PT → 合并 → 还 POL"></iframe>
+![卖 YT：买 PT → 合并 → 还 POL](../assets/diagrams/yt-flash-sell.svg)
 
 **你实际收到的钱 = y − Q**。直觉：要把 YT 变回 POL，得给每个 YT 配一个 PT 去合并；买这 y 个 PT 花了 Q 个 POL，合并出 y 个 POL，净落 y − Q。PT 越贵（买 PT 花的 Q 越大），你净得的越少。
 
