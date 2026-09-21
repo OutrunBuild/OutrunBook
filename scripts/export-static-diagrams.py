@@ -164,16 +164,14 @@ def patch_html_dark_theme(html_path: pathlib.Path) -> str:
 
 def extract_defs(svg: str, var_map: dict) -> str:
     """Keep <defs> as authored, with variables resolved textually, then
-    enlarge the default/dashed arrowhead markers: heads scale with line
-    width, so thin edges render ~7px triangles that vanish against lane
-    borders at embed width (user-reported). Emphasis/security heads are
-    already chunky and stay as authored."""
+    keep marker geometry as authored (a 1.7x enlargement was tried and
+    reverted as too big); bright fill alone fixes visibility."""
     m = re.search(r"<defs[\s\S]*?</defs>", svg)
     if not m:
         return ""
     defs = resolve_vars(m.group(0), var_map)
 
-    k = 1.7
+    k = 1.0
 
     def scale_marker(mm):
         tag = mm.group(0)

@@ -52,7 +52,8 @@
     {
       "label": "Active claim"
     }
-  ],  "nodes": [
+  ],
+  "nodes": [
     {
       "id": "users",
       "type": "external",
@@ -165,7 +166,11 @@
       "id": "dist-vest",
       "from": "distribute",
       "to": "vesting",
-      "label": "Escrowed"
+      "label": "Escrowed",
+      "labelAt": [
+        745,
+        200
+      ]
     },
     {
       "id": "vest-claim",
@@ -180,7 +185,11 @@
       "label": "Genesis below threshold",
       "variant": "dashed",
       "fromSide": "bottom",
-      "toSide": "top"
+      "toSide": "top",
+      "labelAt": [
+        100,
+        314
+      ]
     },
     {
       "id": "agg-rollback",
@@ -189,7 +198,11 @@
       "label": "Cannot execute in full",
       "variant": "dashed",
       "fromSide": "bottom",
-      "toSide": "top"
+      "toSide": "top",
+      "labelAt": [
+        530,
+        314
+      ]
     }
   ],
   "cards": [

@@ -5046,13 +5046,13 @@
         <text x="960" y="68" class="t-dim" font-size="9" font-weight="600" text-anchor="middle">05 / Active claim</text>
 
         <!-- Flow paths -->
-        <path data-edge-from="users" data-edge-to="aggregate" data-edge-label="All preorder funds aggregated" data-edge-key="0" data-edge-id="agg-buy" data-composition-points="156,271;315,271;474,271" d="M 156 271 L 315 271 L 474 271" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="users" data-edge-to="aggregate" data-edge-label="All preorder funds aggregated" data-edge-key="0" data-edge-id="agg-buy" data-composition-points="156,271;474,271" d="M 156 271 L 474 271" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         <path data-edge-from="pool" data-edge-to="aggregate" data-edge-label="After primary pool created" data-edge-key="1" data-edge-id="pool-first" data-composition-points="371,157;530,157;530,242" d="M 371 157 L 530 157 L 530 242" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="aggregate" data-edge-to="distribute" data-edge-label="Memecoin bought" data-edge-key="2" data-edge-id="agg-dist" data-composition-points="586,271;637.5,271;637.5,157;689,157" d="M 586 271 L 637.5 271 L 637.5 157 L 689 157" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="distribute" data-edge-to="vesting" data-edge-label="Escrowed" data-edge-key="3" data-edge-id="dist-vest" data-composition-points="745,186;745,186;745,356;745,356" d="M 745 186 L 745 186 L 745 356 L 745 356" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="distribute" data-edge-to="vesting" data-edge-label="Escrowed" data-edge-key="3" data-edge-id="dist-vest" data-composition-points="745,186;745,356" d="M 745 186 L 745 356" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="vesting" data-edge-to="claim" data-edge-label="Gradually claimable" data-edge-key="4" data-edge-id="vest-claim" data-composition-points="801,385;852.5,385;852.5,271;904,271" d="M 801 385 L 852.5 385 L 852.5 271 L 904 271" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="users" data-edge-to="refund" data-edge-label="Genesis below threshold" data-edge-key="5" data-edge-id="users-refund" data-composition-points="100,300;100,300;100,470;100,470" d="M 100 300 L 100 300 L 100 470 L 100 470" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
-        <path data-edge-from="aggregate" data-edge-to="rollback" data-edge-label="Cannot execute in full" data-edge-key="6" data-edge-id="agg-rollback" data-composition-points="530,300;530,300;530,470;530,470" d="M 530 300 L 530 300 L 530 470 L 530 470" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path data-edge-from="users" data-edge-to="refund" data-edge-label="Genesis below threshold" data-edge-key="5" data-edge-id="users-refund" data-composition-points="100,300;100,470" d="M 100 300 L 100 470" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path data-edge-from="aggregate" data-edge-to="rollback" data-edge-label="Cannot execute in full" data-edge-key="6" data-edge-id="agg-rollback" data-composition-points="530,300;530,470" d="M 530 300 L 530 470" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
 
         <!-- Nodes -->
         <g id="node-users" data-node-id="users" data-node-label="Preorder funds" tabindex="0" role="button" aria-label="Focus Preorder funds, Ledgered separately, 01 / Genesis" aria-pressed="false" data-node-kind="external" data-node-sublabel="Ledgered separately" data-node-tag="First come, first served" data-node-context="01 / Genesis">
@@ -5164,20 +5164,20 @@
           <text x="637.5" y="204" class="t-muted" font-size="8" text-anchor="middle">Memecoin bought</text>
         </g>
         <g data-detail="context" data-edge-from="distribute" data-edge-to="vesting" data-edge-label="Escrowed" data-edge-key="3" data-edge-id="dist-vest">
-          <rect x="719.4" y="250" width="51.2" height="16" rx="4" class="c-mask"/>
-          <text x="745" y="261" class="t-muted" font-size="8" text-anchor="middle">Escrowed</text>
+          <rect x="719.4" y="189" width="51.2" height="16" rx="4" class="c-mask"/>
+          <text x="745" y="200" class="t-muted" font-size="8" text-anchor="middle">Escrowed</text>
         </g>
         <g data-detail="context" data-edge-from="vesting" data-edge-to="claim" data-edge-label="Gradually claimable" data-edge-key="4" data-edge-id="vest-claim">
           <rect x="799.95" y="307" width="105.1" height="16" rx="4" class="c-mask"/>
           <text x="852.5" y="318" class="t-muted" font-size="8" text-anchor="middle">Gradually claimable</text>
         </g>
         <g data-detail="context" data-edge-from="users" data-edge-to="refund" data-edge-label="Genesis below threshold" data-edge-key="5" data-edge-id="users-refund">
-          <rect x="37.65" y="364" width="124.7" height="16" rx="4" class="c-mask"/>
-          <text x="100" y="375" class="t-messagebus" font-size="8" text-anchor="middle">Genesis below threshold</text>
+          <rect x="37.65" y="303" width="124.7" height="16" rx="4" class="c-mask"/>
+          <text x="100" y="314" class="t-messagebus" font-size="8" text-anchor="middle">Genesis below threshold</text>
         </g>
         <g data-detail="context" data-edge-from="aggregate" data-edge-to="rollback" data-edge-label="Cannot execute in full" data-edge-key="6" data-edge-id="agg-rollback">
-          <rect x="470.1" y="364" width="119.8" height="16" rx="4" class="c-mask"/>
-          <text x="530" y="375" class="t-messagebus" font-size="8" text-anchor="middle">Cannot execute in full</text>
+          <rect x="470.1" y="303" width="119.8" height="16" rx="4" class="c-mask"/>
+          <text x="530" y="314" class="t-messagebus" font-size="8" text-anchor="middle">Cannot execute in full</text>
         </g>
 
         <!-- Legend -->

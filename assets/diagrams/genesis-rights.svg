@@ -14,12 +14,12 @@ rect.c-lane[data-composition-frame-id="3"][data-composition-frame-kind="stage"][
 rect.c-lane[data-composition-frame-id="4"][data-composition-frame-kind="stage"][data-graph-role="structural-frame"] { fill: rgba(15, 23, 42, 0.22); stroke: rgb(51, 65, 85); stroke-width: 1px; stroke-dasharray: 6px, 6px; }
 path.a-emphasis[data-composition-points="100,356;100,157;239,157"][data-edge-from="genesis-in"][data-edge-id="in-yt"][data-edge-key="0"][data-edge-label="Pro rata on success"][data-edge-to="yt"] { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
 path.a-emphasis[data-composition-points="170,385;237,385"][data-edge-from="genesis-in"][data-edge-id="in-fees"][data-edge-key="1"][data-edge-label="From Locked"][data-edge-to="fees"] { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
-path.a-default[data-composition-points="100,414;100,434;410,434;410,205;530,205;530,242"][data-edge-from="genesis-in"][data-edge-id="in-unlock"][data-edge-key="2"][data-edge-label="Lock-up ends (365 days · fixed)"][data-edge-to="unlock-tx"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="632,271;649,271;649,100;745,100;745,128"][data-edge-from="unlock-tx"][data-edge-id="unlock-lp"][data-edge-key="3"][data-edge-label="After settlement"][data-edge-to="lp"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="530,300;530,342;634,342;634,385;665,385"][data-edge-from="unlock-tx"][data-edge-id="unlock-static"][data-edge-key="4"][data-edge-label="Opens protection window"][data-edge-to="static"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="745,186;745,186;745,242;745,242"][data-edge-from="lp"][data-edge-id="lp-anchor"][data-edge-key="5"][data-edge-label="Covered by pools"][data-edge-to="anchor"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="745,300;745,300;745,356;745,356"][data-edge-from="anchor"][data-edge-id="anchor-static"][data-edge-key="6"][data-edge-label="Redeemed at static reserves"][data-edge-to="static"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="825,385;856.5,385;856.5,271;888,271"][data-edge-from="static"][data-edge-id="static-resume"][data-edge-key="7"][data-edge-label="Resumes at expiry"][data-edge-to="resume"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="100,414;100,434;410,434;410,205;530,205;530,242"][data-edge-from="genesis-in"][data-edge-id="in-unlock"][data-edge-key="2"][data-edge-label="Lock-up ends (365 days · fixed)"][data-edge-to="unlock-tx"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="632,271;649,271;649,100;745,100;745,128"][data-edge-from="unlock-tx"][data-edge-id="unlock-lp"][data-edge-key="3"][data-edge-label="After settlement"][data-edge-to="lp"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="530,300;530,342;634,342;634,385;665,385"][data-edge-from="unlock-tx"][data-edge-id="unlock-static"][data-edge-key="4"][data-edge-label="Opens protection window"][data-edge-to="static"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="745,186;745,242"][data-edge-from="lp"][data-edge-id="lp-anchor"][data-edge-key="5"][data-edge-label="Covered by pools"][data-edge-to="anchor"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="745,300;745,356"][data-edge-from="anchor"][data-edge-id="anchor-static"][data-edge-key="6"][data-edge-label="Redeemed at static reserves"][data-edge-to="static"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="825,385;856.5,385;856.5,271;888,271"][data-edge-from="static"][data-edge-id="static-resume"][data-edge-key="7"][data-edge-label="Resumes at expiry"][data-edge-to="resume"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
 rect.c-mask { fill: rgb(15, 23, 42); stroke-width: 1px; }
 rect.c-external { fill: rgba(30, 41, 59, 0.5); stroke: rgb(148, 163, 184); stroke-width: 1.5px; }
 g.semantic-sigil.s-external[data-semantic-sigil="external"] { opacity: 0.76; }
@@ -31,14 +31,14 @@ text.t-backend { fill: rgb(52, 211, 153); stroke-width: 1px; font-size: 8px; fon
 text.t-muted { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 8px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 text.t-primary { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 12px; font-weight: 650; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 path.a-emphasis { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
-path.a-default { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
 ]]></style><rect x="0" y="0" width="100%" height="100%" fill="rgb(2, 6, 23)"/>
         <title id="archify-diagram-title">Standard Genesis: three classes of rights and the 24-hour protection window</title>
         <desc id="archify-diagram-description">A data-flow diagram generated by Archify.</desc>
         <!-- Definitions -->
         <defs>
-          <marker id="arrowhead" markerWidth="17" markerHeight="11.9" refX="15.3" refY="5.95" orient="auto">
-            <polygon points="0 0, 17 5.95, 0 11.9" class="m-default" />
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-default" />
           </marker>
           <marker id="arrowhead-emphasis" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
             <polygon points="0 0, 10 3.5, 0 7" class="m-emphasis" />
@@ -46,8 +46,8 @@ path.a-default { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
           <marker id="arrowhead-security" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
             <polygon points="0 0, 10 3.5, 0 7" class="m-security" />
           </marker>
-          <marker id="arrowhead-dashed" markerWidth="17" markerHeight="11.9" refX="15.3" refY="5.95" orient="auto">
-            <polygon points="0 0, 17 5.95, 0 11.9" class="m-dashed" />
+          <marker id="arrowhead-dashed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-dashed" />
           </marker>
           <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
             <path d="M 40 0 L 0 0 0 40" class="c-grid" stroke-width="0.5"/>
@@ -79,8 +79,8 @@ path.a-default { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
         <path data-edge-from="genesis-in" data-edge-to="unlock-tx" data-edge-label="Lock-up ends (365 days · fixed)" data-edge-key="2" data-edge-id="in-unlock" data-composition-points="100,414;100,434;410,434;410,205;530,205;530,242" d="M 100 414 L 100 434 L 410 434 L 410 205 L 530 205 L 530 242" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="unlock-tx" data-edge-to="lp" data-edge-label="After settlement" data-edge-key="3" data-edge-id="unlock-lp" data-composition-points="632,271;649,271;649,100;745,100;745,128" d="M 632 271 L 649 271 L 649 100 L 745 100 L 745 128" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="unlock-tx" data-edge-to="static" data-edge-label="Opens protection window" data-edge-key="4" data-edge-id="unlock-static" data-composition-points="530,300;530,342;634,342;634,385;665,385" d="M 530 300 L 530 342 L 634 342 L 634 385 L 665 385" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="lp" data-edge-to="anchor" data-edge-label="Covered by pools" data-edge-key="5" data-edge-id="lp-anchor" data-composition-points="745,186;745,186;745,242;745,242" d="M 745 186 L 745 186 L 745 242 L 745 242" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="anchor" data-edge-to="static" data-edge-label="Redeemed at static reserves" data-edge-key="6" data-edge-id="anchor-static" data-composition-points="745,300;745,300;745,356;745,356" d="M 745 300 L 745 300 L 745 356 L 745 356" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="lp" data-edge-to="anchor" data-edge-label="Covered by pools" data-edge-key="5" data-edge-id="lp-anchor" data-composition-points="745,186;745,242" d="M 745 186 L 745 242" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="anchor" data-edge-to="static" data-edge-label="Redeemed at static reserves" data-edge-key="6" data-edge-id="anchor-static" data-composition-points="745,300;745,356" d="M 745 300 L 745 356" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="static" data-edge-to="resume" data-edge-label="Resumes at expiry" data-edge-key="7" data-edge-id="static-resume" data-composition-points="825,385;856.5,385;856.5,271;888,271" d="M 825 385 L 856.5 385 L 856.5 271 L 888 271" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
 
         <!-- Nodes -->
@@ -195,12 +195,12 @@ path.a-default { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
           <text x="582" y="332" class="t-muted" font-size="8" text-anchor="middle">Opens protection window</text>
         </g>
         <g data-detail="context" data-edge-from="lp" data-edge-to="anchor" data-edge-label="Covered by pools" data-edge-key="5" data-edge-id="lp-anchor">
-          <rect x="699.8" y="223" width="90.4" height="16" rx="4" class="c-mask"/>
-          <text x="745" y="234" class="t-muted" font-size="8" text-anchor="middle">Covered by pools</text>
+          <rect x="699.8" y="195" width="90.4" height="16" rx="4" class="c-mask"/>
+          <text x="745" y="206" class="t-muted" font-size="8" text-anchor="middle">Covered by pools</text>
         </g>
         <g data-detail="context" data-edge-from="anchor" data-edge-to="static" data-edge-label="Redeemed at static reserves" data-edge-key="6" data-edge-id="anchor-static">
-          <rect x="672.85" y="333" width="144.3" height="16" rx="4" class="c-mask"/>
-          <text x="745" y="344" class="t-muted" font-size="8" text-anchor="middle">Redeemed at static reserves</text>
+          <rect x="672.85" y="305" width="144.3" height="16" rx="4" class="c-mask"/>
+          <text x="745" y="316" class="t-muted" font-size="8" text-anchor="middle">Redeemed at static reserves</text>
         </g>
         <g data-detail="context" data-edge-from="static" data-edge-to="resume" data-edge-label="Resumes at expiry" data-edge-key="7" data-edge-id="static-resume">
           <rect x="823.35" y="307" width="95.3" height="16" rx="4" class="c-mask"/>

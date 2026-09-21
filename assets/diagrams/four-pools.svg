@@ -14,15 +14,15 @@ rect.c-lane[data-composition-frame-id="3"][data-composition-frame-kind="stage"][
 rect.c-lane[data-composition-frame-id="4"][data-composition-frame-kind="stage"][data-graph-role="structural-frame"] { fill: rgba(15, 23, 42, 0.22); stroke: rgb(51, 65, 85); stroke-width: 1px; stroke-dasharray: 6px, 6px; }
 path.a-emphasis[data-composition-points="176,385;208,385;208,271;240,271"][data-edge-from="funds"][data-edge-id="to-main"][data-edge-key="0"][data-edge-label="~70%"][data-edge-to="mainpool"] { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
 path.a-emphasis[data-composition-points="100,356;100,157;259,157"][data-edge-from="funds"][data-edge-id="to-aux"][data-edge-key="1"][data-edge-label="~30%"][data-edge-to="aux"] { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
-path.a-default[data-composition-points="390,271;455,271"][data-edge-from="mainpool"][data-edge-id="mint-pol"][data-edge-key="2"][data-edge-label="Mints POL"][data-edge-to="polmint"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="530,242;530,228;960,228;960,186"][data-edge-from="polmint"][data-edge-id="pol-to-polpool"][data-edge-key="3"][data-edge-label="~2/7"][data-edge-to="pool-pol-uasset"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="605,271;635.5,271;635.5,385;666,385"][data-edge-from="polmint"][data-edge-id="pol-to-split"][data-edge-key="4"][data-edge-label="~3/7"][data-edge-to="ptysplit"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="530,300;530,560;960,560;960,528"][data-edge-from="polmint"][data-edge-id="pol-to-ptpol"][data-edge-key="5"][data-edge-label="~2/7"][data-edge-to="pool-pt-pol"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="371,157;889,157"][data-edge-from="aux"][data-edge-id="aux-to-polpool"][data-edge-key="6"][data-edge-label="uAsset"][data-edge-to="pool-pol-uasset"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="315,128;315,94;1076,94;1076,330;960,330;960,300"][data-edge-from="aux"][data-edge-id="aux-to-ptpool"][data-edge-key="7"][data-edge-label="uAsset"][data-edge-to="pool-pt-uasset"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="745,356;745,328;854,328;854,271;885,271"][data-edge-from="ptysplit"][data-edge-id="split-to-ptuasset"][data-edge-key="8"][data-edge-label="PT ~1/3"][data-edge-to="pool-pt-uasset"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="745,414;745,442;862,442;862,499;900,499"][data-edge-from="ptysplit"][data-edge-id="split-to-ptpol"][data-edge-key="9"][data-edge-label="PT ~2/3"][data-edge-to="pool-pt-pol"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
-path.a-default[data-composition-points="824,385;872,385"][data-edge-from="ptysplit"][data-edge-id="split-to-yt"][data-edge-key="10"][data-edge-label="YT"][data-edge-to="ytdist"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="390,271;455,271"][data-edge-from="mainpool"][data-edge-id="mint-pol"][data-edge-key="2"][data-edge-label="Mints POL"][data-edge-to="polmint"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="530,242;530,228;960,228;960,186"][data-edge-from="polmint"][data-edge-id="pol-to-polpool"][data-edge-key="3"][data-edge-label="~2/7"][data-edge-to="pool-pol-uasset"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="605,271;635.5,271;635.5,385;666,385"][data-edge-from="polmint"][data-edge-id="pol-to-split"][data-edge-key="4"][data-edge-label="~3/7"][data-edge-to="ptysplit"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="530,300;530,560;960,560;960,528"][data-edge-from="polmint"][data-edge-id="pol-to-ptpol"][data-edge-key="5"][data-edge-label="~2/7"][data-edge-to="pool-pt-pol"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="371,157;889,157"][data-edge-from="aux"][data-edge-id="aux-to-polpool"][data-edge-key="6"][data-edge-label="uAsset"][data-edge-to="pool-pol-uasset"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="315,128;315,94;1076,94;1076,330;960,330;960,300"][data-edge-from="aux"][data-edge-id="aux-to-ptpool"][data-edge-key="7"][data-edge-label="uAsset"][data-edge-to="pool-pt-uasset"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="745,356;745,328;854,328;854,271;885,271"][data-edge-from="ptysplit"][data-edge-id="split-to-ptuasset"][data-edge-key="8"][data-edge-label="PT ~1/3"][data-edge-to="pool-pt-uasset"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="745,414;745,442;862,442;862,499;900,499"][data-edge-from="ptysplit"][data-edge-id="split-to-ptpol"][data-edge-key="9"][data-edge-label="PT ~2/3"][data-edge-to="pool-pt-pol"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="824,385;872,385"][data-edge-from="ptysplit"][data-edge-id="split-to-yt"][data-edge-key="10"][data-edge-label="YT"][data-edge-to="ytdist"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
 rect.c-mask { fill: rgb(15, 23, 42); stroke-width: 1px; }
 rect.c-external { fill: rgba(30, 41, 59, 0.5); stroke: rgb(148, 163, 184); stroke-width: 1.5px; }
 g.semantic-sigil.s-external[data-semantic-sigil="external"] { opacity: 0.76; }
@@ -37,14 +37,14 @@ text.t-backend { fill: rgb(52, 211, 153); stroke-width: 1px; font-size: 8px; fon
 text.t-muted { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 8px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 text.t-primary { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 12px; font-weight: 650; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 path.a-emphasis { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
-path.a-default { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
 ]]></style><rect x="0" y="0" width="100%" height="100%" fill="rgb(2, 6, 23)"/>
         <title id="archify-diagram-title">Pool funding flow: how one allocation of capital is split across four pools</title>
         <desc id="archify-diagram-description">A data-flow diagram generated by Archify.</desc>
         <!-- Definitions -->
         <defs>
-          <marker id="arrowhead" markerWidth="17" markerHeight="11.9" refX="15.3" refY="5.95" orient="auto">
-            <polygon points="0 0, 17 5.95, 0 11.9" class="m-default" />
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-default" />
           </marker>
           <marker id="arrowhead-emphasis" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
             <polygon points="0 0, 10 3.5, 0 7" class="m-emphasis" />
@@ -52,8 +52,8 @@ path.a-default { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
           <marker id="arrowhead-security" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
             <polygon points="0 0, 10 3.5, 0 7" class="m-security" />
           </marker>
-          <marker id="arrowhead-dashed" markerWidth="17" markerHeight="11.9" refX="15.3" refY="5.95" orient="auto">
-            <polygon points="0 0, 17 5.95, 0 11.9" class="m-dashed" />
+          <marker id="arrowhead-dashed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-dashed" />
           </marker>
           <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
             <path d="M 40 0 L 0 0 0 40" class="c-grid" stroke-width="0.5"/>
