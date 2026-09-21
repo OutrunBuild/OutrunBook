@@ -12,8 +12,8 @@ site:
       children:
         - type: space
           key: space-outrunbook
-          title: OutrunBook
-          path: docs
+          title: English
+          path: en
           default: true
           content:
             directory: ./
