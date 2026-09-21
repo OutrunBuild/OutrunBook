@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OutrunBook · 全部图表（13）</title>
+<style>
+  :root {
+    --bg: #0b0e14;
+    --card: #12141b;
+    --line: #262b38;
+    --ink: #e6e9f0;
+    --ink-2: #9aa3b5;
+    --accent: #fcee0a;
+    --ok: #35e08e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px 24px 80px;
+    background: var(--bg); color: var(--ink);
+    font-family: "IBM Plex Sans", "Noto Sans SC", system-ui, sans-serif;
+  }
+  header { max-width: 1280px; margin: 0 auto 24px; }
+  h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: .5px; }
+  h1 .count { color: var(--accent); }
+  .sub { color: var(--ink-2); font-size: 14px; margin-bottom: 18px; line-height: 1.6; }
+  .sub code { color: var(--ink); background: #1a1e29; padding: 1px 6px; border-radius: 4px; font-size: 12.5px; }
+  .bar {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    padding: 10px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  }
+  .bar .label { color: var(--ink-2); font-size: 13px; }
+  .bar button {
+    background: #1a1e29; color: var(--ink); border: 1px solid var(--line);
+    padding: 6px 14px; border-radius: 7px; font-size: 13px; cursor: pointer;
+  }
+  .bar button.on { border-color: var(--accent); color: var(--accent); }
+  nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  nav a {
+    color: var(--ink-2); text-decoration: none; font-size: 12.5px;
+    border: 1px solid var(--line); border-radius: 999px; padding: 3px 11px;
+  }
+  nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+  main { max-width: 1280px; margin: 0 auto; }
+  section.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    margin: 28px 0; overflow: hidden;
+  }
+  .card-head {
+    display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline;
+    padding: 14px 18px 12px; border-bottom: 1px solid var(--line);
+  }
+  .idx { color: var(--accent); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .card-head h2 { font-size: 17px; margin: 0; }
+  .tag {
+    font-size: 11.5px; color: var(--ink-2);
+    border: 1px solid var(--line); border-radius: 999px; padding: 1px 9px;
+  }
+  .card-head a { margin-left: auto; font-size: 12.5px; color: #7aa2ff; text-decoration: none; }
+  .card-head a:hover { text-decoration: underline; }
+  .frame { padding: 18px; display: flex; justify-content: center; }
+  .frame img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 6px; }
+  body.w-book .frame img { max-width: 820px; }
+  body.w-full  .frame img { max-width: none; width: 100%; }
+  .verdict { color: var(--ok); font-size: 12px; }
+</style>
+</head>
+<body class="w-book">
+<header>
+  <h1>OutrunBook 图表总览 · <span class="count">13</span> 张</h1>
+  <div class="sub">
+    第 3–8 轮「对抗式审查 → 修复 → 独立复审」循环终态：<span class="verdict">13/13 PASS</span>。
+    默认按成书宽度 820px 展示（与书页嵌入一致）；每张图对应章节即其事实裁判来源。
+    报告：<code>translate/diagram-review/round6-8-report.md</code>
+  </div>
+  <div class="bar">
+    <span class="label">展示宽度</span>
+    <button id="b-book" class="on" onclick="setW('book', this)">书宽 820px</button>
+    <button id="b-full" onclick="setW('full', this)">全宽</button>
+    <span class="label" style="margin-left:8px">字号按此宽度即有效渲染尺寸</span>
+  </div>
+  <nav>
+    <a href="#dao-cycle">DAO 周期</a><a href="#ecosystem-bite">咬合图</a><a href="#fee-split">费用分流</a>
+    <a href="#four-pools">四池</a><a href="#genesis-rights">Genesis 权利</a><a href="#hook-fee">动态费率</a>
+    <a href="#omnichain-stages">跨链状态机</a><a href="#polend-settlement">POLend 结算</a><a href="#preorder-flow">Preorder</a>
+    <a href="#uasset-supply">uAsset 供给</a><a href="#verse-lifecycle">生命周期</a><a href="#yt-flash-buy">闪电买入</a>
+    <a href="#yt-flash-sell">闪电卖出</a>
+  </nav>
+</header>
+<main id="list"></main>
+<script>
+const D = [
+  ["dao-cycle", "DAO 周期激励闭环", "workflow", "memeverse/dao-governance.md", "memeverse/dao-governance.md"],
+  ["ecosystem-bite", "供给侧 × 使用侧咬合", "dataflow", "README.md + ecosystem/flywheel.md", "README.md"],
+  ["fee-split", "交易费用分流", "dataflow", "ecosystem/business-model.md", "ecosystem/business-model.md"],
+  ["four-pools", "四池资金分流", "dataflow", "memeverse/four-pools.md", "memeverse/four-pools.md"],
+  ["genesis-rights", "Genesis 权利时间线", "dataflow", "memeverse/genesis.md", "memeverse/genesis.md"],
+  ["hook-fee", "动态费率构成", "workflow", "memeverse/hook.md", "memeverse/hook.md"],
+  ["omnichain-stages", "跨链三阶段状态机", "lifecycle", "memeverse/omnichain.md", "memeverse/omnichain.md"],
+  ["polend-settlement", "POLend 结算瀑布", "workflow", "memeverse/polend.md", "memeverse/polend.md"],
+  ["preorder-flow", "Preorder 预购聚合", "dataflow", "memeverse/preorder.md", "memeverse/preorder.md"],
+  ["uasset-supply", "uAsset 三条供给路径", "dataflow", "outstake/uasset.md", "outstake/uasset.md"],
+  ["verse-lifecycle", "Memeverse 生命周期", "lifecycle", "memeverse/lifecycle.md", "memeverse/lifecycle.md"],
+  ["yt-flash-buy", "闪电兑换 · 买入 YT", "sequence", "memeverse/yt-flash-swap.md", "memeverse/yt-flash-swap.md"],
+  ["yt-flash-sell", "闪电兑换 · 卖出 YT", "sequence", "memeverse/yt-flash-swap.md", "memeverse/yt-flash-swap.md"],
+];
+document.getElementById("list").innerHTML = D.map(([id, zh, type, chapter, link], i) => `
+  <section class="card" id="${id}">
+    <div class="card-head">
+      <span class="idx">${String(i+1).padStart(2,"0")}</span>
+      <h2>${zh}</h2>
+      <span class="tag">${id}.svg</span>
+      <span class="tag">${type}</span>
+      <span class="tag">R8 PASS</span>
+      <a href="${link}" target="_blank">事实源：${chapter}</a>
+      <a href="assets/diagrams/${id}.svg" target="_blank">原始 SVG ↗</a>
+      <a href="assets/diagrams/${id}.html" target="_blank">交互 HTML ↗</a>
+    </div>
+    <div class="frame"><img src="assets/diagrams/${id}.svg" alt="${zh}"></div>
+  </section>`).join("");
+function setW(mode, btn) {
+  document.body.className = mode === "book" ? "w-book" : "w-full";
+  document.querySelectorAll(".bar button").forEach(b => b.classList.remove("on"));
+  btn.classList.add("on");
+}
+</script>
+</body>
+</html>
