@@ -52,6 +52,7 @@ READABILITY_OVERRIDES = {
     "--text-muted": "#ffffff",
     "--text-dim": "#ffffff",
     "--text-faint": "#ffffff",
+    "--arrow": "#cbd5e1",  # default/dashed edges + heads: visible at embed width
 }
 
 CAPTURE_PROPS = [
@@ -162,12 +163,45 @@ def patch_html_dark_theme(html_path: pathlib.Path) -> str:
 
 
 def extract_defs(svg: str, var_map: dict) -> str:
-    """Keep <defs> as authored, with variables resolved textually."""
+    """Keep <defs> as authored, with variables resolved textually, then
+    enlarge the default/dashed arrowhead markers: heads scale with line
+    width, so thin edges render ~7px triangles that vanish against lane
+    borders at embed width (user-reported). Emphasis/security heads are
+    already chunky and stay as authored."""
     m = re.search(r"<defs[\s\S]*?</defs>", svg)
     if not m:
         return ""
-    defs = m.group(0)
-    return resolve_vars(defs, var_map)
+    defs = resolve_vars(m.group(0), var_map)
+
+    k = 1.7
+
+    def scale_marker(mm):
+        tag = mm.group(0)
+        def num(attr):
+            n = re.search(attr + r'="([\d.]+)"', tag)
+            return float(n.group(1)) if n else None
+        def setn(attr, value):
+            nonlocal tag
+            if re.search(attr + r'="([\d.]+)"', tag):
+                tag = re.sub(attr + r'="[\d.]+"', f'{attr}="{value:g}"', tag)
+        for attr in ("markerWidth", "markerHeight", "refX", "refY"):
+            v = num(attr)
+            if v is not None:
+                setn(attr, round(v * k, 2))
+        def scale_points(pm):
+            scaled = []
+            for pair in pm.group(1).split(","):
+                a, _, b = pair.strip().partition(" ")
+                scaled.append(f"{float(a) * k:g} {float(b) * k:g}" if b else f"{float(a) * k:g}")
+            return 'points="' + ", ".join(scaled) + '"'
+        tag = re.sub(r'points="([^"]+)"', scale_points, tag)
+        return tag
+
+    defs = re.sub(
+        r'<marker id="arrowhead"[^>]*>[\s\S]*?</marker>|'
+        r'<marker id="arrowhead-dashed"[^>]*>[\s\S]*?</marker>',
+        scale_marker, defs)
+    return defs
 
 
 def bake_computed(html_path: pathlib.Path, svg: str, var_map: dict):
@@ -322,13 +356,17 @@ def defs_class_rules(css_text: str, svg: str, var_map: dict) -> str:
         return ""
     # authored semantic rules, rebuilt from the dark variable map (parsing
     # the full stylesheet is fragile; these classes have exactly one meaning)
+    # default/dashed arrowheads get a bright fill: the slate arrow color is
+    # near-invisible at embed scale, especially where a head lands on a lane
+    # border (user-reported)
     var = lambda name: var_map.get(name, "#64748b")
+    arrow_bright = "#cbd5e1"
     authored = {
         "c-grid": f"fill: none; stroke: {var('--grid')};",
-        "m-default": f"fill: {var('--arrow')};",
-        "m-dashed": f"fill: {var('--arrow')};",
+        "m-default": f"fill: {arrow_bright};",
+        "m-dashed": f"fill: {arrow_bright};",
         "m-emphasis": f"fill: {var('--arrow-emphasis')};",
-        "m-security": f"fill: {var_map.get('--arrow-security') or var('--arrow')};",
+        "m-security": f"fill: {var_map.get('--arrow-security') or arrow_bright};",
     }
     rules = []
     for cls in sorted(needed):
