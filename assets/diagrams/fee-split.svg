@@ -13,13 +13,13 @@ rect.c-lane[data-composition-frame-id="2"][data-composition-frame-kind="stage"][
 rect.c-lane[data-composition-frame-id="3"][data-composition-frame-kind="stage"][data-graph-role="structural-frame"] { fill: rgba(15, 23, 42, 0.22); stroke: rgb(51, 65, 85); stroke-width: 1px; stroke-dasharray: 6px, 6px; }
 path.a-emphasis[data-composition-points="100,242;100,157;259,157"][data-edge-from="fee"][data-edge-id="fee-lp"][data-edge-key="0"][data-edge-label="65% · fixed"][data-edge-to="lp"] { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
 path.a-emphasis[data-composition-points="156,271;207.5,271;207.5,385;259,385"][data-edge-from="fee"][data-edge-id="fee-proto"][data-edge-key="1"][data-edge-label="35% · fixed"][data-edge-to="proto"] { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
-path.a-default[data-composition-points="315,356;315,328;315,300"][data-edge-from="proto"][data-edge-id="proto-referrer"][data-edge-key="2"][data-edge-label="With referrer"][data-edge-to="referrer"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="371,385;422.5,385;422.5,271;474,271"][data-edge-from="proto"][data-edge-id="proto-bytoken"][data-edge-key="3"][data-edge-label="Split by denomination"][data-edge-to="bytoken"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="315,414;315,440;440,440;440,385;474,385;474,385"][data-edge-from="proto"][data-edge-id="proto-auxsplit"][data-edge-key="4"][data-edge-label="Auxiliary-pool POL/uAsset/PT fees (Locked)"][data-edge-to="auxsplit"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="586,271;640,271;640,157;660,157;673,157"][data-edge-from="bytoken"][data-edge-id="bytoken-dao"][data-edge-key="5"][data-edge-label="uAsset-denominated"][data-edge-to="dao"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="586,271;689,271"][data-edge-from="bytoken"][data-edge-id="bytoken-staking"][data-edge-key="6"][data-edge-label="Memecoin-denominated"][data-edge-to="staking"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="530,300;530,340;745,340;745,356"][data-edge-from="bytoken"][data-edge-id="bytoken-burn"][data-edge-key="7"][data-edge-label="POL-denominated"][data-edge-to="burn"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="586,385;632.5,385;632.5,499;679,499"][data-edge-from="auxsplit"][data-edge-id="aux-genesis"][data-edge-key="8"][data-edge-label="Standard side: pro rata by Genesis share"][data-edge-to="genesis"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="315,356;315,328;315,300"][data-edge-from="proto"][data-edge-id="proto-referrer"][data-edge-key="2"][data-edge-label="With referrer"][data-edge-to="referrer"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="371,385;422.5,385;422.5,271;474,271"][data-edge-from="proto"][data-edge-id="proto-bytoken"][data-edge-key="3"][data-edge-label="Split by denomination"][data-edge-to="bytoken"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="315,414;315,440;440,440;440,385;474,385;474,385"][data-edge-from="proto"][data-edge-id="proto-auxsplit"][data-edge-key="4"][data-edge-label="Auxiliary-pool POL/uAsset/PT fees (Locked)"][data-edge-to="auxsplit"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="586,271;640,271;640,157;660,157;673,157"][data-edge-from="bytoken"][data-edge-id="bytoken-dao"][data-edge-key="5"][data-edge-label="uAsset-denominated"][data-edge-to="dao"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="586,271;689,271"][data-edge-from="bytoken"][data-edge-id="bytoken-staking"][data-edge-key="6"][data-edge-label="Memecoin-denominated"][data-edge-to="staking"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="530,300;530,320;745,320;745,356"][data-edge-from="bytoken"][data-edge-id="bytoken-burn"][data-edge-key="7"][data-edge-label="POL-denominated"][data-edge-to="burn"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="586,385;632.5,385;632.5,499;679,499"][data-edge-from="auxsplit"][data-edge-id="aux-genesis"][data-edge-key="8"][data-edge-label="Standard side: pro rata by Genesis share"][data-edge-to="genesis"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
 rect.c-mask { fill: rgb(15, 23, 42); stroke-width: 1px; }
 rect.c-external { fill: rgba(30, 41, 59, 0.5); stroke: rgb(148, 163, 184); stroke-width: 1.5px; }
 g.semantic-sigil.s-external[data-semantic-sigil="external"] { opacity: 0.76; }
@@ -34,7 +34,7 @@ text.t-backend { fill: rgb(52, 211, 153); stroke-width: 1px; font-size: 8px; fon
 text.t-muted { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 8px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 text.t-primary { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 12px; font-weight: 650; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 path.a-emphasis { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
-path.a-default { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
 ]]></style><rect x="0" y="0" width="100%" height="100%" fill="rgb(2, 6, 23)"/>
         <title id="archify-diagram-title">Where a trading fee goes</title>
         <desc id="archify-diagram-description">A data-flow diagram generated by Archify.</desc>
@@ -81,7 +81,7 @@ path.a-default { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
         <path data-edge-from="proto" data-edge-to="auxsplit" data-edge-label="Auxiliary-pool POL/uAsset/PT fees (Locked)" data-edge-key="4" data-edge-id="proto-auxsplit" data-composition-points="315,414;315,440;440,440;440,385;474,385;474,385" d="M 315 414 L 315 440 L 440 440 L 440 385 L 474 385 L 474 385" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="bytoken" data-edge-to="dao" data-edge-label="uAsset-denominated" data-edge-key="5" data-edge-id="bytoken-dao" data-composition-points="586,271;640,271;640,157;660,157;673,157" d="M 586 271 L 640 271 L 640 157 L 660 157 L 673 157" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="bytoken" data-edge-to="staking" data-edge-label="Memecoin-denominated" data-edge-key="6" data-edge-id="bytoken-staking" data-composition-points="586,271;689,271" d="M 586 271 L 689 271" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="bytoken" data-edge-to="burn" data-edge-label="POL-denominated" data-edge-key="7" data-edge-id="bytoken-burn" data-composition-points="530,300;530,340;745,340;745,356" d="M 530 300 L 530 340 L 745 340 L 745 356" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="bytoken" data-edge-to="burn" data-edge-label="POL-denominated" data-edge-key="7" data-edge-id="bytoken-burn" data-composition-points="530,300;530,320;745,320;745,356" d="M 530 300 L 530 320 L 745 320 L 745 356" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="auxsplit" data-edge-to="genesis" data-edge-label="Standard side: pro rata by Genesis share" data-edge-key="8" data-edge-id="aux-genesis" data-composition-points="586,385;632.5,385;632.5,499;679,499" d="M 586 385 L 632.5 385 L 632.5 499 L 679 499" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
 
         <!-- Nodes -->
@@ -232,8 +232,8 @@ path.a-default { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
           <text x="750" y="225" class="t-muted" font-size="8" text-anchor="middle">Memecoin-denominated</text>
         </g>
         <g data-detail="context" data-edge-from="bytoken" data-edge-to="burn" data-edge-label="POL-denominated" data-edge-key="7" data-edge-id="bytoken-burn">
-          <rect x="597.25" y="329" width="85.5" height="16" rx="4" class="c-mask"/>
-          <text x="640" y="340" class="t-muted" font-size="8" text-anchor="middle">POL-denominated</text>
+          <rect x="597.25" y="309" width="85.5" height="16" rx="4" class="c-mask"/>
+          <text x="640" y="320" class="t-muted" font-size="8" text-anchor="middle">POL-denominated</text>
         </g>
         <g data-detail="context" data-edge-from="auxsplit" data-edge-to="genesis" data-edge-label="Standard side: pro rata by Genesis share" data-edge-key="8" data-edge-id="aux-genesis">
           <rect x="528.5" y="445" width="208" height="16" rx="4" class="c-mask"/>
@@ -243,17 +243,17 @@ path.a-default { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
         <!-- Legend -->
         <g data-legend="" data-legend-bridge="">
           <text x="40" y="584" class="t-primary" font-size="12" font-weight="650">Legend</text>
-          <g data-legend-semantic-kind="emphasis" data-legend-x="40" data-legend-baseline="604" data-legend-width="113">
+          <g data-legend-semantic-kind="emphasis" data-legend-x="40" data-legend-baseline="604" data-legend-width="130">
             <path d="M 40 601 L 74 601" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
             <text x="83" y="604" class="t-muted" font-size="10" font-weight="500">Main fee split</text>
           </g>
-          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="Treasuries / vaults" data-legend-x="175" data-legend-baseline="604" data-legend-width="138">
-            <rect x="175" y="596" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
-            <text x="197" y="604" class="t-muted" font-size="10" font-weight="500">Treasuries / vaults</text>
+          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="Treasuries / vaults" data-legend-x="192" data-legend-baseline="604" data-legend-width="161">
+            <rect x="192" y="596" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
+            <text x="214" y="604" class="t-muted" font-size="10" font-weight="500">Treasuries / vaults</text>
           </g>
-          <g data-legend-semantic-kind="default" data-legend-x="335" data-legend-baseline="604" data-legend-width="118">
-            <path d="M 335 601 L 369 601" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-            <text x="378" y="604" class="t-muted" font-size="10" font-weight="500">Funds and flows</text>
+          <g data-legend-semantic-kind="default" data-legend-x="375" data-legend-baseline="604" data-legend-width="136">
+            <path d="M 375 601 L 409 601" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+            <text x="418" y="604" class="t-muted" font-size="10" font-weight="500">Funds and flows</text>
           </g>
         </g>
       <g id="cards" font-family="JetBrains Mono, monospace"><rect x="0" y="640" width="1080" height="146" fill="rgb(2, 6, 23)"/><rect x="24" y="646" width="333.333" height="79" rx="8" fill="rgba(15, 23, 42, 0.55)" stroke="#1e293b" stroke-width="1"/><circle cx="39" cy="658" r="3" fill="#22d3ee"/><text x="48" y="661" fill="#ffffff" font-size="10" font-weight="600">Two orthogonal dimensions</text><text x="39" y="678" fill="#ffffff" font-size="8">Dimension 1 is the split: LP 65% / protocol 35% (fixed)</text><text x="39" y="689" fill="#ffffff" font-size="8">Dimension 2 routes the protocol share by denomination</text><text x="39" y="700" fill="#ffffff" font-size="8">Stacked, the two dimensions give a fee's full destination</text><rect x="373.333" y="646" width="333.333" height="134" rx="8" fill="rgba(15, 23, 42, 0.55)" stroke="#1e293b" stroke-width="1"/><circle cx="388.333" cy="658" r="3" fill="#a78bfa"/><text x="397.333" y="661" fill="#ffffff" font-size="10" font-weight="600">Referrals and executors</text><text x="388.333" y="678" fill="#ffffff" font-size="8">With a referrer, the rebate is carved from the protocol share</text><text x="388.333" y="689" fill="#ffffff" font-size="8">(default 10% of the total fee, adjustable), leaving the</text><text x="388.333" y="700" fill="#ffffff" font-size="8">protocol treasury about 25%</text><text x="388.333" y="711" fill="#ffffff" font-size="8">0.25% of primary-pool uAsset fees (current default) goes to</text><text x="388.333" y="722" fill="#ffffff" font-size="8">the executor who triggers distribution</text><text x="388.333" y="733" fill="#ffffff" font-size="8">Locked-phase aux-pool fees (POL/uAsset, PT/uAsset, PT/POL):</text><text x="388.333" y="744" fill="#ffffff" font-size="8">part shared with standard Genesis participants pro rata by</text><text x="388.333" y="755" fill="#ffffff" font-size="8">share, the rest to the DAO treasury</text><rect x="722.667" y="646" width="333.333" height="101" rx="8" fill="rgba(15, 23, 42, 0.55)" stroke="#1e293b" stroke-width="1"/><circle cx="737.667" cy="658" r="3" fill="#fb7185"/><text x="746.667" y="661" fill="#ffffff" font-size="10" font-weight="600">Don't confuse the three treasuries</text><text x="737.667" y="678" fill="#ffffff" font-size="8">Memecoin-denominated fees go to the staking YieldVault</text><text x="737.667" y="689" fill="#ffffff" font-size="8">(stakers)</text><text x="737.667" y="700" fill="#ffffff" font-size="8">uAsset-denominated fees go to the DAO treasury (community)</text><text x="737.667" y="711" fill="#ffffff" font-size="8">Leverage interest goes to the protocol treasury, not a</text><text x="737.667" y="722" fill="#ffffff" font-size="8">trading fee</text></g></svg>

@@ -150,19 +150,23 @@
       "to": "unlock-tx",
       "label": "Lock-up ends (365 days · fixed)",
       "fromSide": "bottom",
-      "toSide": "left",
+      "toSide": "top",
       "via": [
         [
           100,
           434
         ],
         [
-          414,
+          410,
           434
         ],
         [
-          414,
-          271
+          410,
+          205
+        ],
+        [
+          530,
+          205
         ]
       ]
     },
@@ -172,7 +176,7 @@
       "to": "lp",
       "label": "After settlement",
       "fromSide": "right",
-      "toSide": "left",
+      "toSide": "top",
       "via": [
         [
           649,
@@ -180,8 +184,16 @@
         ],
         [
           649,
-          157
+          100
+        ],
+        [
+          745,
+          100
         ]
+      ],
+      "labelAt": [
+        649,
+        200
       ]
     },
     {

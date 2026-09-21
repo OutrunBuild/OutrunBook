@@ -15,8 +15,8 @@ path.a-default[data-composition-points="35,157;25,157;25,560;300,560;300,479;343
 path.a-default[data-composition-points="307,157;343,157"][data-edge-from="receive"][data-edge-id="receive-settle"][data-edge-key="3"][data-edge-to="settle"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.1px; }
 path.a-default[data-composition-points="402,188;402,278"][data-edge-from="settle"][data-edge-id="settle-return"][data-edge-key="4"][data-edge-label="Placement fails"][data-edge-to="return"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.1px; }
 path.a-default[data-composition-points="339,307;325,307;325,172;343,172;343,157"][data-edge-from="return"][data-edge-id="return-settle"][data-edge-key="5"][data-edge-to="settle"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.1px; }
-path.a-default[data-composition-points="248,188;248,438;402,438;402,426"][data-edge-from="receive"][data-edge-id="receive-queued"][data-edge-key="6"][data-edge-label="Can't receive yet"][data-edge-to="queued"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.1px; }
-path.a-default[data-composition-points="307,157;315,157;315,350;478,350;478,479;497,479"][data-edge-from="receive"][data-edge-id="receive-stuck"][data-edge-key="7"][data-edge-label="Budget too low (extremely rare)"][data-edge-to="stuck"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.1px; }
+path.a-default[data-composition-points="248,188;248,397;339,397"][data-edge-from="receive"][data-edge-id="receive-queued"][data-edge-key="6"][data-edge-label="Can't receive yet"][data-edge-to="queued"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.1px; }
+path.a-default[data-composition-points="307,157;315,157;315,350;556,350;556,450"][data-edge-from="receive"][data-edge-id="receive-stuck"][data-edge-key="7"][data-edge-label="Budget too low (extremely rare)"][data-edge-to="stuck"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.1px; }
 path.a-default[data-composition-points="402,126;402,95;790,95;790,385;710,385;710,450;710,450"][data-edge-from="settle"][data-edge-id="settle-bare"][data-edge-key="8"][data-edge-label="YieldVault does not exist"][data-edge-to="bare"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.1px; }
 path.a-default[data-composition-points="461,157;497,157"][data-edge-from="settle"][data-edge-id="settle-success"][data-edge-key="9"][data-edge-to="success"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.1px; }
 rect.c-mask { fill: rgb(15, 23, 42); stroke-width: 1px; }
@@ -81,8 +81,8 @@ text.t-primary { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 12px; f
         <path data-edge-from="receive" data-edge-to="settle" data-edge-key="3" data-edge-id="receive-settle" data-composition-points="307,157;343,157" d="M 307 157 L 343 157" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
         <path data-edge-from="settle" data-edge-to="return" data-edge-label="Placement fails" data-edge-key="4" data-edge-id="settle-return" data-composition-points="402,188;402,278" d="M 402 188 L 402 278" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
         <path data-edge-from="return" data-edge-to="settle" data-edge-key="5" data-edge-id="return-settle" data-composition-points="339,307;325,307;325,172;343,172;343,157" d="M 339 307 L 332 307 Q 325 307 325 300 L 325 181 Q 325 172 334 172 L 335.5 172 Q 343 172 343 164.5 L 343 157" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="receive" data-edge-to="queued" data-edge-label="Can&#39;t receive yet" data-edge-key="6" data-edge-id="receive-queued" data-composition-points="248,188;248,438;402,438;402,426" d="M 248 188 L 248 428 Q 248 438 258 438 L 396 438 Q 402 438 402 432 L 402 426" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="receive" data-edge-to="stuck" data-edge-label="Budget too low (extremely rare)" data-edge-key="7" data-edge-id="receive-stuck" data-composition-points="307,157;315,157;315,350;478,350;478,479;497,479" d="M 307 157 L 311 157 Q 315 157 315 161 L 315 340 Q 315 350 325 350 L 468 350 Q 478 350 478 360 L 478 469.5 Q 478 479 487.5 479 L 497 479" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="receive" data-edge-to="queued" data-edge-label="Can&#39;t receive yet" data-edge-key="6" data-edge-id="receive-queued" data-composition-points="248,188;248,397;339,397" d="M 248 188 L 248 387 Q 248 397 258 397 L 339 397" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="receive" data-edge-to="stuck" data-edge-label="Budget too low (extremely rare)" data-edge-key="7" data-edge-id="receive-stuck" data-composition-points="307,157;315,157;315,350;556,350;556,450" d="M 307 157 L 311 157 Q 315 157 315 161 L 315 340 Q 315 350 325 350 L 546 350 Q 556 350 556 360 L 556 450" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
         <path data-edge-from="settle" data-edge-to="bare" data-edge-label="YieldVault does not exist" data-edge-key="8" data-edge-id="settle-bare" data-composition-points="402,126;402,95;790,95;790,385;710,385;710,450;710,450" d="M 402 126 L 402 105 Q 402 95 412 95 L 780 95 Q 790 95 790 105 L 790 375 Q 790 385 780 385 L 720 385 Q 710 385 710 395 L 710 450 L 710 450" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
         <path data-edge-from="settle" data-edge-to="success" data-edge-key="9" data-edge-id="settle-success" data-composition-points="461,157;497,157" d="M 461 157 L 497 157" class="a-default" stroke-width="1.1" marker-end="url(#arrowhead)"/>
 
@@ -217,9 +217,9 @@ text.t-primary { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 12px; f
         </g>
 
         <g data-detail="context" data-edge-from="receive" data-edge-to="queued" data-edge-label="Can&#39;t receive yet" data-edge-key="6" data-edge-id="receive-queued">
-          <rect x="210.1" y="444" width="119.80000000000001" height="27" rx="4" class="c-mask"/>
-          <text x="270" y="455" class="t-muted" font-size="8" text-anchor="middle">Can&#39;t receive yet</text>
-        <text data-detail="fine" x="270" y="466" class="t-dim" font-size="7" text-anchor="middle">Source not rolled back</text>
+          <rect x="188.1" y="289" width="119.80000000000001" height="27" rx="4" class="c-mask"/>
+          <text x="248" y="300" class="t-muted" font-size="8" text-anchor="middle">Can&#39;t receive yet</text>
+        <text data-detail="fine" x="248" y="311" class="t-dim" font-size="7" text-anchor="middle">Source not rolled back</text>
         </g>
         <g data-detail="context" data-edge-from="receive" data-edge-to="stuck" data-edge-label="Budget too low (extremely rare)" data-edge-key="7" data-edge-id="receive-stuck">
           <rect x="313.05" y="341" width="163.9" height="16" rx="4" class="c-mask"/>

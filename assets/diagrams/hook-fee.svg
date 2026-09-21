@@ -10,12 +10,12 @@ rect.c-lane[data-composition-frame-id="lane-0"][data-composition-frame-kind="lan
 text.t-dim { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 10px; font-weight: 600; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
 rect.c-lane[data-composition-frame-id="lane-1"][data-composition-frame-kind="lane"][data-graph-role="structural-frame"] { fill: rgba(15, 23, 42, 0.22); stroke: rgb(51, 65, 85); stroke-width: 1px; stroke-dasharray: 6px, 6px; }
 rect.c-lane[data-composition-frame-id="lane-2"][data-composition-frame-kind="lane"][data-graph-role="structural-frame"] { fill: rgba(15, 23, 42, 0.22); stroke: rgb(51, 65, 85); stroke-width: 1px; stroke-dasharray: 6px, 6px; }
-path.a-default[data-composition-points="136,119;165,119"][data-edge-from="base"][data-edge-key="0"][data-edge-to="adverse"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="275,119;375,119"][data-edge-from="adverse"][data-edge-key="1"][data-edge-to="vol"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="485,119;570,119"][data-edge-from="vol"][data-edge-key="2"][data-edge-to="short"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="625,145;625,166;625,166;625,217"][data-edge-from="short"][data-edge-key="3"][data-edge-to="dyn"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="570,243;485,243"][data-edge-from="dyn"][data-edge-key="4"][data-edge-to="actual"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="282,243;375,243"][data-edge-from="decay"][data-edge-key="5"][data-edge-to="actual"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="136,119;165,119"][data-edge-from="base"][data-edge-key="0"][data-edge-to="adverse"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="275,119;375,119"][data-edge-from="adverse"][data-edge-key="1"][data-edge-to="vol"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="485,119;570,119"][data-edge-from="vol"][data-edge-key="2"][data-edge-to="short"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="625,145;625,166;625,166;625,217"][data-edge-from="short"][data-edge-key="3"][data-edge-to="dyn"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="570,243;485,243"][data-edge-from="dyn"][data-edge-key="4"][data-edge-to="actual"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="282,243;375,243"][data-edge-from="decay"][data-edge-key="5"][data-edge-to="actual"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
 path.a-dashed[data-composition-points="430,341;430,290;430,290;430,269"][data-edge-from="ewvap"][data-edge-key="6"][data-edge-label="Exempt: base fee only"][data-edge-to="actual"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
 rect.c-mask { fill: rgb(15, 23, 42); stroke-width: 1px; }
 rect.c-backend { fill: rgba(6, 78, 59, 0.4); stroke: rgb(52, 211, 153); stroke-width: 1.5px; }

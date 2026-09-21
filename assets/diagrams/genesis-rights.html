@@ -5048,8 +5048,8 @@
         <!-- Flow paths -->
         <path data-edge-from="genesis-in" data-edge-to="yt" data-edge-label="Pro rata on success" data-edge-key="0" data-edge-id="in-yt" data-composition-points="100,356;100,157;239,157" d="M 100 356 L 100 157 L 239 157" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         <path data-edge-from="genesis-in" data-edge-to="fees" data-edge-label="From Locked" data-edge-key="1" data-edge-id="in-fees" data-composition-points="170,385;237,385" d="M 170 385 L 237 385" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="genesis-in" data-edge-to="unlock-tx" data-edge-label="Lock-up ends (365 days · fixed)" data-edge-key="2" data-edge-id="in-unlock" data-composition-points="100,414;100,434;414,434;414,271;428,271" d="M 100 414 L 100 434 L 414 434 L 414 271 L 428 271" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="unlock-tx" data-edge-to="lp" data-edge-label="After settlement" data-edge-key="3" data-edge-id="unlock-lp" data-composition-points="632,271;649,271;649,157;666,157" d="M 632 271 L 649 271 L 649 157 L 666 157" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="genesis-in" data-edge-to="unlock-tx" data-edge-label="Lock-up ends (365 days · fixed)" data-edge-key="2" data-edge-id="in-unlock" data-composition-points="100,414;100,434;410,434;410,205;530,205;530,242" d="M 100 414 L 100 434 L 410 434 L 410 205 L 530 205 L 530 242" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="unlock-tx" data-edge-to="lp" data-edge-label="After settlement" data-edge-key="3" data-edge-id="unlock-lp" data-composition-points="632,271;649,271;649,100;745,100;745,128" d="M 632 271 L 649 271 L 649 100 L 745 100 L 745 128" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="unlock-tx" data-edge-to="static" data-edge-label="Opens protection window" data-edge-key="4" data-edge-id="unlock-static" data-composition-points="530,300;530,342;634,342;634,385;665,385" d="M 530 300 L 530 342 L 634 342 L 634 385 L 665 385" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="lp" data-edge-to="anchor" data-edge-label="Covered by pools" data-edge-key="5" data-edge-id="lp-anchor" data-composition-points="745,186;745,186;745,242;745,242" d="M 745 186 L 745 186 L 745 242 L 745 242" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="anchor" data-edge-to="static" data-edge-label="Redeemed at static reserves" data-edge-key="6" data-edge-id="anchor-static" data-composition-points="745,300;745,300;745,356;745,356" d="M 745 300 L 745 300 L 745 356 L 745 356" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
@@ -5155,12 +5155,12 @@
           <text x="203.5" y="375" class="t-backend" font-size="8" text-anchor="middle">From Locked</text>
         </g>
         <g data-detail="context" data-edge-from="genesis-in" data-edge-to="unlock-tx" data-edge-label="Lock-up ends (365 days · fixed)" data-edge-key="2" data-edge-id="in-unlock">
-          <rect x="175.05" y="413" width="163.9" height="16" rx="4" class="c-mask"/>
-          <text x="257" y="424" class="t-muted" font-size="8" text-anchor="middle">Lock-up ends (365 days · fixed)</text>
+          <rect x="173.05" y="413" width="163.9" height="16" rx="4" class="c-mask"/>
+          <text x="255" y="424" class="t-muted" font-size="8" text-anchor="middle">Lock-up ends (365 days · fixed)</text>
         </g>
         <g data-detail="context" data-edge-from="unlock-tx" data-edge-to="lp" data-edge-label="After settlement" data-edge-key="3" data-edge-id="unlock-lp">
-          <rect x="603.8" y="193" width="90.4" height="16" rx="4" class="c-mask"/>
-          <text x="649" y="204" class="t-muted" font-size="8" text-anchor="middle">After settlement</text>
+          <rect x="603.8" y="189" width="90.4" height="16" rx="4" class="c-mask"/>
+          <text x="649" y="200" class="t-muted" font-size="8" text-anchor="middle">After settlement</text>
         </g>
         <g data-detail="context" data-edge-from="unlock-tx" data-edge-to="static" data-edge-label="Opens protection window" data-edge-key="4" data-edge-id="unlock-static">
           <rect x="519.65" y="321" width="124.7" height="16" rx="4" class="c-mask"/>
@@ -5182,13 +5182,13 @@
         <!-- Legend -->
         <g data-legend="">
           <text x="40" y="474" class="t-primary" font-size="12" font-weight="650">Legend</text>
-          <g data-legend-semantic-kind="emphasis" data-legend-x="40" data-legend-baseline="494" data-legend-width="113">
+          <g data-legend-semantic-kind="emphasis" data-legend-x="40" data-legend-baseline="494" data-legend-width="130">
             <path d="M 40 491 L 74 491" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
             <text x="83" y="494" class="t-muted" font-size="10" font-weight="500">Genesis rights</text>
           </g>
-          <g data-legend-semantic-kind="default" data-legend-x="175" data-legend-baseline="494" data-legend-width="88">
-            <path d="M 175 491 L 209 491" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-            <text x="218" y="494" class="t-muted" font-size="10" font-weight="500">Lifecycle</text>
+          <g data-legend-semantic-kind="default" data-legend-x="192" data-legend-baseline="494" data-legend-width="99">
+            <path d="M 192 491 L 226 491" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+            <text x="235" y="494" class="t-muted" font-size="10" font-weight="500">Lifecycle</text>
           </g>
         </g>
       </svg>

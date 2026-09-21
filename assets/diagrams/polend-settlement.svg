@@ -12,18 +12,18 @@ rect.c-lane[data-composition-frame-id="lane-1"][data-composition-frame-kind="lan
 rect.c-lane[data-composition-frame-id="lane-2"][data-composition-frame-kind="lane"][data-graph-role="structural-frame"] { fill: rgba(15, 23, 42, 0.22); stroke: rgb(51, 65, 85); stroke-width: 1px; stroke-dasharray: 6px, 6px; }
 rect.c-security-group[data-composition-frame-id="lane-2-exception"][data-composition-frame-kind="exception-lane"][data-graph-role="structural-frame"] { stroke: rgb(251, 113, 133); stroke-width: 1px; stroke-dasharray: 4px, 4px; }
 text.t-security { fill: rgb(251, 113, 133); stroke-width: 1px; font-size: 10px; font-weight: 600; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono CJK SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", monospace; }
-path.a-default[data-composition-points="136,119;165,119"][data-edge-from="capture"][data-edge-key="0"][data-edge-to="unlock"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="275,119;370,119"][data-edge-from="unlock"][data-edge-key="1"][data-edge-to="gsettle"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="490,119;570,119"][data-edge-from="gsettle"][data-edge-key="2"][data-edge-to="protect"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="430,145;430,170;14,170;14,243;40,243"][data-edge-from="gsettle"][data-edge-key="3"][data-edge-label="Runs only with leveraged debt"][data-edge-to="cut"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="136,243;165,243"][data-edge-from="cut"][data-edge-key="4"][data-edge-to="liquidate"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="275,243;355,243"][data-edge-from="liquidate"][data-edge-key="5"][data-edge-to="repay"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-default[data-composition-points="505,243;570,243"][data-edge-from="repay"][data-edge-key="6"][data-edge-label="Surplus"][data-edge-to="residual"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="136,119;165,119"][data-edge-from="capture"][data-edge-key="0"][data-edge-to="unlock"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="275,119;370,119"][data-edge-from="unlock"][data-edge-key="1"][data-edge-to="gsettle"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="490,119;570,119"][data-edge-from="gsettle"][data-edge-key="2"][data-edge-to="protect"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="430,145;430,170;14,170;14,243;40,243"][data-edge-from="gsettle"][data-edge-key="3"][data-edge-label="Runs only with leveraged debt"][data-edge-to="cut"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="136,243;165,243"][data-edge-from="cut"][data-edge-key="4"][data-edge-to="liquidate"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="275,243;355,243"][data-edge-from="liquidate"][data-edge-key="5"][data-edge-to="repay"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-default[data-composition-points="505,243;570,243"][data-edge-from="repay"][data-edge-key="6"][data-edge-label="Surplus"][data-edge-to="residual"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
 path.a-dashed[data-composition-points="430,269;430,290;220,290;220,341"][data-edge-from="repay"][data-edge-key="7"][data-edge-label="Shortfall"][data-edge-to="reserve"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
-path.a-default[data-composition-points="220,393;220,414;716,414;716,44;625,44;625,93"][data-edge-from="reserve"][data-edge-key="8"][data-edge-label="Reserve covers it"][data-edge-to="protect"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
+path.a-default[data-composition-points="220,393;220,414;716,414;716,44;625,44;625,93"][data-edge-from="reserve"][data-edge-key="8"][data-edge-label="Reserve covers it"][data-edge-to="protect"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
 path.a-dashed[data-composition-points="284,367;344,367"][data-edge-from="reserve"][data-edge-key="9"][data-edge-label="Revert"][data-edge-to="rollback"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
-path.a-default[data-composition-points="516,367;570,367"][data-edge-from="rollback"][data-edge-key="10"][data-edge-label="Top up"][data-edge-to="fund"] { fill: none; stroke: rgb(100, 116, 139); stroke-width: 1.4px; }
-path.a-dashed[data-composition-points="625,341;625,332;690,332;690,206;88,206;88,217"][data-edge-from="fund"][data-edge-key="11"][data-edge-label="Retry once reserve replenished"][data-edge-to="cut"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
+path.a-default[data-composition-points="516,367;570,367"][data-edge-from="rollback"][data-edge-key="10"][data-edge-label="Top up"][data-edge-to="fund"] { fill: none; stroke: rgb(203, 213, 225); stroke-width: 1.4px; }
+path.a-dashed[data-composition-points="625,341;625,332;690,332;690,185;88,185;88,217"][data-edge-from="fund"][data-edge-key="11"][data-edge-label="Retry once reserve replenished"][data-edge-to="cut"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
 rect.c-mask { fill: rgb(15, 23, 42); stroke-width: 1px; }
 rect.c-backend { fill: rgba(6, 78, 59, 0.4); stroke: rgb(52, 211, 153); stroke-width: 1.5px; }
 g.semantic-sigil.s-backend[data-semantic-sigil="backend"] { opacity: 0.76; }
@@ -88,7 +88,7 @@ text.t-primary { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 12px; f
         <path data-edge-from="reserve" data-edge-to="protect" data-edge-label="Reserve covers it" data-edge-key="8" data-composition-points="220,393;220,414;716,414;716,44;625,44;625,93" d="M 220 393 L 220 414 L 716 414 L 716 44 L 625 44 L 625 93" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="reserve" data-edge-to="rollback" data-edge-label="Revert" data-edge-key="9" data-composition-points="284,367;344,367" d="M 284 367 L 344 367" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
         <path data-edge-from="rollback" data-edge-to="fund" data-edge-label="Top up" data-edge-key="10" data-composition-points="516,367;570,367" d="M 516 367 L 570 367" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="fund" data-edge-to="cut" data-edge-label="Retry once reserve replenished" data-edge-key="11" data-composition-points="625,341;625,332;690,332;690,206;88,206;88,217" d="M 625 341 L 625 332 L 690 332 L 690 206 L 88 206 L 88 217" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path data-edge-from="fund" data-edge-to="cut" data-edge-label="Retry once reserve replenished" data-edge-key="11" data-composition-points="625,341;625,332;690,332;690,185;88,185;88,217" d="M 625 341 L 625 332 L 690 332 L 690 185 L 88 185 L 88 217" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
 
         <!-- Nodes -->
         <g id="node-capture" data-node-id="capture" data-node-label="Capture fees" tabindex="0" role="button" aria-label="Focus Capture fees, Last pre-unlock tx, Unlock transaction (atomic: any step fails → whole reverts, stays Locked)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Last pre-unlock tx" data-node-context="Unlock transaction (atomic: any step fails → whole reverts, stays Locked)">
@@ -244,8 +244,8 @@ text.t-primary { fill: rgb(255, 255, 255); stroke-width: 1px; font-size: 12px; f
           <text x="543" y="357" class="t-muted" font-size="8" text-anchor="middle">Top up</text>
         </g>
         <g data-detail="context" data-edge-from="fund" data-edge-to="cut" data-edge-label="Retry once reserve replenished" data-edge-key="11">
-          <rect x="323" y="196" width="154" height="14" rx="3" class="c-mask"/>
-          <text x="400" y="206" class="t-database" font-size="8" text-anchor="middle">Retry once reserve replenished</text>
+          <rect x="323" y="175" width="154" height="14" rx="3" class="c-mask"/>
+          <text x="400" y="185" class="t-database" font-size="8" text-anchor="middle">Retry once reserve replenished</text>
         </g>
 
         <!-- Legend -->

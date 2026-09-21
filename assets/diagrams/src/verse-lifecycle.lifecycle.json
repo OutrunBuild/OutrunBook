@@ -172,21 +172,12 @@
       "from": "unlocked",
       "to": "protection",
       "label": "Settlement done; window opens",
-      "fromSide": "right",
-      "toSide": "right",
-      "via": [
-        [
-          475,
-          157
-        ],
-        [
-          475,
-          307
-        ]
-      ],
-      "labelSegment": 1,
-      "labelDx": -6,
-      "labelDy": -14
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [
+        410,
+        233
+      ]
     },
     {
       "id": "to-normal",

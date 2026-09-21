@@ -14,7 +14,7 @@ rect.c-lane[data-composition-frame-id="3"][data-composition-frame-kind="stage"][
 path.a-emphasis[data-composition-points="175,157;259,157"][data-edge-from="supply"][data-edge-id="supply-mint"][data-edge-key="0"][data-edge-label="Genesis Staking / PSM"][data-edge-to="mint"] { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
 path.a-emphasis[data-composition-points="371,157;474,157"][data-edge-from="mint"][data-edge-id="mint-uasset"][data-edge-key="1"][data-edge-label="mint"][data-edge-to="uasset"] { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
 path.a-emphasis[data-composition-points="586,157;665,157"][data-edge-from="uasset"][data-edge-id="uasset-memeverse"][data-edge-key="2"][data-edge-label="Genesis funding · leverage interest · settlement denomination"][data-edge-to="memeverse"] { fill: none; stroke: rgb(52, 211, 153); stroke-width: 1.8px; }
-path.a-dashed[data-composition-points="745,186;745,212;315,212;315,186"][data-edge-from="memeverse"][data-edge-id="bite-back"][data-edge-key="3"][data-edge-label="Two-way supply-demand interlock (yields do not flow back)"][data-edge-to="mint"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
+path.a-dashed[data-composition-points="745,186;745,216;315,216;315,186"][data-edge-from="memeverse"][data-edge-id="bite-back"][data-edge-key="3"][data-edge-label="Two-way supply-demand interlock (yields do not flow back)"][data-edge-to="mint"] { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; stroke-dasharray: 4px, 4px; }
 rect.c-mask { fill: rgb(15, 23, 42); stroke-width: 1px; }
 rect.c-external { fill: rgba(30, 41, 59, 0.5); stroke: rgb(148, 163, 184); stroke-width: 1.5px; }
 g.semantic-sigil.s-external[data-semantic-sigil="external"] { opacity: 0.76; }
@@ -74,7 +74,7 @@ path.a-dashed { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; str
         <path data-edge-from="supply" data-edge-to="mint" data-edge-label="Genesis Staking / PSM" data-edge-key="0" data-edge-id="supply-mint" data-composition-points="175,157;259,157" d="M 175 157 L 259 157" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         <path data-edge-from="mint" data-edge-to="uasset" data-edge-label="mint" data-edge-key="1" data-edge-id="mint-uasset" data-composition-points="371,157;474,157" d="M 371 157 L 474 157" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         <path data-edge-from="uasset" data-edge-to="memeverse" data-edge-label="Genesis funding · leverage interest · settlement denomination" data-edge-key="2" data-edge-id="uasset-memeverse" data-composition-points="586,157;665,157" d="M 586 157 L 665 157" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="memeverse" data-edge-to="mint" data-edge-label="Two-way supply-demand interlock (yields do not flow back)" data-edge-key="3" data-edge-id="bite-back" data-composition-points="745,186;745,212;315,212;315,186" d="M 745 186 L 745 212 L 315 212 L 315 186" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path data-edge-from="memeverse" data-edge-to="mint" data-edge-label="Two-way supply-demand interlock (yields do not flow back)" data-edge-key="3" data-edge-id="bite-back" data-composition-points="745,186;745,216;315,216;315,186" d="M 745 186 L 745 216 L 315 216 L 315 186" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
 
         <!-- Nodes -->
         <g id="node-supply" data-node-id="supply" data-node-label="OutStake supply side" tabindex="0" role="button" aria-label="Focus OutStake supply side, multi-protocol yield assets, 01 / OutStake supply side" aria-pressed="false" data-node-kind="external" data-node-sublabel="multi-protocol yield assets" data-node-tag="wstETH · sUSDS · sUSDe…" data-node-context="01 / OutStake supply side">
@@ -139,8 +139,8 @@ path.a-dashed { fill: none; stroke: rgb(167, 139, 250); stroke-width: 1.4px; str
           <text x="558" y="201" class="t-backend" font-size="8" text-anchor="middle">Genesis funding · leverage interest · settlement denomination</text>
         </g>
         <g data-detail="context" data-edge-from="memeverse" data-edge-to="mint" data-edge-label="Two-way supply-demand interlock (yields do not flow back)" data-edge-key="3" data-edge-id="bite-back">
-          <rect x="384.35" y="221" width="291.3" height="16" rx="4" class="c-mask"/>
-          <text x="530" y="232" class="t-messagebus" font-size="8" text-anchor="middle">Two-way supply-demand interlock (yields do not flow back)</text>
+          <rect x="384.35" y="225" width="291.3" height="16" rx="4" class="c-mask"/>
+          <text x="530" y="236" class="t-messagebus" font-size="8" text-anchor="middle">Two-way supply-demand interlock (yields do not flow back)</text>
         </g>
 
         <!-- Legend -->
