@@ -18,3 +18,11 @@ site:
           content:
             directory: ./
             language: en
+        - type: space
+          key: space-1
+          title: 中文
+          path: zh
+          draft: true
+          content:
+            directory: null
+            language: zh
