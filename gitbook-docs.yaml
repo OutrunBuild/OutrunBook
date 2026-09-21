@@ -20,7 +20,8 @@ site:
     - type: section
       key: section-2
       title: 中文
-      path: zhong-wen
+      path: zh
+      description: ""
       children:
         - type: space
           key: space-1
