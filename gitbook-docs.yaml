@@ -4,7 +4,7 @@ site:
   structure:
     - type: section
       key: section-1
-      title: English
+      title: OutrunBook
       path: outrunbook
       description: ""
       default: true
