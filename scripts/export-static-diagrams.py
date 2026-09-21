@@ -39,6 +39,16 @@ def hex_to_rgb(h):
 
 GRAY_RGB = {hex_to_rgb(h) for h in GRAY_TEXT_FILLS}
 
+# Baked text ink, two tiers per the book baseline (never bare white):
+# muted -> #C5CDDA, dim/faint and any leftover gray tier -> #9AA3B5 (>=6:1).
+TEXT_TIER = {
+    "rgb(148, 163, 184)": "#c5cdda",  # t-muted dark
+    "rgb(71, 85, 105)": "#9aa3b5",    # t-dim dark
+    "rgb(125, 141, 161)": "#9aa3b5",  # t-faint dark
+    "rgb(100, 116, 139)": "#9aa3b5",  # slate-500
+    "rgb(203, 213, 225)": "#c5cdda",  # slate-300 used as text
+}
+
 def rgb_str_is_gray(value: str) -> bool:
     m = re.match(r"(?:rgb|rgba)\((\d+),\s*(\d+),\s*(\d+)", value)
     if not m:
@@ -49,9 +59,10 @@ def rgb_str_is_gray(value: str) -> bool:
 # Interactive HTML: text variables in the dark block go white. Stroke and
 # fill variables (--arrow, --mask, node fills) keep their designed values.
 READABILITY_OVERRIDES = {
-    "--text-muted": "#ffffff",
-    "--text-dim": "#ffffff",
-    "--text-faint": "#ffffff",
+    "--text": "#e6e9f0",      # primary ink — never bare white
+    "--text-muted": "#c5cdda",  # secondary ink
+    "--text-dim": "#9aa3b5",    # tertiary ink (>=6:1 on the darkest panel)
+    "--text-faint": "#9aa3b5",
     "--arrow": "#cbd5e1",  # default/dashed edges + heads: visible at embed width
 }
 
@@ -296,6 +307,12 @@ def bake_computed(html_path: pathlib.Path, svg: str, var_map: dict):
             if prop in ("font-size", "font-weight", "font-family", "letter-spacing",
                         "paint-order") and not is_text:
                 continue
+            # never bake font-size into a deduped class rule: same-signature
+            # texts carry different fitted sizes and one rule would force the
+            # first element's size onto all of them. Every text element keeps
+            # its own font-size attribute, which now governs.
+            if prop == "font-size":
+                continue
             # text-anchor/dominant-baseline are per-element positional values,
             # not class traits — dedupe would leak one element's anchoring
             # onto every sibling (legend text centered onto its icons)
@@ -311,21 +328,20 @@ def bake_computed(html_path: pathlib.Path, svg: str, var_map: dict):
             if prop == "font-weight" and value == "400":
                 continue
             if is_text and prop == "fill" and rgb_str_is_gray(value):
-                value = "rgb(255, 255, 255)"
+                value = TEXT_TIER.get(value, "rgb(154, 163, 181)")
+            if is_text and prop == "fill" and value == "rgb(255, 255, 255)":
+                value = "#e6e9f0"
             # detail toggles (data-detail) hide content in the interactive
             # viewer only — the static artifact must show everything
             if prop == "opacity" and value == "0" and "data-detail" in rec["data"]:
                 value = "1"
-            # accent-colored tag text (t-backend teal) sits on its own node's
-            # tinted fill — near-invisible; tags carry facts, use white ink
-            if (is_text and prop == "fill" and value == "rgb(52, 211, 153)"
+            # accent-colored tag text (t-backend teal / t-database violet)
+            # sits on its own node's tinted fill — near-invisible; tags carry
+            # facts, lift to primary ink
+            if (is_text and prop == "fill" and value in (
+                    "rgb(52, 211, 153)", "rgb(167, 139, 250)")
                     and "data-detail" in rec["data"]):
-                value = "rgb(255, 255, 255)"
-            # same for the violet t-database tag (e.g. "Pegged stablecoin")
-            # on the violet database-node surface — ~3.5:1 at 7px
-            if (is_text and prop == "fill" and value == "rgb(167, 139, 250)"
-                    and "data-detail" in rec["data"]):
-                value = "rgb(255, 255, 255)"
+                value = "#e6e9f0"
             decls.append(f"{prop}: {value}")
         if decls:
             rules.append(f"{sel} {{ " + "; ".join(decls) + "; }")
@@ -338,7 +354,19 @@ def bake_computed(html_path: pathlib.Path, svg: str, var_map: dict):
     return css, bg, overrides
 
 
-def defs_class_rules(css_text: str, svg: str, var_map: dict) -> str:
+def baked_edge_strokes(baked_css: str) -> dict:
+    """stroke actually baked for each edge line class (computed, dark)."""
+    strokes = {}
+    for cls in ("a-default", "a-emphasis", "a-security", "a-dashed"):
+        m = re.search(
+            r"\." + cls + r"(?:\[[^\]]*\])*\s*\{[^}]*?stroke:\s*([^;}]+)",
+            baked_css)
+        if m:
+            strokes[cls] = m.group(1).strip()
+    return strokes
+
+
+def defs_class_rules(css_text: str, svg: str, var_map: dict, baked_strokes=None) -> str:
     """Textual rules for classes used only inside <defs> (patterns, markers).
 
     Chromium's getComputedStyle is unreliable for non-rendered defs content,
@@ -359,12 +387,15 @@ def defs_class_rules(css_text: str, svg: str, var_map: dict) -> str:
     # border (user-reported)
     var = lambda name: var_map.get(name, "#64748b")
     arrow_bright = "#cbd5e1"
+    bs = baked_strokes or {}
     authored = {
         "c-grid": f"fill: none; stroke: {var('--grid')};",
-        "m-default": f"fill: {arrow_bright};",
-        "m-dashed": f"fill: {arrow_bright};",
-        "m-emphasis": f"fill: {var('--arrow-emphasis')};",
-        "m-security": f"fill: {var_map.get('--arrow-security') or arrow_bright};",
+        # every arrowhead inherits the exact baked stroke of its own line
+        # family: gray heads on gray lines, violet on violet, green on green
+        "m-default": f"fill: {bs.get('a-default', arrow_bright)};",
+        "m-dashed": f"fill: {bs.get('a-dashed', var('--database-stroke'))};",
+        "m-emphasis": f"fill: {bs.get('a-emphasis', var('--arrow-emphasis'))};",
+        "m-security": f"fill: {bs.get('a-security') or var_map.get('--arrow-security') or arrow_bright};",
     }
     rules = []
     for cls in sorted(needed):
@@ -399,14 +430,18 @@ def render_cards(svg: str, cards: list, bg: str) -> str:
     W, H = float(vb.group(1)), float(vb.group(2))
     margin, gap, pad = 24, 16, 12
     card_w = (W - 2 * margin - (len(cards) - 1) * gap) / len(cards)
-    char_w = 4.9  # ~8px JetBrains Mono advance
-    wrap_at = max(24, int((card_w - 2 * pad - 10) / char_w))
+    char_w = 6.9  # ~11.5px JetBrains Mono advance
+    wrap_at = max(8, int((card_w - 2 * pad - 10) / char_w))
+    title_char_w = 8.4  # ~14px JetBrains Mono advance
+    title_wrap_at = max(10, int((card_w - (pad + 13) - pad - 4) / title_char_w))
     panel = "#1e293b"  # dark slate border (authored card chrome)
     # measure
     heights = []
     for card in cards:
         n_lines = sum(len(wrap_text(it, wrap_at)) for it in card.get("items", []))
-        heights.append(20 + 14 + n_lines * 11 + pad)
+        title_lines = len(wrap_text(card.get("title", ""), title_wrap_at))
+        heights.append(22 + 16 + n_lines * 15 + pad + (15 if title_lines > 1 else 0))
+    heights = [max(heights)] * len(heights)  # uniform card heights, aligned bottoms
     row_h = max(heights) + pad
     # widen the root viewBox (first occurrence in the open tag)
     svg = re.sub(r'viewBox="0 0 [\d.]+ [\d.]+"',
@@ -420,15 +455,17 @@ def render_cards(svg: str, cards: list, bg: str) -> str:
             f'<rect x="{x:g}" y="{y:g}" width="{card_w:g}" height="{heights[idx]:g}" rx="8" '
             f'fill="rgba(15, 23, 42, 0.55)" stroke="{panel}" stroke-width="1"/>')
         dot = CARD_DOTS.get(card.get("dot", ""), "#ffffff")
-        g.append(f'<circle cx="{x + pad + 3:g}" cy="{y + 12:g}" r="3" fill="{dot}"/>')
-        g.append(f'<text x="{x + pad + 12:g}" y="{y + 15:g}" fill="#ffffff" '
-                 f'font-size="10" font-weight="600">{card.get("title", "")}</text>')
-        ty = y + 32
+        g.append(f'<circle cx="{x + pad + 3:g}" cy="{y + 14:g}" r="3.5" fill="{dot}"/>')
+        title_lines = wrap_text(card.get("title", ""), title_wrap_at)[:2]
+        for li, tline in enumerate(title_lines):
+            g.append(f'<text x="{x + pad + 13:g}" y="{y + 19 + li * 15:g}" fill="#e6e9f0" '
+                     f'font-size="14" font-weight="600">{tline}</text>')
+        ty = y + 42 + (15 if len(title_lines) > 1 else 0)
         for item in card.get("items", []):
             for line in wrap_text(item, wrap_at):
-                g.append(f'<text x="{x + pad + 3:g}" y="{ty:g}" fill="#ffffff" '
-                         f'font-size="8">{line}</text>')
-                ty += 11
+                g.append(f'<text x="{x + pad + 3:g}" y="{ty:g}" fill="#c5cdda" '
+                         f'font-size="12">{line}</text>')
+                ty += 15
     g.append("</g>")
     return svg.replace("</svg>", "".join(g) + "</svg>")
 
@@ -437,15 +474,27 @@ def render_svg_title(svg: str, title: str) -> str:
     """Bake meta.title as a visible header line (opt-in via titleInSvg).
 
     The standalone SVG is what chapters embed; without this the title exists
-    only as an invisible a11y <title>.
+    only as an invisible a11y <title>. The whole diagram is shifted down into
+    a reserved headroom band, so the header can never collide with labels;
+    over-long titles wrap to a second line instead of clipping.
     """
     esc = title.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-    g = (
-        '<g id="svg-title">'
-        f'<text x="24" y="30" fill="#ffffff" font-size="13" font-weight="600" '
-        f'font-family="JetBrains Mono, monospace">{esc}</text></g>'
-    )
-    return svg.replace("</svg>", g + "</svg>")
+    vb = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', svg)
+    W = float(vb.group(1))
+    lines = wrap_text(title, max(10, int((W - 48) / 12.0)))[:2]
+    headroom = 44 if len(lines) == 1 else 68
+    svg = re.sub(r'viewBox="0 0 [\d.]+ [\d.]+"',
+                 f'viewBox="0 0 {W:g} {float(vb.group(2)) + headroom:g}"', svg, count=1)
+    g = ['<g id="svg-title">']
+    for i, line in enumerate(lines):
+        g.append(f'<text x="24" y="{30 + i * 24:g}" fill="#e6e9f0" font-size="20" '
+                 f'font-weight="600" font-family="JetBrains Mono, monospace">{line}</text>')
+    g.append('</g>')
+    # wrap everything already baked (diagram + cards) in the shift
+    m = re.search(r"\]\]></style>", svg)
+    assert m, "style block not found"
+    svg = svg[: m.end()] + f'<g transform="translate(0 {headroom})">' + svg[m.end():]
+    return svg.replace("</svg>", "</g>" + "".join(g) + "</svg>")
 
 
 def export_one(html_path: pathlib.Path):
@@ -485,7 +534,7 @@ def export_one(html_path: pathlib.Path):
         "<style type=\"text/css\"><![CDATA[\n"
         + font_face + "\n"
         + "svg .semantic-sigil { display: none; }\n"
-        + defs_class_rules(css_raw, svg, var_map) + "\n"
+        + defs_class_rules(css_raw, svg, var_map, baked_edge_strokes(computed_css)) + "\n"
         + computed_css + "\n"
         + "]]></style>"
     )
@@ -522,11 +571,12 @@ def export_one(html_path: pathlib.Path):
     if src_jsons:
         try:
             src = json.loads(src_jsons[0].read_text())
+            # fact cards stay in the interactive HTML only. The book embeds
+            # the bare diagram and its prose already carries every fact the
+            # cards restated (diagram-plan: no caption blocks under figures) —
+            # the baked card band read as caption clutter under each figure.
             if src.get("meta", {}).get("titleInSvg") and src.get("meta", {}).get("title"):
                 svg = render_svg_title(svg, src["meta"]["title"])
-            cards = src.get("cards", [])
-            if cards:
-                svg = render_cards(svg, cards, bg)
         except (json.JSONDecodeError, OSError) as e:
             print(f"warning: cards not baked for {html_path.name}: {e}",
                   file=sys.stderr)
