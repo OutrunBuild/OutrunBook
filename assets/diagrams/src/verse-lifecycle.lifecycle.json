@@ -30,9 +30,10 @@
       "id": "genesis",
       "type": "start",
       "label": "Genesis",
-      "sublabel": "Standard/leveraged/Preorder",
+      "sublabel": "Three funds",
       "lane": "main",
       "col": 0,
+      "width": 96,
       "step": "01"
     },
     {
@@ -69,13 +70,14 @@
       "label": "Protection window",
       "sublabel": "24h · pools paused",
       "lane": "window",
-      "col": 0
+      "col": 0,
+      "width": 170
     },
     {
       "id": "refund",
       "type": "failure",
       "label": "Refund",
-      "sublabel": "Three fund classes refunded",
+      "sublabel": "All funds refunded",
       "lane": "terminal",
       "col": 0
     }
@@ -85,22 +87,22 @@
       "id": "to-locked-flash",
       "from": "genesis",
       "to": "locked",
-      "label": "Fast Genesis: threshold met; trigger early",
+      "label": "Fast Genesis: threshold met",
       "fromSide": "top",
       "toSide": "top",
       "via": [
         [
-          94,
+          80,
           88
         ],
         [
-          248,
+          250,
           88
         ]
       ],
       "labelAt": [
-        171,
-        78
+        165,
+        68
       ]
     },
     {
@@ -108,75 +110,82 @@
       "from": "genesis",
       "to": "locked",
       "label": "No Fast Genesis: at deadline",
-      "note": "requires threshold met",
-      "fromSide": "right",
-      "toSide": "left",
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "via": [
+        [
+          80,
+          232
+        ],
+        [
+          250,
+          232
+        ]
+      ],
       "labelAt": [
-        240,
-        214
+        165,
+        210
       ]
     },
     {
       "id": "to-refund",
       "from": "genesis",
       "to": "refund",
-      "label": "After deadline, neither threshold met",
+      "label": "At deadline: neither threshold met",
       "variant": "security",
-      "fromSide": "bottom",
+      "fromSide": "left",
       "toSide": "left",
       "via": [
         [
-          94,
-          230
+          20,
+          161
         ],
         [
-          40,
-          230
-        ],
-        [
-          40,
-          479
+          20,
+          492
         ]
       ],
-      "labelSegment": 3
+      "labelAt": [
+        190,
+        482
+      ]
     },
     {
       "id": "to-unlocked",
       "from": "locked",
       "to": "unlocked",
       "label": "Lock-up ends",
-      "note": "transaction triggers unified settlement",
       "fromSide": "right",
       "toSide": "top",
       "via": [
         [
-          325,
-          157
+          335,
+          161
         ],
         [
-          325,
-          90
+          335,
+          76
         ],
         [
-          402,
-          90
+          420,
+          76
         ]
       ],
       "labelAt": [
-        400,
-        80
+        377,
+        76
       ]
     },
     {
       "id": "to-protection",
       "from": "unlocked",
       "to": "protection",
-      "label": "Settlement done; window opens",
+      "label": "Settlement done",
       "fromSide": "bottom",
       "toSide": "top",
       "labelAt": [
-        410,
-        233
+        420,
+        241
       ]
     },
     {
@@ -184,23 +193,21 @@
       "from": "protection",
       "to": "normal",
       "label": "Window ends; auto-resume",
-      "note": "Public trading resumes; no transaction needed",
       "fromSide": "bottom",
       "toSide": "bottom",
       "via": [
         [
-          402,
-          370
+          420,
+          390
         ],
         [
-          556,
-          370
+          590,
+          390
         ]
       ],
-      "labelDy": 16,
       "labelAt": [
-        556,
-        350
+        505,
+        390
       ]
     }
   ],
@@ -230,6 +237,14 @@
         "Either threshold met: enters Locked, four pools deployed",
         "Neither threshold met: enters Refund, everything refunded in full, no one loses principal",
         "Steady state is the terminal state after unlock completes"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "How to read the map",
+      "items": [
+        "The emphasized rail behind the phase boxes is the timeline backbone, not a direct transition",
+        "Faint frames mark the three lanes; labelled arrows are real transitions; the dashed arrow is the failure exit"
       ]
     }
   ]

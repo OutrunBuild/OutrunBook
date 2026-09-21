@@ -10,15 +10,25 @@
     "titleInSvg": true,
     "viewBox": [
       820,
-      500
-    ]
+      480
+    ],
+    "legend": {
+      "entries": {
+        "return": {
+          "visible": false
+        },
+        "default": {
+          "label": "Message"
+        }
+      }
+    }
   },
   "participants": [
     {
       "id": "user",
       "type": "external",
       "label": "User",
-      "sublabel": "Sets minimum-receive floor"
+      "sublabel": "Sets min-receive floor"
     },
     {
       "id": "pool",
@@ -38,7 +48,7 @@
       "id": "borrow",
       "from": "user",
       "to": "pool",
-      "y": 185,
+      "y": 180,
       "label": "Buy y PT for Q POL",
       "note": "This Q POL is \"borrowed\"",
       "variant": "emphasis"
@@ -47,7 +57,7 @@
       "id": "merge-leg",
       "from": "user",
       "to": "merge",
-      "y": 235,
+      "y": 240,
       "label": "Merge y PT + your y YT",
       "note": "Back into y POL"
     },
@@ -55,7 +65,7 @@
       "id": "repay",
       "from": "user",
       "to": "pool",
-      "y": 285,
+      "y": 300,
       "label": "Repay Q POL",
       "variant": "return"
     },
@@ -63,9 +73,9 @@
       "id": "receive",
       "from": "merge",
       "to": "user",
-      "y": 330,
+      "y": 360,
       "label": "Receive y − Q POL",
-      "note": "Displayed price is indicative only; execution follows the pool state at fill time",
+      "note": "Indicative only — execution follows the pool state at fill time",
       "variant": "return"
     }
   ],

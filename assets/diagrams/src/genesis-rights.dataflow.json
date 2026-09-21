@@ -7,8 +7,8 @@
     "quality_profile": "showcase",
     "output": "assets/diagrams/genesis-rights.html",
     "viewBox": [
-      1080,
-      530
+      850,
+      630
     ],
     "legend": {
       "mode": "auto",
@@ -33,90 +33,96 @@
       "label": "Genesis"
     },
     {
-      "label": "Locked (365 days · fixed)"
+      "label": "Locked · 365d"
     },
     {
-      "label": "Unlock transaction"
+      "label": "Unlocked · 24h"
     },
     {
-      "label": "24-hour protection window · fixed"
-    },
-    {
-      "label": "After the window"
+      "label": "After window"
     }
   ],
   "nodes": [
     {
       "id": "genesis-in",
       "type": "external",
-      "label": "Standard Genesis input",
-      "sublabel": "uAsset 100% into the four pools",
+      "label": "Input",
+      "sublabel": "uAsset 100%",
       "stage": 0,
-      "row": 2,
-      "width": 140
+      "row": 1,
+      "width": 92
     },
     {
       "id": "yt",
       "type": "backend",
       "label": "Initial YT",
-      "sublabel": "Claimable from Locked",
+      "sublabel": "Claimable at Locked",
       "stage": 1,
       "row": 0,
       "width": 152
     },
     {
+      "id": "lockup",
+      "type": "external",
+      "label": "Lockup",
+      "sublabel": "365d · fixed",
+      "stage": 1,
+      "row": 1,
+      "width": 120
+    },
+    {
       "id": "fees",
       "type": "backend",
-      "label": "Auxiliary-pool fee share",
-      "sublabel": "Accrues from Locked onward",
+      "label": "Aux fees",
+      "sublabel": "From Locked onward",
       "stage": 1,
       "row": 2,
-      "width": 156
+      "width": 152
     },
     {
       "id": "unlock-tx",
       "type": "backend",
-      "label": "Transaction that enters Unlocked",
-      "sublabel": "Window start",
-      "width": 204,
+      "label": "Unlock tx",
+      "sublabel": "Window start · 24h",
       "stage": 2,
-      "row": 1
+      "row": 0,
+      "width": 152
     },
     {
       "id": "lp",
       "type": "backend",
-      "label": "One-time claim",
-      "sublabel": "Auxiliary-pool LP + residual POL/PT",
-      "stage": 3,
-      "row": 0,
+      "label": "One-time",
+      "sublabel": "LP + residual POL/PT",
+      "stage": 2,
+      "row": 1,
       "width": 158
     },
     {
       "id": "anchor",
       "type": "backend",
-      "label": "Conservation anchor",
-      "sublabel": "30% + 30% + 40% = 100%",
-      "stage": 3,
-      "row": 1,
-      "width": 120
+      "label": "Anchor",
+      "sublabel": "30+30+40 = 100%",
+      "stage": 2,
+      "row": 2,
+      "width": 152
     },
     {
       "id": "static",
       "type": "backend",
-      "label": "Settled at static reserves",
-      "sublabel": "Four pools pause public trading",
-      "stage": 3,
-      "row": 2,
-      "width": 160
+      "label": "Reserves",
+      "sublabel": "Pools pause trading",
+      "stage": 2,
+      "row": 3,
+      "width": 152
     },
     {
       "id": "resume",
       "type": "backend",
-      "label": "Public trading resumes",
-      "sublabel": "Exit risk on user after window",
-      "stage": 4,
+      "label": "Resumes",
+      "sublabel": "Risk shifts to user",
+      "stage": 3,
       "row": 1,
-      "width": 144
+      "width": 152
     }
   ],
   "flows": [
@@ -127,51 +133,61 @@
       "label": "Pro rata on success",
       "variant": "emphasis",
       "fromSide": "top",
-      "toSide": "left",
+      "toSide": "top",
       "via": [
         [
-          100,
-          157
+          94,
+          104
+        ],
+        [
+          309,
+          104
         ]
       ],
       "labelAt": [
-        100,
-        257
+        202,
+        104
       ]
     },
     {
       "id": "in-fees",
       "from": "genesis-in",
       "to": "fees",
-      "label": "From Locked",
+      "label": "At Locked",
       "variant": "emphasis",
-      "fromSide": "right",
-      "toSide": "left"
-    },
-    {
-      "id": "in-unlock",
-      "from": "genesis-in",
-      "to": "unlock-tx",
-      "label": "Lock-up ends (365 days · fixed)",
       "fromSide": "bottom",
-      "toSide": "top",
+      "toSide": "left",
       "via": [
         [
-          100,
-          434
-        ],
-        [
-          410,
-          434
-        ],
-        [
-          410,
-          205
-        ],
-        [
-          530,
-          205
+          94,
+          390
         ]
+      ],
+      "labelAt": [
+        163,
+        390
+      ]
+    },
+    {
+      "id": "lockup-end",
+      "from": "lockup",
+      "to": "unlock-tx",
+      "label": "Ends",
+      "fromSide": "right",
+      "toSide": "left",
+      "via": [
+        [
+          416,
+          276
+        ],
+        [
+          416,
+          162
+        ]
+      ],
+      "labelAt": [
+        416,
+        219
       ]
     },
     {
@@ -179,47 +195,11 @@
       "from": "unlock-tx",
       "to": "lp",
       "label": "After settlement",
-      "fromSide": "right",
-      "toSide": "top",
-      "via": [
-        [
-          649,
-          271
-        ],
-        [
-          649,
-          100
-        ],
-        [
-          745,
-          100
-        ]
-      ],
-      "labelAt": [
-        649,
-        200
-      ]
-    },
-    {
-      "id": "unlock-static",
-      "from": "unlock-tx",
-      "to": "static",
-      "label": "Opens protection window",
       "fromSide": "bottom",
-      "toSide": "left",
-      "via": [
-        [
-          530,
-          342
-        ],
-        [
-          634,
-          342
-        ],
-        [
-          634,
-          385
-        ]
+      "toSide": "top",
+      "labelAt": [
+        524,
+        219
       ]
     },
     {
@@ -227,23 +207,37 @@
       "from": "lp",
       "to": "anchor",
       "label": "Covered by pools",
-      "labelDy": 30
+      "labelAt": [
+        524,
+        333
+      ]
     },
     {
       "id": "anchor-static",
       "from": "anchor",
       "to": "static",
-      "label": "Redeemed at static reserves",
-      "labelDy": 26
+      "label": "At static reserves",
+      "labelAt": [
+        524,
+        447
+      ]
     },
     {
       "id": "static-resume",
       "from": "static",
       "to": "resume",
-      "label": "Resumes at expiry",
+      "label": "Expiry",
+      "fromSide": "right",
+      "toSide": "bottom",
+      "via": [
+        [
+          739,
+          504
+        ]
+      ],
       "labelAt": [
-        871,
-        318
+        739,
+        407
       ]
     }
   ],
@@ -252,9 +246,10 @@
       "dot": "emerald",
       "title": "When each right becomes claimable",
       "items": [
-        "Initial YT: claimable from Locked",
+        "Genesis input: uAsset 100% into the four pools",
+        "Initial YT: claimable from Locked, pro rata on success",
         "Auxiliary-pool fee share: accrues from Locked onward",
-        "Auxiliary-pool LP + residual POL/PT: one-time claim after Unlocked"
+        "Aux-pool LP + residual POL/PT: one-time claim after Unlocked"
       ]
     },
     {
@@ -270,8 +265,9 @@
       "dot": "rose",
       "title": "Window start and boundaries",
       "items": [
-        "The window counts from the transaction that actually enters Unlocked; 24 hours · fixed",
-        "The four pools pause public trading; claims and redemptions stay open at static reserves",
+        "365-day lockup is fixed; it ends when the transaction enters Unlocked",
+        "Protection window: 24 hours · fixed, counted from that transaction",
+        "Pools pause public trading; claims stay open at static reserves",
         "Exit risk after the window is on the user"
       ]
     }

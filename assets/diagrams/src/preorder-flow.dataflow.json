@@ -10,7 +10,7 @@
       "mode": "auto",
       "entries": {
         "default": {
-          "label": "Funds & flow",
+          "label": "Funds and flows",
           "visible": true
         },
         "emphasis": {
@@ -19,7 +19,7 @@
         },
         "database": {
           "label": "Pools",
-          "visible": false
+          "visible": true
         },
         "security": {
           "label": "Failure branch",
@@ -32,8 +32,8 @@
       }
     },
     "viewBox": [
-      1080,
-      640
+      852,
+      612
     ]
   },
   "stages": [
@@ -47,21 +47,18 @@
       "label": "Same-tx settlement"
     },
     {
-      "label": "Distribution & unlock"
-    },
-    {
-      "label": "Active claim"
+      "label": "Distribution & claim"
     }
   ],
   "nodes": [
     {
       "id": "users",
       "type": "external",
-      "label": "Preorder funds",
-      "sublabel": "Ledgered separately",
-      "tag": "First come, first served",
+      "label": "Funds",
+      "sublabel": "Preorder",
       "stage": 0,
-      "row": 1
+      "row": 1,
+      "width": 92
     },
     {
       "id": "pool",
@@ -69,7 +66,8 @@
       "label": "Primary pool",
       "sublabel": "Same launch transaction",
       "stage": 1,
-      "row": 0
+      "row": 0,
+      "width": 186
     },
     {
       "id": "aggregate",
@@ -78,15 +76,17 @@
       "sublabel": "Fixed 1% settlement fee",
       "tag": "LP 65% / protocol 35%",
       "stage": 2,
-      "row": 1
+      "row": 1,
+      "width": 186
     },
     {
       "id": "distribute",
       "type": "backend",
-      "label": "Pro rata by funds",
+      "label": "Split by funds",
       "sublabel": "Shared average result",
       "stage": 3,
-      "row": 0
+      "row": 0,
+      "width": 170
     },
     {
       "id": "vesting",
@@ -94,23 +94,26 @@
       "label": "Linear unlock",
       "sublabel": "Protocol-set duration",
       "stage": 3,
-      "row": 2
+      "row": 1,
+      "width": 170
     },
     {
       "id": "claim",
       "type": "external",
       "label": "Active claim",
       "sublabel": "Stays claimable",
-      "stage": 4,
-      "row": 1
+      "stage": 3,
+      "row": 2,
+      "width": 170
     },
     {
       "id": "refund",
       "type": "security",
-      "label": "Refunded in full",
-      "sublabel": "Preorder beneficiary",
+      "label": "Refund",
+      "sublabel": "Beneficiary",
       "stage": 0,
-      "row": 3
+      "row": 3,
+      "width": 92
     },
     {
       "id": "rollback",
@@ -118,7 +121,8 @@
       "label": "Launch reverts",
       "sublabel": "No partial settlement",
       "stage": 2,
-      "row": 3
+      "row": 3,
+      "width": 186
     }
   ],
   "flows": [
@@ -126,17 +130,11 @@
       "id": "agg-buy",
       "from": "users",
       "to": "aggregate",
-      "label": "All preorder funds aggregated",
+      "label": "All funds, ledgered separately",
       "variant": "emphasis",
-      "via": [
-        [
-          315,
-          271
-        ]
-      ],
       "labelAt": [
-        300,
-        263
+        285.5,
+        276
       ]
     },
     {
@@ -144,51 +142,80 @@
       "from": "pool",
       "to": "aggregate",
       "label": "After primary pool created",
+      "fromSide": "bottom",
       "toSide": "top",
       "via": [
         [
-          530,
-          157
+          309,
+          219
+        ],
+        [
+          524,
+          219
         ]
       ],
       "labelAt": [
-        451,
-        157
+        416.5,
+        219
       ]
     },
     {
       "id": "agg-dist",
       "from": "aggregate",
       "to": "distribute",
-      "label": "Memecoin bought"
+      "label": "Memecoin",
+      "fromSide": "right",
+      "toSide": "left",
+      "via": [
+        [
+          636,
+          276
+        ],
+        [
+          636,
+          162
+        ]
+      ],
+      "labelAt": [
+        636,
+        219
+      ]
     },
     {
       "id": "dist-vest",
       "from": "distribute",
       "to": "vesting",
       "label": "Escrowed",
+      "fromSide": "bottom",
+      "toSide": "top",
       "labelAt": [
-        745,
-        271
+        739,
+        219
       ]
     },
     {
       "id": "vest-claim",
       "from": "vesting",
       "to": "claim",
-      "label": "Gradually claimable"
+      "label": "Gradually claimable",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [
+        739,
+        333
+      ]
     },
     {
       "id": "users-refund",
       "from": "users",
       "to": "refund",
-      "label": "Genesis below threshold",
+      "label": "Below threshold",
       "variant": "dashed",
       "fromSide": "bottom",
       "toSide": "top",
       "labelAt": [
-        100,
-        385
+        94,
+        390
       ]
     },
     {
@@ -200,8 +227,8 @@
       "fromSide": "bottom",
       "toSide": "top",
       "labelAt": [
-        530,
-        385
+        524,
+        390
       ]
     }
   ],
@@ -210,7 +237,7 @@
       "dot": "cyan",
       "title": "Capacity and basis",
       "items": [
-        "Total preorder capacity = (standard Genesis capital + leverage debt principal) × 70% × protocol-configured ratio",
+        "Total preorder capacity = (standard Genesis capital + leveraged debt principal) × 70% × protocol-configured ratio",
         "First come, first served; preorder funds themselves do not count toward the capacity base",
         "Ledgered separately; not part of the success check"
       ]

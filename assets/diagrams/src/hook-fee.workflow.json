@@ -6,6 +6,7 @@
     "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/hook-fee.html",
+    "viewBox": [866, 510],
     "legend": {
       "mode": "auto",
       "entries": {
@@ -23,7 +24,7 @@
     },
     {
       "id": "actual",
-      "label": "Actual fee = max(dynamic fee, pool-opening decay fee)"
+      "label": "Actual fee = max(dynamic fee, opening fee)"
     },
     {
       "id": "exempt",
@@ -45,17 +46,17 @@
       "lane": "components",
       "col": 1,
       "type": "backend",
-      "width": 110,
+      "width": 128,
       "label": "+ adverse fee",
-      "sublabel": "per address; 3s window"
+      "sublabel": "per address · 3s"
     },
     {
       "id": "vol",
       "lane": "components",
       "col": 3,
       "type": "backend",
-      "width": 110,
-      "label": "+ volatility fee",
+      "width": 138,
+      "label": "Volatility fee",
       "sublabel": "per pool"
     },
     {
@@ -63,9 +64,9 @@
       "lane": "components",
       "col": 5,
       "type": "backend",
-      "width": 110,
-      "label": "+ short-term fee",
-      "sublabel": "above 2%; 15s decay"
+      "width": 136,
+      "label": "Short-term fee",
+      "sublabel": ">2% · 15s decay"
     },
     {
       "id": "dyn",
@@ -73,15 +74,15 @@
       "col": 5,
       "type": "backend",
       "width": 110,
-      "label": "= dynamic fee",
-      "sublabel": "sum of the four"
+      "label": "Dynamic fee",
+      "sublabel": "sum of four"
     },
     {
       "id": "actual",
       "lane": "actual",
       "col": 3,
       "type": "backend",
-      "width": 110,
+      "width": 128,
       "label": "Actual fee",
       "sublabel": "cap 100% · fixed"
     },
@@ -90,16 +91,16 @@
       "lane": "actual",
       "col": 1,
       "type": "backend",
-      "width": 124,
-      "label": "Pool-opening fee",
+      "width": 132,
+      "label": "Opening fee",
       "sublabel": "50%→1% in 15 min"
     },
     {
       "id": "ewvap",
       "lane": "exempt",
-      "col": 3,
+      "col": 2,
       "type": "backend",
-      "width": 124,
+      "width": 178,
       "label": "EWVWAP exemption",
       "sublabel": "history + reversal → 1%"
     }
@@ -134,22 +135,19 @@
     {
       "from": "ewvap",
       "to": "actual",
-      "label": "Exempt: base fee only",
+      "label": "Dynamic fees waived — base fee only",
       "variant": "dashed",
-      "fromSide": "top",
+      "fromSide": "right",
       "toSide": "bottom",
-      "labelAt": [
-        430,
-        320
-      ]
+      "labelAt": [612, 353.5]
     }
   ],
   "cards": [
     {
       "dot": "cyan",
-      "title": "Computing the four components",
+      "title": "The four components",
       "items": [
-        "The adverse impact fee is tracked per address × pool; impacts accumulate within a 3-second window, so order splitting fails",
+        "The adverse impact fee is tracked per address; impacts from the same address within a 3-second window accumulate, so order splitting fails",
         "The volatility fee is per pool and rises with volatility; the short-term impact fee is per pool, charging only the portion above 2%",
         "Short-term impact decays over 15 seconds and rapid consecutive impacts stack; total cap 100% · fixed"
       ]
@@ -165,7 +163,7 @@
     },
     {
       "dot": "amber",
-      "title": "Pool-opening decay fee",
+      "title": "Opening fee decay",
       "items": [
         "Starts at 50% by default and decays to 1% within 15 minutes (current defaults, adjustable by the protocol)",
         "Inside the decay window, the EWVWAP exemption takes the higher of the base fee and the current opening fee",

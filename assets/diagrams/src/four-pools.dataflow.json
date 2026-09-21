@@ -4,7 +4,7 @@
   "meta": {
     "title": "Pool funding flow: how one allocation of capital is split across four pools",
     "locale": "en",
-    "quality_profile": "standard",
+    "quality_profile": "showcase",
     "output": "assets/diagrams/four-pools.html",
     "legend": {
       "mode": "auto",
@@ -24,8 +24,8 @@
       }
     },
     "viewBox": [
-      1080,
-      640
+      847,
+      612
     ]
   },
   "stages": [
@@ -36,96 +36,92 @@
       "label": "First split"
     },
     {
-      "label": "POL mint & auxiliary funding"
+      "label": "Mint & split"
     },
     {
-      "label": "PT/YT split"
-    },
-    {
-      "label": "Four pools & initial YT"
+      "label": "Four pools"
     }
   ],
   "nodes": [
     {
       "id": "funds",
       "type": "external",
-      "label": "Pool funding",
-      "sublabel": "Genesis capital + leverage",
-      "tag": "Preorder & interest excluded",
+      "label": "Pool fund",
+      "sublabel": "Genesis",
       "stage": 0,
-      "row": 2,
-      "width": 152
-    },
-    {
-      "id": "mainpool",
-      "type": "database",
-      "label": "Primary Memecoin/uAsset",
-      "sublabel": "~70% · main trading market",
-      "stage": 1,
       "row": 1,
-      "width": 150
+      "width": 92
     },
     {
       "id": "aux",
       "type": "backend",
-      "label": "Auxiliary uAsset",
-      "sublabel": "~30%",
+      "label": "Aux uAsset",
+      "sublabel": "uAsset capital",
       "stage": 1,
       "row": 0
     },
     {
+      "id": "mainpool",
+      "type": "database",
+      "label": "Primary pool",
+      "sublabel": "Memecoin/uAsset",
+      "stage": 1,
+      "row": 1,
+      "width": 120
+    },
+    {
       "id": "polmint",
       "type": "backend",
-      "label": "Primary pool mints POL",
-      "sublabel": "Primary-pool LP is POL",
+      "label": "POL mint",
+      "sublabel": "LP becomes POL",
       "stage": 2,
       "row": 1,
-      "width": 150
+      "width": 134
     },
     {
       "id": "ptysplit",
       "type": "backend",
       "label": "Split PT + YT",
-      "sublabel": "YT pro rata; remainder to leverage",
-      "stage": 3,
+      "sublabel": "Remainder to leverage",
+      "stage": 2,
       "row": 2,
-      "width": 158
+      "width": 160
     },
     {
       "id": "pool-pol-uasset",
       "type": "database",
       "label": "POL/uAsset pool",
-      "sublabel": "POL tradable · leverage exit",
-      "stage": 4,
+      "sublabel": "Leverage exit",
+      "stage": 3,
       "row": 0,
       "width": 142
-    },
-    {
-      "id": "pool-pt-uasset",
-      "type": "database",
-      "label": "PT/uAsset pool",
-      "sublabel": "Principal tradable separately",
-      "stage": 4,
-      "row": 1,
-      "width": 150
-    },
-    {
-      "id": "ytdist",
-      "type": "external",
-      "label": "Genesis participants' YT",
-      "sublabel": "Claimable from Locked",
-      "stage": 4,
-      "row": 2,
-      "width": 176
     },
     {
       "id": "pool-pt-pol",
       "type": "database",
       "label": "PT/POL pool",
-      "sublabel": "PT/POL price discovery",
-      "stage": 4,
-      "row": 3,
+      "sublabel": "Price discovery",
+      "stage": 3,
+      "row": 1,
       "width": 120
+    },
+    {
+      "id": "ytdist",
+      "type": "external",
+      "label": "Genesis YT",
+      "sublabel": "Claimable from Locked",
+      "stage": 3,
+      "row": 2,
+      "width": 160
+    },
+    {
+      "id": "pool-pt-uasset",
+      "type": "database",
+      "label": "PT/uAsset pool",
+      "sublabel": "Aux uAsset + PT",
+      "stage": 3,
+      "row": 3,
+      "width": 150
     }
   ],
   "flows": [
@@ -134,7 +130,11 @@
       "from": "funds",
       "to": "mainpool",
       "label": "~70%",
-      "variant": "emphasis"
+      "variant": "emphasis",
+      "labelAt": [
+        201.5,
+        276
+      ]
     },
     {
       "id": "to-aux",
@@ -146,20 +146,24 @@
       "toSide": "left",
       "via": [
         [
-          100,
-          157
+          94,
+          162
         ]
       ],
       "labelAt": [
-        100,
-        257
+        134,
+        162
       ]
     },
     {
       "id": "mint-pol",
       "from": "mainpool",
       "to": "polmint",
-      "label": "Mints POL"
+      "label": "LP",
+      "labelAt": [
+        413,
+        276
+      ]
     },
     {
       "id": "pol-to-polpool",
@@ -167,20 +171,16 @@
       "to": "pool-pol-uasset",
       "label": "~2/7",
       "fromSide": "top",
-      "toSide": "bottom",
+      "toSide": "left",
       "via": [
         [
-          530,
-          228
-        ],
-        [
-          960,
-          228
+          524,
+          162
         ]
       ],
       "labelAt": [
-        745,
-        228
+        524,
+        202
       ]
     },
     {
@@ -188,8 +188,24 @@
       "from": "polmint",
       "to": "ptysplit",
       "label": "~3/7",
+      "fromSide": "bottom",
+      "toSide": "left",
+      "via": [
+        [
+          524,
+          328
+        ],
+        [
+          434,
+          328
+        ],
+        [
+          434,
+          390
+        ]
+      ],
       "labelAt": [
-        628,
+        479,
         328
       ]
     },
@@ -198,57 +214,25 @@
       "from": "polmint",
       "to": "pool-pt-pol",
       "label": "~2/7",
-      "fromSide": "bottom",
-      "toSide": "bottom",
+      "fromSide": "right",
+      "toSide": "top",
       "via": [
         [
-          530,
-          560
+          614,
+          276
         ],
         [
-          960,
-          560
+          614,
+          216
+        ],
+        [
+          739,
+          216
         ]
       ],
       "labelAt": [
-        745,
-        560
-      ]
-    },
-    {
-      "id": "aux-to-polpool",
-      "from": "aux",
-      "to": "pool-pol-uasset",
-      "label": "uAsset"
-    },
-    {
-      "id": "aux-to-ptpool",
-      "from": "aux",
-      "to": "pool-pt-uasset",
-      "label": "uAsset",
-      "fromSide": "top",
-      "toSide": "bottom",
-      "via": [
-        [
-          315,
-          94
-        ],
-        [
-          1076,
-          94
-        ],
-        [
-          1076,
-          330
-        ],
-        [
-          960,
-          330
-        ]
-      ],
-      "labelAt": [
-        696,
-        94
+        684,
+        216
       ]
     },
     {
@@ -256,21 +240,17 @@
       "from": "ptysplit",
       "to": "pool-pt-uasset",
       "label": "PT ~1/3",
-      "fromSide": "top",
+      "fromSide": "bottom",
       "toSide": "left",
       "via": [
         [
-          745,
-          328
-        ],
-        [
-          854,
-          328
-        ],
-        [
-          854,
-          271
+          524,
+          504
         ]
+      ],
+      "labelAt": [
+        524,
+        464
       ]
     },
     {
@@ -278,21 +258,47 @@
       "from": "ptysplit",
       "to": "pool-pt-pol",
       "label": "PT ~2/3",
-      "fromSide": "bottom",
+      "fromSide": "top",
       "toSide": "left",
       "via": [
         [
-          745,
-          442
+          524,
+          336
         ],
         [
-          862,
-          442
+          650,
+          336
         ],
         [
-          862,
-          499
+          650,
+          276
         ]
+      ],
+      "labelAt": [
+        564,
+        336
+      ]
+    },
+    {
+      "id": "aux-to-polpool",
+      "from": "aux",
+      "to": "pool-pol-uasset",
+      "label": "uAsset",
+      "fromSide": "top",
+      "toSide": "top",
+      "via": [
+        [
+          309,
+          86
+        ],
+        [
+          739,
+          86
+        ]
+      ],
+      "labelAt": [
+        739,
+        107
       ]
     },
     {
@@ -300,7 +306,10 @@
       "from": "ptysplit",
       "to": "ytdist",
       "label": "YT",
-      "via": []
+      "labelAt": [
+        631,
+        390
+      ]
     }
   ],
   "cards": [
@@ -308,7 +317,7 @@
       "dot": "emerald",
       "title": "Three funds, separate paths",
       "items": [
-        "Pool funding = standard Genesis capital + leverage debt principal",
+        "Pool fund = standard Genesis capital + leverage debt principal",
         "Preorder funds are ledgered separately, used for the first aggregated buy after the primary pool is created",
         "Success depends only on standard Genesis capital or leverage interest independently meeting the threshold"
       ]

@@ -6,50 +6,161 @@
     "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/uasset-supply.html",
-    "viewBox": [860, 560]
+    "viewBox": [
+      847,
+      532
+    ]
   },
   "stages": [
-    { "label": "Supply inputs" },
-    { "label": "Supply paths" },
-    { "label": "uAsset" },
-    { "label": "Where it goes" }
+    {
+      "label": "Supply inputs"
+    },
+    {
+      "label": "Supply paths"
+    },
+    {
+      "label": "uAsset"
+    },
+    {
+      "label": "Where it goes"
+    }
   ],
   "nodes": [
-    { "id": "sy", "type": "external", "label": "Yield assets", "sublabel": "Standardized SY layer", "tag": "wstETH · sUSDS · sUSDe…", "stage": 0, "row": 0 },
-    { "id": "reserve", "type": "external", "label": "Reserve assets", "sublabel": "USDC · USDT · ETH · BNB", "stage": 0, "row": 1, "width": 124 },
-    { "id": "cdp", "type": "backend", "label": "Genesis Staking", "sublabel": "Mint at face value", "stage": 1, "row": 0 },
-    { "id": "psm", "type": "backend", "label": "PSM par swap", "sublabel": "Two-way 1:1 at par", "stage": 1, "row": 1 },
-    { "id": "polend", "type": "backend", "label": "Leveraged Genesis", "sublabel": "Interest buys shares", "stage": 1, "row": 2 },
-    { "id": "uasset", "type": "database", "label": "uAsset", "sublabel": "UETH/UUSD/UBNB", "tag": "Pegged stablecoin", "stage": 2, "row": 1 },
-    { "id": "memeverse", "type": "backend", "label": "Memeverse", "sublabel": "Demand side · consumes uAsset", "stage": 3, "row": 0, "width": 140 },
-    { "id": "usr", "type": "backend", "label": "USR savings", "sublabel": "Earns interest on uAsset", "stage": 3, "row": 2 }
+    {
+      "id": "sy",
+      "type": "external",
+      "label": "SY assets",
+      "sublabel": "wstETH etc.",
+      "stage": 0,
+      "row": 0,
+      "width": 92
+    },
+    {
+      "id": "reserve",
+      "type": "external",
+      "label": "Reserves",
+      "sublabel": "1:1 backed",
+      "stage": 0,
+      "row": 1,
+      "width": 92
+    },
+    {
+      "id": "cdp",
+      "type": "backend",
+      "label": "Genesis Staking",
+      "sublabel": "Opens a position",
+      "stage": 1,
+      "row": 0
+    },
+    {
+      "id": "psm",
+      "type": "backend",
+      "label": "PSM par swap",
+      "sublabel": "Two-way at par",
+      "stage": 1,
+      "row": 1
+    },
+    {
+      "id": "polend",
+      "type": "backend",
+      "label": "Leveraged Genesis",
+      "sublabel": "Memeverse debt quota",
+      "stage": 1,
+      "row": 2,
+      "width": 160
+    },
+    {
+      "id": "uasset",
+      "type": "database",
+      "label": "uAsset",
+      "sublabel": "UETH/UUSD/UBNB",
+      "tag": "Pegged stablecoin",
+      "stage": 2,
+      "row": 1
+    },
+    {
+      "id": "memeverse",
+      "type": "backend",
+      "label": "Memeverse",
+      "sublabel": "Demand side",
+      "stage": 3,
+      "row": 0
+    },
+    {
+      "id": "usr",
+      "type": "backend",
+      "label": "USR savings",
+      "sublabel": "Withdraw anytime",
+      "stage": 3,
+      "row": 2
+    }
   ],
   "flows": [
-    { "from": "sy", "to": "cdp", "label": "Deposit collateral" },
-    { "from": "cdp", "to": "uasset", "label": "Mint at face value", "route": "top-channel", "fromSide": "top", "toSide": "top", "variant": "emphasis" },
-    { "from": "reserve", "to": "psm", "label": "Swap in reserves", "route": "straight" },
-    { "from": "psm", "to": "uasset", "label": "Swap out 1:1", "labelSegment": 0, "variant": "emphasis" },
-    { "from": "polend", "to": "uasset", "label": "Mint quota as uAsset", "route": "bottom-channel", "fromSide": "bottom", "toSide": "bottom", "variant": "emphasis" },
-    { "from": "uasset", "to": "memeverse", "label": "Genesis funding · interest · unit of account", "variant": "emphasis", "labelAt": [651, 201] },
-    { "from": "uasset", "to": "usr", "label": "Deposit to earn · withdraw anytime" }
+    {
+      "from": "sy",
+      "to": "cdp",
+      "label": "Collateral"
+    },
+    {
+      "from": "reserve",
+      "to": "psm",
+      "label": "4 assets"
+    },
+    {
+      "from": "cdp",
+      "to": "uasset",
+      "label": "Mint at face value",
+      "route": "top-channel",
+      "fromSide": "top",
+      "toSide": "top",
+      "variant": "emphasis"
+    },
+    {
+      "from": "psm",
+      "to": "uasset",
+      "label": "1:1",
+      "variant": "emphasis"
+    },
+    {
+      "from": "polend",
+      "to": "uasset",
+      "label": "Mint quota as uAsset",
+      "route": "bottom-channel",
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "variant": "emphasis"
+    },
+    {
+      "from": "uasset",
+      "to": "memeverse",
+      "label": "Funding · interest",
+      "variant": "emphasis",
+      "labelDy": 13.5
+    },
+    {
+      "from": "uasset",
+      "to": "usr",
+      "label": "Deposit to earn"
+    }
   ],
   "cards": [
     {
       "dot": "emerald",
       "title": "At-par supply",
       "items": [
-        "Three independent paths, each supplying at par",
-        "Genesis Staking opens a position; PSM swaps do not",
-        "Leverage quotas settle through Memeverse's unified settlement"
+        "Three independent paths, each at par",
+        "Only Genesis Staking takes collateral",
+        "PSM swaps USDC, USDT, ETH, or BNB 1:1",
+        "Leverage quotas settle in one Memeverse pass"
       ]
     },
     {
       "dot": "cyan",
       "title": "Mint-cap brake",
       "items": [
-        "Position managers and PSM pools each have a mint cap",
-        "A mint that hits the cap reverts entirely",
-        "Redeeming or swapping back burns and releases room"
+        "Every position manager and PSM pool has a mint cap",
+        "At-cap mints revert entirely",
+        "Redeeming burns uAsset and frees cap room"
       ]
     },
     {
@@ -57,9 +168,9 @@
       "title": "Where uAsset goes",
       "items": [
         "Genesis funding · leverage interest · settlement unit",
-        "Idle uAsset can earn interest in USR savings",
+        "Idle uAsset earns interest in USR savings",
         "uAsset circulates omnichain over LayerZero",
-        "OutStake mints it; Memeverse consumes it — the two sides interlock"
+        "OutStake mints it; Memeverse consumes it"
       ]
     }
   ]

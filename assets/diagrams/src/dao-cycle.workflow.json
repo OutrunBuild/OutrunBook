@@ -6,6 +6,10 @@
     "locale": "en",
     "quality_profile": "showcase",
     "output": "assets/diagrams/dao-cycle.html",
+    "viewBox": [
+      874,
+      430
+    ],
     "legend": {
       "mode": "auto",
       "entries": {
@@ -36,72 +40,72 @@
       "lane": "vote",
       "col": 0,
       "type": "external",
-      "width": 96,
+      "width": 116,
       "label": "Stake shares",
-      "sublabel": "into the YieldVault"
+      "sublabel": "into the vault"
     },
     {
       "id": "delegate",
       "lane": "vote",
       "col": 1,
       "type": "external",
-      "width": 110,
+      "width": 156,
       "label": "Delegate votes",
-      "sublabel": "shares then carry votes"
+      "sublabel": "votes once delegated"
     },
     {
       "id": "vote",
       "lane": "vote",
       "col": 3,
       "type": "external",
-      "width": 120,
+      "width": 144,
       "label": "Vote this epoch",
-      "sublabel": "votes count this epoch"
+      "sublabel": "count this epoch"
     },
     {
       "id": "finalize",
       "lane": "vote",
       "col": 5,
       "type": "external",
-      "width": 110,
-      "label": "Settle the epoch",
-      "sublabel": "anyone; pays own gas"
+      "width": 122,
+      "label": "Settle epoch",
+      "sublabel": "anyone; own gas"
     },
     {
       "id": "gate",
       "lane": "claim",
       "col": 5,
       "type": "backend",
-      "width": 110,
-      "label": "3-condition gate",
-      "sublabel": "enrolled/revenue/votes"
+      "width": 122,
+      "label": "3-check gate",
+      "sublabel": "enroll/rev/vote"
     },
     {
       "id": "allocate",
       "lane": "claim",
       "col": 3,
       "type": "backend",
-      "width": 120,
+      "width": 152,
       "label": "Allocate rewards",
-      "sublabel": "25% default; adjustable"
+      "sublabel": "25% default"
     },
     {
       "id": "claim",
       "lane": "claim",
       "col": 1,
       "type": "external",
-      "width": 110,
+      "width": 132,
       "label": "Active claim",
-      "sublabel": "your share of the votes"
+      "sublabel": "your vote share"
     },
     {
       "id": "rollover",
       "lane": "claim",
       "col": 0,
       "type": "backend",
-      "width": 96,
-      "label": "Into treasury",
-      "sublabel": "allocated next epoch"
+      "width": 104,
+      "label": "Rollover",
+      "sublabel": "next epoch"
     }
   ],
   "edges": [
@@ -117,10 +121,8 @@
       "from": "vote",
       "to": "finalize",
       "label": "Epoch ends",
-      "labelAt": [
-        530,
-        111
-      ]
+      "fromSide": "right",
+      "toSide": "left"
     },
     {
       "from": "finalize",
@@ -133,11 +135,7 @@
       "to": "allocate",
       "label": "All 3 hold",
       "fromSide": "left",
-      "toSide": "right",
-      "labelAt": [
-        530,
-        243
-      ]
+      "toSide": "right"
     },
     {
       "from": "gate",
@@ -147,17 +145,17 @@
       "toSide": "bottom",
       "via": [
         [
-          625,
-          302
+          781,
+          336
         ],
         [
-          88,
-          302
+          110,
+          336
         ]
       ],
       "labelAt": [
-        390,
-        302
+        487,
+        336
       ]
     },
     {
@@ -165,20 +163,27 @@
       "to": "claim",
       "label": "In the window",
       "fromSide": "left",
-      "toSide": "right",
-      "labelAt": [
-        326,
-        243
-      ]
+      "toSide": "right"
     },
     {
       "from": "claim",
       "to": "rollover",
-      "fromSide": "left",
-      "toSide": "right",
+      "label": "Unclaimed",
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "via": [
+        [
+          275,
+          324
+        ],
+        [
+          110,
+          324
+        ]
+      ],
       "labelAt": [
-        182,
-        224
+        192.5,
+        324
       ]
     },
     {
@@ -191,24 +196,24 @@
       "via": [
         [
           28,
-          243
+          269
         ],
         [
           28,
-          166
+          183
         ],
         [
-          700,
-          166
+          864,
+          183
         ],
         [
-          700,
-          243
+          864,
+          269
         ]
       ],
       "labelAt": [
-        450,
-        166
+        446,
+        183
       ]
     }
   ],
@@ -217,7 +222,7 @@
       "dot": "emerald",
       "title": "Who has voting power",
       "items": [
-        "After staking into the YieldVault, shares carry votes only once delegated to yourself or a representative",
+        "After staking into the vault, shares carry votes only once delegated to yourself or a representative",
         "Undelegated shares carry no votes but still count toward the voting base, raising the quorum threshold",
         "Voting, triggering settlement, and claiming are all on-chain operations; you pay your own gas"
       ]

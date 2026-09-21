@@ -7,7 +7,7 @@
     "quality_profile": "showcase",
     "output": "assets/diagrams/ecosystem-bite.html",
     "viewBox": [
-      860,
+      847,
       360
     ],
     "legend": {
@@ -30,7 +30,7 @@
   },
   "stages": [
     {
-      "label": "OutStake supply side"
+      "label": "Supply side"
     },
     {
       "label": "Mint uAsset"
@@ -46,38 +46,39 @@
     {
       "id": "supply",
       "type": "external",
-      "label": "OutStake supply side",
-      "sublabel": "multi-protocol yield assets",
-      "tag": "wstETH · sUSDS · sUSDe…",
+      "label": "OutStake",
+      "sublabel": "yields",
       "stage": 0,
       "row": 0,
-      "width": 150
+      "width": 92
     },
     {
       "id": "mint",
       "type": "backend",
       "label": "Mint uAsset",
-      "sublabel": "Genesis Staking · PSM",
+      "sublabel": "Genesis Staking/PSM",
       "stage": 1,
-      "row": 0
+      "row": 0,
+      "width": 150
     },
     {
       "id": "uasset",
       "type": "database",
       "label": "uAsset",
       "sublabel": "UETH/UUSD/UBNB",
-      "tag": "lifeline between modules",
+      "tag": "module lifeline",
       "stage": 2,
       "row": 0
     },
     {
       "id": "memeverse",
       "type": "backend",
-      "label": "Memeverse use side",
-      "sublabel": "4 pools · leverage · Staking · DAO",
+      "label": "Memeverse",
+      "sublabel": "4 pools · leverage",
+      "tag": "Staking · DAO",
       "stage": 3,
       "row": 0,
-      "width": 160
+      "width": 144
     }
   ],
   "flows": [
@@ -85,45 +86,33 @@
       "id": "supply-mint",
       "from": "supply",
       "to": "mint",
-      "label": "Genesis Staking / PSM",
-      "variant": "emphasis",
-      "labelAt": [
-        211,
-        200
-      ]
+      "label": "deposit",
+      "variant": "emphasis"
     },
     {
       "id": "mint-uasset",
       "from": "mint",
       "to": "uasset",
-      "label": "mint",
+      "label": "issued",
       "variant": "emphasis"
     },
     {
       "id": "uasset-memeverse",
       "from": "uasset",
       "to": "memeverse",
-      "label": "Genesis funding · leverage interest · settlement denomination",
-      "variant": "emphasis",
-      "labelAt": [
-        558,
-        198
-      ]
+      "label": "demand",
+      "variant": "emphasis"
     },
     {
       "id": "bite-back",
       "from": "memeverse",
       "to": "mint",
-      "label": "Two-way supply-demand interlock (yields do not flow back)",
+      "label": "Two-way interlock · yields do not flow back",
       "variant": "dashed",
       "fromSide": "bottom",
       "toSide": "bottom",
       "route": "bottom-channel",
-      "labelAt": [
-        530,
-        236
-      ],
-      "channelY": 216
+      "channelY": 256
     }
   ],
   "cards": [
@@ -131,9 +120,9 @@
       "dot": "emerald",
       "title": "Two-way supply-demand interlock",
       "items": [
-        "OutStake mints uAsset; Memeverse consumes it",
-        "Memeverse makes uAsset useful → holding it has value → more people mint on OutStake",
-        "The deeper OutStake's supply → the smoother Memeverse launches"
+        "OutStake turns multi-protocol yield assets (wstETH · sUSDS · sUSDe) into uAsset; Memeverse consumes it",
+        "Memeverse puts uAsset to work across 4 pools, leverage, Staking, and the DAO",
+        "More uAsset utility → more minting on OutStake → deeper supply → smoother Memeverse launches"
       ]
     },
     {
@@ -151,6 +140,7 @@
       "items": [
         "UETH/UUSD/UBNB are pegged to ETH/USD/BNB respectively",
         "A pegged stablecoin system, moving cross-chain via LayerZero OFT",
+        "In Memeverse: Genesis funding · leverage interest · settlement denomination",
         "It is the lifeline connecting the two modules"
       ]
     }

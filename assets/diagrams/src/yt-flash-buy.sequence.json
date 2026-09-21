@@ -10,8 +10,18 @@
     "titleInSvg": true,
     "viewBox": [
       820,
-      500
-    ]
+      480
+    ],
+    "legend": {
+      "entries": {
+        "return": {
+          "visible": false
+        },
+        "default": {
+          "label": "Message"
+        }
+      }
+    }
   },
   "participants": [
     {
@@ -38,7 +48,7 @@
       "id": "borrow",
       "from": "user",
       "to": "pool",
-      "y": 185,
+      "y": 180,
       "label": "Sell y PT for R POL",
       "note": "These y PT are \"borrowed\": you hold none yet",
       "variant": "emphasis"
@@ -47,7 +57,7 @@
       "id": "split-leg",
       "from": "user",
       "to": "split",
-      "y": 235,
+      "y": 240,
       "label": "Put up y POL to split",
       "note": "Your own funds + R → y PT + y YT"
     },
@@ -55,7 +65,7 @@
       "id": "repay",
       "from": "user",
       "to": "pool",
-      "y": 285,
+      "y": 300,
       "label": "Repay with the split's y PT",
       "variant": "return"
     },
@@ -63,7 +73,7 @@
       "id": "receive",
       "from": "split",
       "to": "user",
-      "y": 330,
+      "y": 360,
       "label": "Receive y YT",
       "note": "You actually pay y − R POL",
       "variant": "return"

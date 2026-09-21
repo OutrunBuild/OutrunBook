@@ -7,8 +7,8 @@
     "quality_profile": "showcase",
     "output": "assets/diagrams/fee-split.html",
     "viewBox": [
-      1080,
-      640
+      847,
+      616
     ],
     "legend": {
       "mode": "auto",
@@ -30,13 +30,13 @@
   },
   "stages": [
     {
-      "label": "One trading fee"
+      "label": "Trading fee"
     },
     {
-      "label": "Dimension 1: the split"
+      "label": "The split"
     },
     {
-      "label": "Routing the protocol share"
+      "label": "Protocol routing"
     },
     {
       "label": "Where it goes"
@@ -46,16 +46,17 @@
     {
       "id": "fee",
       "type": "external",
-      "label": "One trading fee",
-      "sublabel": "Fee on a Memecoin trade",
+      "label": "Trade fee",
+      "sublabel": "on Memecoin",
       "stage": 0,
-      "row": 1
+      "row": 1,
+      "width": 92
     },
     {
       "id": "lp",
       "type": "external",
       "label": "LP holders",
-      "sublabel": "By share · 65% · fixed",
+      "sublabel": "By share · fixed",
       "stage": 1,
       "row": 0
     },
@@ -71,7 +72,7 @@
       "id": "referrer",
       "type": "external",
       "label": "Referral rebate",
-      "sublabel": "Default 10% · adjustable",
+      "sublabel": "Default 10%",
       "stage": 1,
       "row": 1
     },
@@ -79,7 +80,7 @@
       "id": "bytoken",
       "type": "backend",
       "label": "By denomination",
-      "sublabel": "uAsset/Memecoin/POL",
+      "sublabel": "by fee currency",
       "stage": 2,
       "row": 1
     },
@@ -87,8 +88,7 @@
       "id": "auxsplit",
       "type": "backend",
       "label": "Aux-pool split",
-      "sublabel": "rest to DAO treasury",
-      "tag": "Locked phase",
+      "sublabel": "remainder to DAO",
       "stage": 2,
       "row": 2
     },
@@ -96,18 +96,18 @@
       "id": "dao",
       "type": "database",
       "label": "DAO treasury",
-      "sublabel": "0.25% to executor · default",
+      "sublabel": "0.25% to executor",
       "stage": 3,
-      "row": 0,
-      "width": 144
+      "row": 0
     },
     {
       "id": "staking",
       "type": "database",
       "label": "Staking YieldVault",
-      "sublabel": "For Memecoin stakers",
+      "sublabel": "Memecoin stakers",
       "stage": 3,
-      "row": 1
+      "row": 1,
+      "width": 168
     },
     {
       "id": "burn",
@@ -120,11 +120,10 @@
     {
       "id": "genesis",
       "type": "external",
-      "label": "Genesis participants",
-      "sublabel": "Pro rata by Genesis share",
+      "label": "Genesis members",
+      "sublabel": "pro rata by share",
       "stage": 3,
-      "row": 3,
-      "width": 132
+      "row": 3
     }
   ],
   "flows": [
@@ -133,149 +132,124 @@
       "from": "fee",
       "to": "lp",
       "label": "65% · fixed",
-      "variant": "emphasis",
-      "fromSide": "top",
-      "toSide": "left",
-      "via": [
-        [
-          100,
-          157
-        ]
-      ],
-      "labelAt": [
-        180,
-        157
-      ]
+      "variant": "emphasis"
     },
     {
       "id": "fee-proto",
       "from": "fee",
       "to": "proto",
       "label": "35% · fixed",
-      "variant": "emphasis",
-      "labelAt": [
-        208,
-        328
-      ]
+      "variant": "emphasis"
     },
     {
       "id": "proto-referrer",
       "from": "proto",
       "to": "referrer",
-      "label": "With referrer",
-      "fromSide": "top",
-      "toSide": "bottom",
-      "via": [
-        [
-          315,
-          328
-        ]
-      ],
-      "labelAt": [
-        340,
-        344
-      ]
+      "label": "10% rebate"
     },
     {
       "id": "proto-bytoken",
       "from": "proto",
       "to": "bytoken",
-      "label": "Split by denomination"
+      "label": "by currency"
     },
     {
       "id": "proto-auxsplit",
       "from": "proto",
       "to": "auxsplit",
-      "label": "Auxiliary-pool POL/uAsset/PT fees (Locked)",
+      "label": "Aux-pool fees (Locked)",
       "fromSide": "bottom",
-      "toSide": "left",
+      "toSide": "bottom",
       "via": [
         [
-          315,
-          440
+          309,
+          455
         ],
         [
-          440,
-          440
-        ],
-        [
-          440,
-          385
-        ],
-        [
-          474,
-          385
+          524,
+          455
         ]
-      ],
-      "labelAt": [
-        385,
-        432
       ]
     },
     {
       "id": "bytoken-dao",
       "from": "bytoken",
       "to": "dao",
-      "label": "uAsset-denominated",
-      "fromSide": "right",
+      "label": "uAsset",
+      "fromSide": "top",
       "toSide": "left",
       "via": [
         [
-          640,
-          271
+          524,
+          219
         ],
         [
-          640,
-          157
+          644,
+          219
         ],
         [
-          660,
-          157
+          644,
+          162
         ]
       ],
       "labelAt": [
-        636,
-        208
+        584,
+        219
       ]
     },
     {
       "id": "bytoken-staking",
       "from": "bytoken",
       "to": "staking",
-      "label": "Memecoin-denominated",
+      "label": "Memecoin",
+      "fromSide": "right",
+      "toSide": "bottom",
+      "via": [
+        [
+          614,
+          276
+        ],
+        [
+          614,
+          330
+        ],
+        [
+          739,
+          330
+        ]
+      ],
       "labelAt": [
-        638,
-        348
+        714,
+        330
       ]
     },
     {
       "id": "bytoken-burn",
       "from": "bytoken",
       "to": "burn",
-      "label": "POL-denominated",
+      "label": "POL",
       "fromSide": "bottom",
       "toSide": "top",
       "via": [
         [
-          530,
-          320
+          524,
+          348
         ],
         [
-          745,
-          320
+          739,
+          348
         ]
       ],
       "labelAt": [
-        640,
-        320
+        624,
+        348
       ]
     },
     {
       "id": "aux-genesis",
       "from": "auxsplit",
       "to": "genesis",
-      "label": "Standard side: pro rata by Genesis share",
-      "labelDy": 24
+      "label": "Standard side"
     }
   ],
   "cards": [

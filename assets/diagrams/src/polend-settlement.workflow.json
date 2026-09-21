@@ -7,6 +7,7 @@
     "quality_profile": "showcase",
     "output": "assets/diagrams/polend-settlement.html",
     "titleInSvg": true,
+    "viewBox": [890, 554],
     "legend": {
       "mode": "auto",
       "entries": {
@@ -42,16 +43,16 @@
       "lane": "unlock",
       "col": 0,
       "type": "backend",
-      "width": 96,
-      "label": "Capture fees",
-      "sublabel": "Last pre-unlock tx"
+      "width": 120,
+      "label": "Fee capture",
+      "sublabel": "Pre-unlock tx"
     },
     {
       "id": "unlock",
       "lane": "unlock",
       "col": 1,
       "type": "backend",
-      "width": 110,
+      "width": 132,
       "label": "Enter unlock",
       "sublabel": "Starts settlement"
     },
@@ -60,7 +61,7 @@
       "lane": "unlock",
       "col": 3,
       "type": "backend",
-      "width": 120,
+      "width": 178,
       "label": "Unified settlement",
       "sublabel": "Skipped if no leverage"
     },
@@ -71,32 +72,32 @@
       "type": "backend",
       "width": 110,
       "label": "Protection",
-      "sublabel": "24 hours · fixed"
+      "sublabel": "24h · fixed"
     },
     {
       "id": "cut",
       "lane": "waterfall",
       "col": 0,
       "type": "backend",
-      "width": 96,
-      "label": "Cut leveraged",
-      "sublabel": "Pro rata to debt"
+      "width": 120,
+      "label": "Cut shares",
+      "sublabel": "Pro rata · debt"
     },
     {
       "id": "liquidate",
       "lane": "waterfall",
       "col": 1,
       "type": "backend",
-      "width": 110,
+      "width": 152,
       "label": "Unwind, recover",
-      "sublabel": "Burn POL; PT → uAsset"
+      "sublabel": "Burn POL; PT→uAsset"
     },
     {
       "id": "repay",
       "lane": "waterfall",
       "col": 3,
       "type": "backend",
-      "width": 150,
+      "width": 196,
       "label": "Repay leveraged debt",
       "sublabel": "Recovered uAsset repays"
     },
@@ -105,25 +106,25 @@
       "lane": "waterfall",
       "col": 5,
       "type": "backend",
-      "width": 110,
-      "label": "Residual payout",
-      "sublabel": "Pro rata to interest"
+      "width": 132,
+      "label": "Residual",
+      "sublabel": "By interest paid"
     },
     {
       "id": "reserve",
       "lane": "deficit",
       "col": 1,
       "type": "backend",
-      "width": 128,
+      "width": 124,
       "label": "Draw reserve",
-      "sublabel": "Rounding-level only"
+      "sublabel": "Rounding-level"
     },
     {
       "id": "rollback",
       "lane": "deficit",
       "col": 3,
       "type": "backend",
-      "width": 172,
+      "width": 232,
       "label": "Revert whole transaction",
       "sublabel": "Stays Locked"
     },
@@ -134,7 +135,7 @@
       "type": "external",
       "width": 110,
       "label": "Replenish",
-      "sublabel": "Cap may be raised"
+      "sublabel": "Cap may rise"
     }
   ],
   "edges": [
@@ -156,23 +157,11 @@
       "label": "Runs only with leveraged debt",
       "fromSide": "bottom",
       "toSide": "left",
-      "labelAt": [
-        222,
-        166
-      ],
+      "labelAt": [282, 183],
       "via": [
-        [
-          430,
-          170
-        ],
-        [
-          14,
-          170
-        ],
-        [
-          14,
-          243
-        ]
+        [538, 183],
+        [38, 183],
+        [38, 269]
       ]
     },
     {
@@ -195,15 +184,10 @@
       "variant": "dashed",
       "fromSide": "bottom",
       "toSide": "top",
+      "labelAt": [480, 311],
       "via": [
-        [
-          430,
-          290
-        ],
-        [
-          220,
-          290
-        ]
+        [538, 321],
+        [275, 321]
       ]
     },
     {
@@ -212,34 +196,20 @@
       "label": "Reserve covers it",
       "fromSide": "bottom",
       "toSide": "top",
-      "labelAt": [
-        460,
-        420
-      ],
+      "labelAt": [400, 42],
       "via": [
-        [
-          220,
-          414
-        ],
-        [
-          716,
-          414
-        ],
-        [
-          716,
-          44
-        ],
-        [
-          625,
-          44
-        ]
+        [275, 454],
+        [24, 454],
+        [24, 45],
+        [781, 45]
       ]
     },
     {
       "from": "reserve",
       "to": "rollback",
       "label": "Revert",
-      "variant": "dashed"
+      "variant": "dashed",
+      "labelAt": [375, 397]
     },
     {
       "from": "rollback",
@@ -251,29 +221,14 @@
       "to": "cut",
       "label": "Retry once reserve replenished",
       "variant": "dashed",
-      "fromSide": "top",
+      "fromSide": "bottom",
       "toSide": "top",
-      "labelAt": [
-        400,
-        185
-      ],
+      "labelAt": [450, 226],
       "via": [
-        [
-          625,
-          332
-        ],
-        [
-          690,
-          332
-        ],
-        [
-          690,
-          185
-        ],
-        [
-          88,
-          185
-        ]
+        [781, 528],
+        [864, 528],
+        [864, 226],
+        [110, 226]
       ]
     }
   ],
@@ -304,7 +259,7 @@
         "Surplus: residual value = remaining uAsset + all recovered Memecoin, distributed once pro rata to interest paid, claimable forever",
         "Shortfall: the settlement reserve covers only a capped rounding-level shortfall, never insolvency",
         "A shortfall over the reserve reverts the whole transaction; once the reserve is replenished (cap may be raised) it is retried",
-        "Captured fees: POL-denominated fees are burned; uAsset fees go to the protocol treasury"
+        "Captured fees: POL-denominated fees are burned; uAsset fees go to the DAO treasury"
       ]
     }
   ]
